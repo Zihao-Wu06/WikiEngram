@@ -163,3 +163,16 @@ def test_qwen_ple_variant_through_the_whole_pipeline(tiny_tokenizer):
     with torch.no_grad():
         after = lm.logits(lm.hidden_states(probe, None, lm.build_batch(probe)))
     torch.testing.assert_close(after, base, rtol=0, atol=0)
+
+
+def test_fresh_qwen_module_grows_in_gently():
+    """A retrofit attachment must start as an identity and change the residual only a little after a small
+    update (the conv branch RMS-normalizes its input, so it has to start at zero too)."""
+    cfg = _cfg()
+    module = QwenPLEModule(_spec(cfg), 1)  # reset_parameters(zero_value=True)
+    x = torch.randn(2, 7, cfg.hc_count, cfg.hidden_size)
+    emb = torch.randn(2, 7, 8, 8)
+    with torch.no_grad():
+        torch.testing.assert_close(module(x, emb), x, rtol=0, atol=0)
+        module.value_proj.weight.normal_(0, 1e-4)  # one tiny training step's worth of change
+        assert (module(x, emb) - x).abs().max() < 1e-2

@@ -267,10 +267,16 @@ class QwenPLEModule(nn.Module):
 
     @torch.no_grad()
     def reset_parameters(self, zero_value: bool = True) -> None:
+        """With ``zero_value`` (a fresh retrofit attachment) both branches start at zero: the value projection
+        (gated value 0) and the conv (the conv path RMS-normalizes its input, so even tiny gated values would
+        otherwise come out at full scale and disturb the frozen backbone at the first step, which is why the
+        Engram paper zero-initializes its conv too). The module is then an exact identity that grows in."""
         nn.init.normal_(self.key_proj.weight, std=self.spec.embed_dim**-0.5)
         nn.init.normal_(self.value_proj.weight, std=self.spec.embed_dim**-0.5)
-        if zero_value:  # gated value 0 -> conv input 0 -> output 0: an exact identity at init
+        self.conv1d.reset_parameters()
+        if zero_value:
             self.value_proj.weight.zero_()
+            self.conv1d.weight.zero_()
         for norm in (self.norm_key, self.norm_query, self.norm_conv):
             norm.weight.zero_()
 
