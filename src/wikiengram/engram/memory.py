@@ -12,8 +12,8 @@ from dataclasses import dataclass
 import torch
 
 from .delta import PersonalDelta
-from .layout import EngramLayout
 from .tables import BaseTable
+from .variant import EngramVariant
 
 
 @dataclass
@@ -42,13 +42,13 @@ class EngramBatch:
 
 
 class EngramMemory:
-    def __init__(self, layout: EngramLayout, base_tables: dict[int, BaseTable],
+    def __init__(self, variant: EngramVariant, base_tables: dict[int, BaseTable],
                  delta: PersonalDelta | None, device: str | torch.device):
-        self.layout = layout
+        self.variant = variant
         self.base_tables = base_tables
         self.delta = delta
         self.device = torch.device(device)
-        missing = set(layout.spec.layer_ids) - set(base_tables)
+        missing = set(variant.layer_ids) - set(base_tables)
         if missing:
             raise ValueError(f"no base table for Engram layers {sorted(missing)}")
 
@@ -69,7 +69,7 @@ class EngramMemory:
         context in the prompt); the base table applies everywhere.
         """
         layers: dict[int, LayerRows] = {}
-        for li, lid in enumerate(self.layout.spec.layer_ids):
+        for li, lid in enumerate(self.variant.layer_ids):
             h = hashes[..., li, :]
             uniq, inv = torch.unique(h.reshape(-1), return_inverse=True)
             inv = inv.view(h.shape).to(self.device)

@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "wikiengram"
 version = "0.1.0"
-description = "Train Memory, Not Your LLM. Consolidate an LLM-maintained wiki into DeepSeek Engram conditional memory while the backbone stays frozen."
+description = "Train Memory, Not Your LLM. Consolidate an LLM-maintained wiki into the Engram conditional memory of MoE models while the backbone stays frozen."
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
 authors = [{ name = "WikiEngram contributors" }]
-keywords = ["llm", "memory", "engram", "deepseek", "knowledge", "wiki", "continual-learning"]
+keywords = ["llm", "memory", "engram", "conditional-memory", "moe", "knowledge", "wiki", "continual-learning"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",

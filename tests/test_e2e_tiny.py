@@ -15,8 +15,8 @@ from wikiengram.engram.tables import DenseTable
 
 def _with_base(lm: EngramCausalLM, seed: int = 0) -> EngramCausalLM:
     """Give the tiny model a non-zero frozen base Engram (random tables, random value projection)."""
-    tables = {lid: DenseTable.random(n, lm.spec.head_dim, std=0.02, seed=seed + i)
-              for i, (lid, n) in enumerate(zip(lm.spec.layer_ids, lm.layout.num_embeddings))}
+    tables = {lid: DenseTable.random(n, lm.variant.row_dim, std=0.02, seed=seed + i)
+              for i, (lid, n) in enumerate(zip(lm.variant.layer_ids, lm.variant.num_rows))}
     lm.memory.base_tables = tables
     for m in lm.engrams.values():
         m.reset_parameters(zero_value=False)
@@ -96,7 +96,7 @@ def test_delta_save_load_gives_identical_outputs(tiny_lm, tmp_path):
     train_delta(lm, delta, SAMPLES[:2], DeltaTrainConfig(epochs=10, batch_size=2, lr=5e-2))
     out1 = _logits(lm, "Zorblat Quenn works at")
     delta.save(tmp_path / "delta.safetensors")
-    lm.attach_delta(PersonalDelta.load(tmp_path / "delta.safetensors", expect_fingerprint=lm.layout.fingerprint()))
+    lm.attach_delta(PersonalDelta.load(tmp_path / "delta.safetensors", expect_fingerprint=lm.variant.fingerprint()))
     torch.testing.assert_close(_logits(lm, "Zorblat Quenn works at"), out1, rtol=0, atol=0)
     lm.attach_delta(None)
     assert not torch.equal(_logits(lm, "Zorblat Quenn works at"), out1)

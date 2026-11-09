@@ -107,12 +107,12 @@ def main():
     if args.block_bg > 0 or args.block_shared > 0:
         from wikiengram.consolidation.trainer import encode_samples
 
-        bg = NgramCounts.from_stream(lm.hasher, train_stream) if args.block_bg > 0 else None
+        bg = NgramCounts.from_stream(lm.variant, train_stream) if args.block_bg > 0 else None
         tok = lm.tokenizer
         template = [tok("Question: ", add_special_tokens=False)["input_ids"],
                     tok("?\nAnswer:", add_special_tokens=False)["input_ids"]]
         enc = encode_samples(tok, samples)
-        blocked, bstats = generic_rows(lm.hasher, [i for i, _ in enc], [x.claim_id for x in samples], bg,
+        blocked, bstats = generic_rows(lm.variant, [i for i, _ in enc], [x.claim_id for x in samples], bg,
                                        args.block_bg, args.block_shared, always_block=template)
         log["blocked"] = bstats
         print("blocked", bstats, flush=True)

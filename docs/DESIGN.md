@@ -3,37 +3,46 @@
 This page explains why WikiEngram looks the way it does. Facts were checked in November 2026; sources are
 linked.
 
-## 1. Which Engram?
+## 1. One framework for every Engram family
+
+WikiEngram targets MoE models that ship an Engram-style conditional memory: hashed n-gram embedding tables
+fused into the residual stream. Families can differ in hashing, table layout, rows per position and fusion.
+The personal-memory machinery only needs to know which rows a position reads (as a pure function of token
+ids), how those rows group into n-grams, and which module fuses them. That is the `EngramVariant` interface,
+and each family implements it once.
 
 * **The official repository** ([deepseek-ai/Engram](https://github.com/deepseek-ai/Engram), Apache-2.0)
   contains a forward-only demo. It mocks attention, MoE and mHC, and ships no training code and no weights.
-* **[DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)** (MIT) is the only public
-  checkpoint with native Engram: 552B backbone + 196B Engram, Engram at layers 1 and 14, 2–4-grams, 8 heads,
-  head dim 256, FP8 tables with E8M0 scales, no ShortConv. Its `inference/engram.py` and `model.py` are the
-  production semantics, so WikiEngram ports those rather than the demo.
+* **[DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)** (MIT) is DeepSeek's
+  public checkpoint with native Engram: 552B backbone + 196B Engram, Engram at layers 1 and 14, 2–4-grams,
+  8 heads, head dim 256, FP8 tables with E8M0 scales, no ShortConv. Its `inference/engram.py` and
+  `model.py` are the production semantics, so the first variant ports those rather than the demo.
 * **DeepSeek-V4** has no Engram: its `tid2eid` is a hash router.
 * **The paper** ([arXiv:2601.07372](https://arxiv.org/abs/2601.07372)) reports what matters for this
   project. With Engram suppressed, factual QA keeps only 29–44% of its score, so Engram is where parametric
   knowledge lives. Lookups are deterministic, so tables can be offloaded to host memory with a throughput
   cost under 3%.
+* **Other families** are tracked in [NATIVE_MOE.md](NATIVE_MOE.md) once their modules are verified against
+  primary sources.
 
-**Decision:** port V4.1's Engram bit-exactly and test it against the official code.
+**Decision:** a family-agnostic core behind `EngramVariant`. DeepSeek's Engram is the first variant, ported
+bit-exactly and tested against the official code. A toy family in the tests keeps the core from depending
+on DeepSeek details.
 
 ## 2. Which model, given the hardware?
 
-V4.1-Flash needs hundreds of GB of memory. No small DeepSeek model with Engram exists. Community "Engram"
-models are re-implementations bolted onto other models. A frozen backbone with an Engram retrofit has
-support in the literature (for example Engram Adapter, arXiv:2608.29327) and in community models (a
-frozen Spark-1.7B with a 420M-parameter Engram).
+Native Engram models are large MoE models that need hundreds of GB of memory. No small model with native
+Engram exists. Community "Engram" models are re-implementations bolted onto other models. A frozen backbone
+with an Engram retrofit has support in the literature (for example Engram Adapter, arXiv:2608.29327) and in
+community models (a frozen Spark-1.7B with a 420M-parameter Engram).
 
-**Decision:** two backends sharing one Engram implementation.
+**Decision:** two kinds of backend sharing one core.
 
-1. **Retrofit, runnable today.** A frozen Qwen3, with Engram ported from V4.1 attached by hooks. A base
-   Engram is trained once with the backbone frozen and then frozen as well. Qwen3-0.6B-Base is the laptop
-   default (Apache-2.0). It loads in transformers without remote code, and Qwen3-1.7B-Base shares its
-   tokenizer.
-2. **Native V4.1, planned.** It needs a trainable port of the V4.1 block and a streaming trainer
-   ([DEEPSEEK_V41.md](DEEPSEEK_V41.md)).
+1. **Retrofit, runnable today.** A frozen Qwen3 with an Engram variant attached by hooks. A base Engram is
+   trained once with the backbone frozen and then frozen as well. Qwen3-0.6B-Base is the laptop default
+   (Apache-2.0). It loads in transformers without remote code, and Qwen3-1.7B-Base shares its tokenizer.
+2. **Native MoE backends, planned.** Each needs a trainable port of the family's MoE block, a table reader and
+   a streaming trainer ([NATIVE_MOE.md](NATIVE_MOE.md)).
 
 ## 3. Which part of Engram is trained?
 

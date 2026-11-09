@@ -90,17 +90,17 @@ def adapt_base_engram(
 
     # dense, trainable tables on the compute device, with dense lazy-Adam state
     tables, states = {}, {}
-    for i, (lid, n) in enumerate(zip(lm.spec.layer_ids, lm.layout.num_embeddings)):
+    for i, (lid, n) in enumerate(zip(lm.variant.layer_ids, lm.variant.num_rows)):
         table = lm.memory.base_tables[lid]
         if isinstance(table, DenseTable):
             weight = table.weight.to(device).float()
         else:
-            weight = DenseTable.random(n, lm.spec.head_dim, std=cfg.table_init_std, seed=cfg.seed + i).weight.to(device)
+            weight = DenseTable.random(n, lm.variant.row_dim, std=cfg.table_init_std, seed=cfg.seed + i).weight.to(device)
         tables[lid] = weight
         states[lid] = (torch.zeros_like(weight), torch.zeros_like(weight),
                        torch.zeros(n, dtype=torch.int32, device=device))
     for module in lm.engrams.values():
-        module.reset_parameters(zero_value=True)
+        module.reset_parameters(zero_value=True)  # every variant's module starts as an identity
     fusion_params = list(lm.engrams.parameters())
     for p in fusion_params:
         p.requires_grad_(True)
@@ -115,9 +115,9 @@ def adapt_base_engram(
     tokens = 0
     for step in range(1, cfg.steps + 1):
         ids = _windows(train_stream, cfg.batch_size, cfg.seq_len, gen)
-        hashes = lm.hasher(ids)
+        hashes = lm.variant.hash(ids)
         layers = {}
-        for li, lid in enumerate(lm.spec.layer_ids):
+        for li, lid in enumerate(lm.variant.layer_ids):
             uniq, inv = torch.unique(hashes[..., li, :].reshape(-1), return_inverse=True)
             uniq_d = uniq.to(device)
             leaf = tables[lid][uniq_d].detach().clone().requires_grad_(True)
@@ -158,5 +158,5 @@ def adapt_base_engram(
         "eval_ppl_no_engram": math.exp(base_eval),
         "eval_ppl_engram": math.exp(final["eval_loss"]),
         "backbone_checksum": backbone_after,
-        "table_rows": list(lm.layout.num_embeddings),
+        "table_rows": list(lm.variant.num_rows),
     }

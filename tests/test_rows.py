@@ -4,14 +4,11 @@ import numpy as np
 import torch
 
 from wikiengram.consolidation.rows import NgramCounts, generic_rows
-from wikiengram.engram.compression import build_compressed_token_map
-from wikiengram.engram.hashing import NgramHasher
-from wikiengram.engram.layout import EngramLayout
+from wikiengram.engram.deepseek import DeepSeekEngram
 
 
 def _hasher(tok, spec):
-    lookup, size = build_compressed_token_map(tok)
-    return NgramHasher(EngramLayout.from_spec(spec.with_compressed_vocab(size)), lookup)
+    return DeepSeekEngram.build(spec, tok)
 
 
 def _ids(tok, text):
@@ -39,7 +36,7 @@ def test_generic_rows_block_shared_template_and_background(tiny_tokenizer, tiny_
     rows, stats = generic_rows(h, seqs, ["a", "b", "c"], min_shared_claims=3)
     li, lid = 0, tiny_spec.layer_ids[0]
     heads = tiny_spec.n_heads
-    r0 = h(torch.tensor([seqs[0]]))[0]  # [L, n_layers, C]
+    r0 = h.hash(torch.tensor([seqs[0]]))[0]  # [L, n_layers, C]
     works_at = r0[3, li, 0:heads].numpy()  # 2-gram "works at" ends at position 3 ("at"), order 0
     entity = r0[1, li, 0:heads].numpy()  # 2-gram "Zorblat Quenn"
     assert np.isin(works_at, rows[lid]).all()

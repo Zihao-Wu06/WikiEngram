@@ -92,8 +92,8 @@ def claim_rows(lm: EngramCausalLM, encoded: list[tuple[list[int], int]]) -> dict
     """Rows (per Engram layer) touched by a list of encoded samples; model-free."""
     acc: dict[int, list[np.ndarray]] = defaultdict(list)
     for ids, _ in encoded:
-        for li, rows in enumerate(lm.hasher.rows_for_text_ids(ids)):
-            acc[lm.spec.layer_ids[li]].append(rows)
+        for li, rows in enumerate(lm.variant.rows_for_text_ids(ids)):
+            acc[lm.variant.layer_ids[li]].append(rows)
     return {lid: np.unique(np.concatenate(v)) for lid, v in acc.items()}
 
 

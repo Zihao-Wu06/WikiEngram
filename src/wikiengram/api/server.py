@@ -77,7 +77,7 @@ def create_app(workspace: str | Path) -> FastAPI:
     pool = ThreadPoolExecutor(max_workers=1)
     jobs: dict[str, dict] = {}
     app = FastAPI(title="WikiEngram", version="0.1.0",
-                  description="Train Memory, Not Your LLM: LLMWiki explicit memory + DeepSeek Engram neural memory.")
+                  description="Train Memory, Not Your LLM: LLMWiki explicit memory + Engram neural memory.")
 
     def submit(kind: str, fn) -> dict:
         job_id = uuid.uuid4().hex[:12]

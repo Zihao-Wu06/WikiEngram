@@ -23,6 +23,8 @@ class BackendConfig:
 
 @dataclass
 class EngramConfig:
+    # Engram family attached to a retrofit backbone (native checkpoints bring their own module and config)
+    variant: str = "deepseek-v4.1"
     layer_ids: list[int] = field(default_factory=lambda: [1, 10])
     max_ngram_size: int = 4
     n_heads: int = 8

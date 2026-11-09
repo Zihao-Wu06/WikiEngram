@@ -1,10 +1,10 @@
-"""A frozen Hugging Face decoder with DeepSeek-V4.1-style Engram modules attached.
+"""A frozen Hugging Face decoder with an Engram variant attached ("retrofit" backend).
 
-No small DeepSeek model with native Engram weights exists (the only one, DeepSeek-V4.1-Flash, is 552B + 196B
-parameters). For laptops, CI and single-GPU work, WikiEngram attaches Engram modules ported from DeepSeek's
-code to a frozen decoder (Qwen3, SmolLM2, Llama-style): the base Engram is trained once with the backbone
-frozen (``wikiengram adapt``), then frozen too, and personal knowledge goes into a sparse delta. This mirrors
-the V4.1 setting (frozen backbone + frozen pretrained Engram + personal delta) at a size that runs anywhere.
+The MoE models that ship Engram natively are hundreds of GB. For laptops, CI and single-GPU work, WikiEngram
+attaches an Engram variant (by default the DeepSeek algorithm, ported bit-exactly) to a frozen decoder (Qwen3,
+SmolLM2, Llama-style): the base Engram is trained once with the backbone frozen (``wikiengram adapt``), then
+frozen too, and personal knowledge goes into a sparse delta. This mirrors the native setting (frozen MoE
+backbone + frozen pretrained Engram + personal delta) at a size that runs anywhere.
 
 Engram is applied to the residual stream right before the chosen decoder blocks via forward pre-hooks, so the
 backbone's own code and weights are untouched.
@@ -23,13 +23,12 @@ import torch
 from safetensors.torch import load_file, save_file
 from torch import nn
 
-from ..engram.compression import load_or_build_token_map
+from ..engram.deepseek import DeepSeekEngram
 from ..engram.delta import PersonalDelta
-from ..engram.hashing import NgramHasher
-from ..engram.layout import EngramLayout, EngramSpec
+from ..engram.layout import EngramSpec
 from ..engram.memory import EngramBatch, EngramMemory
-from ..engram.module import EngramModule
 from ..engram.tables import BaseTable, DenseTable, ZeroTable
+from ..engram.variant import EngramVariant, variant_from_dict
 from ..utils.device import resolve_device, resolve_dtype
 
 
@@ -44,10 +43,10 @@ class GenerationResult:
 
 @dataclass
 class EngramBaseCheckpoint:
-    """On-disk base Engram for a retrofit backbone: spec, fusion params and dense tables."""
+    """On-disk base Engram for a backbone: variant description, fusion params and dense tables."""
 
     path: Path
-    spec: EngramSpec
+    variant: dict
     backbone: str
     info: dict = field(default_factory=dict)
 
@@ -55,7 +54,7 @@ class EngramBaseCheckpoint:
     def read(cls, path: str | Path) -> EngramBaseCheckpoint:
         path = Path(path)
         meta = json.loads((path / "engram.json").read_text())
-        return cls(path, EngramSpec.from_dict(meta["spec"]), meta["backbone"], meta.get("info", {}))
+        return cls(path, meta["spec"], meta["backbone"], meta.get("info", {}))
 
 
 def _decoder_layers(model: nn.Module) -> nn.ModuleList:
@@ -77,13 +76,16 @@ def param_checksum(params) -> str:
 
 
 class EngramCausalLM:
-    """Wraps a frozen ``AutoModelForCausalLM`` and injects Engram before ``spec.layer_ids`` blocks."""
+    """Wraps a frozen ``AutoModelForCausalLM`` and injects an Engram variant before its ``layer_ids`` blocks.
+
+    ``engram`` is an :class:`~wikiengram.engram.variant.EngramVariant`, or an ``EngramSpec`` (DeepSeek variant).
+    """
 
     def __init__(
         self,
         model: nn.Module,
         tokenizer,
-        spec: EngramSpec,
+        engram: EngramVariant | EngramSpec,
         base_tables: dict[int, BaseTable] | None = None,
         fusion_state: dict[str, torch.Tensor] | None = None,
         delta: PersonalDelta | None = None,
@@ -99,33 +101,28 @@ class EngramCausalLM:
         self.tokenizer = tokenizer
         if getattr(tokenizer, "pad_token_id", None) is None:
             tokenizer.pad_token = tokenizer.eos_token
-        token_map, size = load_or_build_token_map(tokenizer, cache_dir)
-        self.spec = spec.with_compressed_vocab(size)
-        if self.spec.hidden_size != model.config.hidden_size:
-            raise ValueError(f"spec hidden_size {self.spec.hidden_size} != model {model.config.hidden_size}")
+        self.variant = engram if isinstance(engram, EngramVariant) else DeepSeekEngram.build(engram, tokenizer, cache_dir)
+        v = self.variant
+        if v.hidden_size != model.config.hidden_size:
+            raise ValueError(f"Engram hidden_size {v.hidden_size} != model {model.config.hidden_size}")
         n_layers = len(_decoder_layers(self.model))
-        if max(self.spec.layer_ids) >= n_layers:
-            raise ValueError(f"Engram layer ids {self.spec.layer_ids} out of range for {n_layers} layers")
-        self.layout = EngramLayout.from_spec(self.spec)
-        self.hasher = NgramHasher(self.layout, token_map)
-        self.engrams = nn.ModuleDict({str(lid): EngramModule(self.spec, lid) for lid in self.spec.layer_ids})
+        if max(v.layer_ids) >= n_layers:
+            raise ValueError(f"Engram layer ids {v.layer_ids} out of range for {n_layers} layers")
+        self.engrams = nn.ModuleDict({str(lid): v.make_module(lid) for lid in v.layer_ids})
         if fusion_state is not None:
             self.engrams.load_state_dict(fusion_state)
         self.engrams.to(self.device)
         for p in self.engrams.parameters():
             p.requires_grad_(False)
         if base_tables is None:
-            base_tables = {
-                lid: ZeroTable(n, self.spec.head_dim)
-                for lid, n in zip(self.spec.layer_ids, self.layout.num_embeddings)
-            }
-        self.memory = EngramMemory(self.layout, base_tables, delta, self.device)
+            base_tables = {lid: ZeroTable(n, v.row_dim) for lid, n in zip(v.layer_ids, v.num_rows)}
+        self.memory = EngramMemory(v, base_tables, delta, self.device)
         self.engram_enabled = True
         self._batch: EngramBatch | None = None
         layers = _decoder_layers(self.model)
         self._hooks = [
             layers[lid].register_forward_pre_hook(self._make_hook(lid), with_kwargs=True)
-            for lid in self.spec.layer_ids
+            for lid in v.layer_ids
         ]
 
     # ---------------------------------------------------------------------------------- loading
@@ -139,8 +136,10 @@ class EngramCausalLM:
         device: str | None = None,
         dtype: str | None = None,
         cache_dir: str | Path | None = None,
+        variant: EngramVariant | None = None,
     ) -> EngramCausalLM:
-        """Load a backbone; with ``base_path`` also load its trained base Engram (spec, tables, fusion)."""
+        """Load a backbone; with ``base_path`` also load its trained base Engram (variant, tables, fusion).
+        Otherwise attach a fresh ``variant`` (or a DeepSeek-style ``spec``)."""
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
         dev = resolve_device(device)
@@ -151,17 +150,18 @@ class EngramCausalLM:
         except TypeError:  # transformers < 4.56 names it torch_dtype
             model = AutoModelForCausalLM.from_pretrained(model_name_or_path, torch_dtype=torch_dtype)
         base_tables, fusion = None, None
+        engram: EngramVariant | EngramSpec | None = variant or spec
         if base_path is not None:
             ckpt = EngramBaseCheckpoint.read(base_path)
-            spec = ckpt.spec
+            engram = variant_from_dict(ckpt.variant, tokenizer, cache_dir)
             fusion = load_file(str(Path(base_path) / "fusion.safetensors"))
             base_tables = {
                 lid: DenseTable.load(Path(base_path) / f"table_{lid}.safetensors", device="cpu")
-                for lid in spec.layer_ids
+                for lid in engram.layer_ids
             }
-        if spec is None:
-            raise ValueError("pass an EngramSpec or a base_path")
-        return cls(model, tokenizer, spec, base_tables, fusion, delta, dev, cache_dir, name=model_name_or_path)
+        if engram is None:
+            raise ValueError("pass an EngramVariant, an EngramSpec or a base_path")
+        return cls(model, tokenizer, engram, base_tables, fusion, delta, dev, cache_dir, name=model_name_or_path)
 
     def save_base(self, path: str | Path, info: dict | None = None) -> None:
         """Write the base Engram (fusion params + dense tables + spec) for this backbone."""
@@ -174,8 +174,9 @@ class EngramCausalLM:
                 raise TypeError("only dense base tables can be saved")
             table.save(path / f"table_{lid}.safetensors")
         meta = {
-            "spec": self.spec.to_dict(),
-            "layout_fingerprint": self.layout.fingerprint(),
+            "spec": self.variant.to_dict(),
+            "variant": self.variant.name,
+            "layout_fingerprint": self.variant.fingerprint(),
             "backbone": self.name,
             "fusion_checksum": self.fusion_checksum(),
             "saved_at": time.time(),
@@ -189,15 +190,15 @@ class EngramCausalLM:
         return self.memory.delta
 
     def attach_delta(self, delta: PersonalDelta | None) -> None:
-        if delta is not None and delta.layout_fingerprint != self.layout.fingerprint():
+        if delta is not None and delta.layout_fingerprint != self.variant.fingerprint():
             raise ValueError("delta was trained for a different Engram layout")
         if delta is not None:
             delta.to(self.device)
         self.memory.delta = delta
 
     def new_delta(self) -> PersonalDelta:
-        return PersonalDelta(self.spec.layer_ids, self.spec.head_dim, self.layout.fingerprint(), self.device,
-                             meta={"backbone": self.name})
+        return PersonalDelta(self.variant.layer_ids, self.variant.row_dim, self.variant.fingerprint(), self.device,
+                             meta={"backbone": self.name, "variant": self.variant.name})
 
     def backbone_checksum(self) -> str:
         return param_checksum(self.model.parameters())
@@ -240,7 +241,7 @@ class EngramCausalLM:
     def build_batch(self, input_ids, attention_mask=None, hash_slice: slice | None = None,
                     delta_mask: torch.Tensor | None = None, **kwargs) -> EngramBatch:
         """Hash the full sequence (exact n-gram history), then keep only ``hash_slice`` positions."""
-        hashes = self.hasher(input_ids, attention_mask)
+        hashes = self.variant.hash(input_ids, attention_mask)
         if hash_slice is not None:
             hashes = hashes[:, hash_slice]
             if attention_mask is not None:
@@ -327,6 +328,9 @@ class EngramCausalLM:
         cur_ids, cur_pos = ids, position_ids
         prev_enabled = self.engram_enabled
         self.engram_enabled = use_engram
+        streaming = [m for m in self.engrams.values() if hasattr(m, "begin_stream")]
+        for m in streaming:  # e.g. Qwen PLE's dilated conv looks back over earlier positions
+            m.begin_stream()
         try:
             for _ in range(max_new_tokens):
                 batch = None
@@ -368,6 +372,8 @@ class EngramCausalLM:
                 cur_pos = cur_pos[:, -1:] + 1
         finally:
             self.engram_enabled = prev_enabled
+            for m in streaming:
+                m.end_stream()
         seconds = time.perf_counter() - start
         texts = [tok.decode(g, skip_special_tokens=True).strip() for g in generated]
         return GenerationResult(texts, prompt_tokens, [len(g) for g in generated], seconds, first_token or seconds)

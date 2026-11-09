@@ -68,8 +68,8 @@ def test_full_memory_cycle(ws):
     assert ws.state.last_event_seq > 0 and zq.id not in ws.ledger
     # exactness: no personal-memory row the question touches is still active (it reads the frozen base)
     ids = ws.lm.tokenizer([qa_prompt(q)], return_tensors="pt")["input_ids"]
-    hashes = ws.lm.hasher(ids)
-    for li, lid in enumerate(ws.lm.spec.layer_ids):
+    hashes = ws.lm.variant.hash(ids)
+    for li, lid in enumerate(ws.lm.variant.layer_ids):
         layer = ws.lm.delta.layers[lid]
         pos, found = layer.find(torch.unique(hashes[0, :, li, :].reshape(-1)))
         assert not bool((found & layer.active[pos]).any())

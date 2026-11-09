@@ -9,7 +9,7 @@ from pathlib import Path
 import typer
 
 app = typer.Typer(add_completion=False, no_args_is_help=True,
-                  help="WikiEngram: Train Memory, Not Your LLM. LLMWiki explicit memory + DeepSeek Engram neural memory.")
+                  help="WikiEngram: Train Memory, Not Your LLM. LLMWiki explicit memory + Engram neural memory.")
 wiki_app = typer.Typer(no_args_is_help=True, help="Inspect and edit the explicit memory (LLMWiki).")
 app.add_typer(wiki_app, name="wiki")
 

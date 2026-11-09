@@ -11,6 +11,12 @@ It includes code ported from, and a reference copy of, third-party software:
   Ported in src/wikiengram/engram/{compression,layout,hashing,module}.py; a verbatim reference copy used only
   by the parity tests lives in tests/reference/deepseek_v41_engram.py (MIT notice included there).
 
+* transformers, models/qwen4_exp/modeling_qwen4_exp.py (Qwen PLE n-gram memory)
+  https://github.com/huggingface/transformers
+  Apache License 2.0, Copyright 2026 The Qwen Team and The HuggingFace Inc. team.
+  Ported in src/wikiengram/engram/qwen_ple.py; a verbatim reference copy used only by the parity tests lives in
+  tests/reference/qwen4_exp_ple.py (license header included there).
+
 The Engram architecture is described in:
 
 * Cheng et al., "Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models",
@@ -20,5 +26,6 @@ The LLMWiki layer implements the "LLM Wiki" pattern described by Andrej Karpathy
 (https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). The gist carries no license; no text from
 it is reproduced here, only the idea is implemented.
 
-Model weights (e.g. Qwen3, DeepSeek-V4.1-Flash) and datasets (e.g. WikiText) are downloaded at run time and are
-not redistributed; they are subject to their own licenses.
+Model weights (e.g. Qwen3, DeepSeek-V4.1-Flash, Qwen3.8-Flash-Next) and datasets (e.g. WikiText) are downloaded at
+run time and are not redistributed; they are subject to their own licenses (Qwen3.8-Flash-Next: Qwen Community
+License 1.0).

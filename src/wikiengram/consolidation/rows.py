@@ -21,7 +21,7 @@ from collections import defaultdict
 import numpy as np
 import torch
 
-from ..engram.hashing import NgramHasher
+from ..engram.variant import EngramVariant
 
 
 class NgramCounts:
@@ -31,12 +31,12 @@ class NgramCounts:
         self.keys, self.counts, self.n_tokens = keys, counts, n_tokens
 
     @classmethod
-    def from_stream(cls, hasher: NgramHasher, stream: torch.Tensor, chunk: int = 8192) -> NgramCounts:
+    def from_stream(cls, variant: EngramVariant, stream: torch.Tensor, chunk: int = 8192) -> NgramCounts:
         parts = []
-        overlap = hasher.max_ngram_size - 1
+        overlap = variant.max_lookback
         for start in range(0, stream.numel(), chunk):
             lo = max(0, start - overlap)
-            k = hasher.ngram_keys(stream[lo : start + chunk].unsqueeze(0))[0]
+            k = variant.ngram_keys(stream[lo : start + chunk].unsqueeze(0))[0]
             parts.append(k[start - lo :].reshape(-1).numpy())
         keys, counts = np.unique(np.concatenate(parts), return_counts=True)
         return cls(keys, counts, int(stream.numel()))
@@ -57,7 +57,7 @@ class NgramCounts:
 
 
 def generic_rows(
-    hasher: NgramHasher,
+    variant: EngramVariant,
     sequences: list[list[int]],
     claim_ids: list[str],
     background: NgramCounts | None = None,
@@ -76,22 +76,21 @@ def generic_rows(
     judged across the whole personal memory, not just the current batch. All heads of that order at that
     position are blocked. Returns the rows and a few statistics.
     """
-    spec = hasher.layout.spec
-    n_orders, heads = spec.max_ngram_size - 1, spec.n_heads
-    keys_per_seq = [hasher.ngram_keys(torch.tensor(s).unsqueeze(0))[0].numpy() for s in sequences]
-    rows_per_seq = [hasher(torch.tensor(s).unsqueeze(0))[0].numpy() for s in sequences]  # [L, n_layers, C]
+    n_orders, heads = variant.n_groups, variant.group_size
+    keys_per_seq = [variant.ngram_keys(torch.tensor(s).unsqueeze(0))[0].numpy() for s in sequences]
+    rows_per_seq = [variant.hash(torch.tensor(s).unsqueeze(0))[0].numpy() for s in sequences]  # [L, n_layers, R]
     claims_of_key: dict[int, set[str]] = defaultdict(set)
     if min_shared_claims > 0:
         for keys, cid in zip(keys_per_seq, claim_ids):
             for k in np.unique(keys):
                 claims_of_key[int(k)].add(cid)
         for seq, cid in zip(context_sequences or [], context_claim_ids or []):
-            for k in np.unique(hasher.ngram_keys(torch.tensor(seq).unsqueeze(0))[0].numpy()):
+            for k in np.unique(variant.ngram_keys(torch.tensor(seq).unsqueeze(0))[0].numpy()):
                 claims_of_key[int(k)].add(cid)
     template_keys = np.empty(0, np.int64)
     if always_block:
         template_keys = np.unique(np.concatenate(
-            [hasher.ngram_keys(torch.tensor(t).unsqueeze(0))[0].reshape(-1).numpy() for t in always_block if t]))
+            [variant.ngram_keys(torch.tensor(t).unsqueeze(0))[0].reshape(-1).numpy() for t in always_block if t]))
     blocked: dict[int, list[np.ndarray]] = defaultdict(list)
     n_total = n_blocked_bg = n_blocked_shared = 0
     for keys, rows in zip(keys_per_seq, rows_per_seq):
@@ -106,11 +105,11 @@ def generic_rows(
             mask |= shared
         n_total += keys.size
         pos, order = np.nonzero(mask)
-        for li, lid in enumerate(spec.layer_ids):
+        for li, lid in enumerate(variant.layer_ids):
             for p, o in zip(pos.tolist(), order.tolist()):
                 blocked[lid].append(rows[p, li, o * heads : (o + 1) * heads])
     out = {lid: np.unique(np.concatenate(v)) if v else np.empty(0, np.int64) for lid, v in blocked.items()}
-    for lid in spec.layer_ids:
+    for lid in variant.layer_ids:
         out.setdefault(lid, np.empty(0, np.int64))
     stats = {"ngram_positions": n_total, "blocked_background": n_blocked_bg, "blocked_shared": n_blocked_shared,
              "blocked_rows": int(sum(v.size for v in out.values())), "orders": n_orders}

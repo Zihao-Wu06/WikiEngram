@@ -1,14 +1,18 @@
 # Architecture
 
-WikiEngram has two memories and one frozen model.
+WikiEngram gives an Engram-equipped model two memories while the model itself stays frozen. It targets every
+MoE model that carries an Engram-style conditional memory (hashed n-gram embedding tables fused into the
+residual stream).
 
 * **Explicit memory: LLMWiki.** Knowledge extracted from documents and conversations, kept as versioned,
   human-readable claims and markdown pages. It is the source of truth. Edits are instant and free.
 * **Neural memory: a personal Engram delta.** Stable, important, frequently used claims are consolidated
-  (trained) into a sparse delta over DeepSeek Engram tables. It costs no context tokens at inference time.
-* **The model stays frozen.** The backbone, the base Engram tables and the Engram fusion parameters (`wkv`,
-  `q_weight`, `k_weight`) never change after setup. Every training run (consolidation and repair) compares
-  byte-exact checksums of all three before and after, and fails loudly if anything changed.
+  (trained) into a sparse delta over the model's Engram tables. It costs no context tokens at inference time.
+* **The model stays frozen.** The backbone, the base Engram tables and the Engram fusion parameters never change
+  after setup. Every training run (consolidation and repair) compares byte-exact checksums of all three before
+  and after, and fails loudly if anything changed.
+* **Model-agnostic core.** Personal memory, ledger, consolidation, sync, verification and fusion depend only on
+  the small `EngramVariant` interface. Each Engram family (DeepSeek's first) implements it once.
 
 ```mermaid
 flowchart LR
@@ -40,9 +44,39 @@ flowchart LR
     Model --> A[Answer]
 ```
 
-## The Engram port (`src/wikiengram/engram/`)
+## Engram variants (`src/wikiengram/engram/variant.py`)
 
-The module is a port of DeepSeek-V4.1-Flash's production Engram (`inference/engram.py` and `Engram` in
+An `EngramVariant` describes one family's module:
+
+| Method or property | Meaning |
+|---|---|
+| `hash(input_ids, token_mask)` | `[B, L, n_layers, rows_per_position]` absolute table rows. A pure function of token ids, computed on the CPU before the forward pass |
+| `n_groups`, `group_size` | the rows of one position come in `n_groups` groups of `group_size` rows; each group corresponds to one n-gram |
+| `ngram_keys(input_ids)` | `[B, L, n_groups]` layer-independent n-gram fingerprints, used for statistics (generic n-grams) |
+| `layer_ids`, `row_dim`, `num_rows`, `hidden_size`, `max_lookback` | geometry |
+| `make_module(layer_id)` | the fusion module, `module(hidden, emb, token_mask) -> hidden`, applied before that block |
+| `fingerprint()`, `to_dict()` / `from_dict()` | identity of the addressing scheme (a personal delta is only valid for the same one) and checkpoint serialization |
+| `detect(config)`, `from_model_config(config)` | recognize and read a native checkpoint's configuration |
+
+Variants register by name (`@register`). Checkpoints store the variant description, so a base Engram or a
+personal delta always comes back with the right addressing. `tests/test_variants.py` runs the full
+consolidate → recall → exact-delete cycle with a deliberately different toy family (different hashing, row
+grouping and fusion) to keep the core honest.
+
+Registered variants:
+
+| Variant | Family | Parity tests |
+|---|---|---|
+| `deepseek-v4.1` | DeepSeek Engram (DeepSeek-V4.1-Flash) | `tests/test_engram_parity.py` vs DeepSeek's `inference/engram.py` + `Engram.forward` |
+| `qwen-ple` | Qwen PLE (Qwen3.8-Flash-Next) | `tests/test_variant_parity.py` vs transformers `Qwen4ExpTextNGramEmbedding` + `Qwen4ExpTextPLELayer` (fp32 and bf16, bit-exact; streaming decode) |
+
+Stateful fusion modules, such as Qwen's dilated conv that looks back 9 positions, implement
+`begin_stream()` / `end_stream()`. Generation calls them so that decoding one token at a time matches the
+full-sequence computation.
+
+### DeepSeek variant (`deepseek-v4.1`)
+
+The first variant ports DeepSeek-V4.1-Flash's production Engram (`inference/engram.py` and `Engram` in
 `inference/model.py`, MIT). `tests/test_engram_parity.py` checks it bit for bit against a vendored copy of
 that code:
 
@@ -55,7 +89,7 @@ that code:
 | Fusion: fused `wkv` → per-copy key + shared value; RMS-normalized dot gate, signed sqrt, sigmoid; `h + gate·value` | `module.py` | identical outputs for `hc_mult` 1 and 4 |
 | Native FP8 table rows (`F8_E4M3` with `F8_E8M0` per-32 scales), read lazily from safetensors | `tables.py` | matches DeepSeek's dequantization |
 
-As in V4.1 there is no ShortConv. Engram is applied to the residual stream *before* its decoder block.
+As in V4.1 there is no ShortConv. The module is applied to the residual stream *before* its decoder block.
 
 ### The effective table: base + personal delta
 
@@ -82,19 +116,21 @@ against a model whose rows are addressed differently.
 
 ### Retrofit backends (`backends/hf.py`): runnable today
 
-The only public model with native Engram weights is DeepSeek-V4.1-Flash (552B backbone + 196B Engram). For
-laptops, CI and single GPUs, WikiEngram attaches the ported Engram module to a frozen Hugging Face decoder
-(Qwen3 by default) through forward pre-hooks, so the backbone's code and weights are untouched. The setup
-runs in two stages:
+Models that ship Engram natively are large MoE models (DeepSeek-V4.1-Flash: 552B backbone + 196B Engram).
+For laptops, CI and single GPUs, WikiEngram attaches an Engram variant (DeepSeek's by default) to a frozen
+Hugging Face decoder (Qwen3 by default) through forward pre-hooks, so the backbone's code and weights are
+untouched. The setup runs in two stages:
 
 * **Stage 1, `wikiengram adapt` (once per backbone).** Base tables and fusion parameters are trained on
   general text with the language-modeling loss while the backbone is frozen. The value projection starts at
   zero, so the attached model starts as an exact copy of the backbone. After stage 1 everything is frozen.
-  This plays the role of V4.1's pretrained Engram.
+  This plays the role of a native model's pretrained Engram.
 * **Stage 2, `wikiengram consolidate` (whenever knowledge has stabilized).** Only the personal delta is
   trained.
 
-### DeepSeek-V4.1-Flash: what exists and what does not
+### Native Engram MoE models: what exists and what does not
+
+DeepSeek-V4.1-Flash is the first target; other families are tracked in [NATIVE_MOE.md](NATIVE_MOE.md).
 
 | Capability | Status |
 |---|---|
@@ -102,10 +138,10 @@ runs in two stages:
 | Bit-exact hashing, layout and compression vs the official code | implemented, tested |
 | Reading native FP8 Engram rows from the official safetensors shards | implemented, tested on a synthetic shard with the official tensor names and dtypes |
 | Personal delta format over V4.1 row addresses | implemented (layout-agnostic) |
-| Trainable V4.1 backbone (MLA/sparse attention, mHC, MoE) for consolidation | **not implemented yet**: see `docs/DEEPSEEK_V41.md` |
+| Trainable V4.1 backbone (MLA/sparse attention, mHC, MoE) for consolidation | **not implemented yet**: see `docs/NATIVE_MOE.md` |
 | V4.1 inference with the delta (e.g. a patched Strata/llama.cpp Engram row reader) | **not implemented yet** |
 
-We do not claim end-to-end V4.1 support until it has been run on real hardware.
+We do not claim end-to-end support for any native model until it has been run on real hardware.
 
 ## Consolidation (`consolidation/`)
 
@@ -172,5 +208,5 @@ plus subject match); there is no vector index.
   reason.
 * Facts that the frozen backbone (or the frozen base Engram) already knows cannot be removed by deleting delta
   rows. Only wiki precedence, or counter-training toward the new value, can override them.
-* Retrofit Engram is not equivalent to Engram pretrained jointly with the backbone. Native V4.1 support is a
+* Retrofit Engram is not equivalent to Engram pretrained jointly with the backbone. Native MoE backends are a
   separate milestone.

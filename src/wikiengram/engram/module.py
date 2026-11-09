@@ -1,4 +1,4 @@
-"""The Engram fusion module with DeepSeek-V4.1-Flash semantics.
+"""The DeepSeek Engram fusion module (DeepSeek-V4.1-Flash semantics), used by the ``deepseek-v4.1`` variant.
 
 Ported from ``Engram`` in DeepSeek-V4.1-Flash ``inference/model.py`` (MIT License, Copyright (c) 2023
 DeepSeek). As in V4.1 there is no ShortConv: one fused ``wkv`` projection turns the ``n_hash_cols`` fetched

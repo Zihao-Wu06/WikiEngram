@@ -28,6 +28,7 @@ from .consolidation.trainer import DeltaTrainConfig, TrainingSample, train_delta
 from .consolidation.verify import VerificationReport, run_probes
 from .engram.delta import PersonalDelta
 from .engram.layout import EngramSpec
+from .engram.variant import EngramVariant, variant_class
 from .wiki import EngramState, LLMWiki, OpenAICompatExtractor, RuleExtractor
 
 
@@ -142,6 +143,11 @@ class WikiEngram:
                           n_heads=e.n_heads, head_dim=e.head_dim, vocab_size=e.vocab_size,
                           pad_token_id=pad_token_id, norm_eps=e.norm_eps)
 
+    def variant_for(self, tokenizer, hidden_size: int, model_vocab_size: int) -> EngramVariant:
+        """The configured Engram family (``[engram] variant``), sized for a retrofit backbone."""
+        cls = variant_class(self.config.engram.variant)
+        return cls.for_retrofit(self.config.engram, hidden_size, tokenizer, model_vocab_size, self.cache_dir)
+
     @property
     def lm(self):
         if self._lm is None:
@@ -166,7 +172,7 @@ class WikiEngram:
 
     def _load_or_new_delta(self, lm) -> PersonalDelta:
         if self.delta_path.exists():
-            delta = PersonalDelta.load(self.delta_path, device=lm.device, expect_fingerprint=lm.layout.fingerprint())
+            delta = PersonalDelta.load(self.delta_path, device=lm.device, expect_fingerprint=lm.variant.fingerprint())
             trained_on = delta.meta.get("base_id")
             if trained_on and trained_on != self.base_id():
                 raise RuntimeError(
@@ -196,9 +202,9 @@ class WikiEngram:
         from transformers import AutoConfig, AutoTokenizer
 
         tok = AutoTokenizer.from_pretrained(b.model)
-        pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
-        spec = self.spec_for(AutoConfig.from_pretrained(b.model).hidden_size, pad)
-        lm = EngramCausalLM.from_pretrained(b.model, spec=spec, device=b.device, dtype=b.dtype,
+        mcfg = AutoConfig.from_pretrained(b.model)
+        variant = self.variant_for(tok, mcfg.hidden_size, mcfg.vocab_size)
+        lm = EngramCausalLM.from_pretrained(b.model, variant=variant, device=b.device, dtype=b.dtype,
                                             cache_dir=self.cache_dir)
         train = pack_token_stream(lm.tokenizer, load_texts(corpus or a.corpus, "train"), max_tokens=a.max_tokens)
         val = pack_token_stream(lm.tokenizer, load_texts(corpus or a.corpus, "validation"), max_tokens=200_000)
@@ -463,11 +469,11 @@ class WikiEngram:
         c = self.config.consolidation
         lm = self.lm
         name = c.replay_corpus.replace("/", "_").replace(":", "_")
-        key = f"{tokenizer_fingerprint(lm.tokenizer)}_{lm.layout.fingerprint()}_{self.config.adapt.max_tokens}"
+        key = f"{tokenizer_fingerprint(lm.tokenizer)}_{lm.variant.fingerprint()}_{self.config.adapt.max_tokens}"
         path = self.cache_dir / f"ngram_counts_{key}_{name}.npz"
         if path.exists():
             return NgramCounts.load(path)
-        counts = NgramCounts.from_stream(lm.hasher, self._replay_stream())
+        counts = NgramCounts.from_stream(lm.variant, self._replay_stream())
         path.parent.mkdir(parents=True, exist_ok=True)
         counts.save(path)
         return counts
@@ -488,7 +494,7 @@ class WikiEngram:
         others = self.samples_for([cid for cid in self.ledger.claims() if cid not in batch]) \
             if c.block_shared_claims > 0 else []
         ctx = encode_samples(lm.tokenizer, others)
-        return generic_rows(lm.hasher, [ids for ids, _ in encoded], [s.claim_id for s in samples],
+        return generic_rows(lm.variant, [ids for ids, _ in encoded], [s.claim_id for s in samples],
                             background=background, min_background_count=c.block_min_count,
                             min_shared_claims=c.block_shared_claims, always_block=template,
                             context_sequences=[ids for ids, _ in ctx],

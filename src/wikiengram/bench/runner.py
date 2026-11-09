@@ -217,7 +217,7 @@ def run_benchmark(cfg: BenchConfig, out_dir: str | Path, progress=print) -> dict
 
     env = {"python": platform.python_version(), "torch": torch.__version__, "platform": platform.platform(),
            "device": str(lm.device), "model": cfg.model, "backbone_params": lm.num_backbone_params(),
-           "engram_spec": lm.spec.to_dict(), "base_table_rows": list(lm.layout.num_embeddings)}
+           "engram_variant": lm.variant.to_dict(), "base_table_rows": list(lm.variant.num_rows)}
     if lm.device.type == "cuda":
         env["gpu"] = torch.cuda.get_device_name(0)
     full = {
