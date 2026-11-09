@@ -1,0 +1,21 @@
+services:
+  wikiengram:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.cuda   # use docker/Dockerfile for a CPU-only machine
+    image: wikiengram:cuda
+    ports:
+      - "8765:8765"
+    volumes:
+      - ./wikiengram-data:/data
+    environment:
+      # optional: an OpenAI-compatible endpoint for LLM-based knowledge extraction
+      - WIKIENGRAM_LLM_BASE_URL=${WIKIENGRAM_LLM_BASE_URL:-}
+      - WIKIENGRAM_LLM_API_KEY=${WIKIENGRAM_LLM_API_KEY:-}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

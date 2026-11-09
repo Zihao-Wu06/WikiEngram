@@ -1,0 +1,260 @@
+{
+  "config": {
+    "facts": 50,
+    "seed": 0,
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "device": "auto",
+    "adapt_steps": 300,
+    "base_dir": ".data/spike/base",
+    "epochs": 20,
+    "lr": 0.02,
+    "batch_size": 16,
+    "edit_fraction": 0.2,
+    "delete_fraction": 0.1,
+    "top_k": 5,
+    "max_new_tokens": 16,
+    "gen_batch": 16,
+    "latency_queries": 10
+  },
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.15.0",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "device": "mps",
+    "model": "Qwen/Qwen3-0.6B-Base",
+    "backbone_params": 596049920,
+    "engram_spec": {
+      "hidden_size": 1024,
+      "layer_ids": [
+        1,
+        10
+      ],
+      "max_ngram_size": 4,
+      "n_heads": 8,
+      "head_dim": 64,
+      "vocab_size": 65536,
+      "pad_token_id": 151643,
+      "hc_mult": 1,
+      "norm_eps": 1e-06,
+      "compressed_vocab_size": 107457
+    },
+    "base_table_rows": [
+      1574980,
+      1580602
+    ]
+  },
+  "ingest": {
+    "claims": 50,
+    "added": 50
+  },
+  "adapt": {
+    "seconds": 6.524708541983273,
+    "eval_ppl_no_engram": 27.532683466493594,
+    "eval_ppl_engram": 23.373093171973586,
+    "tokens": 307200
+  },
+  "consolidation": {
+    "seconds": 115.83049758296693,
+    "tokens": 58100,
+    "epochs": 20,
+    "peak_memory_bytes": 3703717888,
+    "verification": {
+      "n": 200,
+      "accuracy": 0.81,
+      "accuracy_heldout_question": 0.36,
+      "accuracy_statement": 0.98,
+      "accuracy_trained_question": 0.95
+    },
+    "delta_rows": 47402,
+    "delta_file_bytes": 33298450,
+    "backbone_and_fusion_unchanged": true
+  },
+  "results": {
+    "modes": {
+      "none": {
+        "trained_question": {
+          "accuracy": 0.0,
+          "n": 50,
+          "avg_prompt_tokens": 16.22,
+          "avg_new_tokens": 15.56,
+          "batched_sec_per_query": 0.05831159748020582,
+          "peak_memory_bytes": 3707912192,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Zhiathbrum Pialpaend is a fictional character from the \"",
+            "Wumtril Derkkoum is a fictional character from the \"The",
+            "Poumham Beshziash's dog is named \"Poumham"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.0,
+          "n": 50,
+          "avg_prompt_tokens": 17.82,
+          "avg_new_tokens": 15.86,
+          "batched_sec_per_query": 0.06102394586079754,
+          "peak_memory_bytes": 3707912192,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Zhiathbrum Pialpaend is the son of the king of",
+            "Wumtril Derkkoum is a member of the Wumtr",
+            "Poumham Beshziash's dog is called the \"Poum"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.04581508302362636,
+          "median_total_s": 0.40791383298346773,
+          "n": 10
+        }
+      },
+      "wiki": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 50,
+          "avg_prompt_tokens": 96.48,
+          "avg_new_tokens": 6.56,
+          "batched_sec_per_query": 0.11282736666034907,
+          "peak_memory_bytes": 4840374272,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.98,
+          "n": 50,
+          "avg_prompt_tokens": 86.62,
+          "avg_new_tokens": 8.28,
+          "batched_sec_per_query": 0.11796722083934583,
+          "peak_memory_bytes": 4840374272,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer."
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.08803633402567357,
+          "median_total_s": 0.21062487497692928,
+          "n": 10
+        }
+      },
+      "engram": {
+        "trained_question": {
+          "accuracy": 0.96,
+          "n": 50,
+          "avg_prompt_tokens": 16.22,
+          "avg_new_tokens": 4.42,
+          "batched_sec_per_query": 0.03887407583999448,
+          "peak_memory_bytes": 4846665728,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.56,
+          "n": 50,
+          "avg_prompt_tokens": 17.82,
+          "avg_new_tokens": 8.52,
+          "batched_sec_per_query": 0.0628355775179807,
+          "peak_memory_bytes": 4783751168,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Gynji Media",
+            "The town of Wtril Derkoum is located in the port of",
+            "Zandpaer"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.05241141701117158,
+          "median_total_s": 0.1655392909888178,
+          "n": 10
+        }
+      },
+      "hybrid": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 50,
+          "avg_prompt_tokens": 68.4,
+          "avg_new_tokens": 6.0,
+          "batched_sec_per_query": 0.09408048416255042,
+          "peak_memory_bytes": 4842471424,
+          "answered_by_engram": 0.34,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.94,
+          "n": 50,
+          "avg_prompt_tokens": 62.02,
+          "avg_new_tokens": 7.22,
+          "batched_sec_per_query": 0.10409643497783691,
+          "peak_memory_bytes": 4842471424,
+          "answered_by_engram": 0.34,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer."
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.05398233298910782,
+          "median_total_s": 0.1939974999986589,
+          "n": 10
+        }
+      }
+    },
+    "update": {
+      "edited_new_value": {
+        "wiki": 1.0,
+        "engram": 0.0,
+        "hybrid": 1.0
+      },
+      "edited_old_value_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "deleted_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "untouched_retained": {
+        "engram": 1.0,
+        "hybrid": 1.0
+      },
+      "after_reconsolidation_edited_new_value_engram": 1.0,
+      "after_reconsolidation_untouched_engram": 1.0
+    }
+  },
+  "sync": {
+    "seconds": 19.359540208010003,
+    "forgotten": 15,
+    "repaired": 1,
+    "verification": {
+      "forget": {
+        "n": 30,
+        "accuracy": 1.0,
+        "accuracy_forget": 1.0
+      },
+      "retain_repaired": {
+        "n": 4,
+        "accuracy": 0.75,
+        "accuracy_heldout_question": 0.0,
+        "accuracy_statement": 1.0,
+        "accuracy_trained_question": 1.0
+      }
+    }
+  },
+  "reconsolidation": {
+    "selected": 10,
+    "seconds": 65.15128804103006
+  }
+}

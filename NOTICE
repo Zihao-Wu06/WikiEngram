@@ -1,0 +1,24 @@
+WikiEngram
+Copyright 2026 WikiEngram contributors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It includes code ported from, and a reference copy of, third-party software:
+
+* DeepSeek-V4.1-Flash inference code (inference/engram.py, inference/model.py)
+  https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+  MIT License, Copyright (c) 2023 DeepSeek.
+  Ported in src/wikiengram/engram/{compression,layout,hashing,module}.py; a verbatim reference copy used only
+  by the parity tests lives in tests/reference/deepseek_v41_engram.py (MIT notice included there).
+
+The Engram architecture is described in:
+
+* Cheng et al., "Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models",
+  arXiv:2601.07372. Official demo code: https://github.com/deepseek-ai/Engram (Apache License 2.0).
+
+The LLMWiki layer implements the "LLM Wiki" pattern described by Andrej Karpathy
+(https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). The gist carries no license; no text from
+it is reproduced here, only the idea is implemented.
+
+Model weights (e.g. Qwen3, DeepSeek-V4.1-Flash) and datasets (e.g. WikiText) are downloaded at run time and are
+not redistributed; they are subject to their own licenses.

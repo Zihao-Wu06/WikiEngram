@@ -1,0 +1,5 @@
+[
+  {"role": "user", "content": "Quick note for later: my dentist is Dr. Okafor. I live in Port Danneth now."},
+  {"role": "assistant", "content": "Got it, I'll remember that."},
+  {"role": "user", "content": "Also, I work at Quillmere Labs and my favorite dish is saffra stew."}
+]
