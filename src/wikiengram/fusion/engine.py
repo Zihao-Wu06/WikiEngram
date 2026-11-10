@@ -79,15 +79,14 @@ def prepare(ws, question: str, mode: str) -> Prepared:
         # route: Engram answers when it verifiably holds the most relevant claim (or retrieval found nothing)
         use_delta = (not hits) or (verified[0] and ws.config.fusion.skip_verified_consolidated)
         if use_delta and hits:
-            # verified claims are left to Engram; keep only unverified context about the same subject
-            # (unrelated facts in the prompt get copied as answers)
-            subject = hits[0].subject.casefold()
+            # the question goes to Engram alone: facts in the prompt get copied as answers, even facts about the
+            # same subject (keeping those cost 8 of 149 trained-phrasing answers in the Strata example)
             engram = [c for c, v in zip(hits, verified) if v]
-            context = [c for c, v in zip(hits, verified) if not v and c.subject.casefold() == subject]
+            context = []
         # on the wiki route the delta is off, so every retrieved claim (verified or not) stays in the prompt
-    ctx, q = qa_prompt_parts(question, [c.statement for c in context])
-    # the full prompt is tokenized with special tokens (e.g. BOS), so count them as part of the context
-    n_ctx = len(ws.lm.tokenizer(ctx)["input_ids"]) if ctx else 0
+    ctx, q = qa_prompt_parts(question, [c.statement for c in context], brief=ws.lm.prompt_format == "chat")
+    # leading tokens of the prompt as the model sees it (special / chat-template tokens included) that are context
+    n_ctx = ws.lm.context_tokens(ctx, q)
     answered_by = "backbone" if mode == "none" else ("engram" if use_delta else "wiki")
     return Prepared(ctx + q, n_ctx, context, hits, engram, mode != "none", use_delta, answered_by)
 

@@ -1,0 +1,265 @@
+{
+  "config": {
+    "facts": 200,
+    "seed": 1,
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "device": "auto",
+    "kind": "hf",
+    "placement": "auto",
+    "expert_cache_gb": 4.0,
+    "adapt_steps": 300,
+    "base_dir": "/root/autodl-tmp/bench/qwen3-1.7b-200/base_cache",
+    "epochs": 40,
+    "lr": 0.02,
+    "batch_size": 16,
+    "edit_fraction": 0.2,
+    "delete_fraction": 0.1,
+    "top_k": 5,
+    "max_new_tokens": 16,
+    "gen_batch": 16,
+    "latency_queries": 10
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "device": "cuda",
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "backbone_params": 1720574976,
+    "engram_variant": {
+      "variant": "deepseek-v4.1",
+      "hidden_size": 2048,
+      "layer_ids": [
+        1,
+        10
+      ],
+      "max_ngram_size": 4,
+      "n_heads": 8,
+      "head_dim": 64,
+      "vocab_size": 65536,
+      "pad_token_id": 151643,
+      "hc_mult": 1,
+      "norm_eps": 1e-06,
+      "compressed_vocab_size": 107457
+    },
+    "base_table_rows": [
+      1574980,
+      1580602
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "ingest": {
+    "claims": 200,
+    "added": 200
+  },
+  "adapt": {
+    "seconds": 0.3354104820173234,
+    "eval_ppl_no_engram": 18.995652032128866,
+    "eval_ppl_engram": 15.684204579622154,
+    "tokens": 307200
+  },
+  "consolidation": {
+    "seconds": 167.34439992299303,
+    "tokens": 459030,
+    "epochs": 39,
+    "peak_memory_bytes": 4811533824,
+    "verification": {
+      "n": 800,
+      "accuracy": 0.80875,
+      "accuracy_heldout_question": 0.265,
+      "accuracy_statement": 0.985,
+      "accuracy_trained_question": 0.9925
+    },
+    "delta_rows": 167093,
+    "delta_file_bytes": 118525928,
+    "backbone_and_fusion_unchanged": true
+  },
+  "results": {
+    "modes": {
+      "none": {
+        "trained_question": {
+          "accuracy": 0.0,
+          "n": 200,
+          "avg_prompt_tokens": 16.565,
+          "avg_new_tokens": 15.565,
+          "batched_sec_per_query": 0.02005508231348358,
+          "peak_memory_bytes": 3795876864,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Dreldoux Piardou is a French actor, director and screenwriter",
+            "Honddae Barkrath is a fictional character in the Star Wars franchise,",
+            "Rosgrox Jathzyrk's dog is named \"Buddy"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.0,
+          "n": 200,
+          "avg_prompt_tokens": 18.165,
+          "avg_new_tokens": 15.625,
+          "batched_sec_per_query": 0.019736922144657002,
+          "peak_memory_bytes": 3822091776,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "In 1998, Piardou was hired by the French government",
+            "Honddae Barkrath is a fictional character from the 199",
+            "Rosgrox Jathzyrk's dog is named \"Rosgrox J"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.01952494215220213,
+          "median_total_s": 0.26463326206430793,
+          "n": 10
+        }
+      },
+      "wiki": {
+        "trained_question": {
+          "accuracy": 0.985,
+          "n": 200,
+          "avg_prompt_tokens": 97.74,
+          "avg_new_tokens": 4.84,
+          "batched_sec_per_query": 0.016131858417065815,
+          "peak_memory_bytes": 4409865728,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Ziathstash Foods",
+            "New Mamgroux",
+            "Dirkvu"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.94,
+          "n": 200,
+          "avg_prompt_tokens": 86.735,
+          "avg_new_tokens": 8.415,
+          "batched_sec_per_query": 0.02335234833182767,
+          "peak_memory_bytes": 4417120768,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Ziathstash Foods",
+            "New Mamgroux",
+            "Rosgrox Jathzyrk's dog is named Dirkvu."
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019854207057505846,
+          "median_total_s": 0.1258702939376235,
+          "n": 10
+        }
+      },
+      "engram": {
+        "trained_question": {
+          "accuracy": 0.99,
+          "n": 200,
+          "avg_prompt_tokens": 16.565,
+          "avg_new_tokens": 4.22,
+          "batched_sec_per_query": 0.009298054929822684,
+          "peak_memory_bytes": 3796204032,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Ziathstash Foods",
+            "New Mamgroux",
+            "Dirkvu"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.43,
+          "n": 200,
+          "avg_prompt_tokens": 18.165,
+          "avg_new_tokens": 8.415,
+          "batched_sec_per_query": 0.022877876214915886,
+          "peak_memory_bytes": 3822345216,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "The Ziathari merchant Dreldoux Piardou is the only known Zi",
+            "Honddah Barkrath is a fictional character in the 199",
+            "dafydd"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019661382073536515,
+          "median_total_s": 0.12113744695670903,
+          "n": 10
+        }
+      },
+      "hybrid": {
+        "trained_question": {
+          "accuracy": 0.985,
+          "n": 200,
+          "avg_prompt_tokens": 75.715,
+          "avg_new_tokens": 4.73,
+          "batched_sec_per_query": 0.01660941109643318,
+          "peak_memory_bytes": 4409841152,
+          "answered_by_engram": 0.265,
+          "examples": [
+            "Ziathstash Foods",
+            "New Mamgroux",
+            "Dirkvu"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.865,
+          "n": 200,
+          "avg_prompt_tokens": 69.435,
+          "avg_new_tokens": 7.975,
+          "batched_sec_per_query": 0.02636077019851655,
+          "peak_memory_bytes": 4417108480,
+          "answered_by_engram": 0.265,
+          "examples": [
+            "Ziathstash Foods",
+            "New Mamgroux",
+            "Rosgrox Jathzyrk's dog is named Dirkvu."
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.0204387700650841,
+          "median_total_s": 0.11948183202184737,
+          "n": 10
+        }
+      }
+    },
+    "update": {
+      "edited_new_value": {
+        "wiki": 1.0,
+        "engram": 0.0,
+        "hybrid": 1.0
+      },
+      "edited_old_value_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "deleted_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "untouched_retained": {
+        "engram": 0.9928571428571429,
+        "hybrid": 0.9857142857142858
+      },
+      "after_reconsolidation_edited_new_value_engram": 1.0,
+      "after_reconsolidation_untouched_engram": 1.0
+    }
+  },
+  "sync": {
+    "seconds": 43.3561061618384,
+    "forgotten": 60,
+    "repaired": 24,
+    "verification": {
+      "forget": {
+        "n": 120,
+        "accuracy": 1.0,
+        "accuracy_forget": 1.0
+      },
+      "retain_repaired": {
+        "n": 96,
+        "accuracy": 0.7708333333333334,
+        "accuracy_heldout_question": 0.125,
+        "accuracy_statement": 1.0,
+        "accuracy_trained_question": 0.9791666666666666
+      }
+    }
+  },
+  "reconsolidation": {
+    "selected": 40,
+    "seconds": 152.41071177087724
+  }
+}

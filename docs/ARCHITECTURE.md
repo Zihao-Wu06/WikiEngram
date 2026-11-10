@@ -128,6 +128,33 @@ untouched. The setup runs in two stages:
 * **Stage 2, `wikiengram consolidate` (whenever knowledge has stabilized).** Only the personal delta is
   trained.
 
+### Models larger than the accelerator (`utils/device.py`, `backends/streaming.py`, `backends/checkpoint.py`)
+
+Every backend runs on what PyTorch supports: NVIDIA CUDA and AMD ROCm, Intel XPU, Apple MPS or a CPU, with
+bf16, fp16 or fp32 chosen per device. When the frozen model does not fit in accelerator memory, two mechanisms
+take over. `[backend] placement = "auto"` decides when, and `wikiengram hardware --model ...` shows the decision.
+
+* **Placing the frozen weights.**
+  * Retrofit backbones are placed by accelerate's `device_map` over all GPUs, CPU RAM and disk. Its hooks
+    bring each block's weights in for its forward call.
+  * Native MoE releases run straight from their safetensors files (`NativeEngramLM.from_checkpoint`). The
+    non-expert weights stay resident: embeddings, attention, shared experts, routers, norms, hyper-connections
+    and the PLE fusion layer, about 2.2B parameters for Qwen3.8-Flash-Next. A forward pass reads only the
+    experts its tokens are routed to and dequantizes them on the device (FP8 with block scales). The n-gram
+    table is never loaded: its rows are read from the shards (`ShardedTable`). The routed experts run through
+    transformers' own expert kernel on a re-indexed subset, so the outputs equal those of the model held in
+    memory (bit-exact on CPU, `tests/test_checkpoint_streaming.py`).
+* **Streamed backward for consolidation (`StreamingTrainer`).** One forward pass without gradients records what
+  each block receives, from the first Engram block on. The loss is computed on the final hidden state. The
+  backward pass then walks the blocks from last to first: each block is recomputed from its recorded input
+  with gradients on, and the gradient is pushed through it. Only one block's weights and activations are alive
+  at a time, and the gradients equal ordinary back-propagation (`tests/test_streaming.py`, also with layers
+  offloaded to disk).
+
+Accelerator memory then grows with one block instead of the whole model. Speed depends on how fast the streamed
+weights can be read (page cache, NVMe, PCIe). One step is not covered yet: stage-1 `adapt` of a retrofit
+backbone trains through ordinary back-propagation, so that backbone must fit.
+
 ### Native Engram MoE models: what exists and what does not
 
 DeepSeek-V4.1-Flash is the first target; other families are tracked in [NATIVE_MOE.md](NATIVE_MOE.md).

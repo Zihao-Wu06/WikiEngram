@@ -1,0 +1,71 @@
+{
+  "model": "/root/autodl-tmp/models/Qwen3.8-Flash-Next-FP8",
+  "facts_in_wiki": 149,
+  "facts_in_engram": 149,
+  "verified_facts": 59,
+  "results": {
+    "trained/as_shipped": {
+      "accuracy": 0.0403,
+      "n": 149,
+      "prompt_tokens": 35.4
+    },
+    "trained/engram": {
+      "accuracy": 0.9933,
+      "n": 149,
+      "prompt_tokens": 35.4
+    },
+    "trained/engram_chat": {
+      "accuracy": 0.9933,
+      "n": 149,
+      "prompt_tokens": 30.4
+    },
+    "heldout/as_shipped": {
+      "accuracy": 0.0537,
+      "n": 149,
+      "prompt_tokens": 35.5
+    },
+    "heldout/engram": {
+      "accuracy": 0.4228,
+      "n": 149,
+      "prompt_tokens": 35.5
+    },
+    "heldout/engram_chat": {
+      "accuracy": 0.349,
+      "n": 149,
+      "prompt_tokens": 30.5
+    },
+    "trained/wiki": {
+      "accuracy": 0.906,
+      "n": 149,
+      "prompt_tokens": 173.5
+    },
+    "heldout/wiki": {
+      "accuracy": 0.8926,
+      "n": 149,
+      "prompt_tokens": 173.5
+    },
+    "trained/hybrid": {
+      "accuracy": 0.9195,
+      "n": 149,
+      "prompt_tokens": 121.3,
+      "routed_to_engram": 0.396
+    },
+    "heldout/hybrid": {
+      "accuracy": 0.9128,
+      "n": 149,
+      "prompt_tokens": 121.8,
+      "routed_to_engram": 0.396
+    }
+  },
+  "memory": {
+    "delta_rows": 93339,
+    "delta_parameters": 14934240,
+    "delta_file_bytes": 180425167
+  },
+  "generation_seconds": 587.9,
+  "perplexity_wikitext2": {
+    "without_memory": 12.4269,
+    "with_memory": 12.4579
+  },
+  "seconds": 596.0
+}

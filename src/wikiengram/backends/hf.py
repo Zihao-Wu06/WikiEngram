@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import contextlib
 import hashlib
+import inspect
 import json
 import time
 from dataclasses import dataclass, field
@@ -65,13 +66,58 @@ def _decoder_layers(model: nn.Module) -> nn.ModuleList:
     return layers
 
 
-def param_checksum(params) -> str:
-    """Exact hash of the raw bytes of every parameter (bit-level frozen-ness check, ~1 s per GB)."""
+SAMPLE_ABOVE = 1 << 30  # tensors with more elements (only in huge native models) are checksummed on a fixed strided sample
+LN2 = 0.6931471805599453
+
+
+def count_confident(token_losses: torch.Tensor, stats: dict | None) -> None:
+    """Add to ``stats`` how many answer tokens the model already predicts with probability >= 0.5 (per-token loss
+    <= ln 2). When all of them are, greedy decoding reproduces every trained answer with a margin."""
+    if stats is not None:
+        stats["confident"] = stats.get("confident", 0) + int((token_losses.detach() <= LN2).sum())
+        stats["total"] = stats.get("total", 0) + int(token_losses.numel())
+
+
+def offloaded_weights(model: nn.Module) -> dict[int, tuple]:
+    """``id(param) -> (weights_map, name)`` for parameters accelerate keeps offloaded (CPU / disk ``device_map``).
+
+    Such parameters sit on the ``meta`` device between forward calls; their values live in the hook's weights
+    map, keyed by the name relative to the hooked module."""
+    out: dict[int, tuple] = {}
+    for module in model.modules():
+        hook = getattr(module, "_hf_hook", None)
+        for h in getattr(hook, "hooks", None) or ([hook] if hook is not None else []):
+            if getattr(h, "offload", False) and getattr(h, "weights_map", None) is not None:
+                for name, p in module.named_parameters(recurse=h.place_submodules):
+                    out.setdefault(id(p), (h.weights_map, name))
+    return out
+
+
+def param_checksum(params, sample_above: int | None = SAMPLE_ABOVE, offloaded: dict | None = None) -> str:
+    """Hash of the raw bytes of every parameter (bit-level frozen-ness check, ~1 s per GB).
+
+    Tensors larger than ``sample_above`` elements (MoE experts, native n-gram tables of hundreds of GB) are hashed
+    on a fixed strided sample of about 4M elements plus their shape and dtype: training touches every element
+    of a tensor it updates, so a sample detects it, while hashing a 180B-parameter backbone twice per run would
+    take minutes. ``sample_above=None`` hashes everything. Offloaded parameters (``meta`` placeholders) are read
+    from ``offloaded`` (see :func:`offloaded_weights`)."""
     h = hashlib.blake2b(digest_size=12)
     for p in params:
-        t = p.detach().to("cpu").contiguous()
+        t = p.detach()
+        if t.device.type == "meta":
+            if not offloaded or id(p) not in offloaded:
+                raise RuntimeError("a parameter is on the meta device but not offloaded by accelerate: the model "
+                                   "was not fully loaded")
+            weights_map, name = offloaded[id(p)]
+            t = weights_map[name].detach()
         h.update(str((tuple(t.shape), str(t.dtype))).encode())
-        h.update(t.reshape(-1).view(torch.uint8).numpy().tobytes() if t.numel() else b"")
+        if not t.numel():
+            continue
+        flat = t.reshape(-1)
+        if sample_above is not None and flat.numel() > sample_above:
+            step = flat.numel() // (1 << 22)
+            flat = flat[::step]
+        h.update(flat.to("cpu").contiguous().view(torch.uint8).numpy().tobytes())
     return h.hexdigest()
 
 
@@ -95,9 +141,11 @@ class EngramCausalLM:
     ):
         self.device = resolve_device(device)
         self.name = name
-        self.model = model.to(self.device).eval()
+        # a model dispatched with device_map (multi-GPU / CPU / disk offload) is placed by accelerate's hooks
+        self.model = (model if getattr(model, "hf_device_map", None) else model.to(self.device)).eval()
         for p in self.model.parameters():
             p.requires_grad_(False)
+        self.streamer = None
         self.tokenizer = tokenizer
         if getattr(tokenizer, "pad_token_id", None) is None:
             tokenizer.pad_token = tokenizer.eos_token
@@ -137,18 +185,20 @@ class EngramCausalLM:
         dtype: str | None = None,
         cache_dir: str | Path | None = None,
         variant: EngramVariant | None = None,
+        **load_kwargs,
     ) -> EngramCausalLM:
         """Load a backbone; with ``base_path`` also load its trained base Engram (variant, tables, fusion).
-        Otherwise attach a fresh ``variant`` (or a DeepSeek-style ``spec``)."""
+        Otherwise attach a fresh ``variant`` (or a DeepSeek-style ``spec``). ``load_kwargs`` go to transformers
+        (``device_map``, ``max_memory``, ``offload_folder``, quantization, ...)."""
         from transformers import AutoModelForCausalLM, AutoTokenizer
 
         dev = resolve_device(device)
         torch_dtype = resolve_dtype(dtype, dev)
         tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
         try:
-            model = AutoModelForCausalLM.from_pretrained(model_name_or_path, dtype=torch_dtype)
+            model = AutoModelForCausalLM.from_pretrained(model_name_or_path, dtype=torch_dtype, **load_kwargs)
         except TypeError:  # transformers < 4.56 names it torch_dtype
-            model = AutoModelForCausalLM.from_pretrained(model_name_or_path, torch_dtype=torch_dtype)
+            model = AutoModelForCausalLM.from_pretrained(model_name_or_path, torch_dtype=torch_dtype, **load_kwargs)
         base_tables, fusion = None, None
         engram: EngramVariant | EngramSpec | None = variant or spec
         if base_path is not None:
@@ -189,6 +239,12 @@ class EngramCausalLM:
     def delta(self) -> PersonalDelta | None:
         return self.memory.delta
 
+    def enable_streaming(self, store_on_cpu: bool = True) -> None:
+        """Train through the model block by block (for models dispatched with offloading)."""
+        from .streaming import StreamingTrainer
+
+        self.streamer = StreamingTrainer(self, store_on_cpu=store_on_cpu)
+
     def attach_delta(self, delta: PersonalDelta | None) -> None:
         if delta is not None and delta.layout_fingerprint != self.variant.fingerprint():
             raise ValueError("delta was trained for a different Engram layout")
@@ -200,11 +256,17 @@ class EngramCausalLM:
         return PersonalDelta(self.variant.layer_ids, self.variant.row_dim, self.variant.fingerprint(), self.device,
                              meta={"backbone": self.name, "variant": self.variant.name})
 
+    def backbone_params(self):
+        return list(self.model.parameters())
+
+    def fusion_params(self):
+        return list(self.engrams.parameters())
+
     def backbone_checksum(self) -> str:
-        return param_checksum(self.model.parameters())
+        return param_checksum(self.backbone_params(), offloaded=offloaded_weights(self.model))
 
     def fusion_checksum(self) -> str:
-        return param_checksum(self.engrams.parameters())
+        return param_checksum(self.fusion_params(), offloaded=offloaded_weights(self.model))
 
     def base_checksum(self) -> str:
         """Checksum of the frozen in-memory base tables (memory-mapped native tables are read-only files)."""
@@ -269,14 +331,17 @@ class EngramCausalLM:
         labels: torch.Tensor,
         batch: EngramBatch | None,
         reduction: str = "mean",
+        stats: dict | None = None,
     ) -> torch.Tensor:
-        """Cross-entropy on positions where ``labels != -100`` (next-token shifted), lm_head only there."""
+        """Cross-entropy on positions where ``labels != -100`` (next-token shifted), lm_head only there.
+        ``stats`` (optional) receives ``confident`` / ``total``: answer tokens predicted with p >= 0.5."""
         hidden = self.hidden_states(input_ids, attention_mask, batch)
         shift_labels = labels[:, 1:].to(self.device)
         sel = shift_labels != -100
         h = hidden[:, :-1][sel]
         logits = self.logits(h).float()
         loss = nn.functional.cross_entropy(logits, shift_labels[sel], reduction="none")
+        count_confident(loss, stats)
         if reduction == "none":
             # per-sample mean
             counts = sel.sum(1)
@@ -285,7 +350,120 @@ class EngramCausalLM:
             return sample / counts.clamp_min(1)
         return loss.mean()
 
+    # ---------------------------------------------------------------------------------- prompt format
+    prompt_format: str = "completion"  # or "chat": questions become the user turn of the chat template
+
+    def format_prompt(self, text: str) -> str:
+        """The prompt as this model is asked (see :mod:`wikiengram.prompts`)."""
+        if self.prompt_format != "chat":
+            return text
+        from ..prompts import chat_wrap
+
+        return chat_wrap(self.tokenizer, text)
+
+    def format_sample(self, sample) -> tuple[str, str, bool]:
+        """``(prompt, target, add_special_tokens)`` of a training sample. Question-answer samples follow the
+        prompt format. With the chat format the answer starts on a fresh line (its leading space goes) and ends
+        the assistant turn with the end-of-turn token, so the model answers and stops, as an API client expects."""
+        if self.prompt_format == "chat" and getattr(sample, "qa", False):
+            end = self.tokenizer.eos_token or "\n"
+            return self.format_prompt(sample.prompt), sample.target.strip() + end, False
+        return sample.prompt, sample.target, True
+
+    def prompt_wrapper(self) -> tuple[str, str]:
+        """Text the format adds before and after a question (empty for plain completion)."""
+        if self.prompt_format != "chat":
+            return "", ""
+        marker = "⁣WIKIENGRAM⁣"
+        before, _, after = self.format_prompt(marker).partition(marker)
+        return before, after
+
+    def context_tokens(self, context: str, question: str) -> int:
+        """Leading tokens of the formatted prompt ``context + question`` that belong to the wiki context (with
+        any special or template tokens before it): the positions where the personal delta stays off."""
+        if not context:
+            return 0
+        if self.prompt_format != "chat":
+            return len(self.tokenizer(context)["input_ids"])
+        full = self.format_prompt(context + question)
+        cut = full.index(context) + len(context)
+        return len(self.tokenizer(full[:cut], add_special_tokens=False)["input_ids"])
+
     # ---------------------------------------------------------------------------------- generation
+    def stop_token_ids(self) -> set[int]:
+        """End-of-turn tokens: the tokenizer's EOS plus the model's generation-config EOS ids."""
+        ids = {self.tokenizer.eos_token_id} if self.tokenizer.eos_token_id is not None else set()
+        eos = getattr(getattr(self.model, "generation_config", None), "eos_token_id", None)
+        ids |= set(eos) if isinstance(eos, (list, tuple)) else ({eos} if eos is not None else set())
+        return ids
+
+    @torch.no_grad()
+    def complete(self, input_ids: list[int], max_new_tokens: int = 256, temperature: float = 0.0,
+                 top_p: float = 1.0, stop_ids: set[int] | None = None, use_delta: bool = True,
+                 delta_start: int = 0, seed: int | None = None, on_token=None) -> list[int]:
+        """Free-form decoding of one sequence (the chat API): greedy at temperature 0, else nucleus sampling.
+        Engram rows are hashed from the full history at every step, as in :meth:`generate`. ``delta_start``:
+        leading positions where the personal delta stays off (wiki context injected into the prompt).
+        ``on_token(token_id)`` is called for every new token and may return True to stop."""
+        ids = torch.tensor([list(input_ids)], dtype=torch.long)
+        mask = torch.ones_like(ids)
+        stop = set(stop_ids) if stop_ids is not None else self.stop_token_ids()
+        dmask = (torch.arange(ids.shape[1]) >= delta_start).unsqueeze(0) if delta_start and use_delta else None
+        gen = torch.Generator().manual_seed(seed) if seed is not None else None
+        cur, pos, past, out = ids, torch.arange(ids.shape[1]).unsqueeze(0), None, []
+        streaming = [m for m in self.engrams.values() if hasattr(m, "begin_stream")]
+        for m in streaming:
+            m.begin_stream()
+        try:
+            for _ in range(max_new_tokens):
+                n = cur.shape[1]
+                batch = self.build_batch(ids, mask, hash_slice=slice(ids.shape[1] - n, None), use_delta=use_delta,
+                                         delta_mask=dmask)
+                with self.engram_inputs(batch):
+                    o = self.model(input_ids=cur.to(self.device), attention_mask=mask.to(self.device),
+                                   position_ids=pos.to(self.device), past_key_values=past, use_cache=True,
+                                   **self._last_logits_kw())
+                past = o.past_key_values
+                logits = o.logits[0, -1].float().cpu()
+                if logits.shape[-1] > len(self.tokenizer):  # padded output vocab: never emit ids with no token
+                    logits[len(self.tokenizer):] = float("-inf")
+                if temperature <= 0:
+                    t = int(logits.argmax())
+                else:
+                    probs = torch.softmax(logits / temperature, -1)
+                    if top_p < 1.0:
+                        sp, order = probs.sort(descending=True)
+                        sp[(sp.cumsum(0) - sp) >= top_p] = 0  # keep the smallest set reaching top_p
+                        probs = torch.zeros_like(probs).scatter(0, order, sp)
+                    t = int(torch.multinomial(probs / probs.sum(), 1, generator=gen))
+                if t in stop:
+                    break
+                out.append(t)
+                if on_token is not None and on_token(t):
+                    break
+                nxt = torch.tensor([[t]])
+                ids = torch.cat([ids, nxt], dim=1)
+                mask = torch.cat([mask, torch.ones(1, 1, dtype=mask.dtype)], dim=1)
+                if dmask is not None:
+                    dmask = torch.cat([dmask, torch.ones(1, 1, dtype=torch.bool)], dim=1)
+                cur, pos = nxt, pos[:, -1:] + 1
+        finally:
+            for m in streaming:
+                m.end_stream()
+        return out
+
+    def _last_logits_kw(self) -> dict:
+        """Ask the model for the last position's logits only when it supports that (prefill of a big batch would
+        otherwise hold batch x prompt x vocabulary logits)."""
+        if getattr(self, "_last_logits_cache", None) is None:
+            try:
+                params = inspect.signature(self.model.forward).parameters
+            except (TypeError, ValueError):
+                params = {}
+            self._last_logits_cache = ({"logits_to_keep": 1} if "logits_to_keep" in params
+                                       else {"num_logits_to_keep": 1} if "num_logits_to_keep" in params else {})
+        return self._last_logits_cache
+
     def _newline_ids(self) -> set[int]:
         """Token ids whose text contains a newline (answers stop there). Computed once per tokenizer."""
         if getattr(self, "_newline_cache", None) is None:
@@ -302,14 +480,18 @@ class EngramCausalLM:
         use_delta: bool = True,
         stop_at_newline: bool = True,
         delta_start: list[int] | None = None,
+        raw: bool = False,
     ) -> GenerationResult:
         """Greedy decoding with a KV cache. Engram hashes are recomputed from the full token history at every
         step, so n-grams that straddle the prompt/answer boundary are hashed exactly as in training.
 
         ``delta_start[b]``: number of leading prompt tokens (e.g. the wiki context) where the personal delta is
-        switched off; the base Engram still applies there."""
+        switched off; the base Engram still applies there. ``raw``: continue the text as given, outside the prompt
+        format (how statement samples are trained, also for chat models)."""
         tok = self.tokenizer
-        enc = tok(prompts, return_tensors="pt", padding=True, padding_side="left")
+        texts = list(prompts) if raw else [self.format_prompt(p) for p in prompts]
+        enc = tok(texts, return_tensors="pt", padding=True, padding_side="left",
+                  add_special_tokens=raw or self.prompt_format != "chat")
         ids, mask = enc["input_ids"], enc["attention_mask"]
         prompt_tokens = mask.sum(1).tolist()
         position_ids = (mask.cumsum(-1) - 1).clamp_min(0)
@@ -345,6 +527,7 @@ class EngramCausalLM:
                         position_ids=cur_pos.to(self.device),
                         past_key_values=past,
                         use_cache=True,
+                        **self._last_logits_kw(),
                     )
                 past = out.past_key_values
                 logits = out.logits[:, -1].float()

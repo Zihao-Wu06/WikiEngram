@@ -30,6 +30,7 @@ class TrainingSample:
     claim_id: str
     prompt: str
     target: str  # loss is computed on these tokens only (include a trailing "\n" to learn to stop)
+    qa: bool = False  # a question-answer sample: formatted like the model's questions (see prompts.py)
 
 
 @dataclass
@@ -39,6 +40,9 @@ class DeltaTrainConfig:
     lr: float = 2e-2
     weight_decay: float = 0.0
     target_loss: float = 0.02  # stop early once every epoch-mean loss drops below this
+    # also stop once every answer token has had p >= 0.5 for this many consecutive epochs (greedy decoding then
+    # reproduces every trained answer with a margin); 0 = off. Free: computed from the training forward pass.
+    exact_patience: int = 3
     locality_weight: float = 0.0  # KL(no-delta || delta) on replay text
     replay_batch: int = 4
     replay_seq_len: int = 64
@@ -60,18 +64,22 @@ class DeltaTrainReport:
     fusion_checksum: str
     base_checksum: str
     claims: list[str] = field(default_factory=list)
+    epoch_confident: list[float] = field(default_factory=list)  # share of answer tokens with p >= 0.5
+    stop_reason: str = "epochs"  # epochs | target_loss | exact
 
     def to_dict(self) -> dict:
         return asdict(self)
 
 
-def encode_samples(tokenizer, samples: list[TrainingSample]) -> list[tuple[list[int], int]]:
+def encode_samples(tokenizer, samples: list[TrainingSample], lm=None) -> list[tuple[list[int], int]]:
     """Token ids of prompt+target and the index where the target starts. The prompt is tokenized exactly as
-    ``generate`` tokenizes it (with special tokens such as BOS); the target separately, as generated."""
+    ``generate`` tokenizes it (with special tokens such as BOS); the target separately, as generated. With
+    ``lm``, question-answer samples are formatted as that model is asked (chat template for chat models)."""
     out = []
     for s in samples:
-        p = tokenizer(s.prompt)["input_ids"]
-        t = tokenizer(s.target, add_special_tokens=False)["input_ids"]
+        prompt, target, special = lm.format_sample(s) if lm is not None else (s.prompt, s.target, True)
+        p = tokenizer(prompt, add_special_tokens=special)["input_ids"]
+        t = tokenizer(target, add_special_tokens=False)["input_ids"]
         out.append((p + t, len(p)))
     return out
 
@@ -121,7 +129,7 @@ def train_delta(
     lm.attach_delta(delta)
     backbone_before, fusion_before, base_before = lm.backbone_checksum(), lm.fusion_checksum(), lm.base_checksum()
 
-    encoded = encode_samples(tok, samples)
+    encoded = encode_samples(tok, samples, lm)
     # rows each claim may modify: touched rows, minus blocked, intersected with restrict
     by_claim: dict[str, list[int]] = defaultdict(list)
     for i, s in enumerate(samples):
@@ -147,33 +155,49 @@ def train_delta(
     row_cfg = RowAdamConfig(lr=cfg.lr, weight_decay=cfg.weight_decay)
     order = list(range(len(encoded)))
     epoch_losses: list[float] = []
+    epoch_confident: list[float] = []
+    exact_streak = 0
+    stop_reason = "epochs"
     steps = tokens = 0
     t0 = time.perf_counter()
     replay_gen = torch.Generator().manual_seed(cfg.seed + 1)
     for epoch in range(cfg.epochs):
         rng.shuffle(order)
         losses = []
+        stats: dict = {}
         for b in range(0, len(order), cfg.batch_size):
             chunk = [encoded[i] for i in order[b : b + cfg.batch_size]]
             ids, mask, labels = _collate(chunk, tok.pad_token_id)
             batch = lm.build_batch(ids, mask, train_delta=True, allowed_rows=allowed_t)
-            loss = lm.answer_loss(ids, mask, labels, batch)
-            total, batches = loss, [batch]
-            if cfg.locality_weight > 0 and replay_stream is not None:
-                kl, replay_batch = _locality_kl(lm, replay_stream, cfg, replay_gen, allowed_t)
-                total = total + cfg.locality_weight * kl
-                batches.append(replay_batch)
-            total.backward()
+            batches = [batch]
+            if getattr(lm, "streamer", None) is not None:
+                # model larger than accelerator memory: layer-by-layer recompute backward (same gradients)
+                loss = lm.streamer.loss_and_backward(ids, mask, labels, batch, stats=stats)
+            else:
+                loss = lm.answer_loss(ids, mask, labels, batch, stats=stats)
+                total = loss
+                if cfg.locality_weight > 0 and replay_stream is not None:
+                    kl, replay_batch = _locality_kl(lm, replay_stream, cfg, replay_gen, allowed_t)
+                    total = total + cfg.locality_weight * kl
+                    batches.append(replay_batch)
+                total.backward()
             _apply_row_updates(delta, batches, row_cfg, lm.device)
             losses.append(float(loss.detach()))
             steps += 1
             tokens += int(mask.sum())
         epoch_loss = float(np.mean(losses))
         epoch_losses.append(epoch_loss)
+        confident = stats.get("confident", 0) / max(1, stats.get("total", 0))
+        epoch_confident.append(confident)
+        exact_streak = exact_streak + 1 if confident == 1.0 else 0
         if progress:
-            progress({"epoch": epoch + 1, "loss": epoch_loss, "steps": steps,
-                      "seconds": time.perf_counter() - t0})
+            progress({"epoch": epoch + 1, "loss": epoch_loss, "confident_tokens": round(confident, 4),
+                      "steps": steps, "seconds": time.perf_counter() - t0})
         if epoch_loss < cfg.target_loss:
+            stop_reason = "target_loss"
+            break
+        if cfg.exact_patience and exact_streak >= cfg.exact_patience:
+            stop_reason = "exact"
             break
 
     # rows that never received a gradient (e.g. n-grams ending at the last target token) are still exactly
@@ -219,6 +243,8 @@ def train_delta(
         backbone_checksum=backbone_before,
         fusion_checksum=fusion_before,
         base_checksum=base_before,
+        epoch_confident=epoch_confident,
+        stop_reason=stop_reason,
         claims=list(by_claim),
     )
 

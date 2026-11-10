@@ -1,0 +1,265 @@
+{
+  "config": {
+    "facts": 200,
+    "seed": 0,
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "device": "auto",
+    "kind": "hf",
+    "placement": "auto",
+    "expert_cache_gb": 4.0,
+    "adapt_steps": 300,
+    "base_dir": "/root/autodl-tmp/bench/qwen3-1.7b-200/base_cache",
+    "epochs": 40,
+    "lr": 0.02,
+    "batch_size": 64,
+    "edit_fraction": 0.2,
+    "delete_fraction": 0.1,
+    "top_k": 5,
+    "max_new_tokens": 16,
+    "gen_batch": 16,
+    "latency_queries": 10
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "device": "cuda",
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "backbone_params": 1720574976,
+    "engram_variant": {
+      "variant": "deepseek-v4.1",
+      "hidden_size": 2048,
+      "layer_ids": [
+        1,
+        10
+      ],
+      "max_ngram_size": 4,
+      "n_heads": 8,
+      "head_dim": 64,
+      "vocab_size": 65536,
+      "pad_token_id": 151643,
+      "hc_mult": 1,
+      "norm_eps": 1e-06,
+      "compressed_vocab_size": 107457
+    },
+    "base_table_rows": [
+      1574980,
+      1580602
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "ingest": {
+    "claims": 200,
+    "added": 200
+  },
+  "adapt": {
+    "seconds": 0.4727820490952581,
+    "eval_ppl_no_engram": 18.995652032128866,
+    "eval_ppl_engram": 15.684204579622154,
+    "tokens": 307200
+  },
+  "consolidation": {
+    "seconds": 59.56586947198957,
+    "tokens": 467280,
+    "epochs": 40,
+    "peak_memory_bytes": 8248942592,
+    "verification": {
+      "n": 800,
+      "accuracy": 0.78625,
+      "accuracy_heldout_question": 0.215,
+      "accuracy_statement": 0.955,
+      "accuracy_trained_question": 0.9875
+    },
+    "delta_rows": 166289,
+    "delta_file_bytes": 117883165,
+    "backbone_and_fusion_unchanged": true
+  },
+  "results": {
+    "modes": {
+      "none": {
+        "trained_question": {
+          "accuracy": 0.0,
+          "n": 200,
+          "avg_prompt_tokens": 16.35,
+          "avg_new_tokens": 15.62,
+          "batched_sec_per_query": 0.021055090156150983,
+          "peak_memory_bytes": 3801293312,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "The Pialpaend family is a prominent family in the city of Zhi",
+            "Wumtril Derkkoum is a fictional character in the 1",
+            "The dog is named \"Poumham Beshziash\" (P"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.0,
+          "n": 200,
+          "avg_prompt_tokens": 17.95,
+          "avg_new_tokens": 15.43,
+          "batched_sec_per_query": 0.020973225297639148,
+          "peak_memory_bytes": 3828081664,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Pialpaend is a character in the 1993 film The",
+            "Wumtril Derkkoum is a town in the northern part of",
+            "the dog's name is Poumham Beshziash's dog, and"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.01935177994892001,
+          "median_total_s": 0.2788792250212282,
+          "n": 10
+        }
+      },
+      "wiki": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 200,
+          "avg_prompt_tokens": 99.03,
+          "avg_new_tokens": 4.54,
+          "batched_sec_per_query": 0.013730425561079755,
+          "peak_memory_bytes": 4416873984,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.97,
+          "n": 200,
+          "avg_prompt_tokens": 87.4,
+          "avg_new_tokens": 7.99,
+          "batched_sec_per_query": 0.02486648941761814,
+          "peak_memory_bytes": 4429493760,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Poumham Beshziash's dog is named Zandpaer."
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.020518884994089603,
+          "median_total_s": 0.13052154704928398,
+          "n": 10
+        }
+      },
+      "engram": {
+        "trained_question": {
+          "accuracy": 0.99,
+          "n": 200,
+          "avg_prompt_tokens": 16.35,
+          "avg_new_tokens": 4.26,
+          "batched_sec_per_query": 0.010404008380137384,
+          "peak_memory_bytes": 3801620480,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.385,
+          "n": 200,
+          "avg_prompt_tokens": 17.95,
+          "avg_new_tokens": 9.555,
+          "batched_sec_per_query": 0.023805579385953023,
+          "peak_memory_bytes": 3828335104,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Pialpaen is a former employee of GlaxoSmithKline ,",
+            "Wumtril Derkkoum is a fictional character in the 2",
+            "Zandpaer"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.020650299033150077,
+          "median_total_s": 0.309144277125597,
+          "n": 10
+        }
+      },
+      "hybrid": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 200,
+          "avg_prompt_tokens": 81.04,
+          "avg_new_tokens": 4.525,
+          "batched_sec_per_query": 0.0141527765954379,
+          "peak_memory_bytes": 4416140800,
+          "answered_by_engram": 0.21,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.92,
+          "n": 200,
+          "avg_prompt_tokens": 73.07,
+          "avg_new_tokens": 7.335,
+          "batched_sec_per_query": 0.025994838591432198,
+          "peak_memory_bytes": 4429493760,
+          "answered_by_engram": 0.21,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Poumham Beshziash's dog is named Zandpaer."
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.021430883090943098,
+          "median_total_s": 0.12089171400293708,
+          "n": 10
+        }
+      }
+    },
+    "update": {
+      "edited_new_value": {
+        "wiki": 1.0,
+        "engram": 0.0,
+        "hybrid": 1.0
+      },
+      "edited_old_value_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "deleted_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "untouched_retained": {
+        "engram": 1.0,
+        "hybrid": 0.9928571428571429
+      },
+      "after_reconsolidation_edited_new_value_engram": 0.975,
+      "after_reconsolidation_untouched_engram": 1.0
+    }
+  },
+  "sync": {
+    "seconds": 42.247479404788464,
+    "forgotten": 60,
+    "repaired": 25,
+    "verification": {
+      "forget": {
+        "n": 120,
+        "accuracy": 1.0,
+        "accuracy_forget": 1.0
+      },
+      "retain_repaired": {
+        "n": 100,
+        "accuracy": 0.79,
+        "accuracy_heldout_question": 0.16,
+        "accuracy_statement": 1.0,
+        "accuracy_trained_question": 1.0
+      }
+    }
+  },
+  "reconsolidation": {
+    "selected": 40,
+    "seconds": 39.44428436108865
+  }
+}

@@ -38,7 +38,10 @@ class NeedsAdaptation(RuntimeError):
 
 def make_extractor(cfg):
     if cfg.kind == "openai":
-        return OpenAICompatExtractor(model=cfg.model, base_url=cfg.base_url or None)
+        ex = OpenAICompatExtractor(model=cfg.model, base_url=cfg.base_url or None,
+                                   timeout=getattr(cfg, "timeout", 120.0))
+        ex.max_chars = getattr(cfg, "max_chars", ex.max_chars)
+        return ex
     return RuleExtractor()
 
 
@@ -133,8 +136,13 @@ class WikiEngram:
     def cache_dir(self) -> Path:
         return self.root / "cache"
 
+    @property
+    def native(self) -> bool:
+        """The backbone ships its own Engram module (``[backend] kind = "hf-native"``)."""
+        return self.config.backend.kind == "hf-native"
+
     def has_base(self) -> bool:
-        return (self.base_dir / "engram.json").exists()
+        return self.native or (self.base_dir / "engram.json").exists()
 
     # ------------------------------------------------------------------------------ model
     def spec_for(self, hidden_size: int, pad_token_id: int) -> EngramSpec:
@@ -151,20 +159,56 @@ class WikiEngram:
     @property
     def lm(self):
         if self._lm is None:
-            from .backends.hf import EngramCausalLM
+            from .prompts import resolve_prompt_format
 
-            if not self.has_base():
-                raise NeedsAdaptation(
-                    f"no base Engram in {self.base_dir}; run `wikiengram adapt` once for {self.config.backend.model}")
+            lm = self._load_lm()
             b = self.config.backend
-            self._lm = EngramCausalLM.from_pretrained(b.model, base_path=self.base_dir, device=b.device,
-                                                      dtype=b.dtype, cache_dir=self.cache_dir)
+            lm.prompt_format = resolve_prompt_format(b.prompt_format, b.model, lm.tokenizer, native=self.native)
+            self._lm = lm
         if self._lm.delta is None:
             self._lm.attach_delta(self._load_or_new_delta(self._lm))
         return self._lm
 
+    def _load_lm(self):
+        from .backends.streaming import should_stream
+        from .utils.device import configure_threads
+
+        configure_threads()
+        b = self.config.backend
+        stream = should_stream(b.model, b.placement, b.device, b.max_gpu_memory)
+        if self.native:
+            from .backends.native import NativeEngramLM
+
+            if not stream:
+                return NativeEngramLM.from_pretrained(b.model, device=b.device, dtype=b.dtype,
+                                                      cache_dir=self.cache_dir)
+            from .backends.streaming import local_checkpoint
+
+            lm = NativeEngramLM.from_checkpoint(local_checkpoint(b.model, self.cache_dir), device=b.device,
+                                                dtype=b.dtype, expert_cache_gb=b.expert_cache_gb)
+            lm.enable_streaming()
+            return lm
+        from .backends.hf import EngramCausalLM
+
+        if not self.has_base():
+            raise NeedsAdaptation(
+                f"no base Engram in {self.base_dir}; run `wikiengram adapt` once for {self.config.backend.model}")
+        kwargs = {}
+        if stream:
+            from .backends.streaming import max_memory
+
+            kwargs = {"device_map": "auto", "max_memory": max_memory(b.max_gpu_memory, b.max_cpu_memory),
+                      "offload_folder": b.offload_folder or str(self.cache_dir / "offload")}
+        lm = EngramCausalLM.from_pretrained(b.model, base_path=self.base_dir, device=b.device, dtype=b.dtype,
+                                            cache_dir=self.cache_dir, **kwargs)
+        if stream:
+            lm.enable_streaming()
+        return lm
+
     def base_id(self) -> str:
         """Identity of the frozen base Engram (its fusion checksum); a delta is only valid on that base."""
+        if self._lm is not None and hasattr(self._lm, "base_identity"):  # native: the shipped weights
+            return self._lm.base_identity()
         meta = self.base_dir / "engram.json"
         if meta.exists():
             return json.loads(meta.read_text()).get("fusion_checksum", "")
@@ -195,6 +239,8 @@ class WikiEngram:
         from .engram.adapt import AdaptConfig, adapt_base_engram, pack_token_stream
         from .utils.corpus import load_texts
 
+        if self.native:
+            raise RuntimeError(f"{self.config.backend.model} ships its own Engram; no adaptation is needed")
         if self.delta_path.exists() and not force:
             raise RuntimeError("a personal delta exists; it is tied to the current base Engram. Re-run with "
                                "force=True (the delta is archived and claims are re-consolidated later).")
@@ -269,7 +315,8 @@ class WikiEngram:
             if claim.id in self.ledger:  # an older version is still in memory: forget it first
                 self._forget_rows(claim.id, repair=False)
             qs = claim_questions(claim, self.extractor, n=c.questions_per_claim + 1)
-            s, p = build_claim_samples(claim, qs, c.questions_per_claim, c.include_statement)
+            s, p = build_claim_samples(claim, qs, c.questions_per_claim, c.include_statement,
+                                       bare_questions=self._bare_questions())
             samples += s
             probes += p
             self.state.claims[claim.id] = {"version": claim.version, "object": claim.object, "questions": qs,
@@ -296,22 +343,21 @@ class WikiEngram:
                 blocked[lid] = np.union1d(blocked.get(lid, np.empty(0, np.int64)), np.concatenate(parts))
             block_stats["frozen_rows_of_other_claims"] = int(sum(np.concatenate(v).size for v in frozen.values()))
         replay = self._replay_stream() if c.locality_weight > 0 else None
-        cfg = DeltaTrainConfig(epochs=c.epochs, batch_size=c.batch_size, lr=c.lr, locality_weight=c.locality_weight)
+        cfg = DeltaTrainConfig(epochs=c.epochs, batch_size=c.batch_size, lr=c.lr, locality_weight=c.locality_weight,
+                               exact_patience=c.exact_patience)
         train = train_delta(lm, lm.delta, samples, cfg, ledger=self.ledger, blocked_rows=blocked,
                             replay_stream=replay, progress=progress)
         self.state.tokens_per_second = train.tokens / max(train.seconds, 1e-9)
-        verification = run_probes(lm, probes) if verify else VerificationReport()
-        per_claim = verification.per_claim()
-        for sel in plan.selected:
-            self.state.claims[sel.claim_id]["verified"] = bool(per_claim.get(sel.claim_id, False))
-        for cid in replayed:
-            if cid in self.state.claims:
-                self.state.claims[cid]["verified"] = bool(per_claim.get(cid, False))
-        # persist memory first: after a crash the wiki then still says "not consolidated" and the next run
-        # forgets and retrains those claims, instead of trusting memory that was never saved
+        # persist memory before verifying (a long training run must survive a failure while probing) and before
+        # the wiki says "consolidated": after a crash in between, the next run forgets and retrains those claims
+        # instead of trusting memory that was never saved
         self._save_memory("consolidate")
         for sel in plan.selected:
             self.wiki.set_engram_state(sel.claim_id, EngramState.CONSOLIDATED, sel.version)
+        verification = run_probes(lm, probes) if verify else VerificationReport()
+        per_claim = verification.per_claim()
+        if verify:
+            self._record_verification(per_claim, [s.claim_id for s in plan.selected] + replayed)
         report = {"selected": len(plan.selected), "plan": plan.to_dict(), "training": train.to_dict(),
                   "blocked": block_stats, "replayed_claims": len(replayed),
                   "verification": verification.summary(),
@@ -356,7 +402,7 @@ class WikiEngram:
 
         from .consolidation.trainer import claim_rows, encode_samples
 
-        new_rows = claim_rows(self.lm, encode_samples(self.lm.tokenizer, samples))
+        new_rows = claim_rows(self.lm, encode_samples(self.lm.tokenizer, samples, self.lm))
         for lid in list(new_rows):
             if blocked and lid in blocked:
                 new_rows[lid] = np.setdiff1d(new_rows[lid], blocked[lid])
@@ -382,6 +428,11 @@ class WikiEngram:
         return any(np.intersect1d(rows.get(int(lid), np.empty(0, np.int64)), np.asarray(r, dtype=np.int64)).size
                    for lid, r in self.state.pending_repair.items())
 
+    def _bare_questions(self) -> bool:
+        """Chat models are asked plain questions through the API: train those as well (see build_claim_samples)."""
+        return bool(self.config.consolidation.chat_bare_questions and self._lm is not None
+                    and self._lm.prompt_format == "chat")
+
     def samples_for(self, claim_ids: list[str]) -> list[TrainingSample]:
         """Training samples for already consolidated claims, rebuilt from the stored questions."""
         c = self.config.consolidation
@@ -392,7 +443,8 @@ class WikiEngram:
             info = self.state.claims.get(cid)
             if claim is None or info is None:
                 continue
-            s, _ = build_claim_samples(claim, info["questions"], c.questions_per_claim, c.include_statement)
+            s, _ = build_claim_samples(claim, info["questions"], c.questions_per_claim, c.include_statement,
+                                       bare_questions=self._bare_questions())
             out += s
         return out
 
@@ -413,9 +465,20 @@ class WikiEngram:
 
         return answer_question(self, question, mode or self.config.fusion.mode)
 
-    def verify(self, claim_ids: list[str] | None = None) -> VerificationReport:
+    def verify(self, claim_ids: list[str] | None = None, record: bool = True) -> VerificationReport:
+        """Probe Engram-only recall of consolidated claims; ``record`` stores which claims passed (the hybrid
+        mode leaves verified claims to Engram)."""
         ids = claim_ids or [cid for cid in self.state.claims if cid in self.ledger]
-        return run_probes(self.lm, self.probes_for(ids))
+        report = run_probes(self.lm, self.probes_for(ids))
+        if record:
+            self._record_verification(report.per_claim(), ids)
+        return report
+
+    def _record_verification(self, per_claim: dict[str, bool], claim_ids: list[str]) -> None:
+        for cid in claim_ids:
+            if cid in self.state.claims:
+                self.state.claims[cid]["verified"] = bool(per_claim.get(cid, False))
+        self.state.save(self.state_path)
 
     # ------------------------------------------------------------------------------ versions
     def versions(self) -> list[dict]:
@@ -455,9 +518,11 @@ class WikiEngram:
                "delta_version": self.state.delta_version,
                "delta_file_bytes": self.delta_path.stat().st_size if self.delta_path.exists() else 0,
                "pending_repair_rows": sum(len(v) for v in self.state.pending_repair.values())}
-        if self.has_base():
+        if (self.base_dir / "engram.json").exists():
             meta = json.loads((self.base_dir / "engram.json").read_text())
             out["base_engram"] = {"layout_fingerprint": meta["layout_fingerprint"], "spec": meta["spec"]}
+        elif self.native:
+            out["base_engram"] = {"native": True, "model": self.config.backend.model}
         return out
 
     # ------------------------------------------------------------------------------ internals
@@ -488,12 +553,13 @@ class WikiEngram:
         lm = self.lm
         background = self.background_counts() if c.block_min_count > 0 else None
         template = [lm.tokenizer(t, add_special_tokens=False)["input_ids"]
-                    for t in (QA_TEMPLATE.split("{q}")[0], "?" + QA_TEMPLATE.split("{q}")[1])]
-        encoded = encode_samples(lm.tokenizer, samples)
+                    for t in (QA_TEMPLATE.split("{q}")[0], "?" + QA_TEMPLATE.split("{q}")[1], *lm.prompt_wrapper())
+                    if t] if c.block_prompt_template else None
+        encoded = encode_samples(lm.tokenizer, samples, lm)
         batch = {s.claim_id for s in samples}
         others = self.samples_for([cid for cid in self.ledger.claims() if cid not in batch]) \
             if c.block_shared_claims > 0 else []
-        ctx = encode_samples(lm.tokenizer, others)
+        ctx = encode_samples(lm.tokenizer, others, lm)
         return generic_rows(lm.variant, [ids for ids, _ in encoded], [s.claim_id for s in samples],
                             background=background, min_background_count=c.block_min_count,
                             min_shared_claims=c.block_shared_claims, always_block=template,

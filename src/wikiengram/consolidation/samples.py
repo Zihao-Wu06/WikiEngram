@@ -34,14 +34,19 @@ def claim_questions(claim, extractor=None, n: int = 3) -> list[str]:
     return qs
 
 
-def build_claim_samples(claim, questions: list[str], n_train_questions: int, include_statement: bool
-                        ) -> tuple[list[TrainingSample], list[Probe]]:
+def build_claim_samples(claim, questions: list[str], n_train_questions: int, include_statement: bool,
+                        bare_questions: bool = False) -> tuple[list[TrainingSample], list[Probe]]:
+    """Training samples and verification probes for one claim. ``bare_questions`` adds each training question
+    as a plain message too (no "Question: / Answer:" scaffold): that is how an agent asks a chat model through
+    the API, so what is trained matches what is asked."""
     samples, probes = [], []
     train_qs = questions[:n_train_questions]
     held = questions[n_train_questions : n_train_questions + 1]
     for q in train_qs:
-        samples.append(TrainingSample(claim.id, qa_prompt(q), f" {claim.object}\n"))
+        samples.append(TrainingSample(claim.id, qa_prompt(q), f" {claim.object}\n", qa=True))
         probes.append(Probe(claim.id, qa_prompt(q), claim.object, "trained_question"))
+        if bare_questions:
+            samples.append(TrainingSample(claim.id, q.strip(), f" {claim.object}\n", qa=True))
     for q in held:
         probes.append(Probe(claim.id, qa_prompt(q), claim.object, "heldout_question"))
     if include_statement:

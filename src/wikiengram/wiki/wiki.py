@@ -29,6 +29,7 @@ from .extract import (
     prepare_claims,
 )
 from .models import (
+    CATEGORIES,
     SOURCE_KINDS,
     ChangeEvent,
     Claim,
@@ -37,6 +38,7 @@ from .models import (
     IngestReport,
     LintReport,
     Source,
+    claim_key,
     normalize,
     snake_case,
 )
@@ -113,9 +115,11 @@ class LLMWiki:
         return f"LLMWiki({str(self.root)!r})"
 
     # ------------------------------------------------------------------------------------------- ingest
-    def ingest_text(self, text: str, title: str = "note", kind: str = "document") -> IngestReport:
-        """Ingest raw text: keep an immutable copy, extract claims and reconcile them with the wiki."""
-        return self._ingest(text.encode("utf-8"), ".md", text, title, kind)
+    def ingest_text(self, text: str, title: str = "note", kind: str = "document", *, category: str = "fact",
+                    scope: str = "") -> IngestReport:
+        """Ingest raw text: keep an immutable copy, extract claims and reconcile them with the wiki. ``category``
+        and ``scope`` tag every extracted claim (e.g. an agent's notes for one project)."""
+        return self._ingest(text.encode("utf-8"), ".md", text, title, kind, category=category, scope=scope)
 
     def ingest_file(self, path: str | Path, kind: str = "document") -> IngestReport:
         """Ingest a UTF-8 text file (.md, .txt, ...); its file name is the source title."""
@@ -130,7 +134,7 @@ class LLMWiki:
         ext = path.suffix.lower() if re.fullmatch(r"\.[a-z0-9]{1,10}", path.suffix.lower()) else ".txt"
         return self._ingest(data, ext, text, path.name, kind)
 
-    def ingest_conversation(self, messages: list[dict]) -> IngestReport:
+    def ingest_conversation(self, messages: list[dict], *, scope: str = "") -> IngestReport:
         """Ingest a chat (``[{"role": "user" | "assistant", "content": str}]``); claims come from user turns."""
         if not isinstance(messages, list) or not all(isinstance(m, dict) for m in messages):
             raise TypeError("messages must be a list of {'role': ..., 'content': ...} dicts")
@@ -139,7 +143,7 @@ class LLMWiki:
             t for m in messages if m.get("role") == "user" and (t := _message_text(m.get("content")).strip())
         )
         title = f"conversation {time.strftime('%Y-%m-%d %H:%M')}"
-        return self._ingest(raw, ".json", text, title, "conversation")
+        return self._ingest(raw, ".json", text, title, "conversation", scope=scope)
 
     def add_claim(
         self,
@@ -154,6 +158,8 @@ class LLMWiki:
         multi_valued: bool = False,
         source_id: str | None = None,
         questions: list[str] | None = None,
+        category: str = "fact",
+        scope: str = "",
     ) -> Claim:
         """Add one claim as given (no reconciliation: use the ingest methods for that)."""
         subject, predicate, obj = clean_value(subject), snake_case(predicate), clean_value(object)
@@ -172,7 +178,8 @@ class LLMWiki:
                     pinned=bool(pinned), multi_valued=bool(multi_valued),
                     source_ids=[source_id] if source_id else [], page=slugify(subject),
                     questions=[q for q in (questions or []) if isinstance(q, str) and q.strip()],
-                    created_at=now, updated_at=now, reason="add_claim",
+                    created_at=now, updated_at=now, reason="add_claim", category=_category(category),
+                    scope=scope.strip(),
                 )
                 self._store.put_claim(claim)
                 self._store.add_event(claim.id, "added", None, 1, now, claim.reason)
@@ -292,6 +299,19 @@ class LLMWiki:
         return self._store.versions(claim_id)
 
     # -------------------------------------------------------------------------------------------- query
+    def set_questions(self, claim_id: str, questions: list[str]) -> Claim:
+        """Replace the question phrasings stored with a claim (used when it is consolidated); no new version."""
+        with self._lock:
+            claim = self._require(claim_id)
+            claim.questions = [q.strip() for q in questions if isinstance(q, str) and q.strip()]
+            self._store.put_claim(claim, content_changed=False)
+            return claim
+
+    def find(self, subject: str, predicate: str, scope: str = "") -> list[Claim]:
+        """Active claims with this subject and predicate in ``scope`` (normalized as ``add_claim`` stores them)."""
+        subject_key, predicate_key = claim_key(clean_value(subject), snake_case(predicate), scope.strip())
+        return self._store.find_by_key(subject_key, predicate_key, ClaimStatus.ACTIVE)
+
     def get(self, claim_id: str) -> Claim | None:
         return self._store.get(claim_id)
 
@@ -305,12 +325,19 @@ class LLMWiki:
             return self._store.versions_with_status(ClaimStatus.SUPERSEDED)
         return self._store.list_claims(status)
 
-    def search(self, query: str, k: int = 5, include_inactive: bool = False) -> list[tuple[Claim, float]]:
+    def search(self, query: str, k: int = 5, include_inactive: bool = False, *, scope: str | None = None,
+               categories: Iterable[str] | None = None) -> list[tuple[Claim, float]]:
         """BM25 + entity-matching search. ``include_inactive`` also searches retracted claims and superseded
-        versions."""
+        versions. ``scope``: only claims of that scope plus global ones; ``categories``: only those kinds."""
         if k <= 0 or not query.strip():
             return []
-        hits = self._index(include_inactive).search(query, k)
+        index = self._index(include_inactive)
+        filtered = scope is not None or categories is not None
+        hits = index.search(query, len(index.claims) if filtered else k)
+        if filtered:
+            cats = None if categories is None else {_category(c) for c in categories}
+            hits = [(c, sc) for c, sc in hits if (scope is None or c.scope in ("", scope.strip()))
+                    and (cats is None or c.category in cats)][:k]
         out = []
         for claim, score in hits:
             fresh = self._store.get_version(claim.id, claim.version)
@@ -452,7 +479,8 @@ class LLMWiki:
         self._store.add_event(new.id, kind, old.version, new.version, now, reason)
         return new
 
-    def _ingest(self, raw: bytes, ext: str, text: str, title: str, kind: str) -> IngestReport:
+    def _ingest(self, raw: bytes, ext: str, text: str, title: str, kind: str, *, category: str = "fact",
+                scope: str = "") -> IngestReport:
         if kind not in SOURCE_KINDS:
             raise ValueError(f"unknown source kind {kind!r}; expected one of {', '.join(SOURCE_KINDS)}")
         if not raw.strip():
@@ -460,6 +488,11 @@ class LLMWiki:
         sha = hashlib.sha256(raw).hexdigest()
         # Extraction (possibly a slow LLM call) happens before any lock is taken or anything is written.
         extracted = prepare_claims(self.extractor.extract(text, kind=kind)) if text.strip() else []
+        for item in extracted:  # caller's tags win over the extractor's defaults
+            if category != "fact" or not getattr(item, "category", ""):
+                item.category = _category(category)
+            if scope:
+                item.scope = scope.strip()
         changes = _Changes()
         with self._lock:
             now = time.time()
@@ -486,7 +519,7 @@ class LLMWiki:
     def _reconcile(self, item: ExtractedClaim, source: Source, fresh: bool, report: IngestReport,
                    changes: _Changes, now: float) -> None:
         now += (len(report.added) + len(report.updated)) * 1e-6  # keep the extraction order of one source
-        subject_key, predicate_key = normalize(item.subject), normalize(item.predicate)
+        subject_key, predicate_key = claim_key(item.subject, item.predicate, getattr(item, "scope", ""))
         active = self._store.find_by_key(subject_key, predicate_key, ClaimStatus.ACTIVE)
         retracted = () if fresh else self._store.find_by_key(subject_key, predicate_key, ClaimStatus.RETRACTED)
         decision = decide(item, active, self.supersede_ratio, fresh_source=fresh, retracted=retracted)
@@ -498,6 +531,7 @@ class LLMWiki:
                 statement=item.statement, confidence=item.confidence, importance=item.importance,
                 multi_valued=item.multi_valued, source_ids=[source.id], page=slugify(item.subject),
                 questions=list(item.questions), created_at=now, updated_at=now, reason=reason,
+                category=_category(getattr(item, "category", "fact")), scope=getattr(item, "scope", ""),
             )
             self._store.put_claim(claim)
             self._store.add_event(claim.id, "added", None, 1, now, reason)
@@ -563,3 +597,10 @@ class LLMWiki:
 
 def _title(title: str) -> str:
     return " ".join(str(title).split()) or "untitled"
+
+
+def _category(value: str) -> str:
+    value = (value or "fact").strip().lower()
+    if value not in CATEGORIES:
+        raise ValueError(f"unknown memory category {value!r}; expected one of {', '.join(CATEGORIES)}")
+    return value

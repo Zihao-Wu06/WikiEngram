@@ -103,7 +103,8 @@ def run_sync(ws, repair: bool = True, verify: bool = True, progress=None) -> dic
             # ledger=: every row a repair writes is recorded for its claim, so deleting it later stays exact
             repair_report = train_delta(
                 lm, lm.delta, samples,
-                DeltaTrainConfig(epochs=c.epochs, batch_size=c.batch_size, lr=c.lr),
+                DeltaTrainConfig(epochs=c.epochs, batch_size=c.batch_size, lr=c.lr,
+                                 exact_patience=c.exact_patience),
                 ledger=ws.ledger, blocked_rows=blocked, restrict_rows=restrict, progress=progress,
             ).to_dict()
             repaired = sorted({s.claim_id for s in samples})

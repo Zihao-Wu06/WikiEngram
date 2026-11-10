@@ -1,0 +1,265 @@
+{
+  "config": {
+    "facts": 200,
+    "seed": 2,
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "device": "auto",
+    "kind": "hf",
+    "placement": "auto",
+    "expert_cache_gb": 4.0,
+    "adapt_steps": 300,
+    "base_dir": "/root/autodl-tmp/bench/qwen3-1.7b-200/base_cache",
+    "epochs": 40,
+    "lr": 0.02,
+    "batch_size": 16,
+    "edit_fraction": 0.2,
+    "delete_fraction": 0.1,
+    "top_k": 5,
+    "max_new_tokens": 16,
+    "gen_batch": 16,
+    "latency_queries": 10
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "device": "cuda",
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "backbone_params": 1720574976,
+    "engram_variant": {
+      "variant": "deepseek-v4.1",
+      "hidden_size": 2048,
+      "layer_ids": [
+        1,
+        10
+      ],
+      "max_ngram_size": 4,
+      "n_heads": 8,
+      "head_dim": 64,
+      "vocab_size": 65536,
+      "pad_token_id": 151643,
+      "hc_mult": 1,
+      "norm_eps": 1e-06,
+      "compressed_vocab_size": 107457
+    },
+    "base_table_rows": [
+      1574980,
+      1580602
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "ingest": {
+    "claims": 200,
+    "added": 200
+  },
+  "adapt": {
+    "seconds": 0.35671426309272647,
+    "eval_ppl_no_engram": 18.995652032128866,
+    "eval_ppl_engram": 15.684204579622154,
+    "tokens": 307200
+  },
+  "consolidation": {
+    "seconds": 172.05365189001895,
+    "tokens": 467320,
+    "epochs": 40,
+    "peak_memory_bytes": 4805747200,
+    "verification": {
+      "n": 800,
+      "accuracy": 0.8025,
+      "accuracy_heldout_question": 0.265,
+      "accuracy_statement": 0.965,
+      "accuracy_trained_question": 0.99
+    },
+    "delta_rows": 167312,
+    "delta_file_bytes": 118899246,
+    "backbone_and_fusion_unchanged": true
+  },
+  "results": {
+    "modes": {
+      "none": {
+        "trained_question": {
+          "accuracy": 0.0,
+          "n": 200,
+          "avg_prompt_tokens": 16.29,
+          "avg_new_tokens": 15.485,
+          "batched_sec_per_query": 0.019708521292777732,
+          "peak_memory_bytes": 3797033984,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "The Zhacaen Vulstond is a character in the Star Wars Legends continuity",
+            "Kryxquu Zhasnaeth is a human male who lives in",
+            "The dog is named \"Bisfim Quaemthyn's dog"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.0,
+          "n": 200,
+          "avg_prompt_tokens": 17.89,
+          "avg_new_tokens": 15.25,
+          "batched_sec_per_query": 0.019842143991263585,
+          "peak_memory_bytes": 3823248896,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "The first of the three is the \"Vulstond\" family, who",
+            "Kryxquu Zhasnaeth is a human male who lives in",
+            "bisfim"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019643198931589723,
+          "median_total_s": 0.2672552699223161,
+          "n": 10
+        }
+      },
+      "wiki": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 200,
+          "avg_prompt_tokens": 96.985,
+          "avg_new_tokens": 4.605,
+          "batched_sec_per_query": 0.01425298692425713,
+          "peak_memory_bytes": 4423054336,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Brithtiash Media",
+            "Lake Quimfor",
+            "Niashquaend"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.97,
+          "n": 200,
+          "avg_prompt_tokens": 86.74,
+          "avg_new_tokens": 7.925,
+          "batched_sec_per_query": 0.023685020050033926,
+          "peak_memory_bytes": 4429724672,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Zhacaen Vulstond's employer is Brithtiash Media.",
+            "Lake Quimfor",
+            "Bisfim Quaemthyn's dog is named Niashquaend"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019879247061908245,
+          "median_total_s": 0.1302515510469675,
+          "n": 10
+        }
+      },
+      "engram": {
+        "trained_question": {
+          "accuracy": 0.99,
+          "n": 200,
+          "avg_prompt_tokens": 16.29,
+          "avg_new_tokens": 4.28,
+          "batched_sec_per_query": 0.0097227725002449,
+          "peak_memory_bytes": 3797336576,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Brithtiash Media",
+            "Lake Quimfor",
+            "Niashquaend"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.365,
+          "n": 200,
+          "avg_prompt_tokens": 17.89,
+          "avg_new_tokens": 9.095,
+          "batched_sec_per_query": 0.022610624104272573,
+          "peak_memory_bytes": 3823526912,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "He is the son of the former Minister of Refugees, and the current Minister",
+            "Lake Quimfor",
+            "Quaeshn"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019519163062795997,
+          "median_total_s": 0.1320338868536055,
+          "n": 10
+        }
+      },
+      "hybrid": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 200,
+          "avg_prompt_tokens": 75.0,
+          "avg_new_tokens": 4.6,
+          "batched_sec_per_query": 0.014368071879725903,
+          "peak_memory_bytes": 4402307072,
+          "answered_by_engram": 0.265,
+          "examples": [
+            "Brithtiash Media",
+            "Lake Quimfor",
+            "Niashquaend"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.9,
+          "n": 200,
+          "avg_prompt_tokens": 69.77,
+          "avg_new_tokens": 7.295,
+          "batched_sec_per_query": 0.025223655476002024,
+          "peak_memory_bytes": 4409712640,
+          "answered_by_engram": 0.265,
+          "examples": [
+            "Zhacaen Vulstond's employer is Brithtiash Media.",
+            "Lake Quimfor",
+            "Bisfim Quaemthyn's dog is named Niashquaend"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.01996633503586054,
+          "median_total_s": 0.14152524108067155,
+          "n": 10
+        }
+      }
+    },
+    "update": {
+      "edited_new_value": {
+        "wiki": 1.0,
+        "engram": 0.0,
+        "hybrid": 1.0
+      },
+      "edited_old_value_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "deleted_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "untouched_retained": {
+        "engram": 1.0,
+        "hybrid": 1.0
+      },
+      "after_reconsolidation_edited_new_value_engram": 0.95,
+      "after_reconsolidation_untouched_engram": 1.0
+    }
+  },
+  "sync": {
+    "seconds": 46.404158214107156,
+    "forgotten": 60,
+    "repaired": 25,
+    "verification": {
+      "forget": {
+        "n": 120,
+        "accuracy": 1.0,
+        "accuracy_forget": 1.0
+      },
+      "retain_repaired": {
+        "n": 100,
+        "accuracy": 0.78,
+        "accuracy_heldout_question": 0.12,
+        "accuracy_statement": 1.0,
+        "accuracy_trained_question": 1.0
+      }
+    }
+  },
+  "reconsolidation": {
+    "selected": 40,
+    "seconds": 150.4339006440714
+  }
+}

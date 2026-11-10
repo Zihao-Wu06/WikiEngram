@@ -1,0 +1,265 @@
+{
+  "config": {
+    "facts": 500,
+    "seed": 0,
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "device": "auto",
+    "kind": "hf",
+    "placement": "auto",
+    "expert_cache_gb": 4.0,
+    "adapt_steps": 300,
+    "base_dir": "/root/autodl-tmp/bench/qwen3-1.7b-200/base_cache",
+    "epochs": 40,
+    "lr": 0.02,
+    "batch_size": 16,
+    "edit_fraction": 0.2,
+    "delete_fraction": 0.1,
+    "top_k": 5,
+    "max_new_tokens": 16,
+    "gen_batch": 16,
+    "latency_queries": 10
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "device": "cuda",
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "backbone_params": 1720574976,
+    "engram_variant": {
+      "variant": "deepseek-v4.1",
+      "hidden_size": 2048,
+      "layer_ids": [
+        1,
+        10
+      ],
+      "max_ngram_size": 4,
+      "n_heads": 8,
+      "head_dim": 64,
+      "vocab_size": 65536,
+      "pad_token_id": 151643,
+      "hc_mult": 1,
+      "norm_eps": 1e-06,
+      "compressed_vocab_size": 107457
+    },
+    "base_table_rows": [
+      1574980,
+      1580602
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "ingest": {
+    "claims": 500,
+    "added": 500
+  },
+  "adapt": {
+    "seconds": 0.33742248197086155,
+    "eval_ppl_no_engram": 18.995652032128866,
+    "eval_ppl_engram": 15.684204579622154,
+    "tokens": 307200
+  },
+  "consolidation": {
+    "seconds": 425.0389639821369,
+    "tokens": 1168040,
+    "epochs": 40,
+    "peak_memory_bytes": 4984015872,
+    "verification": {
+      "n": 2000,
+      "accuracy": 0.806,
+      "accuracy_heldout_question": 0.272,
+      "accuracy_statement": 0.972,
+      "accuracy_trained_question": 0.99
+    },
+    "delta_rows": 368825,
+    "delta_file_bytes": 260913959,
+    "backbone_and_fusion_unchanged": true
+  },
+  "results": {
+    "modes": {
+      "none": {
+        "trained_question": {
+          "accuracy": 0.0,
+          "n": 500,
+          "avg_prompt_tokens": 16.312,
+          "avg_new_tokens": 15.598,
+          "batched_sec_per_query": 0.020712276740930975,
+          "peak_memory_bytes": 3958051840,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "The Pialpaend family is a prominent family in the city of Zhi",
+            "Wumtril Derkkoum is a fictional character in the 1",
+            "The dog is named \"Poumham Beshziash\" (P"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.0,
+          "n": 500,
+          "avg_prompt_tokens": 17.912,
+          "avg_new_tokens": 15.452,
+          "batched_sec_per_query": 0.02063707835180685,
+          "peak_memory_bytes": 3984840192,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Pialpaend is a character in the 1993 film The",
+            "Wumtril Derkkoum is a town in the northern part of",
+            "the dog's name is Poumham Beshziash's dog, and"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.020312272012233734,
+          "median_total_s": 0.28784264693968,
+          "n": 10
+        }
+      },
+      "wiki": {
+        "trained_question": {
+          "accuracy": 0.994,
+          "n": 500,
+          "avg_prompt_tokens": 99.5,
+          "avg_new_tokens": 4.93,
+          "batched_sec_per_query": 0.019989846378099172,
+          "peak_memory_bytes": 4593928192,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.916,
+          "n": 500,
+          "avg_prompt_tokens": 88.316,
+          "avg_new_tokens": 8.56,
+          "batched_sec_per_query": 0.025672114217188208,
+          "peak_memory_bytes": 4613990912,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "The name of Poumham Beshziash's dog is Zandpa"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.020929781021550298,
+          "median_total_s": 0.13470938615500927,
+          "n": 10
+        }
+      },
+      "engram": {
+        "trained_question": {
+          "accuracy": 0.99,
+          "n": 500,
+          "avg_prompt_tokens": 16.312,
+          "avg_new_tokens": 4.31,
+          "batched_sec_per_query": 0.0107116465899162,
+          "peak_memory_bytes": 3958379008,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.428,
+          "n": 500,
+          "avg_prompt_tokens": 17.912,
+          "avg_new_tokens": 9.274,
+          "batched_sec_per_query": 0.024238242941908537,
+          "peak_memory_bytes": 3985142784,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Pialpa is a part of the Gynzy collection of educational games for",
+            "wumtril derkkoum is a member of the krio language",
+            "Zandpaer"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.021191776962950826,
+          "median_total_s": 0.32396877696737647,
+          "n": 10
+        }
+      },
+      "hybrid": {
+        "trained_question": {
+          "accuracy": 0.996,
+          "n": 500,
+          "avg_prompt_tokens": 76.666,
+          "avg_new_tokens": 4.782,
+          "batched_sec_per_query": 0.017084713691845537,
+          "peak_memory_bytes": 4593891328,
+          "answered_by_engram": 0.27,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.87,
+          "n": 500,
+          "avg_prompt_tokens": 71.356,
+          "avg_new_tokens": 7.914,
+          "batched_sec_per_query": 0.025161067388020455,
+          "peak_memory_bytes": 4606466560,
+          "answered_by_engram": 0.27,
+          "examples": [
+            "Pialpa is a part of the Gynzy collection of educational games for",
+            "Port Kriasstom",
+            "The name of Poumham Beshziash's dog is Zandpa"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.0213784989900887,
+          "median_total_s": 0.1345009091310203,
+          "n": 10
+        }
+      }
+    },
+    "update": {
+      "edited_new_value": {
+        "wiki": 0.99,
+        "engram": 0.0,
+        "hybrid": 0.99
+      },
+      "edited_old_value_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "deleted_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "untouched_retained": {
+        "engram": 1.0,
+        "hybrid": 0.9971428571428571
+      },
+      "after_reconsolidation_edited_new_value_engram": 0.98,
+      "after_reconsolidation_untouched_engram": 0.9857142857142858
+    }
+  },
+  "sync": {
+    "seconds": 115.5060267969966,
+    "forgotten": 150,
+    "repaired": 94,
+    "verification": {
+      "forget": {
+        "n": 300,
+        "accuracy": 1.0,
+        "accuracy_forget": 1.0
+      },
+      "retain_repaired": {
+        "n": 376,
+        "accuracy": 0.7925531914893617,
+        "accuracy_heldout_question": 0.19148936170212766,
+        "accuracy_statement": 0.9787234042553191,
+        "accuracy_trained_question": 1.0
+      }
+    }
+  },
+  "reconsolidation": {
+    "selected": 100,
+    "seconds": 243.53931811498478
+  }
+}

@@ -1,0 +1,2110 @@
+{
+ "last_event_seq": 769,
+ "delta_version": 2,
+ "tokens_per_second": 165.71470465201364,
+ "claims": {
+  "c_2db58960d7": {
+   "version": 2,
+   "object": "24,576",
+   "questions": [
+    "How many small experts are part of the Qwen3.8-Flash-Next team in Strata?",
+    "What is the total number of small experts assigned to the Qwen3.8-Flash-Next team?",
+    "In the Strata environment, how large is the Qwen3.8-Flash-Next team in terms of small experts?",
+    "How many small experts make up the Qwen3.8-Flash-Next team within Strata?",
+    "What size does the Qwen3.8-Flash-Next team have in Strata, measured in small experts?",
+    "How many individual small experts are included in the Qwen3.8-Flash-Next team in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.653758
+  },
+  "c_cfdff03d16": {
+   "version": 2,
+   "object": "Linux",
+   "questions": [
+    "On which operating system does Intel Arc operate in Strata via the Terminal?",
+    "What platform is required to run Intel Arc in Strata using the Terminal?",
+    "Which system supports Intel Arc in Strata when accessed through the Terminal?",
+    "Through what operating system can Intel Arc be used in Strata via the Terminal?",
+    "What is the only operating system compatible with Intel Arc in Strata via the Terminal?",
+    "Which environment allows Intel Arc to run in Strata through the Terminal?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6537848
+  },
+  "c_99ca295a2a": {
+   "version": 2,
+   "object": "http://127.0.0.1:8080",
+   "questions": [
+    "What is the default local endpoint used by Strata?",
+    "Where does Strata typically connect to by default?",
+    "What URL is Strata configured to use locally by default?",
+    "Which address does Strata use as its standard local endpoint?",
+    "What is the standard local endpoint for Strata?",
+    "What is the default address Strata uses for local communication?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6538005
+  },
+  "c_50191a5857": {
+   "version": 2,
+   "object": "Qwen3.8-Flash-Next, Qwen3.6-35B-A3B and DeepSeekV4.1-Flash-1017",
+   "questions": [
+    "What are the three model families offered by Strata?",
+    "Which model families does Strata provide?",
+    "List the model families available from Strata.?",
+    "What models does Strata currently offer in its lineup?",
+    "Can you name the three model families operated by Strata?",
+    "What are the different model families that Strata supports?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6538146
+  },
+  "c_f1f5e4f12e": {
+   "version": 2,
+   "object": "whole PC",
+   "questions": [
+    "How does Strata distribute the workload to ensure large models run efficiently?",
+    "What component of the system does Strata utilize to divide the computational tasks?",
+    "In what part of the computer is the work shared to handle big models?",
+    "How does Strata enable large models to run smoothly on a system?",
+    "What system element is used by Strata to split the processing load?",
+    "On which part of the computer does Strata spread the computational responsibilities?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6538265
+  },
+  "c_fdef80f50f": {
+   "version": 2,
+   "object": "28.8 GB",
+   "questions": [
+    "How much storage does Strata's n-gram table on the SSD occupy?",
+    "What is the size of the n-gram table maintained by Strata on the SSD?",
+    "What capacity does the n-gram table stored on Strata's SSD use?",
+    "How large is the n-gram table that Strata stores on the SSD?",
+    "What is the amount of space allocated to Strata's n-gram table on the SSD?",
+    "What is the storage size of the n-gram table kept by Strata on the SSD?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6538382
+  },
+  "c_0743d108d9": {
+   "version": 2,
+   "object": "guess then check",
+   "questions": [
+    "How does Strata generate text?",
+    "What method does Strata use to produce text?",
+    "What process does Strata follow when writing text?",
+    "In what way does Strata determine the next words in a sentence?",
+    "What technique does Strata employ to write text?",
+    "What approach does Strata use to generate text output?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.653854
+  },
+  "c_0c52167d23": {
+   "version": 2,
+   "object": "0.2.13",
+   "questions": [
+    "What is the version number of Strata's app and Terminal?",
+    "Which version does Strata's app and Terminal currently hold?",
+    "What version is being used by Strata's app and Terminal?",
+    "What is the current version of Strata's app and Terminal?",
+    "Which version number applies to both Strata's app and Terminal?",
+    "What version is installed in Strata's app and Terminal?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6538641
+  },
+  "c_9242ccaead": {
+   "version": 2,
+   "object": "RTX 30, 40 and 50",
+   "questions": [
+    "Which NVIDIA card series is supported by DeepSeek V4.1-Flash in the Strata app and Terminal?",
+    "What types of NVIDIA GPUs can run DeepSeek V4.1-Flash via the Terminal and Strata app?",
+    "On which NVIDIA RTX series are DeepSeek V4.1-Flash models available in the Strata app and Terminal?",
+    "Which GPU generations are compatible with DeepSeek V4.1-Flash in the Strata app and Terminal environment?",
+    "What NVIDIA RTX card families can be used to run DeepSeek V4.1-Flash in the Terminal and Strata app?",
+    "Which RTX series GPUs are supported for DeepSeek V4.1-Flash in both the Strata app and Terminal?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6538758
+  },
+  "c_025aed0845": {
+   "version": 2,
+   "object": "Python",
+   "questions": [
+    "What programming language is included in the Strata Terminal?",
+    "Which language is part of the Strata Terminal's setup?",
+    "What language does the Strata Terminal provide as part of its installation?",
+    "Which programming language is pre-installed in the Strata Terminal?",
+    "What language is bundled with the Strata Terminal?",
+    "What language is available in the Strata Terminal for use on your computer?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6538887
+  },
+  "c_e27199c087": {
+   "version": 2,
+   "object": "cuda-cuda12 and cuda-cuda13",
+   "questions": [
+    "Which engines are included in the Strata packages for Qwen3.8-Flash-Next on NVIDIA cards?",
+    "What CUDA engines are bundled in Strata for Qwen3.8-Flash-Next when running on NVIDIA hardware?",
+    "Which specific CUDA versions are part of the Strata distribution for Qwen3.8-Flash-Next on NVIDIA cards?",
+    "For Qwen3.8-Flash-Next on NVIDIA cards, what engines does Strata provide?",
+    "What CUDA engine variants are available in Strata for Qwen3.8-Flash-Next on NVIDIA hardware?",
+    "Which CUDA-based engines are packaged in Strata for Qwen3.8-Flash-Next on NVIDIA cards?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.653902
+  },
+  "c_f5c7525072": {
+   "version": 2,
+   "object": "one per system",
+   "questions": [
+    "How many installers does Strata assign to each system?",
+    "What is the installer allocation model for Strata systems?",
+    "Does Strata provide an installer for every graphics card?",
+    "How is installer distribution managed in Strata?",
+    "Is there a single installer for each system in Strata?",
+    "What is the standard installer setup in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6539118
+  },
+  "c_fcc4931863": {
+   "version": 2,
+   "object": "2025-06-18",
+   "questions": [
+    "Which MCP revision does Strata's MCP server currently support as its latest version?",
+    "What is the most recent MCP revision version supported by Strata's MCP server?",
+    "Which date represents the latest MCP revision version in Strata's server configuration?",
+    "What MCP revision date is currently active on Strata's server?",
+    "Which of the listed MCP revisions is the newest one used by Strata's server?",
+    "What is the date of the latest MCP revision that Strata's server is configured to use?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6539235
+  },
+  "c_b8fc829e68": {
+   "version": 2,
+   "object": "POST /unload",
+   "questions": [
+    "What HTTP method and endpoint does Strata_stop initially send to the Strata server?",
+    "Which request does Strata_stop initiate by default to the Strata server?",
+    "What is the first action taken by Strata_stop in communication with the Strata server?",
+    "What endpoint is targeted by the initial request from Strata_stop?",
+    "What kind of request does Strata_stop send to the Strata server first?",
+    "What specific HTTP operation and path is used by Strata_stop to begin interaction with the Strata server?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.653936
+  },
+  "c_24baeb94d4": {
+   "version": 2,
+   "object": ".strata-mcp/server.log",
+   "questions": [
+    "Where does the Strata server's output get directed by Strata_start?",
+    "What file receives the output from the Strata server via Strata_start?",
+    "Which log file is used to store the Strata server's output when Strata_start is running?",
+    "What destination file is used for the Strata server's output as configured by Strata_start?",
+    "Which file is the output of the Strata server written to by Strata_start?",
+    "What log file is generated to capture the Strata server's output through Strata_start?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6539457
+  },
+  "c_5eeb8a58e0": {
+   "version": 2,
+   "object": "1-3 minutes",
+   "questions": [
+    "How long does it take to load a model using strata_start?",
+    "What is the estimated time required for loading a model with strata_start?",
+    "Can you provide the duration for loading a model when strata_start is used?",
+    "How long does the process of loading a model with strata_start typically take?",
+    "What is the time range for loading a model via strata_start?",
+    "What duration should be expected when loading a model with strata_start?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6539595
+  },
+  "c_6123ccc05f": {
+   "version": 2,
+   "object": "GET /health, /v1/status, /status and /metrics",
+   "questions": [
+    "What endpoints does Strata's MCP status tool check for health and status information?",
+    "Which paths are monitored by Strata's MCP status tool to assess system health?",
+    "What specific URLs does Strata's MCP status tool evaluate to determine operational status?",
+    "Which endpoints are included in Strata's MCP status tool for health and performance checks?",
+    "What routes does Strata's MCP status tool use to retrieve system status and metrics?",
+    "What are the endpoints that Strata's MCP status tool accesses to verify service health?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6539688
+  },
+  "c_fad3b0e973": {
+   "version": 2,
+   "object": "process id and start time",
+   "questions": [
+    "What specific details must match for Strata's MCP server to terminate a process?",
+    "What two factors does Strata's MCP server use to determine if a process should be ended?",
+    "Which two attributes must be identical for Strata's MCP server to stop a process?",
+    "What conditions must be met for Strata's MCP server to end a running process?",
+    "What combination of values is required for Strata's MCP server to terminate a process?",
+    "What two elements must align for Strata's MCP server to conclude a process?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6539783
+  },
+  "c_640ef2025b": {
+   "version": 2,
+   "object": "STRATA_DISJOINT_ADAPT=1",
+   "questions": [
+    "What configuration setting enables Strata's disjoint expert cache?",
+    "How can you activate Strata's disjoint expert cache in the system?",
+    "What value must be set to turn on Strata's disjoint expert cache?",
+    "Which environment variable should be set to one to enable the disjoint expert cache?",
+    "What is the required setting to activate the disjoint expert cache in Strata?",
+    "What flag must be set to enable Strata's disjoint expert cache functionality?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.653993
+  },
+  "c_9437d58aac": {
+   "version": 2,
+   "object": "STRATA_KV_PREFETCH=1",
+   "questions": [
+    "What environment variable must be set to enable Strata's KV prefetch?",
+    "How can Strata's KV prefetch be activated in the configuration?",
+    "What value should be assigned to STRATA_KV_PREFETCH to turn on KV prefetch?",
+    "In what condition is Strata's KV prefetch enabled by setting an environment variable?",
+    "What is the required setting to activate Strata's KV prefetch functionality?",
+    "What environment variable must be set to enable the KV prefetch feature in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654005
+  },
+  "c_bd43282faa": {
+   "version": 2,
+   "object": "all 24,576 experts",
+   "questions": [
+    "How many experts are stored in Strata's RAM?",
+    "What is the total number of experts kept in Strata's RAM?",
+    "How many experts are pinned in Strata's RAM?",
+    "What is the count of experts held in Strata's RAM?",
+    "How many experts are currently stored and pinned in Strata's RAM?",
+    "What total number of experts is maintained in Strata's RAM?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654015
+  },
+  "c_95dfe441d8": {
+   "version": 2,
+   "object": "MIT License",
+   "questions": [
+    "What type of license is Strata released under?",
+    "Is Strata available under a permissive open source license?",
+    "What specific license governs the source code of Strata?",
+    "Under which open source license is Strata distributed?",
+    "What license allows users to use and modify Strata's source code freely?",
+    "What open source license does Strata follow for its development and distribution?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6540287
+  },
+  "c_8dc4df34d8": {
+   "version": 2,
+   "object": "the most-used experts",
+   "questions": [
+    "What content does an expert cache populate the remaining GPU memory with in Strata?",
+    "Which experts are prioritized to fill the unused portion of the GPU's memory in Strata?",
+    "What kind of experts are loaded into the GPU's memory to optimize performance in Strata?",
+    "What experts are used to fill the gap in GPU memory when the cache is not full in Strata?",
+    "Which experts are selected to occupy the remaining GPU memory space in Strata?",
+    "What experts are placed in the GPU's memory to maximize efficiency in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6540399
+  },
+  "c_9fbb8077ad": {
+   "version": 2,
+   "object": "CPU",
+   "questions": [
+    "Which component handles the computation of experts not on the GPU in Strata?",
+    "What processor is responsible for computing experts that are not located on the GPU in Strata?",
+    "In Strata, which part of the system performs calculations for experts not present on the GPU?",
+    "Which device computes the experts not residing on the GPU within Strata?",
+    "What hardware component carries out the computation of experts not on the GPU in Strata?",
+    "In the Strata system, which processor manages the computation of experts not located on the GPU?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6540513
+  },
+  "c_565a8b2509": {
+   "version": 2,
+   "object": "NVIDIA and AMD",
+   "questions": [
+    "Which companies' graphics cards support Strata with the same engine?",
+    "On which types of GPUs does Strata function identically?",
+    "Which manufacturers' cards use the same compiled engine for Strata?",
+    "What brands of graphics cards are compatible with Strata using the same engine?",
+    "Which companies' GPUs run Strata with an identical engine?",
+    "For which graphics card manufacturers is Strata implemented with the same engine?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654063
+  },
+  "c_c216ca8ec9": {
+   "version": 2,
+   "object": "MTP layer",
+   "questions": [
+    "What component in Strata is responsible for drafting tokens?",
+    "Which layer in Strata handles token drafting?",
+    "What part of Strata drafts tokens in batches?",
+    "Which layer in the Strata model drafts up to three tokens?",
+    "In Strata, which layer manages the drafting of tokens?",
+    "What element of Strata drafts tokens in chunks of up to three?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6540725
+  },
+  "c_42ba197c5b": {
+   "version": 2,
+   "object": "the conversation",
+   "questions": [
+    "How does Strata's expert cache adjust during interactions?",
+    "What factor does Strata's expert cache respond to in real time?",
+    "In what way does Strata's expert cache evolve as you communicate?",
+    "What element influences the adaptation of Strata's expert cache?",
+    "How does Strata's expert cache modify itself during a chat?",
+    "What dynamic aspect of the interaction does Strata's expert cache track?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654086
+  },
+  "c_ebb1a29870": {
+   "version": 2,
+   "object": "only what is new",
+   "questions": [
+    "What does Strata read after the first message?",
+    "After the initial message, what kind of content does Strata process?",
+    "What kind of updates does Strata review in the conversation?",
+    "What does Strata focus on following the first message?",
+    "After the first message, what does Strata scan for?",
+    "What content does Strata examine in subsequent messages?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6540956
+  },
+  "c_68101bfb8d": {
+   "version": 2,
+   "object": "strata launch",
+   "questions": [
+    "What command is used to start the model in the Strata Terminal app?",
+    "How do you initiate the model in the Strata Terminal app?",
+    "What action is performed to begin the model in the Strata Terminal app?",
+    "What is the method to start the model within the Strata Terminal app?",
+    "What step is taken to launch the model in the Strata Terminal app?",
+    "What is the process to begin the model in the Strata Terminal app?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6541045
+  },
+  "c_58d79c35f7": {
+   "version": 2,
+   "object": "8K",
+   "questions": [
+    "What is the context length supported by DeepSeek V4.1-Flash in the Strata app?",
+    "How long can the context be in DeepSeek V4.1-Flash as used in Strata?",
+    "What is the maximum context size available for DeepSeek V4.1-Flash in the Strata app?",
+    "In Strata, what context capacity does DeepSeek V4.1-Flash offer?",
+    "What context length is provided by DeepSeek V4.1-Flash within the Strata app?",
+    "What is the context range supported by DeepSeek V4.1-Flash in the Strata app?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6541183
+  },
+  "c_08be69bfb2": {
+   "version": 2,
+   "object": "Faster or Full quality",
+   "questions": [
+    "What are the two speed options available for DeepSeek V4.1-Flash in the Strata app?",
+    "In Strata, what choices does DeepSeek V4.1-Flash offer regarding processing speed?",
+    "What speed settings can users select for DeepSeek V4.1-Flash within the Strata app?",
+    "What are the available speed preferences for DeepSeek V4.1-Flash in Strata?",
+    "What two speed options are provided for DeepSeek V4.1-Flash in the Strata app?",
+    "What kind of speed choices does DeepSeek V4.1-Flash have in Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654173
+  },
+  "c_8863fff9d5": {
+   "version": 2,
+   "object": "Intel Macs",
+   "questions": [
+    "Which type of Mac is incompatible with Strata's Mac package?",
+    "What Mac models are excluded from Strata's Mac package support?",
+    "Which Mac architecture does not receive Strata's Mac package?",
+    "What kind of Macs are not covered by Strata's Mac package?",
+    "Which Macs are not supported by Strata's Mac package?",
+    "What Mac platform is not compatible with Strata's Mac package?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6541853
+  },
+  "c_138603eb98": {
+   "version": 2,
+   "object": "ARM64 Linux",
+   "questions": [
+    "Which type of Linux system does Strata not support with a desktop app?",
+    "What Linux architecture lacks a desktop application for Strata?",
+    "Which Linux platform does Strata not offer a desktop application for?",
+    "What Linux architecture is missing a Strata desktop app?",
+    "On which kind of Linux does Strata offer only the Terminal, with no desktop app?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6541972
+  },
+  "c_df2c0b17ad": {
+   "version": 2,
+   "object": "SSD",
+   "questions": [
+    "What type of storage should strata utilize for optimal performance?",
+    "Where is the recommended location for strata to operate efficiently?",
+    "What storage device is ideal for running strata with sufficient space?",
+    "Which storage medium is suggested for strata to support helper files and model preparation?",
+    "What kind of drive should be used to ensure strata runs smoothly?",
+    "What storage solution is best suited for strata to handle helper files and model setup?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6542068
+  },
+  "c_da60b5f582": {
+   "version": 2,
+   "object": "hardware drivers",
+   "questions": [
+    "What do Strata's packaged GPU runtimes not take the place of?",
+    "What component remains independent of Strata's packaged GPU runtimes?",
+    "Do Strata's GPU runtimes function as a substitute for underlying system drivers?",
+    "What is not covered or replaced by Strata's GPU runtime packages?",
+    "What essential system elements continue to operate separately from Strata's GPU runtimes?",
+    "What drivers are not included or substituted by Strata's GPU runtime solutions?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6542165
+  },
+  "c_81e1a6ad79": {
+   "version": 2,
+   "object": "ISTA-DASLab, Unsloth, Gyro, then others",
+   "questions": [
+    "What is the recommended order of model providers according to Strata?",
+    "Which model providers are suggested by Strata in order?",
+    "In what sequence does Strata recommend model providers?",
+    "What is the preferred order of model providers as advised by Strata?",
+    "According to Strata, which model providers should be considered in order?",
+    "What sequence of model providers does Strata recommend?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6542253
+  },
+  "c_e261f4827f": {
+   "version": 2,
+   "object": "--no-tui",
+   "questions": [
+    "What flag is used to make strata launch run the server in the background?",
+    "Which option prevents strata from starting a TUI and instead runs the server in the background?",
+    "What argument ensures that the Strata server runs without a terminal interface?",
+    "Which parameter causes strata to start the server in the background without a user interface?",
+    "What flag enables strata to launch the server in the background without a text user interface?",
+    "What option instructs strata to run the server silently in the background?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6542366
+  },
+  "c_87070af3a8": {
+   "version": 2,
+   "object": "strata update --check",
+   "questions": [
+    "What command is used to verify if a newer version of the Strata engine is available?",
+    "How do you determine if there's an updated Strata engine ready for installation?",
+    "Which command checks for the presence of a newer Strata engine version?",
+    "What should you run to see if an updated Strata engine is available?",
+    "How can you verify whether the Strata engine has a newer version?",
+    "What is the correct command to check for a newer Strata engine?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6542492
+  },
+  "c_c9ac26d518": {
+   "version": 2,
+   "object": "the old engine",
+   "questions": [
+    "What continues to operate if a Strata update does not succeed?",
+    "What engine is retained when a Strata update fails?",
+    "In the event of a Strata update failure, which engine remains active?",
+    "What happens to the engine if the Strata update process is unsuccessful?",
+    "If a Strata update is not completed, which engine is still in use?",
+    "What engine persists when a Strata update fails to execute?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6542618
+  },
+  "c_707455bbe2": {
+   "version": 2,
+   "object": "--stop-model",
+   "questions": [
+    "What command is used in a script to instruct strata update to halt a running model?",
+    "How can a user signal strata update to stop a currently running model?",
+    "Which option in a script stops a model from running in strata update?",
+    "What flag should be included in a script to stop a model in strata update?",
+    "In strata update scripts, what parameter stops the execution of a model?",
+    "What argument is used to stop a running model in a strata update script?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6542728
+  },
+  "c_850ee8d580": {
+   "version": 2,
+   "object": "--start-again",
+   "questions": [
+    "What command causes strata update to restart the model?",
+    "Which option triggers a restart of the model in strata update?",
+    "What should be used to make strata update begin the model from the beginning?",
+    "How can a model restart be initiated in strata update?",
+    "What flag instructs strata update to reinitialize the model?",
+    "What directive causes strata update to start the model over?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654284
+  },
+  "c_e27c519d54": {
+   "version": 2,
+   "object": "Settings",
+   "questions": [
+    "Where can you find the update controls for the Strata desktop app?",
+    "In which section of the Strata app do you manage updates?",
+    "Where are the update options located in Strata?",
+    "Which menu in Strata allows you to adjust update preferences?",
+    "What location in the Strata app provides access to update controls?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6542933
+  },
+  "c_7ac4a976db": {
+   "version": 2,
+   "object": "strata components rollback",
+   "questions": [
+    "What action brings Strata back to the previous engine?",
+    "Which feature restores Strata to its prior engine state?",
+    "What process reverts Strata to the previous engine version?",
+    "What command causes Strata to return to the previous engine?",
+    "Which component is responsible for returning Strata to the previous engine?",
+    "What operation restores Strata to the previous engine configuration?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654301
+  },
+  "c_d1df9368d2": {
+   "version": 2,
+   "object": "cuda-cuda13",
+   "questions": [
+    "What is the engine package used in the NVIDIA DGX Spark by Strata?",
+    "Which CUDA version is integrated into Strata's engine for the DGX Spark?",
+    "What specific CUDA configuration does Strata provide for the NVIDIA DGX Spark?",
+    "What engine package is associated with the NVIDIA DGX Spark according to Strata?",
+    "Which CUDA version is part of the engine setup for the Strata DGX Spark?",
+    "What is the CUDA-based engine package deployed in the Strata-powered NVIDIA DGX Spark?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6543121
+  },
+  "c_9cfdc5f2c6": {
+   "version": 2,
+   "object": "hip-rdna2, hip-rdna3 and hip-rx9070",
+   "questions": [
+    "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Windows?",
+    "What specific GPU engines are included in Strata for Qwen3.8-Flash-Next on AMD with Windows?",
+    "Which hip engines are bundled by Strata for Qwen3.8-Flash-Next on AMD under Windows?",
+    "On AMD systems running Windows with Qwen3.8-Flash-Next, which hip engines are packaged by Strata?",
+    "What hip-rdna and hip-rx engines are integrated into Strata for Qwen3.8-Flash-Next on AMD under Windows?",
+    "Which engines are part of the Strata package for Qwen3.8-Flash-Next on AMD when using Windows?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6543229
+  },
+  "c_f8e24744ea": {
+   "version": 2,
+   "object": "hip-halo, hip-rx6000, hip-rx7900 and hip-rx9070",
+   "questions": [
+    "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Linux?",
+    "What set of engines is included in Strata for Qwen3.8-Flash-Next on AMD under Linux?",
+    "Which specific hip engines are bundled by Strata for Qwen3.8-Flash-Next on AMD under Linux?",
+    "On AMD systems under Linux, which hip engines are packaged by Strata for Qwen3.8-Flash-Next?",
+    "What hip engines are part of the Strata package for Qwen3.8-Flash-Next on AMD under Linux?",
+    "For Qwen3.8-Flash-Next on AMD under Linux, which hip engines are integrated into Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6543348
+  },
+  "c_e414579f28": {
+   "version": 2,
+   "object": "Qwen3.8-Flash-Next variants",
+   "questions": [
+    "What type of models are Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter?",
+    "Are Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter part of distinct model families?",
+    "What classification do Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter belong to?",
+    "What category do the models Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter fall under?",
+    "What kind of variants are Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter?",
+    "What model family type do Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter represent?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654346
+  },
+  "c_1fc828ece3": {
+   "version": 2,
+   "object": "3.10 or newer",
+   "questions": [
+    "What is the minimum Python version required for Strata's MCP server tool?",
+    "Which Python version or higher is necessary to run tools/strata_mcp.py?",
+    "What version of Python does the Strata MCP server tool support?",
+    "What is the required Python version for the strata_mcp.py script?",
+    "Is there a specific Python version threshold for the Strata MCP server?",
+    "What is the lowest Python version that can be used with tools/strata_mcp.py?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6543567
+  },
+  "c_d4a94c831b": {
+   "version": 2,
+   "object": "claude mcp add strata",
+   "questions": [
+    "What command is used to integrate Strata's MCP server into Claude Code?",
+    "How do you add Strata's MCP server to Claude Code?",
+    "What is the correct syntax to include Strata's MCP server in Claude Code?",
+    "Which command enables the connection of Strata's MCP server to Claude Code?",
+    "What should you type to add Strata's MCP server to Claude Code?",
+    "What is the specific instruction to incorporate Strata's MCP server into Claude Code?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654369
+  },
+  "c_84f62ea1a8": {
+   "version": 2,
+   "object": "GET /health",
+   "questions": [
+    "What endpoint does Strata_start polls use to check the model's response?",
+    "Until what endpoint does Strata_start polls send requests to verify the model's answer?",
+    "Which HTTP method and path does Strata_start polls use to monitor the model?",
+    "What is the specific URL Strata_start polls checks for model responses?",
+    "What endpoint is repeatedly requested by Strata_start polls until the model responds?",
+    "What path does Strata_start polls use in its GET request to wait for a model answer?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6543803
+  },
+  "c_a4a576f210": {
+   "version": 2,
+   "object": "the download size and the free space",
+   "questions": [
+    "What information does strata_install display prior to installation?",
+    "What details are shown by strata_install before the installation process begins?",
+    "What data does strata_install provide before starting the installation?",
+    "What two elements does strata_install reveal before installation?",
+    "What information is available to users before strata_install begins the installation?",
+    "What does strata_install indicate about the system before proceeding with installation?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6543908
+  },
+  "c_c5681bd397": {
+   "version": 2,
+   "object": "strata_stop",
+   "questions": [
+    "Until what point does the model continue running after the AI app closes?",
+    "What is the endpoint for the model's operation after the AI app shuts down?",
+    "What time or condition marks the end of the model's execution following the AI app closure?",
+    "After the AI app closes, how long does the model continue running?",
+    "What defines the final moment when the model stops running?",
+    "What is the designated stopping point for the model after the AI app closes?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544008
+  },
+  "c_e2608acc17": {
+   "version": 2,
+   "object": "force: true",
+   "questions": [
+    "What parameter must be included when calling strata_stop to allow it to proceed while a request is running?",
+    "Under what condition will strata_stop permit execution during a running request?",
+    "What flag must be set to override the refusal of strata_stop when a request is active?",
+    "What value must be passed to strata_stop to allow it to run despite an ongoing request?",
+    "What argument is required to force strata_stop to act when a request is currently running?",
+    "What setting enables strata_stop to proceed even if a request is in progress?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544094
+  },
+  "c_a2f73fbb6d": {
+   "version": 2,
+   "object": "5.3% at 32K and 4.1% at 64K",
+   "questions": [
+    "By how much did Strata's KV prefetch reduce prefill time at 32K and 64K?",
+    "What was the improvement in prefill time due to Strata's KV prefetch at 32K and 64K?",
+    "How effective was Strata's KV prefetch in reducing prefill time for 32K and 64K workloads?",
+    "What percentage reduction in prefill time was achieved by Strata's KV prefetch at 32K and 64K?",
+    "At what rates did Strata's KV prefetch decrease prefill time for 32K and 64K?",
+    "What were the prefill time reductions from Strata's KV prefetch at 32K and 64K?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544209
+  },
+  "c_2d0f906c03": {
+   "version": 2,
+   "object": "8,192 tokens",
+   "questions": [
+    "What is the maximum number of tokens Strata processes in each segment of a long text?",
+    "How many tokens can Strata handle per reading segment?",
+    "What is the limit on the length of text Strata reads in one go?",
+    "What is the maximum token count Strata uses when processing long texts?",
+    "In chunks, how many tokens does Strata process at a time?",
+    "What is the upper bound for tokens Strata reads in a single piece?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654435
+  },
+  "c_7affd23d61": {
+   "version": 2,
+   "object": "api_key",
+   "questions": [
+    "What is the credential that the MCP tool includes in its requests when a Strata folder's config specifies it?",
+    "What value is transmitted by the MCP tool in its requests if a config in a Strata folder defines it?",
+    "What secret is automatically included in the MCP tool's outgoing requests when set in a Strata folder's configuration?",
+    "What key is sent by the MCP tool without being exposed in any output when defined in a Strata folder's config?",
+    "What authentication token is embedded in the MCP tool's requests based on a Strata folder's configuration?",
+    "What is the sensitive value that the MCP tool uses in its requests when configured in a Strata folder?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6544452
+  },
+  "c_93810f567f": {
+   "version": 2,
+   "object": "--host 0.0.0.0",
+   "questions": [
+    "What IP address option is excluded when installing Strata_install?",
+    "Which host address is not supported during Strata_install installation?",
+    "What network-accessible host address is not used by Strata_install?",
+    "Is it possible to install Strata_install with a host set to 0.0.0.0?",
+    "What specific host value is never used in Strata_install installation?",
+    "What address is not allowed in the host configuration for Strata_install?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544561
+  },
+  "c_37eb2a538d": {
+   "version": 3,
+   "object": "package present, untested",
+   "questions": [
+    "What is the status of Qwen3.6-35B-A3B on the NVIDIA DGX Spark in Strata?",
+    "Is Qwen3.6-35B-A3B available on the NVIDIA DGX Spark and tested in Strata?",
+    "What is the current condition of Qwen3.6-35B-A3B when deployed on the NVIDIA DGX Spark in Strata?",
+    "Has Qwen3.6-35B-A3B been evaluated on the NVIDIA DGX Spark within the Strata environment?",
+    "What is the status of the Qwen3.6-35B-A3B package on the NVIDIA DGX Spark in the Strata setup?",
+    "What is the current state of Qwen3.6-35B-A3B on the NVIDIA DGX Spark in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544678
+  },
+  "c_34468ebc8b": {
+   "version": 1,
+   "object": "confirm: true",
+   "questions": [
+    "What parameter must be passed to Strata_install for it to take action?",
+    "Under what condition does Strata_install begin execution?",
+    "What value must be included in the call to Strata_install to trigger its behavior?",
+    "When is Strata_install activated?",
+    "What flag must be set to enable Strata_install to perform its function?",
+    "What input is required for Strata_install to start operating?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544778
+  },
+  "c_1d57a8cdc8": {
+   "version": 2,
+   "object": "prompt lookup",
+   "questions": [
+    "What mechanism does Strata use to draft tokens when a reply repeats the context, such as in code edits?",
+    "In scenarios where a reply reuses context like code edits, what process does Strata employ to generate tokens?",
+    "How does Strata obtain token information when a response mirrors previous context, such as in code edits?",
+    "What method enables Strata to draft tokens when a reply includes repeated context, like in code edits?",
+    "When a reply reproduces context, such as in code edits, what technique does Strata use to retrieve token data?",
+    "What process does Strata apply to draft tokens when a reply repeats context, for example in code edits?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544878
+  },
+  "c_a973bacbdf": {
+   "version": 2,
+   "object": "48 layers",
+   "questions": [
+    "How many layers does Strata review during its token check?",
+    "What is the total number of layers Strata examines in a single pass?",
+    "During the token validation process, how many layers does Strata go through?",
+    "In one pass, how many layers are evaluated by Strata for drafted tokens?",
+    "How many layers are involved in Strata's one-pass token verification?",
+    "What is the number of layers Strata inspects when checking drafted tokens?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6544983
+  },
+  "c_1d73bb6e97": {
+   "version": 2,
+   "object": "ggml",
+   "questions": [
+    "Which technology does Strata use to compute experts for the i-quants?",
+    "What library provides the kernels used by Strata for i-quants experts?",
+    "Which tool's kernels are employed by Strata in computing experts for i-quants?",
+    "What is the underlying framework that powers the expert computations for i-quants via Strata?",
+    "Which kernel technology is integrated into Strata for i-quants expert calculations?",
+    "What library's kernels are utilized by Strata to compute experts for i-quants?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6545079
+  },
+  "c_70a758c63e": {
+   "version": 2,
+   "object": "low-RAM mode",
+   "questions": [
+    "What feature allows a PC with limited RAM to run efficiently when paired with a powerful graphics card?",
+    "In a system with minimal RAM and a high-end graphics card, which mode ensures only necessary data stays in memory?",
+    "What setting enables a PC to store only the data not held by the GPU in its RAM?",
+    "Which mode optimizes memory usage by keeping only the data the GPU doesn't need in RAM?",
+    "What is the specific mode used on PCs with little RAM and strong graphics cards to reduce memory load?",
+    "What function does Strata offer to manage RAM usage when the GPU handles most of the processing?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654517
+  },
+  "c_1b740afa0e": {
+   "version": 2,
+   "object": "the engine for your graphics card",
+   "questions": [
+    "What does the Strata desktop app download when it is first started?",
+    "What component is fetched by the Strata app during its initial launch?",
+    "What is downloaded by the Strata desktop app upon first use?",
+    "What does the Strata app acquire when it starts for the first time?",
+    "What is installed by the Strata desktop app at startup?",
+    "What resource is downloaded by the Strata app on its initial run?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6545289
+  },
+  "c_88eb3bd6f7": {
+   "version": 2,
+   "object": "three",
+   "questions": [
+    "How many sizes does DeepSeek V4.1-Flash offer in the Strata app?",
+    "What is the number of available sizes for DeepSeek V4.1-Flash within Strata?",
+    "In Strata, how many different sizes is DeepSeek V4.1-Flash available in?",
+    "How many variants of DeepSeek V4.1-Flash are provided in the Strata app?",
+    "What is the count of sizes for DeepSeek V4.1-Flash in Strata?",
+    "How many size options are there for DeepSeek V4.1-Flash in the Strata app?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6545377
+  },
+  "c_7065e1914e": {
+   "version": 2,
+   "object": "CUDA 12",
+   "questions": [
+    "Which engine do older NVIDIA cards utilize according to the provided information?",
+    "What CUDA version is associated with older NVIDIA graphics cards?",
+    "Which engine powers older NVIDIA cards as mentioned in the fact?",
+    "What is the CUDA version used in older NVIDIA cards?",
+    "Which engine is used in older NVIDIA cards as specified in the fact?",
+    "What CUDA engine version is referenced for older NVIDIA cards?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6545608
+  },
+  "c_73bba73d54": {
+   "version": 2,
+   "object": "I already have the file",
+   "questions": [
+    "What option in the Strata app allows the engine file to be installed without requiring an internet connection?",
+    "Which choice in the Strata app enables the installation of the engine file when it's already downloaded?",
+    "What should a user select in the Strata app if the engine file is locally available?",
+    "What action in the Strata app triggers the installation of the engine file without needing internet access?",
+    "Which option in the Strata app is used when the engine file has been previously downloaded?",
+    "What choice in the Strata app installs the engine file directly from the local storage?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.65457
+  },
+  "c_653d0a2867": {
+   "version": 2,
+   "object": "Metal engine",
+   "questions": [
+    "What type of engine is housed within the Strata Mac file?",
+    "Which engine is contained in the Strata Mac file?",
+    "What engine is maintained inside the Strata Mac file?",
+    "What internal component does the Strata Mac file include?",
+    "Which engine is kept inside the Strata Mac file?",
+    "What engine is stored within the Strata Mac file?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6545806
+  },
+  "c_bea16a0b16": {
+   "version": 2,
+   "object": "its managed engine",
+   "questions": [
+    "What part of the Strata desktop app stops when the app is closed?",
+    "What component is halted upon closing the Strata desktop application?",
+    "What system feature of the Strata app ceases operation when the app is shut down?",
+    "What engine is affected when the Strata desktop app is closed?",
+    "What part of the Strata app's functionality stops when the app is closed?",
+    "What is disabled when the Strata desktop app is terminated?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6545906
+  },
+  "c_275ce6a63e": {
+   "version": 2,
+   "object": "strata launch --status",
+   "questions": [
+    "What command is used to verify if the Strata server is active?",
+    "How do you check the operational status of the Strata server?",
+    "Which command determines whether the Strata server is currently running?",
+    "What is the correct command to confirm the Strata server's status?",
+    "How can you verify if the Strata server is up and running?",
+    "What should you run to check if the Strata server is active?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654601
+  },
+  "c_bc0bcc1948": {
+   "version": 2,
+   "object": "strata connect",
+   "questions": [
+    "What tool is used to demonstrate how to link Claude Code with Strata?",
+    "How can users integrate Claude Code into Strata?",
+    "What service provides step-by-step guidance for connecting Claude Code to Strata?",
+    "Which platform offers instructions for linking a coding tool like Claude Code?",
+    "What is the method for connecting Claude Code to Strata?",
+    "What is the name of the service that explains how to link Claude Code to Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6546094
+  },
+  "c_feb52830c5": {
+   "version": 2,
+   "object": "strata launch --stop",
+   "questions": [
+    "What command is used to halt the Strata server?",
+    "How do you stop the Strata server from running?",
+    "What is the correct instruction to stop the Strata server?",
+    "Which command will stop the Strata server?",
+    "What should you type to stop the Strata server?",
+    "What is the command that stops the Strata server operation?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6546204
+  },
+  "c_4c9f2411aa": {
+   "version": 2,
+   "object": "sycl",
+   "questions": [
+    "What is the name of the engine package that Strata provides for Intel Arc on Linux?",
+    "Which engine package is used by Strata for Intel Arc when running on Linux?",
+    "What technology does Strata utilize for Intel Arc on Linux systems?",
+    "What engine package is associated with Strata's support for Intel Arc on Linux?",
+    "Which engine is integrated into Strata's solution for Intel Arc on Linux?",
+    "What is the engine package that enables Strata's functionality for Intel Arc on Linux?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654632
+  },
+  "c_a48f677644": {
+   "version": 2,
+   "object": "metal",
+   "questions": [
+    "What material is used in Strata's engine package designed for Apple silicon?",
+    "What type of construction does Strata's engine package for Apple silicon have?",
+    "What is the composition of Strata's engine package for Apple silicon devices?",
+    "What kind of material is incorporated into Strata's engine package for Apple silicon?",
+    "What substance forms the basis of Strata's engine package for Apple silicon?",
+    "What is the material specification of Strata's engine package for Apple silicon?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654642
+  },
+  "c_eb349d9675": {
+   "version": 2,
+   "object": "only the standard library",
+   "questions": [
+    "What set of libraries does Strata's MCP server rely on exclusively?",
+    "Which libraries are used by Strata's MCP server without any external dependencies?",
+    "What kind of library dependencies does Strata's MCP server have?",
+    "Does Strata's MCP server require any third-party packages?",
+    "What is the source of all the libraries used in Strata's MCP server?",
+    "What standard components are included in Strata's MCP server implementation?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6546807
+  },
+  "c_aebbcd3229": {
+   "version": 2,
+   "object": "stdio",
+   "questions": [
+    "What method is used for transferring data from Strata's MCP server?",
+    "How is the communication between Strata's MCP server and other components handled?",
+    "What standard input/output mechanism is utilized by Strata's MCP server?",
+    "Which protocol governs the data flow in Strata's MCP server?",
+    "What is the standard way that Strata's MCP server manages data transfer?",
+    "What input/output system does Strata's MCP server rely on for transport?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654689
+  },
+  "c_fd2c7c9eb0": {
+   "version": 2,
+   "object": "the available RAM",
+   "questions": [
+    "How does Strata_install determine the model size based on system resources?",
+    "What factor does Strata_install use to select the model size?",
+    "In what way does Strata_install choose the model size compared to setup?",
+    "What system resource does Strata_install consider when selecting the model size?",
+    "On what basis does Strata_install decide the model size?",
+    "Which hardware component guides Strata_install in picking the model size?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6547012
+  },
+  "c_98ecf9f527": {
+   "version": 2,
+   "object": "the GPU's VRAM",
+   "questions": [
+    "What does Strata_install select based on the setup's recommendation?",
+    "Which component's memory does Strata_install choose according to setup advice?",
+    "What memory type is recommended by setup and selected by Strata_install?",
+    "On what resource does Strata_install base its context selection?",
+    "Which VRAM element does Strata_install determine using setup's guidance?",
+    "What specific memory feature does Strata_install pick as advised by setup?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6547096
+  },
+  "c_91b3de7f50": {
+   "version": 2,
+   "object": "15.5%",
+   "questions": [
+    "By what percentage did Strata's disjoint expert cache enhance generation performance in past evaluations?",
+    "How much did the implementation of Strata's disjoint expert cache boost generation results in historical benchmarks?",
+    "What improvement in generation performance was observed due to Strata's disjoint expert cache in previous tests?",
+    "In earlier testing, by what margin did Strata's disjoint expert cache improve generation?",
+    "What was the performance gain in generation attributed to Strata's disjoint expert cache in historical experiments?",
+    "What percentage increase in generation performance resulted from Strata's disjoint expert cache in past assessments?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6547291
+  },
+  "c_5347d8981e": {
+   "version": 2,
+   "object": "12.2%",
+   "questions": [
+    "By what percentage did Strata's expert cache cut request time improve in historical tests?",
+    "What was the reduction in Strata's expert cache cut request time during historical tests?",
+    "How much faster did Strata's expert cache cut request time become in historical tests?",
+    "In historical tests, what percentage improvement was observed in Strata's expert cache cut request time?",
+    "What specific performance gain did Strata achieve in historical tests for expert cache cut request time?",
+    "What percentage decrease in request time was recorded for Strata's expert cache cut in historical tests?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6547396
+  },
+  "c_6497644b55": {
+   "version": 2,
+   "object": "over 1,000 tokens per second",
+   "questions": [
+    "How many tokens can Strata process in a single second when reading a long document or code base?",
+    "What is the speed at which Strata can read a large document or code base?",
+    "At what rate does Strata analyze a lengthy document or code base?",
+    "How fast can Strata consume a long document or code base in terms of tokens per second?",
+    "What is the maximum token processing speed of Strata when reading complex code or documents?",
+    "What rate does Strata maintain when reading a long document or code base in tokens per second?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6547487
+  },
+  "c_32c449e789": {
+   "version": 2,
+   "object": "PCIe",
+   "questions": [
+    "What type of interface is used to transfer data from the experts in the next layer to the GPU?",
+    "Through which connection do the experts of the next layer send data to the GPU?",
+    "Which hardware interface facilitates the streaming of next layer experts to the GPU?",
+    "What pathway carries the next layer's expert data to the GPU?",
+    "How is data from the next layer's experts transmitted to the GPU?",
+    "Which bus enables the transfer of experts from the next layer to the GPU?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6547613
+  },
+  "c_b84d01cbce": {
+   "version": 2,
+   "object": "AVX-512 / AVX2",
+   "questions": [
+    "What instruction sets does Strata's CPU use for computing experts?",
+    "Which instruction sets are supported by Strata's CPU for expert computations?",
+    "What kind of kernels does Strata's CPU utilize for expert processing?",
+    "What technology enables Strata's CPU to perform expert computations?",
+    "Which advanced instruction sets are implemented in Strata's CPU kernels?",
+    "What processor instruction sets are used in Strata's expert computing kernels?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6547728
+  },
+  "c_da6a8fe7ae": {
+   "version": 2,
+   "object": "6-11%",
+   "questions": [
+    "By how much does prompt lookup improve the speed of code edits in Strata?",
+    "What is the range of speed improvement for code edits when using prompt lookup in Strata?",
+    "How much faster do code edits become with prompt lookup in Strata?",
+    "What percentage range does prompt lookup provide for faster code edits in Strata?",
+    "In Strata, what is the speed increase range for code edits using prompt lookup?",
+    "What is the speed enhancement range for code edits in Strata when prompt lookup is used?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654783
+  },
+  "c_da1720d0c1": {
+   "version": 3,
+   "object": "SIGTERM",
+   "questions": [
+    "What signal is used to terminate the Strata server on Linux via the strata_stop command?",
+    "Which signal is sent to the Strata server when strata_stop is executed on Linux?",
+    "What signal does the strata_stop command use to stop the Strata server on a Linux system?",
+    "What signal is issued to the Strata server to gracefully end its process on Linux?",
+    "What signal is triggered by the strata_stop command to stop the Strata server?",
+    "What signal is employed by strata_stop to terminate the Strata server on Linux?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6547933
+  },
+  "c_d01a866970": {
+   "version": 5,
+   "object": "about 197 GB",
+   "questions": [
+    "How much free disk space is required for the ISTA-DAS Coder set of DeepSeekV4.1-Flash-1017 on Strata?",
+    "What is the minimum disk space needed to run the DeepSeekV4.1-Flash-1017 ISTA-DAS Coder set on Strata?",
+    "What amount of free storage is necessary for the DeepSeekV4.1-Flash-1017 Coder set in Strata?",
+    "How much free disk space does the DeepSeekV4.1-Flash-1017 ISTA-DAS Coder require on Strata?",
+    "What is the disk space requirement for the DeepSeekV4.1-Flash-1017 ISTA-DAS Coder set when deployed on Strata?",
+    "What amount of free space is needed on Strata to install the ISTA-DAS Coder version of DeepSeekV4.1-Flash-1017?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654804
+  },
+  "c_1a5aab842f": {
+   "version": 1,
+   "object": "10",
+   "questions": [
+    "How many experts does Qwen3.8-Flash-Next use per word in Strata?",
+    "What is the number of experts utilized per word in the Strata model?",
+    "In the Strata setup, how many of the 24,576 experts are employed for each word?",
+    "How many experts are required per word when using Qwen3.8-Flash-Next in Strata?",
+    "What is the count of experts used per word in the Qwen3.8-Flash-Next model under Strata?",
+    "In Strata, what is the number of experts assigned to each word in Qwen3.8-Flash-Next?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654816
+  },
+  "c_ddfc4f011d": {
+   "version": 1,
+   "object": "700",
+   "questions": [
+    "How many additional experts does each extra gigabyte of VRAM support in Strata?",
+    "What is the increase in number of experts per additional GB of VRAM in Strata?",
+    "In Strata, by how much does the number of experts grow with each extra GB of VRAM?",
+    "How many more experts can be added for every additional gigabyte of VRAM in Strata?",
+    "What is the number of extra experts that correspond to one additional GB of VRAM in Strata?",
+    "By how much does the count of experts rise with one extra GB of VRAM in Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6548247
+  },
+  "c_d7afe7d550": {
+   "version": 1,
+   "object": "1.6-1.8x",
+   "questions": [
+    "How much faster does Strata's guess then check method produce a quality answer compared to other methods?",
+    "By what factor is the time to obtain a quality answer reduced using Strata's guess then check?",
+    "What is the speed improvement in getting a quality answer with Strata's guess then check?",
+    "How many times faster is Strata's guess then check in delivering a quality answer?",
+    "What multiplier represents the time reduction for a quality answer using Strata's method?",
+    "What is the range of speedup for Strata's guess then check in generating a quality answer?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6548362
+  },
+  "c_006902236a": {
+   "version": 1,
+   "object": "2.4-3.2",
+   "questions": [
+    "On average, how many tokens does one check pass in Strata accept?",
+    "What is the typical range of tokens accepted per check pass in Strata?",
+    "How many tokens are generally processed by a single check pass in Strata?",
+    "In Strata, what is the average number of tokens that a check pass can handle?",
+    "What range of tokens does a check pass in Strata usually accept?",
+    "What is the standard token range accepted by a check pass in Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654848
+  },
+  "c_925219e5cb": {
+   "version": 1,
+   "object": "5 tokens",
+   "questions": [
+    "How many tokens can Strata's prompt lookup draft from a previous copy?",
+    "What is the maximum number of tokens Strata can pull from earlier text for prompt lookup?",
+    "How many tokens does Strata's prompt lookup feature support when drafting from prior content?",
+    "What is the limit on tokens that Strata drafts from earlier copies?",
+    "Up to how many tokens can Strata's prompt lookup use from previous text?",
+    "What is the maximum token count Strata can draft from earlier copies in prompt lookup?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6548567
+  },
+  "c_3ba120dbd5": {
+   "version": 1,
+   "object": "SSD",
+   "questions": [
+    "Where does Strata store the n-gram table?",
+    "What type of storage is used by Strata for the n-gram table?",
+    "On which device does Strata maintain the n-gram table?",
+    "Which storage medium holds the n-gram table in Strata?",
+    "What hardware component in Strata is responsible for keeping the n-gram table?",
+    "Where is the n-gram table preserved in Strata's architecture?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6548674
+  },
+  "c_6f230583f8": {
+   "version": 1,
+   "object": "64K",
+   "questions": [
+    "What is the context size mentioned in the description of Strata's KV cache management?",
+    "What capacity does the context refer to in the explanation of how Strata handles the KV cache?",
+    "What is the specified context limit in the method Strata uses to manage the KV cache on the GPU?",
+    "What size context is used to determine which parts of the KV cache are kept on the GPU?",
+    "What context value is referenced when describing Strata's selective retention of KV cache data?",
+    "What is the context size that defines how much of the KV cache is retained on the GPU?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6548767
+  },
+  "c_23886e8ab1": {
+   "version": 1,
+   "object": "llama.cpp / ggml",
+   "questions": [
+    "What components form the foundation of Strata's architecture?",
+    "Which open-source libraries are integrated into Strata's design?",
+    "What technology stack does Strata rely on for its core functionality?",
+    "What is the underlying framework used in Strata's implementation?",
+    "Which tools contribute to Strata's computational engine?",
+    "What open-source project provides the core functionality for Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654889
+  },
+  "c_30f7340cde": {
+   "version": 1,
+   "object": "Splash, ninfer and HyperQwen",
+   "questions": [
+    "Which models serve as inspiration for Strata?",
+    "What are the sources of Strata's conceptual foundation?",
+    "From which models does Strata derive its design principles?",
+    "What models contribute to the development of Strata?",
+    "Which three models influence Strata's architecture?",
+    "What are the key inspirations behind Strata's creation?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.654899
+  },
+  "c_094ea70e8e": {
+   "version": 1,
+   "object": "580 or newer",
+   "questions": [
+    "What is the minimum NVIDIA driver version required for Strata's CUDA 13 packages?",
+    "Which NVIDIA driver version or higher is necessary to run Strata's CUDA 13 packages?",
+    "What version of the NVIDIA driver must be installed to support Strata's CUDA 13?",
+    "What is the required NVIDIA driver version for compatibility with Strata's CUDA 13?",
+    "At what NVIDIA driver level must users ensure their system is running to use Strata's CUDA 13?",
+    "What is the minimum NVIDIA driver version needed for Strata's CUDA 13 packages?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6549094
+  },
+  "c_15b7cde3bb": {
+   "version": 1,
+   "object": "0.1.59",
+   "questions": [
+    "What version number is assigned to Strata's Control and engines?",
+    "What is the version of Strata's Control and engines?",
+    "Which version do Strata's Control and engines currently hold?",
+    "What version number applies to both Strata's Control and engines?",
+    "What is the specific version of Strata's Control and engines?",
+    "What version is currently in use for Strata's Control and engines?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.654918
+  },
+  "c_5f8ec71a41": {
+   "version": 1,
+   "object": "50",
+   "questions": [
+    "What is the default number of seconds a model is allowed to wait before being marked as loading?",
+    "By default, how many seconds does the system wait before indicating a model is loading?",
+    "What value is used as the default wait time if a model fails to load?",
+    "If a model does not respond within a certain time, what is the default threshold in seconds?",
+    "What is the default timeout duration in seconds for a model to be considered ready?",
+    "What number of seconds is set as the default wait period before strata_start returns 'loading'?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6549284
+  },
+  "c_07f42fe2b9": {
+   "version": 1,
+   "object": "IQ3_XXS",
+   "questions": [
+    "What size does strata_install select when the system has 60 GB of RAM or more?",
+    "If a machine has at least 60 GB of RAM, which size is chosen by strata_install?",
+    "What is the designated size for systems with 60 GB or more of RAM during strata_install?",
+    "When RAM capacity reaches 60 GB or higher, what size is automatically selected by strata_install?",
+    "For systems equipped with 60 GB of RAM or more, what size does strata_install assign?",
+    "What size is picked by strata_install in response to 60 GB or more of RAM availability?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6549373
+  },
+  "c_b125bca260": {
+   "version": 1,
+   "object": "Q2_0",
+   "questions": [
+    "What size does strata_install select when it has approximately 44 GB of RAM?",
+    "Which configuration is chosen by strata_install given around 44 GB of memory?",
+    "What is the designated size when strata_install is allocated about 44 GB of RAM?",
+    "What option is picked by strata_install with roughly 44 GB of available RAM?",
+    "Based on 44 GB of RAM, which size does strata_install determine?",
+    "What size is assigned to strata_install when it has about 44 GB of RAM?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6549492
+  },
+  "c_b997138ee1": {
+   "version": 1,
+   "object": "Coder",
+   "questions": [
+    "What does strata_install select when it has about 28 GB of RAM?",
+    "Which option is chosen by strata_install given approximately 28 GB of RAM?",
+    "What entity is selected by strata_install with around 28 GB of memory?",
+    "When strata_install has about 28 GB of RAM, what is the outcome?",
+    "What is the result of strata_install when it is provided with about 28 GB of RAM?",
+    "What is the chosen option when strata_install has approximately 28 GB of RAM?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6549592
+  },
+  "c_689afba8f0": {
+   "version": 1,
+   "object": "strata_benchmark",
+   "questions": [
+    "What tool is used by Strata's MCP server to perform a short speed test?",
+    "Which utility conducts the speed test on Strata's MCP server?",
+    "What is the name of the tool that runs the speed test on Strata's MCP server?",
+    "Which software is responsible for the short speed test in Strata's MCP server?",
+    "What specific tool performs the speed test on Strata's MCP server?",
+    "What is the name of the tool that executes the short speed test on Strata's MCP server?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6549714
+  },
+  "c_bd73b40eea": {
+   "version": 1,
+   "object": "strata_connect_info",
+   "questions": [
+    "What tool provides OpenAI and Anthropic base URLs from Strata's MCP server?",
+    "Which tool is used to retrieve the base URLs for OpenAI and Anthropic on Strata's MCP server?",
+    "What function on Strata's MCP server returns the OpenAI and Anthropic base URLs?",
+    "How can users access the base URLs for OpenAI and Anthropic via Strata's system?",
+    "Which utility on Strata's MCP server delivers the base URLs for OpenAI and Anthropic?",
+    "What is the designated tool that returns OpenAI and Anthropic base URLs in Strata's MCP environment?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6549804
+  },
+  "c_94c827328e": {
+   "version": 1,
+   "object": "strata_remove",
+   "questions": [
+    "What tool does Strata's MCP server use to delete an installed model's own files?",
+    "Which utility is responsible for removing an installed model's files on Strata's MCP server?",
+    "What command is used by Strata's MCP server to eliminate a model's own files?",
+    "Which function deletes the files associated with an installed model in Strata's MCP system?",
+    "What is the name of the tool that removes an installed model's files in Strata's MCP environment?",
+    "What utility performs the deletion of an installed model's own files in Strata's MCP server?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6549902
+  },
+  "c_5d6e6a01a2": {
+   "version": 1,
+   "object": "strata_models",
+   "questions": [
+    "What tool does Strata's MCP server use to list all available model families and sizes?",
+    "Which utility provides a complete list of model families and sizes offered by setup?",
+    "What command is used by Strata's MCP server to display model families and sizes?",
+    "Which tool enables Strata's MCP server to enumerate all model families and sizes?",
+    "What is the designated tool for listing model families and sizes in Strata's setup?",
+    "Which instrument does Strata's MCP server employ to retrieve model family and size information?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6550007
+  },
+  "c_b6a94f7e62": {
+   "version": 1,
+   "object": "strata_status",
+   "questions": [
+    "What tool does Strata's MCP server use to report a model's status, VRAM usage, RAM usage, and PC hardware details?",
+    "Which utility provides information about a model's runtime status and system resource usage in Strata's MCP server?",
+    "What command is used by Strata's MCP server to monitor model activity and system hardware?",
+    "How does Strata's MCP server communicate model and system performance data?",
+    "Which tool enables Strata's MCP server to report real-time status including VRAM, RAM, and PC hardware?",
+    "What is the designated tool for retrieving model and system resource status from Strata's MCP server?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6550102
+  },
+  "c_0670476498": {
+   "version": 2,
+   "object": "4 to 6",
+   "questions": [
+    "What is the range of tokens generated per second by an RTX 5070 12 GB with 64 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+    "How many tokens can be produced per second by the RTX 5070 12 GB with 64 GB RAM under these conditions in Strata?",
+    "What is the token output rate per second for the RTX 5070 12 GB with 64 GB RAM using DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+    "In Strata, what is the speed range at which the RTX 5070 12 GB with 64 GB RAM generates tokens with DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "What range of token generation per second does the RTX 5070 12 GB with 64 GB RAM achieve in Strata when processing DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "At what rate does the RTX 5070 12 GB with 64 GB RAM produce tokens in Strata when using DeepSeekV4.1-Flash-1017 at 2.00 bpw?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6550238
+  },
+  "c_c4b11af68c": {
+   "version": 2,
+   "object": "9 to 11",
+   "questions": [
+    "What is the range of tokens generated per second by an RTX 3060 12 GB with 46 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+    "How many tokens per second can the RTX 3060 12 GB with 46 GB RAM produce in Strata under the specified DeepSeekV4.1-Flash-1017 settings?",
+    "What is the token output rate in Strata for the RTX 3060 12 GB with 46 GB RAM when using DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "At what rate does the RTX 3060 12 GB with 46 GB RAM generate tokens in Strata with DeepSeekV4.1-Flash-1017 running at 2.00 bpw?",
+    "What range of token generation per second is achieved by the RTX 3060 12 GB with 46 GB RAM in Strata with DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "What is the token output speed in Strata for the RTX 3060 12 GB with 46 GB RAM when processing with DeepSeekV4.1-Flash-1017 at 2.00 bpw?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6550357
+  },
+  "c_80ad6c9f67": {
+   "version": 2,
+   "object": "21 to 25",
+   "questions": [
+    "What is the range of tokens produced per second by a Radeon AI PRO R9700 with 251 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+    "How many tokens per second can the Radeon AI PRO R9700 with 251 GB RAM generate in Strata under the specified DeepSeekV4.1-Flash-1017 settings?",
+    "What is the token output rate in Strata for a Radeon AI PRO R9700 with 251 GB RAM using DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "At what rate does the Radeon AI PRO R9700 with 251 GB RAM produce tokens in Strata when processing DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "What is the minimum and maximum number of tokens per second that can be generated by a Radeon AI PRO R9700 with 251 GB RAM in Strata with DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "What range of token generation per second is achieved by a Radeon AI PRO R9700 with 251 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.655048
+  },
+  "c_171d5a26e1": {
+   "version": 2,
+   "object": "74 to 77",
+   "questions": [
+    "What is the range of tokens per second produced by four Radeon AI PRO R9700 cards when running with DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+    "How many tokens per second can four Radeon AI PRO R9700 cards generate in Strata under the specified DeepSeekV4.1-Flash-1017 settings?",
+    "What is the token output rate per second for the four Radeon AI PRO R9700 cards in Strata at 2.00 bpw with DeepSeekV4.1-Flash-1017?",
+    "What range of token generation per second do the four Radeon AI PRO R9700 cards achieve in Strata with DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "At what rate do four Radeon AI PRO R9700 cards produce tokens in Strata when using DeepSeekV4.1-Flash-1017 at 2.00 bpw?",
+    "What is the token per second output range for the four Radeon AI PRO R9700 cards in the Strata environment with DeepSeekV4.1-Flash-1017 at 2.00 bpw?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6550593
+  },
+  "c_770fb277cc": {
+   "version": 2,
+   "object": "19 to 21",
+   "questions": [
+    "What is the range of tokens per second produced by a Ryzen AI Max+ 395 (Strix Halo) with 128 GB unified memory when running code in Strata using DeepSeekV4.1-Flash-1017?",
+    "How many tokens per second can the Strix Halo with 128 GB memory generate for code tasks with DeepSeekV4.1-Flash-1017?",
+    "What is the token output rate in seconds for code generation on a Ryzen AI Max+ 395 (Strix Halo) equipped with 128 GB unified memory using DeepSeekV4.1-Flash-1017?",
+    "What range of token generation speed does DeepSeekV4.1-Flash-1017 achieve on a Strix Halo with 128 GB memory when processing code?",
+    "What is the minimum to maximum token output per second for code in Strata on a Ryzen AI Max+ 395 (Strix Halo) with 128 GB unified memory?",
+    "What is the token throughput range for code in Strata when using DeepSeekV4.1-Flash-1017 on a Ryzen AI Max+ 395 (Strix Halo) with 128 GB memory?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6550725
+  },
+  "c_383f6b6679": {
+   "version": 2,
+   "object": "110",
+   "questions": [
+    "How many tokens per second can Strata process when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 5070 12 GB with 64 GB RAM?",
+    "What is the token processing speed of Strata for a 4K prompt on the specified hardware setup?",
+    "At what rate does Strata handle tokens when reading a 4K prompt with DeepSeekV4.1-Flash-1017 on an RTX 5070 12 GB and 64 GB RAM?",
+    "What is the token throughput of Strata when processing a 4K prompt on an RTX 5070 12 GB with 64 GB RAM using DeepSeekV4.1-Flash-1017?",
+    "How fast can Strata read a 4K prompt in tokens per second with DeepSeekV4.1-Flash-1017 on the given GPU and RAM configuration?",
+    "What is the token rate at which Strata reads a 4K prompt on an RTX 5070 12 GB with 64 GB RAM using DeepSeekV4.1-Flash-1017?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6550815
+  },
+  "c_b26806e0cb": {
+   "version": 2,
+   "object": "155",
+   "questions": [
+    "How many tokens can Strata process per second when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 3060 12 GB with 46 GB RAM?",
+    "What is the token processing speed of Strata for a 4K prompt on the specified hardware setup?",
+    "At what rate does Strata handle tokens when processing a 4K prompt with DeepSeekV4.1-Flash-1017 on an RTX 3060 12 GB and 46 GB RAM?",
+    "What is the token throughput of Strata when running DeepSeekV4.1-Flash-1017 on an RTX 3060 with 12 GB of GPU memory and 46 GB of system RAM?",
+    "How fast can Strata read a 4K prompt in tokens per second using DeepSeekV4.1-Flash-1017 on the given GPU and RAM configuration?",
+    "What is the token processing rate of Strata on an RTX 3060 12 GB with 46 GB RAM when handling a 4K prompt via DeepSeekV4.1-Flash-1017?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6550934
+  },
+  "c_3599ac2d71": {
+   "version": 2,
+   "object": "320 to 360",
+   "questions": [
+    "What is the range of tokens per second that Strata can process when reading an 8K prompt with DeepSeekV4.1-Flash-1017 on a Radeon AI PRO R9700?",
+    "How many tokens per second does Strata achieve on a single Radeon AI PRO R9700 when handling an 8K prompt using DeepSeekV4.1-Flash-1017?",
+    "What is the speed range for token processing by Strata when running DeepSeekV4.1-Flash-1017 on a Radeon AI PRO R9700 for an 8K prompt?",
+    "At what rate can Strata read an 8K prompt using DeepSeekV4.1-Flash-1017 on a Radeon AI PRO R9700 in terms of tokens per second?",
+    "What tokens per second does Strata deliver when processing an 8K prompt with DeepSeekV4.1-Flash-1017 on one Radeon AI PRO R9700?",
+    "What is the token processing speed range for Strata on a Radeon AI PRO R9700 when using DeepSeekV4.1-Flash-1017 for an 8K prompt?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6551042
+  },
+  "c_07b1bb85e1": {
+   "version": 2,
+   "object": "400 to 450",
+   "questions": [
+    "What is the range of tokens per second that Strata can process when reading an 8K prompt using DeepSeekV4.1-Flash-1017 on four Radeon AI PRO R9700 cards?",
+    "How many tokens per second does Strata achieve when handling an 8K prompt with DeepSeekV4.1-Flash-1017 across four Radeon AI PRO R9700 cards?",
+    "What is the token processing speed range for Strata when reading an 8K prompt on four Radeon AI PRO R9700 cards with DeepSeekV4.1-Flash-1017?",
+    "At what rate can Strata read an 8K prompt using DeepSeekV4.1-Flash-1017 on four Radeon AI PRO R9700 cards in terms of tokens per second?",
+    "What tokens per second does Strata process when reading an 8K prompt with DeepSeekV4.1-Flash-1017 on a setup of four Radeon AI PRO R9700 cards?",
+    "What is the speed range in tokens per second for Strata's reading of an 8K prompt using DeepSeekV4.1-Flash-1017 on four Radeon AI PRO R9700 cards?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.655118
+  },
+  "c_c7602d37a8": {
+   "version": 2,
+   "object": "125",
+   "questions": [
+    "What is the token processing speed when Strata reads an 8K prompt using DeepSeekV4.1-Flash-1017 on a Ryzen AI Max+ 395 (Strix Halo)?",
+    "How many tokens per second can Strata process with DeepSeekV4.1-Flash-1017 on the Ryzen AI Max+ 395 (Strix Halo) when handling an 8K prompt?",
+    "At what rate does Strata read an 8K prompt using DeepSeekV4.1-Flash-1017 on a Ryzen AI Max+ 395 (Strix Halo) in tokens per second?",
+    "What is the speed of token reading for Strata when processing an 8K prompt with DeepSeekV4.1-Flash-1017 on the Ryzen AI Max+ 395 (Strix Halo)?",
+    "How fast can Strata process tokens when reading an 8K prompt with DeepSeekV4.1-Flash-1017 on a Ryzen AI Max+ 395 (Strix Halo)?",
+    "What is the token rate achieved by Strata when reading an 8K prompt using DeepSeekV4.1-Flash-1017 on the Ryzen AI Max+ 395 (Strix Halo)?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6551285
+  },
+  "c_7b1c94574e": {
+   "version": 2,
+   "object": "MIT",
+   "questions": [
+    "What license governs the third_party/ggml directory in Strata?",
+    "Which license is applied to the third_party/ggml component in Strata?",
+    "What type of license is used for the third_party/ggml folder in Strata?",
+    "What is the license status of the third_party/ggml path in Strata?",
+    "Under which license is the third_party/ggml module in Strata distributed?",
+    "What license applies to the third_party/ggml code in Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6551604
+  },
+  "c_fc86f5d17a": {
+   "version": 2,
+   "object": "SIL Open Font License 1.1",
+   "questions": [
+    "What license governs the font used in Strata's web app?",
+    "Which open font license is applied to the font in Strata's web application?",
+    "What type of license is associated with the font design in Strata's web app?",
+    "Under which license is the font in Strata's web app distributed?",
+    "What specific license covers the font used by Strata's web application?",
+    "What open source license is used for the font in Strata's web app?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6551766
+  },
+  "c_6f5dfb15ff": {
+   "version": 2,
+   "object": "Qwen Community License 1.0",
+   "questions": [
+    "What license governs the experimental speed projection file in Strata's data/experimental-speed-projection directory?",
+    "Which license is applied to the vector file for experimental speed projection in Strata?",
+    "What type of license is associated with the experimental speed projection data in Strata?",
+    "Under which open-source license is the experimental speed projection vector file distributed?",
+    "What license is specified for the experimental speed projection vector in Strata's data structure?",
+    "What open-source license covers the experimental speed projection vector in Strata?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6551857
+  },
+  "c_2a34cac298": {
+   "version": 2,
+   "object": "~/.strata",
+   "questions": [
+    "Where does Strata store desktop chats and host state by default?",
+    "What is the default directory used by Strata for storing chat data and host state?",
+    "In the absence of a custom configuration, where does Strata save its desktop chats and host state?",
+    "Which directory is used by Strata to store desktop chats and host state when STRATA_HOME is not defined?",
+    "By default, where does Strata keep its chat history and host state information?",
+    "What path does Strata use to store desktop chats and host state if STRATA_HOME is not set?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.655196
+  },
+  "c_8e57186073": {
+   "version": 2,
+   "object": "%LOCALAPPDATA%\\Strata\\components",
+   "questions": [
+    "Where are engine components stored on Windows in relation to Strata?",
+    "What is the path where Strata stores its engine components on Windows?",
+    "On Windows, in which directory does Strata store engine components?",
+    "Where can you find the engine components managed by Strata on Windows?",
+    "What directory holds the engine components for Strata on Windows?",
+    "In which location are Strata's engine components kept on Windows?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6552086
+  },
+  "c_855263cdc3": {
+   "version": 2,
+   "object": "Documents/Strata/Models",
+   "questions": [
+    "What is the suggested path for a new model library in the Strata desktop app?",
+    "Where does the Strata desktop app recommend placing a new model library?",
+    "What directory structure does the Strata app suggest for a new model library?",
+    "Which folder path is proposed by the Strata app for model storage?",
+    "What is the location the Strata app recommends for a new model library?",
+    "What path does the Strata desktop app propose for a new model library?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6552205
+  },
+  "c_6c11b6a4f1": {
+   "version": 2,
+   "object": "--data-dir",
+   "questions": [
+    "What flag controls the directory where Strata saves new downloads?",
+    "Which option specifies the location for new downloads in Strata?",
+    "How can you set the directory for new downloads in Strata?",
+    "What argument determines where Strata stores new downloads?",
+    "Which parameter changes the directory for new downloads without affecting existing models?",
+    "What command-line option sets the path for new downloads in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.65523
+  },
+  "c_6287c1ae56": {
+   "version": 2,
+   "object": "--move-data",
+   "questions": [
+    "What flag should be used to transfer current models into a new Strata data directory?",
+    "Which option enables the relocation of existing models to a different Strata data folder?",
+    "What command parameter is required to shift models from their current location to a new Strata data folder?",
+    "How do you specify the action to relocate models to a new Strata data folder?",
+    "What argument must be included to move existing models into a new Strata data directory?",
+    "Which flag is used when transferring models to a new Strata data folder?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6552417
+  },
+  "c_209446a182": {
+   "version": 2,
+   "object": "no engine",
+   "questions": [
+    "Does the Strata installer include an engine on Windows and Linux?",
+    "Is there an engine built into the Strata installer for Windows and Linux?",
+    "What component is missing from the Strata installer on Windows and Linux?",
+    "Does the Strata installer come with an engine pre-installed on Windows and Linux?",
+    "Is the engine part of the Strata installer on Windows and Linux?",
+    "What is the status of the engine in the Strata installer on Windows and Linux?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6552527
+  },
+  "c_7877e386da": {
+   "version": 2,
+   "object": "deepseek41",
+   "questions": [
+    "What is the identifier used for the Strata family selector in DeepSeek V4.1-Flash?",
+    "Which code is associated with the Strata family selector for DeepSeek V4.1-Flash?",
+    "What value should be entered for the Strata family selector when using DeepSeek V4.1-Flash?",
+    "What is the specific designation for the Strata family selector in DeepSeek V4.1-Flash?",
+    "What identifier corresponds to the Strata family selector in the DeepSeek V4.1-Flash model?",
+    "What is the correct code for the Strata family selector in DeepSeek V4.1-Flash?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6552615
+  },
+  "c_1681dc2d5e": {
+   "version": 2,
+   "object": "qwen36",
+   "questions": [
+    "What is the family selector assigned to the Qwen3.6-35B-A3B model?",
+    "Which selector is used for the Qwen3.6-35B-A3B variant?",
+    "What identifier is associated with the Qwen3.6-35B-A3B model in the Strata family?",
+    "What is the code name for the Qwen3.6-35B-A3B model?",
+    "Which value serves as the family selector for the Qwen3.6-35B-A3B configuration?",
+    "What is the specific selector for the Qwen3.6-35B-A3B model in the Strata system?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6552732
+  },
+  "c_feab41a399": {
+   "version": 2,
+   "object": "http://127.0.0.1:8080/v1",
+   "questions": [
+    "What is the base URL used by Strata's OpenAI Chat Completions?",
+    "Where can Strata's OpenAI Chat Completions be accessed via its base URL?",
+    "What address does Strata's OpenAI Chat Completions serve on?",
+    "Which endpoint hosts Strata's OpenAI Chat Completions service?",
+    "What is the default URL for Strata's OpenAI Chat Completions API?",
+    "What is the base address for accessing Strata's OpenAI Chat Completions?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.655282
+  },
+  "c_998d74a135": {
+   "version": 2,
+   "object": "http://127.0.0.1:8080/v1",
+   "questions": [
+    "What is the base URL used by Strata's OpenAI Responses?",
+    "Where can Strata's OpenAI Responses be accessed via its base URL?",
+    "What address does Strata's OpenAI Responses use for its API endpoint?",
+    "Which URL serves as the foundation for Strata's OpenAI Responses?",
+    "What is the default endpoint for Strata's OpenAI Responses?",
+    "What is the API base URL for Strata's OpenAI Responses?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6553013
+  },
+  "c_d4345e4366": {
+   "version": 2,
+   "object": "http://127.0.0.1:8080",
+   "questions": [
+    "What is the base URL for Strata's Anthropic Messages?",
+    "Where can Strata's Anthropic Messages be accessed?",
+    "What URL serves as the foundation for Strata's Anthropic Messages?",
+    "Which address is used to access Strata's Anthropic Messages?",
+    "What is the default endpoint for Strata's Anthropic Messages?",
+    "What web address is associated with Strata's Anthropic Messages?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6553133
+  },
+  "c_5c1e3e1803": {
+   "version": 2,
+   "object": "omp",
+   "questions": [
+    "What is the strata connect identifier associated with oh-my-pi?",
+    "What code represents oh-my-pi in the strata connect system?",
+    "What identifier is used for oh-my-pi in strata connections?",
+    "What is the strata connect code for oh-my-pi?",
+    "What value is assigned to oh-my-pi in the strata connect framework?",
+    "What is the strata connect identifier for the oh-my-pi service?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6553237
+  },
+  "c_c67ae66297": {
+   "version": 2,
+   "object": "64-bit",
+   "questions": [
+    "What type of Python is required for Strata's MCP server on Windows?",
+    "What architecture does Python need to support Strata's MCP server on Windows?",
+    "What bit version of Python is necessary for Strata's MCP server when running on Windows?",
+    "What kind of Python installation is needed for Strata's MCP server on Windows systems?",
+    "What Python architecture is required to run Strata's MCP server on Windows?",
+    "What bit-length Python is essential for Strata's MCP server on Windows?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6553361
+  },
+  "c_183f2222c6": {
+   "version": 2,
+   "object": "--root",
+   "questions": [
+    "What flag is used to specify a different Strata folder for the MCP server to manage?",
+    "Which option allows the MCP server to manage a Strata folder separate from the file's location?",
+    "What parameter directs the MCP server to handle a folder other than the one containing the file?",
+    "Which command flag enables the MCP server to manage a different Strata folder?",
+    "What value is used to indicate that the MCP server should manage a folder distinct from the file's directory?",
+    "What argument specifies an alternative Strata folder for the MCP server to manage?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6553457
+  },
+  "c_951a6643f5": {
+   "version": 2,
+   "object": "the progress",
+   "questions": [
+    "What does a second strata_install call indicate during the installation process?",
+    "What aspect of the installation is revealed by a second strata_install call?",
+    "What information does a second strata_install call provide about the install?",
+    "What does the second strata_install call reveal about the installation?",
+    "What phase of the install is shown by a second strata_install call?",
+    "What does the second strata_install call demonstrate during the setup?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.655357
+  },
+  "c_de3831f6b0": {
+   "version": 2,
+   "object": ".strata-mcp/setup.log",
+   "questions": [
+    "Where does Strata_install save the setup output file?",
+    "In which file is the setup output recorded by Strata_install?",
+    "What is the location of the log file generated by Strata_install?",
+    "Which log file is created by Strata_install in the Strata folder?",
+    "Where is the setup output written by Strata_install stored?",
+    "What file is produced by Strata_install to store setup output in the Strata directory?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6553676
+  },
+  "c_905f5e2bba": {
+   "version": 2,
+   "object": "source: engine",
+   "questions": [
+    "What parameter should be passed to Strata_logs to retrieve the engine log?",
+    "When is the engine log returned by Strata_logs?",
+    "What value must be specified in the source argument to get the engine log from Strata_logs?",
+    "Which source input triggers Strata_logs to return the engine log?",
+    "What argument value causes Strata_logs to return the engine log?",
+    "What should be included in the source field to obtain the engine log via Strata_logs?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.655376
+  },
+  "c_5ad2f5274a": {
+   "version": 2,
+   "object": "two modified RTX 3080 20 GB cards",
+   "questions": [
+    "On which hardware configuration were Strata's disjoint expert cache and KV prefetch validated?",
+    "What type of graphics cards were used to test Strata's disjoint expert cache and KV prefetch?",
+    "Which specific GPUs were utilized in the validation of Strata's cache and prefetch mechanisms?",
+    "What equipment was employed to validate the performance of Strata's expert cache and KV prefetch?",
+    "Which cards, modified in a specific way, were used to validate Strata's cache and prefetch features?",
+    "What hardware setup was used to confirm the effectiveness of Strata's disjoint expert cache and KV prefetch?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6553843
+  },
+  "c_dbf615324a": {
+   "version": 2,
+   "object": "94 GiB",
+   "questions": [
+    "How much usable memory does the machine that validates Strata's disjoint expert cache have?",
+    "What is the amount of RAM available on the machine used for validating Strata's disjoint expert cache?",
+    "What size of memory is allocated for the machine that checks Strata's disjoint expert cache?",
+    "How large is the usable RAM on the system responsible for validating Strata's disjoint expert cache?",
+    "What is the memory capacity of the machine that validates Strata's disjoint expert cache?",
+    "What amount of RAM is available on the machine that handles Strata's disjoint expert cache validation?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.655395
+  },
+  "c_e6729c65f2": {
+   "version": 2,
+   "object": "17",
+   "questions": [
+    "How many expert-pool workers did the machine that validated Strata's disjoint expert cache operate with?",
+    "What was the number of expert-pool workers utilized by the validation machine for Strata's disjoint expert cache?",
+    "How many workers were part of the expert-pool during the validation of Strata's disjoint expert cache?",
+    "In the validation process of Strata's disjoint expert cache, how many expert-pool workers were active?",
+    "How many expert-pool workers were involved in the machine's validation of Strata's disjoint expert cache?",
+    "What is the count of expert-pool workers that ran during the validation of Strata's disjoint expert cache?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.655408
+  },
+  "c_34bb299fcc": {
+   "version": 2,
+   "object": "PCIe 3.0",
+   "questions": [
+    "What type of interface does the machine use to validate Strata's disjoint expert cache?",
+    "Which PCIe version is utilized by the machine for validating Strata's disjoint expert cache?",
+    "What is the PCIe standard employed in the machine that validates Strata's disjoint expert cache?",
+    "What kind of connection does the machine rely on to validate Strata's disjoint expert cache?",
+    "Which PCIe generation is used in the validation of Strata's disjoint expert cache?",
+    "What interface specification is used by the machine to validate Strata's disjoint expert cache?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554165
+  },
+  "c_5335eeb3bd": {
+   "version": 2,
+   "object": "~/.local/share/strata/components",
+   "questions": [
+    "Where does Strata store engine components on Linux and Mac by default?",
+    "What is the standard directory path for Strata's engine components in Unix-like systems?",
+    "On Linux and Mac, what is the default location for Strata's component files?",
+    "Where are Strata's engine components typically saved on macOS and Linux?",
+    "What directory path is used by Strata to store engine components in non-distro-specific environments?",
+    "In Unix-based systems, what is the default home directory for Strata's engine components?"
+   ],
+   "verified": true,
+   "consolidated_at": 1794259458.6554267
+  },
+  "c_cf46187cc6": {
+   "version": 2,
+   "object": "cancel: true",
+   "questions": [
+    "What parameter should be passed to strata_install to halt the installation process?",
+    "What value must be included in the strata_install call to prevent installation from continuing?",
+    "Which flag, when set in strata_install, will stop the installation?",
+    "What setting in the strata_install function stops the installation?",
+    "What argument, when true, causes strata_install to cancel the install?",
+    "What value, when provided to strata_install, results in the installation being stopped?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554391
+  },
+  "c_8138542cf5": {
+   "version": 2,
+   "object": "strata_logs",
+   "questions": [
+    "What tool is used to retrieve server, engine, or setup logs from Strata's MCP server?",
+    "Which utility fetches logs such as server, engine, or setup information from Strata's MCP?",
+    "What command is employed to access logs from Strata's MCP server?",
+    "How can users obtain server, engine, or setup logs via Strata's MCP?",
+    "What is the designated tool for retrieving logs from Strata's MCP server?",
+    "Which application is used to get the server, engine, or setup log data from Strata's MCP?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554496
+  },
+  "c_0eab1163c2": {
+   "version": 3,
+   "object": "Intel Xeon E5-2686 v4",
+   "questions": [
+    "What type of processor powers the machine that validates Strata's disjoint expert cache?",
+    "Which CPU is used in the system responsible for validating Strata's disjoint expert cache?",
+    "What processor model is installed in the machine that checks Strata's disjoint expert cache?",
+    "Which Intel processor is part of the validation machine for Strata's disjoint expert cache?",
+    "What is the CPU model in the machine that validates Strata's disjoint expert cache?",
+    "What kind of processor is used in the system that validates Strata's disjoint expert cache?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554585
+  },
+  "c_2db0052293": {
+   "version": 2,
+   "object": "Intel Arc",
+   "questions": [
+    "Which processor is excluded from running DeepSeekV4.1-Flash-1017 in Strata?",
+    "On which type of graphics processor does DeepSeekV4.1-Flash-1017 fail to operate in Strata?",
+    "Which hardware platform is incompatible with DeepSeekV4.1-Flash-1017 in the Strata environment?",
+    "What processor architecture is not supported by DeepSeekV4.1-Flash-1017 in Strata?",
+    "Which GPU series cannot execute DeepSeekV4.1-Flash-1017 in Strata?",
+    "What kind of graphics chip is not capable of running DeepSeekV4.1-Flash-1017 in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554694
+  },
+  "c_76abaefeea": {
+   "version": 2,
+   "object": ".venv",
+   "questions": [
+    "What directory is created by Strata_install when it detects it is missing?",
+    "What file does Strata_install generate using the current Python environment?",
+    "Which virtual environment folder does strata_install create when it is missing?",
+    "What folder does the strata_install tool create with the Python it runs on?",
+    "If it is missing, which environment directory does strata_install set up first?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554813
+  },
+  "c_dc37254896": {
+   "version": 3,
+   "object": "Apple silicon and Intel Arc",
+   "questions": [
+    "Which processors is Qwen3.6-35B-A3B not compatible with in Strata?",
+    "On which hardware platforms does Qwen3.6-35B-A3B fail to operate in Strata?",
+    "What types of chips cannot run Qwen3.6-35B-A3B in Strata?",
+    "Which Apple and Intel chip families are unsupported for Qwen3.6-35B-A3B in Strata?",
+    "What processor architectures are excluded for Qwen3.6-35B-A3B in Strata?",
+    "Which specific chip lines are not supported by Qwen3.6-35B-A3B in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554906
+  },
+  "c_afaf653e46": {
+   "version": 9,
+   "object": "64 GB or more",
+   "questions": [
+    "What is the minimum RAM requirement for running DeepSeekV4.1-Flash-1017 on Apple silicon in Strata?",
+    "How much RAM is required for DeepSeekV4.1-Flash-1017 when used on Apple silicon with macOS 15 or newer?",
+    "What memory capacity is necessary to operate DeepSeekV4.1-Flash-1017 on Apple silicon in the Strata environment?",
+    "What is the minimum amount of RAM needed for DeepSeekV4.1-Flash-1017 on Apple silicon in Strata?",
+    "What RAM size is essential for running DeepSeekV4.1-Flash-1017 on Apple silicon within Strata?",
+    "What is the required memory for DeepSeekV4.1-Flash-1017 on Apple silicon in Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6554995
+  },
+  "c_70504b5854": {
+   "version": 11,
+   "object": "M1 or newer",
+   "questions": [
+    "What type of Apple silicon is required for Qwen3.8-Flash-Next to run on Strata?",
+    "Which Apple silicon processors are compatible with Qwen3.8-Flash-Next when running on Strata?",
+    "What is the minimum Apple silicon requirement for Qwen3.8-Flash-Next on Strata?",
+    "What kind of Apple silicon does Qwen3.8-Flash-Next support on Strata?",
+    "On which Apple silicon models can Qwen3.8-Flash-Next operate on Strata?",
+    "What is the minimum Apple silicon generation needed for Qwen3.8-Flash-Next to run on Strata?"
+   ],
+   "verified": false,
+   "consolidated_at": 1794259458.6555133
+  }
+ },
+ "pending_repair": {},
+ "history": [
+  {
+   "version": 0,
+   "op": "history dropped",
+   "at": 1794255487.9623635
+  },
+  {
+   "version": 1,
+   "op": "sync",
+   "at": 1794255487.9643433,
+   "delta_rows": 0
+  },
+  {
+   "version": 2,
+   "op": "consolidate",
+   "at": 1794267048.9663973,
+   "delta_rows": 93339
+  }
+ ]
+}

@@ -41,6 +41,10 @@ class BenchConfig:
     seed: int = 0
     model: str = "Qwen/Qwen3-0.6B-Base"
     device: str = "auto"
+    kind: str = "hf"  # "hf" (retrofit: adapt a base Engram first) or "hf-native" (the model's own table)
+    placement: str = "auto"  # see BackendConfig.placement
+    expert_cache_gb: float = 4.0
+    prompt_format: str = "auto"  # see BackendConfig.prompt_format
     adapt_steps: int = 300
     base_dir: str | None = None  # reuse a trained base Engram (directory with engram.json)
     epochs: int = 20
@@ -124,6 +128,9 @@ def run_benchmark(cfg: BenchConfig, out_dir: str | Path, progress=print) -> dict
 
     wcfg = WorkspaceConfig(name="benchmark")
     wcfg.backend.model, wcfg.backend.device = cfg.model, cfg.device
+    wcfg.backend.kind, wcfg.backend.placement = cfg.kind, cfg.placement
+    wcfg.backend.expert_cache_gb = cfg.expert_cache_gb
+    wcfg.backend.prompt_format = cfg.prompt_format
     wcfg.adapt.steps = cfg.adapt_steps
     c = wcfg.consolidation
     c.min_score, c.min_confidence, c.stability_hours = 0.0, 0.0, 0.0
@@ -133,10 +140,13 @@ def run_benchmark(cfg: BenchConfig, out_dir: str | Path, progress=print) -> dict
     wcfg.fusion.top_k, wcfg.fusion.max_new_tokens = cfg.top_k, cfg.max_new_tokens
     ws = WikiEngram.init(ws_dir, wcfg)
 
-    # 1. base Engram (stage 1), reused across runs when available
+    # 1. base Engram (stage 1), reused across runs when available; a native model ships its own
     t0 = time.perf_counter()
     cached = Path(cfg.base_dir) if cfg.base_dir else out / "base_cache"
-    if (cached / "engram.json").exists():
+    if cfg.kind == "hf-native":
+        adapt_info = {}
+        progress(f"native model: using its own n-gram table ({cfg.model})")
+    elif (cached / "engram.json").exists():
         shutil.copytree(cached, ws.base_dir)
         adapt_info = json.loads((cached / "engram.json").read_text()).get("info", {})
         progress(f"reusing base Engram from {cached}")
@@ -217,7 +227,8 @@ def run_benchmark(cfg: BenchConfig, out_dir: str | Path, progress=print) -> dict
 
     env = {"python": platform.python_version(), "torch": torch.__version__, "platform": platform.platform(),
            "device": str(lm.device), "model": cfg.model, "backbone_params": lm.num_backbone_params(),
-           "engram_variant": lm.variant.to_dict(), "base_table_rows": list(lm.variant.num_rows)}
+           "engram_variant": lm.variant.to_dict(), "base_table_rows": list(lm.variant.num_rows),
+           "prompt_format": lm.prompt_format}
     if lm.device.type == "cuda":
         env["gpu"] = torch.cuda.get_device_name(0)
     full = {

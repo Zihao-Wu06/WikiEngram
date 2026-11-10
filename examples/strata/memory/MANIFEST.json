@@ -1,0 +1,322 @@
+{
+ "ATTRIBUTION.md": {
+  "bytes": 217,
+  "sha256": "4312d876894749fd4e4135aaf2880926f28874ff6365230843019d4301a19e8a"
+ },
+ "STRATA_LICENSE": {
+  "bytes": 1093,
+  "sha256": "949b9b0aada7476006469e58ee4ffb0e0f68c2d9137e90a356757b61a09d37f0"
+ },
+ "engram/delta.safetensors": {
+  "bytes": 60577643,
+  "sha256": "2231502d3d1e1bdf54c5a8437abff4636ec52fda6fa098fa2e92a3c01302dd63"
+ },
+ "engram/ledger.json": {
+  "bytes": 1118854,
+  "sha256": "219ab72b75516ecead81741f78b61b053ee25d49a0e4a855533bce0cff6880af"
+ },
+ "engram/state.json": {
+  "bytes": 102025,
+  "sha256": "898ebb9ffe52241ddcebd45a639cfa074be47ba95fb3e2ffbefea12823d13c9a"
+ },
+ "wiki/.wikiengram/wiki.sqlite": {
+  "bytes": 761856,
+  "sha256": "196bbc708fda797ca0bd47f940cd9ec012ae4712d2d9a0d93bff3eaa7a4199d8"
+ },
+ "wiki/SCHEMA.md": {
+  "bytes": 2283,
+  "sha256": "ca5b2bd69ab8107e10e91e0dfd2906d1557cbebe6b5862d71d09b9bb931848be"
+ },
+ "wiki/index.md": {
+  "bytes": 7935,
+  "sha256": "fe8a389b2a04640878493cc12c9bc96804dba7618aeedcbd218bdfae65ffb39d"
+ },
+ "wiki/log.md": {
+  "bytes": 85271,
+  "sha256": "c895fd88e8333b68933dac26be187c622608f112f57fd1dc6fc8bf38fa7cc422"
+ },
+ "wiki/pages/1x-radeon-ai-pro-r9700-251-gb-ram.md": {
+  "bytes": 982,
+  "sha256": "ada2dd3671720e64013c4537285acffc5e131bc4a6d4083bede44f665cd7677e"
+ },
+ "wiki/pages/4x-radeon-ai-pro-r9700.md": {
+  "bytes": 943,
+  "sha256": "32719511e51a98332204f7dec5a8717758b5ef311e0348ddb0f8c7ad0121cb13"
+ },
+ "wiki/pages/amd-on-linux.md": {
+  "bytes": 569,
+  "sha256": "045c1302fa401d67c71f87eade85b9c4eb153c2593fdc290016774b884d95fa6"
+ },
+ "wiki/pages/amd-on-windows.md": {
+  "bytes": 551,
+  "sha256": "318d400226effeec06554c68a277bfdc74498c65f9f981e96ffc1c23e064913d"
+ },
+ "wiki/pages/anthropic-messages.md": {
+  "bytes": 500,
+  "sha256": "563e2ce53e3ebb84f86bc2d711ad299981aa6abc10e9edb430f2202acd2796c3"
+ },
+ "wiki/pages/apple-silicon.md": {
+  "bytes": 467,
+  "sha256": "cf38f10d25fa0bad50dbafaa28a3575a21a0b377ac5b971f122e59d2b6d37ca7"
+ },
+ "wiki/pages/closing-desktop-app.md": {
+  "bytes": 485,
+  "sha256": "1187d9e7efc96af88d8e35dcbdba52b257a3b6cc6a077813ac15562cdf83bfe3"
+ },
+ "wiki/pages/coder-swift-gyro-nvfp4-and-orcarouter.md": {
+  "bytes": 585,
+  "sha256": "031ebecaf91b985b77fef54203e4b54aa2480d287a50122f5392df32c0af2822"
+ },
+ "wiki/pages/data-dir.md": {
+  "bytes": 496,
+  "sha256": "f6bc7fd3bb9fb1fe42bc8e555555d76afb810bdbee8eeb9613a886b7cf38e213"
+ },
+ "wiki/pages/data-experimental-speed-projection.md": {
+  "bytes": 606,
+  "sha256": "2278f448a0da48a0c46486ab93f2981814331f8bfbf55c5371778e5ec21c5ac3"
+ },
+ "wiki/pages/deepseek-v4-1-flash.md": {
+  "bytes": 1747,
+  "sha256": "121dad5d15dd3825d134f15f13a3c9199e89b55f9e694b45544f5d232afedd3f"
+ },
+ "wiki/pages/deepseekv4-1-flash-1017.md": {
+  "bytes": 1934,
+  "sha256": "5f2e09c01d5432a156f966ad8cc0e53f73744902c017853d7cfdf2c3a23f614c"
+ },
+ "wiki/pages/default-local-endpoint.md": {
+  "bytes": 492,
+  "sha256": "19397c33ba48889fc4e484e54a289253a32d7dbd998fb0583334eadb09b2e948"
+ },
+ "wiki/pages/desktop-app.md": {
+  "bytes": 479,
+  "sha256": "eb38c5460048038afa833113ceb13966c6059e8cec06d15e24c2e2b3da0f630b"
+ },
+ "wiki/pages/desktop-chats-and-host-state.md": {
+  "bytes": 586,
+  "sha256": "b99164462f3cb0c1ad02fca1fb538aa66d4493ee44601c98c5484012844e9c4e"
+ },
+ "wiki/pages/engine-components-linux-mac.md": {
+  "bytes": 656,
+  "sha256": "d70aec835dbbcc55c497be7071668bfc1de039958fff7e6c16092d950c8b5a3c"
+ },
+ "wiki/pages/engine-components-windows.md": {
+  "bytes": 556,
+  "sha256": "f102e313ed007c9b70892a7963818af0cc0c3a2d377ff1f3028f6d067c0d8b19"
+ },
+ "wiki/pages/engine-log.md": {
+  "bytes": 490,
+  "sha256": "b419a880a21b43ef54ac15ebd249fa4b64a71aa91e2a389918ac19441632dc76"
+ },
+ "wiki/pages/existing-models.md": {
+  "bytes": 500,
+  "sha256": "d46f71ba088897d3d4eda2a19270792ccd8220e71672b1d1c95d9464c8972d6c"
+ },
+ "wiki/pages/historical-performance-tests.md": {
+  "bytes": 901,
+  "sha256": "f63f502eb3692763fbc522f5697a554be0d1506caca5ea7be056da8b89931c03"
+ },
+ "wiki/pages/intel-arc-on-linux.md": {
+  "bytes": 480,
+  "sha256": "605dc3a7d4052a879decd99f127e5bb373f244c7c942a14a2a6bed0a6ce59ff9"
+ },
+ "wiki/pages/intel-arc.md": {
+  "bytes": 504,
+  "sha256": "18ab4e763a55f14757ae3431e88483b9711153d035fdeafcfebd438d55d378be"
+ },
+ "wiki/pages/nvidia-dgx-spark.md": {
+  "bytes": 944,
+  "sha256": "27465b86d58ca1e503a543afff5e2431479e8cdc9d8e8cc8c144fc21098b40aa"
+ },
+ "wiki/pages/nvidia-on-windows.md": {
+  "bytes": 536,
+  "sha256": "4b545857e22eb4556f359ae20dc2e68048c54a8a7ae4945e98650ed1096f1f05"
+ },
+ "wiki/pages/oh-my-pi.md": {
+  "bytes": 467,
+  "sha256": "e68a1a2c49dc1caa30b1ac7833ae31acf8d0b6c00adff5dd2a0f98eba44cf5db"
+ },
+ "wiki/pages/openai-chat-completions.md": {
+  "bytes": 521,
+  "sha256": "087a6f5d1ed5bd5d18840776de9e415288670770d5557b543b4e8462fd4ef0a5"
+ },
+ "wiki/pages/openai-responses.md": {
+  "bytes": 500,
+  "sha256": "1568cb0c81c76c71ce3297152b8a49494675f73522bc7a8c82ef834230e21810"
+ },
+ "wiki/pages/overlap-streamed-kv-uploads-with-prefill-computation.md": {
+  "bytes": 595,
+  "sha256": "402685ef2ecfeaf59ad8a3df7adf5049a15780ce2737ffc1983600aca2dac8c5"
+ },
+ "wiki/pages/provider-order.md": {
+  "bytes": 569,
+  "sha256": "b8c411fa6d2accce8511b9ac7857514c3086abc1db44eff73b585ec13294be64"
+ },
+ "wiki/pages/qwen3-6-35b-a3b.md": {
+  "bytes": 932,
+  "sha256": "a7844a3deef8c2aed108528c783d535a65a49b32d9f0e4db0f0d0fa28e157b71"
+ },
+ "wiki/pages/qwen3-8-flash-next-in-strata.md": {
+  "bytes": 349,
+  "sha256": "3b63153e357ddbd19611d71ce13f7382ff562585aab7de4f58003a173e694b8a"
+ },
+ "wiki/pages/qwen3-8-flash-next.md": {
+  "bytes": 1818,
+  "sha256": "0c1fbdb6152b0d7fcd9d49a65ba5e4eb37f81c894c6bdb824913eb2e0536387f"
+ },
+ "wiki/pages/rtx-3060-12-gb-46-gb-ram.md": {
+  "bytes": 952,
+  "sha256": "36bcc666e0c9155d38f4090cc3056c1ecdd4f7c1a11bd629988a1c8d8f438081"
+ },
+ "wiki/pages/rtx-5070-12-gb-64-gb-ram.md": {
+  "bytes": 950,
+  "sha256": "5a0cb4590e1924d8700aae43f3e950c822912b177317533c72f22c3bf343c1d6"
+ },
+ "wiki/pages/ryzen-ai-max-395-strix-halo-128-gb-unified.md": {
+  "bytes": 1066,
+  "sha256": "eba446b212f739720ee6ff2d67a43d37126a9a41c04444a6e2cb76e5df1ba8cb"
+ },
+ "wiki/pages/server-log.md": {
+  "bytes": 506,
+  "sha256": "4d4aa50dd9b542967a0d6addfb12f31fed6624e7e242fb44b606909ec338541a"
+ },
+ "wiki/pages/strata-components-rollback.md": {
+  "bytes": 516,
+  "sha256": "28fd1af52e866c4a12fde9ecfc977493267c30344bc8d1fc30bb555678f0f57c"
+ },
+ "wiki/pages/strata-connect.md": {
+  "bytes": 486,
+  "sha256": "edc036de40e9dedd930ddcea11db9b82973d22c6fc4abd0744603aca475705a3"
+ },
+ "wiki/pages/strata-control-and-engines.md": {
+  "bytes": 315,
+  "sha256": "d5308687cdbe558eaac49ddc5feaee52703e6ec1c3a311723e55f3257f7a3222"
+ },
+ "wiki/pages/strata-cuda-13-packages.md": {
+  "bytes": 322,
+  "sha256": "80ce228ea94e41ec15e037c3be43379cbd9361e1960afbd5256ace88c5fee058"
+ },
+ "wiki/pages/strata-desktop-app.md": {
+  "bytes": 535,
+  "sha256": "308de007fec5268a0b6a1bf29fe40d86a345c3f5fc7cd1b51fe0309e6a95caad"
+ },
+ "wiki/pages/strata-disjoint-adapt.md": {
+  "bytes": 525,
+  "sha256": "530268c17082487906e06e8519b1a99c53d7920cd147340084d035968bde9550"
+ },
+ "wiki/pages/strata-install.md": {
+  "bytes": 3031,
+  "sha256": "7e993624c8f594f54e2e0aab0346081a27d8b935636ca445bfa1a191349595bb"
+ },
+ "wiki/pages/strata-kv-prefetch.md": {
+  "bytes": 521,
+  "sha256": "89b53d9ab2158ca5b64835c5b25b38ce31a4c235691c1ae803b536b2192109d4"
+ },
+ "wiki/pages/strata-launch-status.md": {
+  "bytes": 498,
+  "sha256": "a4b9816888382c46b5e8fd6caa32266b76d29388bc145ff1a15308c720913310"
+ },
+ "wiki/pages/strata-launch-stop.md": {
+  "bytes": 464,
+  "sha256": "09f0c735a8a6804444cfa740da71248f6a93999007b3ecc40caa9e97c892fa07"
+ },
+ "wiki/pages/strata-launch-yes-no-tui.md": {
+  "bytes": 542,
+  "sha256": "b23791167de500315d6ae04e96704c0e8598bf188aa8b62a2d0bb001fa6b48bd"
+ },
+ "wiki/pages/strata-mcp-py.md": {
+  "bytes": 2444,
+  "sha256": "2f21042b15dccf655bde9db02b21c499f0a0f237327ede928031e5ac0c80636d"
+ },
+ "wiki/pages/strata-mcp-server.md": {
+  "bytes": 916,
+  "sha256": "0e9f1e9811a5fa447ff048d434ec9e2b47e0b130d62b72967f9ef852bea59f02"
+ },
+ "wiki/pages/strata-start.md": {
+  "bytes": 1644,
+  "sha256": "5359fa0370431fd5280cc478c49118bce746143b23880ac27b78e81916170054"
+ },
+ "wiki/pages/strata-stop.md": {
+  "bytes": 1333,
+  "sha256": "54ba7d7aa5d69b05993302bf4da58ad90123a1786a18799ae1578edd36436956"
+ },
+ "wiki/pages/strata-terminal.md": {
+  "bytes": 508,
+  "sha256": "31cf33248ccf89a3a4c47f75b6eebd139c06422f4c878c54337fffa994e7599e"
+ },
+ "wiki/pages/strata-update-check.md": {
+  "bytes": 507,
+  "sha256": "e9eedbbcc944b74bd8d4d2ef63d596b0a2f6397736d5c6ab2de08b6489e1f88b"
+ },
+ "wiki/pages/strata-update.md": {
+  "bytes": 1158,
+  "sha256": "0fde2ff7553671c1e0ea2fe10277434295e204f73015ec4ca049ab55116201d6"
+ },
+ "wiki/pages/strata-windows-installer.md": {
+  "bytes": 538,
+  "sha256": "1c7a4c7be9618d88fa398e3b434ba597ea66f7d5d3fa13336810ab9f137e8a18"
+ },
+ "wiki/pages/strata.md": {
+  "bytes": 11967,
+  "sha256": "a46e5c99da6e3784d6a22bb9b1b5d82fbf8100c59c19b7f49c85e8b8d933c889"
+ },
+ "wiki/pages/terminal.md": {
+  "bytes": 503,
+  "sha256": "7e95663b63a4de91a544d7245d4ad50294c47551a813f0c6a8ac29f035162ff7"
+ },
+ "wiki/pages/the-desktop-app.md": {
+  "bytes": 538,
+  "sha256": "6578970e78fea7e52a53510350bd7f8b49d05f3bc03bce332476925908f72149"
+ },
+ "wiki/pages/third-party-ggml.md": {
+  "bytes": 468,
+  "sha256": "cd97595b230be8a085fbdd1e33d5437631083fdfbb04cdfe11c83b5ce331de0b"
+ },
+ "wiki/pages/tool.md": {
+  "bytes": 1610,
+  "sha256": "cca61f90bc6206741b76e7c870eeb3caf0c448cb25f0672ea528c14546e5c38b"
+ },
+ "wiki/pages/validation-environment.md": {
+  "bytes": 2132,
+  "sha256": "691ec25126e8bdfeb6ff66e4436ae13b6b1a009df1ed74646ed0f33866e56f0d"
+ },
+ "wiki/pages/web-app-s-font.md": {
+  "bytes": 501,
+  "sha256": "017a56410d22eb5ad10944de0f7fca1cb18ebcdecd707e729363d635b7ea1b46"
+ },
+ "wiki/raw/s_0e43837bc3.md": {
+  "bytes": 7766,
+  "sha256": "0e43837bc34833e10741f0165112f48f898618cfa1c475a8f1915b531e93c9a1"
+ },
+ "wiki/raw/s_33db960c93.md": {
+  "bytes": 8650,
+  "sha256": "33db960c93be5e68c4908778907e40e4de5feda284ac407afb4e528087ada7ec"
+ },
+ "wiki/raw/s_3d3ef14e23.md": {
+  "bytes": 10225,
+  "sha256": "3d3ef14e2384ec0fa9c5323c6a3a99e9ae0d6c50eb4354f93badc6d4b4b335fa"
+ },
+ "wiki/raw/s_a612114df0.md": {
+  "bytes": 5090,
+  "sha256": "a612114df00e16b163e35a79aceaa58b0899e781f99b3c045f55a67896b61d05"
+ },
+ "wiki/raw/s_a679f9e592.md": {
+  "bytes": 2844,
+  "sha256": "a679f9e592600444990f35f0cd2641ee02475fd4191b28eb0f96a8f694e70b33"
+ },
+ "wiki/raw/s_d92f2d4a8d.md": {
+  "bytes": 2713,
+  "sha256": "d92f2d4a8d2378ccd5b0f72e1e1e5483cf09cbfae89b2ae093999b36143eb2df"
+ },
+ "wiki/raw/s_e8475372d2.md": {
+  "bytes": 5353,
+  "sha256": "e8475372d246a850269172a3a5cbf0a5496fd0b3a4536d525e5e71ca6c3a634b"
+ },
+ "wiki/raw/s_ff6260a2da.md": {
+  "bytes": 12111,
+  "sha256": "ff6260a2da86cb8a44489060feaf7601929d07f2c7d9d09689b98b82f1a72552"
+ },
+ "wikiengram.toml": {
+  "bytes": 1365,
+  "sha256": "6d501c9d8522a41a281316e60fea3215e6d3b9ddb104f7cd654ef5a085181ddb"
+ }
+}

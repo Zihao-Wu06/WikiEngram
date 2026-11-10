@@ -39,6 +39,8 @@ class ExtractedClaim:
     importance: float = 0.5
     multi_valued: bool = False
     questions: list[str] = field(default_factory=list)
+    category: str = "fact"
+    scope: str = ""
 
 
 @runtime_checkable
@@ -811,8 +813,10 @@ class OpenAICompatExtractor:
         timeout: float = 60.0,
         client: httpx.Client | None = None,
         temperature: float = 0.0,
+        max_tokens: int = 8192,
     ) -> None:
         self.model = model
+        self.max_tokens = max_tokens  # servers that default to a short reply would cut the JSON off
         self.base_url = (base_url or os.environ.get("WIKIENGRAM_LLM_BASE_URL") or DEFAULT_BASE_URL).rstrip("/")
         self._api_key = (
             api_key
@@ -844,9 +848,19 @@ class OpenAICompatExtractor:
             return []
         hint = " The text contains only the user's messages." if kind == "conversation" else ""
         claims: list[ExtractedClaim] = []
-        for chunk in _chunks(text, self.max_chars):
+        chunks = _chunks(text, self.max_chars)
+        failed: list[LLMError] = []
+        for chunk in chunks:
             user = f"Source kind: {kind}.{hint}\n\nText:\n{chunk}"
-            claims.extend(self._chat(_EXTRACT_PROMPT, user, parse_claims))
+            try:
+                claims.extend(self._chat(_EXTRACT_PROMPT, user, parse_claims))
+            except LLMError as e:  # one bad reply must not lose the rest of a long document
+                if e.status_code is not None and e.status_code < 500:
+                    raise
+                log.warning("extraction of one chunk (%d chars) failed and was skipped: %s", len(chunk), e)
+                failed.append(e)
+        if failed and len(failed) == len(chunks):
+            raise failed[-1]
         return prepare_claims(claims)
 
     def paraphrase_questions(self, claim: Claim, n: int = 3) -> list[str]:
@@ -872,6 +886,7 @@ class OpenAICompatExtractor:
             "model": self.model,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
             "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
             "response_format": {"type": "json_object"},
         }
         headers = {"Content-Type": "application/json"}

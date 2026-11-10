@@ -11,6 +11,8 @@ from __future__ import annotations
 import random
 from dataclasses import dataclass, field
 
+from ..utils.text import answer_in
+
 _ONSETS = ["b", "br", "c", "d", "dr", "f", "g", "gr", "h", "j", "k", "kr", "l", "m", "n", "p", "qu", "r",
            "s", "st", "t", "th", "tr", "v", "vr", "w", "z", "zh"]
 _VOWELS = ["a", "e", "i", "o", "u", "ae", "ia", "ou", "y"]
@@ -107,13 +109,6 @@ def statement_prefix(statement: str, obj: str) -> str:
     return statement[:idx].rstrip()
 
 
-def _norm(s: str) -> str:
-    return " ".join(s.lower().replace(".", " ").replace(",", " ").split())
-
-
 def answer_matches(prediction: str, obj: str) -> bool:
-    """True if the (invented, hence unambiguous) object string appears in the generated answer."""
-    p, o = _norm(prediction), _norm(obj)
-    if not p:
-        return False
-    return o in p or (o.startswith("the ") and o[4:] in p)
+    """True if the object appears in the generated answer as whole words (see :func:`answer_in`)."""
+    return answer_in(prediction, obj)

@@ -1,0 +1,10 @@
+{
+ "n": 885,
+ "accuracy": 0.8847457627118644,
+ "accuracy_heldout_question": 0.42953020134228187,
+ "accuracy_statement": 0.9142857142857143,
+ "accuracy_trained_question": 0.9916107382550335,
+ "verified_facts": 59,
+ "facts": 149,
+ "note": "wikiengram verify after training; a fact is verified when every probe passes (4 trained phrasings, the held-out phrasing and the statement)"
+}

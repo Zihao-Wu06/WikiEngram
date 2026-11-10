@@ -41,8 +41,9 @@ community models (a frozen Spark-1.7B with a 420M-parameter Engram).
 1. **Retrofit, runnable today.** A frozen Qwen3 with an Engram variant attached by hooks. A base Engram is
    trained once with the backbone frozen and then frozen as well. Qwen3-0.6B-Base is the laptop default
    (Apache-2.0). It loads in transformers without remote code, and Qwen3-1.7B-Base shares its tokenizer.
-2. **Native MoE backends, planned.** Each needs a trainable port of the family's MoE block, a table reader and
-   a streaming trainer ([NATIVE_MOE.md](NATIVE_MOE.md)).
+2. **Native MoE backends.** Each needs a trainable port of the family's MoE block, a table reader and a
+   streaming trainer ([NATIVE_MOE.md](NATIVE_MOE.md)). Qwen3.8-Flash-Next has one (it runs from its FP8
+   release on one GPU); DeepSeek-V4.1-Flash is planned.
 
 ## 3. Which part of Engram is trained?
 
@@ -104,3 +105,41 @@ sets, keeps a 4-bit Engram table on SSD, and streams experts from RAM or SSD. It
 score a sequence (teacher-forced), but it cannot produce gradients. Its streaming strategy is the template
 for the planned V4.1 trainer, and a small patch to its Engram row reader is the planned inference path for
 personal deltas.
+
+## 9. Training samples: train what will be asked
+
+N-gram memory recalls what it was trained on, at the positions it was trained at. So the samples must look like
+the requests the model will really get. Each consolidated claim is trained on:
+
+* **The question in the wiki prompt format** (`Question: … Answer:`), which is what wiki and hybrid answers and
+  the verification probes use.
+* **The same question as a plain chat message**, for chat and thinking models. This is how an agent asks through
+  the OpenAI-compatible API. A first version trained only the scaffolded format, and the API asked in another
+  one.
+* **Several phrasings** (three trained, a fourth kept for verification). The extracting LLM writes them; missing
+  ones are paraphrased before training, so training never needs the extraction model.
+* **A statement completion** ("Strata stores a 28.8 GB n-gram table" → " on the SSD"). It ties the memory to the
+  fact's own wording.
+
+Two smaller choices follow from the same principle:
+
+* **Answers end the turn.** For chat models the target is the short answer followed by the end-of-turn token. The
+  model then answers and stops, as an API client expects, instead of running on after a newline.
+* **Thinking models are asked with thinking off.** They are asked through their own chat template. Otherwise
+  Qwen3.8 opens a reasoning block after "Answer:" (98% of the next-token mass is "\n\n").
+
+**When to stop.** Training stops at a target loss, or once every answer token has had probability ≥ 0.5 for three
+epochs in a row. From then on greedy decoding reproduces every trained answer with a margin, and more steps cost
+time without changing what is recalled. The check is free: it reads the per-token losses of the training pass.
+
+**How much per step.** For a model streamed from disk a step costs one read of the experts per pass, whatever
+the batch size. So batches are as large as host memory allows. The streamed backward records each block's input
+on the CPU (about 20 KB per token per block for Qwen3.8), which caps a step at roughly 20 000 tokens on a 92 GB
+machine. For resident models, batches of 64 trained 2.9× faster than 16 at the same accuracy (Qwen3-1.7B, 200
+facts).
+
+**What is consolidated.** Only the most important claims, up to a cap per run. Everything else stays in the wiki,
+where agents reach it through MCP or hybrid answers. LLM-extracted claims are reviewed first. The rules in
+`examples/strata/review_rules.py` drop answers that are markup or too long to recall. They also repair answers
+that the extractor wrote as identifiers (`28.8_gb_n_gram_table` → "28.8 GB n-gram table", taken from the
+statement). A person or an agent checks the claims that will be trained.

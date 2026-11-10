@@ -189,4 +189,23 @@ def create_app(workspace: str | Path) -> FastAPI:
     def versions():
         return ws.versions()
 
+    # agent memory tools (the same tools as the MCP server and OpenAI function calling)
+    from ..agent import Memory, dispatch, openai_tools
+
+    memory = Memory(ws)
+
+    @app.get("/tools")
+    def tools():
+        return openai_tools()
+
+    @app.post("/tools/{name}")
+    def call_tool(name: str, arguments: dict | None = None):
+        try:
+            with lock:
+                return {"result": dispatch(memory, name, arguments or {})}
+        except ValueError as e:
+            raise HTTPException(400, str(e)) from e
+        except KeyError as e:
+            raise HTTPException(404, f"not found: {e}") from e
+
     return app

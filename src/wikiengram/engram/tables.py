@@ -5,12 +5,15 @@
 * :class:`FP8RowTable` - DeepSeek-V4.1-Flash's native table read straight from its safetensors shard:
   ``engram.embed.weight`` (F8_E4M3, ``[rows, 256]``) with ``engram.embed.scale`` (F8_E8M0, one scale per 32
   values). Only the requested rows are read (memory-mapped), so a 98 GB table costs no RAM.
+* :class:`ShardedTable` - a table split into row shards across the files of a checkpoint (Qwen3.8-Flash-Next:
+  128 shards ``ngram_embedding.shard_{i}.weight``), BF16 or F8_E4M3 with one global scale. Also read lazily.
 
 All tables return float32 rows on the CPU from ``gather``; callers move them to the compute device.
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
 import struct
 from pathlib import Path
@@ -129,3 +132,93 @@ class FP8RowTable(BaseTable):
         codes[order] = self._w[idx[order]]
         scales[order] = self._s[idx[order]]
         return torch.from_numpy(dequant_fp8_rows(codes, scales, self.block))
+
+
+_RAW_DTYPES = {"F8_E4M3": np.uint8, "BF16": np.uint16, "F16": np.float16, "F32": np.float32}
+
+
+def _decode_rows(raw: np.ndarray, dtype: str, scale: float) -> np.ndarray:
+    if dtype == "F8_E4M3":
+        return E4M3FN_LUT[raw] * np.float32(scale)  # exact in float32 (4-bit x 8-bit mantissas)
+    if dtype == "BF16":
+        return (raw.astype(np.uint32) << 16).view(np.float32)
+    return raw.astype(np.float32)
+
+
+class ShardedTable(BaseTable):
+    """Rows of a table stored as equal row shards in (possibly several) safetensors files.
+
+    ``shards`` lists ``(file, tensor_key)`` in row order. The values are BF16/F16/F32, or F8_E4M3 multiplied by
+    one global ``scale`` (Qwen3.8-Flash-Next-FP8 stores ``ngram_embedding.weight_scale``). Only the requested
+    rows are read through memory maps, so the 51-102 GB table never needs RAM."""
+
+    def __init__(self, shards: list[tuple[str | Path, str]], scale: float = 1.0):
+        headers: dict[str, tuple[dict, int]] = {}
+        self.shards = []
+        for path, key in shards:
+            path = str(path)
+            if path not in headers:
+                headers[path] = read_safetensors_header(path)
+            header, start = headers[path]
+            meta = header[key]
+            if meta["dtype"] not in _RAW_DTYPES or len(meta["shape"]) != 2:
+                raise ValueError(f"{key}: unsupported table shard {meta['dtype']} {meta['shape']}")
+            rows, dim = (int(v) for v in meta["shape"])
+            self.shards.append((path, start + int(meta["data_offsets"][0]), rows, dim, meta["dtype"]))
+        if not self.shards or len({s[3] for s in self.shards}) != 1:
+            raise ValueError("table shards must exist and share one row width")
+        self.dim = self.shards[0][3]
+        self.rows_per_shard = self.shards[0][2]
+        if any(s[2] != self.rows_per_shard for s in self.shards[:-1]) or self.shards[-1][2] > self.rows_per_shard:
+            raise ValueError("table shards must have equal row counts (the last one may be shorter)")
+        self.num_rows = sum(s[2] for s in self.shards)
+        self.scale = float(scale)
+        self._maps: list[np.memmap | None] = [None] * len(self.shards)
+
+    @classmethod
+    def from_checkpoint(cls, root: str | Path, weight_map: dict[str, str], prefix: str) -> ShardedTable:
+        """``prefix`` = the table's key without suffix, e.g. ``model.language_model.layers.1.ple.ple_embedding
+        .ngram_embedding``. Accepts ``prefix.shard_{i}.weight`` shards or a single ``prefix.weight``."""
+        root = Path(root)
+        pat = prefix + ".shard_"
+        keys = sorted((k for k in weight_map if k.startswith(pat) and k.endswith(".weight")),
+                      key=lambda k: int(k[len(pat):-len(".weight")]))
+        if not keys:
+            keys = [prefix + ".weight"]
+        scale = 1.0
+        if prefix + ".weight_scale" in weight_map:
+            path = root / weight_map[prefix + ".weight_scale"]
+            header, start = read_safetensors_header(path)
+            meta = header[prefix + ".weight_scale"]
+            raw = np.fromfile(path, dtype=np.uint8, count=meta["data_offsets"][1] - meta["data_offsets"][0],
+                              offset=start + meta["data_offsets"][0])
+            scale = float(_decode_rows(raw.view(_RAW_DTYPES[meta["dtype"]])[:1].reshape(1, 1), meta["dtype"], 1.0)[0, 0])
+        return cls([(root / weight_map[k], k) for k in keys], scale)
+
+    def _map(self, i: int) -> np.memmap:
+        if self._maps[i] is None:
+            path, offset, rows, dim, dtype = self.shards[i]
+            self._maps[i] = np.memmap(path, dtype=_RAW_DTYPES[dtype], mode="r", offset=offset, shape=(rows, dim))
+        return self._maps[i]
+
+    def gather(self, rows: torch.Tensor) -> torch.Tensor:
+        idx = rows.detach().cpu().numpy().astype(np.int64).reshape(-1)
+        if idx.size and (idx.min() < 0 or idx.max() >= self.num_rows):
+            raise IndexError(f"row out of range for a table of {self.num_rows} rows")
+        out = np.empty((idx.size, self.dim), dtype=np.float32)
+        shard = idx // self.rows_per_shard
+        local = idx - shard * self.rows_per_shard
+        for s in np.unique(shard):
+            sel = np.nonzero(shard == s)[0]
+            sel = sel[np.argsort(local[sel])]  # sorted reads are friendlier to the page cache
+            out[sel] = _decode_rows(self._map(int(s))[local[sel]], self.shards[s][4], self.scale)
+        return torch.from_numpy(out)
+
+    def checksum(self) -> str:
+        """Identity of the table: shard layout, scale and a fixed sample of rows from every shard."""
+        h = hashlib.blake2b(digest_size=12)
+        h.update(repr([(s[2], s[3], s[4]) for s in self.shards] + [self.scale]).encode())
+        for i, (_, _, rows, _, _) in enumerate(self.shards):
+            sample = np.unique(np.linspace(0, rows - 1, num=min(rows, 64)).astype(np.int64))
+            h.update(np.ascontiguousarray(self._map(i)[sample]).tobytes())
+        return h.hexdigest()

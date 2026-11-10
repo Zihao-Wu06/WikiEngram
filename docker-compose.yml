@@ -1,17 +1,23 @@
+# One workspace, three servers. Put model weights in ./models (e.g. ./models/Qwen3.8-Flash-Next-FP8) and point
+# the workspace at them ([backend] model = "/models/..."). Then: docker compose up -d
+x-common: &common
+  build:
+    context: .
+    dockerfile: docker/Dockerfile.cuda   # docker/Dockerfile for a CPU-only machine
+  image: wikiengram:cuda
+  volumes:
+    - ./wikiengram-data:/data            # the workspace: wiki, Engram delta, config
+    - ${MODELS:-./models}:/models:ro     # model weights
+  environment:
+    # optional: an OpenAI-compatible endpoint for LLM-based knowledge extraction
+    - WIKIENGRAM_LLM_BASE_URL=${WIKIENGRAM_LLM_BASE_URL:-}
+    - WIKIENGRAM_LLM_API_KEY=${WIKIENGRAM_LLM_API_KEY:-}
+
 services:
-  wikiengram:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.cuda   # use docker/Dockerfile for a CPU-only machine
-    image: wikiengram:cuda
-    ports:
-      - "8765:8765"
-    volumes:
-      - ./wikiengram-data:/data
-    environment:
-      # optional: an OpenAI-compatible endpoint for LLM-based knowledge extraction
-      - WIKIENGRAM_LLM_BASE_URL=${WIKIENGRAM_LLM_BASE_URL:-}
-      - WIKIENGRAM_LLM_API_KEY=${WIKIENGRAM_LLM_API_KEY:-}
+  model-api:   # the trained model with its personal Engram memory, OpenAI-compatible: http://localhost:8000/v1
+    <<: *common
+    command: ["serve-model", "--host", "0.0.0.0", "--port", "8000", "--auto-consolidate-minutes", "30"]
+    ports: ["8000:8000"]
     deploy:
       resources:
         reservations:
@@ -19,3 +25,13 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+
+  mcp:         # LLMWiki memory tools for agents (no GPU): http://localhost:8766/mcp
+    <<: *common
+    command: ["mcp", "--transport", "streamable-http", "--host", "0.0.0.0", "--port", "8766"]
+    ports: ["8766:8766"]
+
+  api:         # REST API (claims, ingest, ask, consolidate, /tools): http://localhost:8765
+    <<: *common
+    command: ["serve", "--host", "0.0.0.0", "--port", "8765"]
+    ports: ["8765:8765"]

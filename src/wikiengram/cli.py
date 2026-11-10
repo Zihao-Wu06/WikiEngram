@@ -273,17 +273,108 @@ def bench(facts: int = typer.Option(50, help="Number of fictitious facts"),
           out: Path = typer.Option(Path("benchmark-results"), help="Output directory"),
           adapt_steps: int = typer.Option(300), epochs: int = typer.Option(20),
           edit_fraction: float = typer.Option(0.2), delete_fraction: float = typer.Option(0.1),
-          device: str = typer.Option("auto"), base: Path = typer.Option(None, help="Reuse a trained base Engram dir")):
+          device: str = typer.Option("auto"), base: Path = typer.Option(None, help="Reuse a trained base Engram dir"),
+          kind: str = typer.Option("hf", help="hf (retrofit) | hf-native (a model that ships Engram)"),
+          placement: str = typer.Option("auto", help="auto | resident | stream"),
+          expert_cache_gb: float = typer.Option(4.0, help="Native streaming: accelerator cache for experts"),
+          batch_size: int = typer.Option(16, help="Consolidation batch (streamed models: larger is cheaper)"),
+          lr: float = typer.Option(2e-2),
+          gen_batch: int = typer.Option(16, help="Questions answered per generation batch"),
+          latency_queries: int = typer.Option(10, help="Single queries timed per mode"),
+          seed: int = typer.Option(0, help="Seed for the fictitious facts and the edits"),
+          prompt_format: str = typer.Option("auto", help="auto | completion | chat (chat template, thinking off)")):
     """Benchmark LLMWiki-only vs Engram-only vs LLMWiki+Engram (accuracy, memory, tokens, latency, sync)."""
     from .bench.runner import BenchConfig, run_benchmark
 
     cfg = BenchConfig(facts=facts, model=model, adapt_steps=adapt_steps, epochs=epochs, device=device,
                       edit_fraction=edit_fraction, delete_fraction=delete_fraction,
-                      base_dir=str(base) if base else None)
+                      base_dir=str(base) if base else None, kind=kind, placement=placement,
+                      expert_cache_gb=expert_cache_gb, batch_size=batch_size, lr=lr, gen_batch=gen_batch,
+                      latency_queries=latency_queries, seed=seed, prompt_format=prompt_format)
     result = run_benchmark(cfg, out, progress=lambda m: typer.echo(m))
     typer.echo((out / "results.md").read_text())
     typer.echo(f"full results: {out / 'results.json'}")
     del result
+
+
+@app.command()
+def hardware(model: str = typer.Option(None, help="Model id or local checkpoint to plan for"),
+             max_gpu_memory: str = typer.Option("", help="Cap per accelerator, e.g. 20GiB"),
+             as_json: bool = typer.Option(False, "--json")):
+    """Show the accelerators and memory WikiEngram sees and, with --model, how that model would run here."""
+    from .backends.streaming import checkpoint_bytes, should_stream
+    from .utils.device import hardware_summary
+
+    info: dict = hardware_summary()
+    if model:
+        size = checkpoint_bytes(model)
+        stream = should_stream(model, "auto", None, max_gpu_memory)
+        plan: dict = {"model": model, "weights_gib_16bit": round(size / 2**30, 1) if size else "unknown",
+                      "placement": "stream" if stream else "resident"}
+        if Path(model).is_dir() and (Path(model) / "config.json").exists():
+            cfg = json.loads((Path(model) / "config.json").read_text())
+            text = cfg.get("text_config", cfg)
+            if any(k in text for k in ("ple_layer_ids", "engram_layer_ids")):
+                from .backends.checkpoint import checkpoint_summary
+
+                plan["native_streaming"] = checkpoint_summary(model)
+        info["plan"] = plan
+    _out(info, as_json)
+
+
+@app.command()
+def experiment(name: str = typer.Argument(..., help="agent | training"),
+               model: str = typer.Option("Qwen/Qwen3-0.6B-Base"),
+               out: Path = typer.Option(Path("experiment-results"), help="Output directory"),
+               kind: str = typer.Option("hf", help="hf (retrofit) | hf-native"),
+               placement: str = typer.Option("auto"), base: Path = typer.Option(None, help="Reuse a base Engram dir"),
+               per_kind: int = typer.Option(25, help="agent: memories per kind"),
+               facts: int = typer.Option(200, help="training: number of facts"),
+               rounds: int = typer.Option(5, help="training: continual-learning rounds"),
+               epochs: int = typer.Option(40), batch_size: int = typer.Option(16), lr: float = typer.Option(2e-2),
+               gen_batch: int = typer.Option(16), expert_cache_gb: float = typer.Option(0.0),
+               device: str = typer.Option("auto"), seed: int = typer.Option(0)):
+    """Reproducible experiments for the README: agent memory, or what the training method guarantees."""
+    from .bench.experiments import run_agent_experiment, run_training_experiment
+    from .bench.runner import BenchConfig
+
+    cfg = BenchConfig(facts=facts, model=model, kind=kind, placement=placement, device=device, seed=seed,
+                      epochs=epochs, batch_size=batch_size, lr=lr, gen_batch=gen_batch,
+                      expert_cache_gb=expert_cache_gb, base_dir=str(base) if base else None)
+    if name == "agent":
+        run_agent_experiment(cfg, out, per_kind=per_kind, progress=lambda m: typer.echo(m))
+    elif name == "training":
+        run_training_experiment(cfg, out, rounds=rounds, progress=lambda m: typer.echo(m))
+    else:
+        raise typer.BadParameter("experiment must be 'agent' or 'training'")
+    typer.echo((out / "results.md").read_text())
+
+
+@app.command()
+def mcp(workspace: Path | None = WS_OPTION,
+        scope: str = typer.Option("", help="Default project / context for memories"),
+        transport: str = typer.Option("stdio", help="stdio | streamable-http | sse"),
+        host: str = "127.0.0.1", port: int = 8766,
+        model_tools: bool = typer.Option(False, help="Also expose memory_ask / memory_consolidate (loads the model)")):
+    """Run LLMWiki memory as an MCP server for AI agents (no model is loaded by default)."""
+    from .agent.mcp_server import serve as serve_mcp
+
+    serve_mcp(_ws_path(workspace), scope=scope, transport=transport, host=host, port=port,
+              include_model_tools=model_tools)
+
+
+@app.command("serve-model")
+def serve_model(host: str = "127.0.0.1", port: int = 8000, workspace: Path | None = WS_OPTION,
+                memory: str = typer.Option("engram", help="engram | hybrid | none (per-request field 'memory')"),
+                top_k: int = typer.Option(5, help="Wiki facts injected in hybrid mode"),
+                auto_consolidate_minutes: float = typer.Option(0.0, help="Sync and consolidate in the background")):
+    """Serve the workspace's model with its personal Engram memory as an OpenAI-compatible API."""
+    import uvicorn
+
+    from .api.openai_server import create_model_app
+
+    uvicorn.run(create_model_app(_ws_path(workspace), memory=memory, top_k=top_k,
+                                 auto_consolidate_minutes=auto_consolidate_minutes), host=host, port=port)
 
 
 @app.command()

@@ -1,0 +1,2054 @@
+{
+ "selected": 149,
+ "plan": {
+  "selected": [
+   {
+    "claim_id": "c_2db58960d7",
+    "version": 2,
+    "score": 0.46103530741042775,
+    "components": {
+     "importance": 0.9,
+     "frequency": 0.0,
+     "stability": 0.005176537052138562,
+     "confidence": 1.0
+    },
+    "reason": "score 0.46"
+   },
+   {
+    "claim_id": "c_cfdff03d16",
+    "version": 2,
+    "score": 0.4610351420044899,
+    "components": {
+     "importance": 0.9,
+     "frequency": 0.0,
+     "stability": 0.005175710022449493,
+     "confidence": 1.0
+    },
+    "reason": "score 0.46"
+   },
+   {
+    "claim_id": "c_99ca295a2a",
+    "version": 2,
+    "score": 0.4610351236062076,
+    "components": {
+     "importance": 0.9,
+     "frequency": 0.0,
+     "stability": 0.005175618031037548,
+     "confidence": 1.0
+    },
+    "reason": "score 0.46"
+   },
+   {
+    "claim_id": "c_50191a5857",
+    "version": 2,
+    "score": 0.4210353925007887,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005176962503943284,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_f1f5e4f12e",
+    "version": 2,
+    "score": 0.4210353098288836,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005176549144417731,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_fdef80f50f",
+    "version": 2,
+    "score": 0.4210353000606074,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005176500303036741,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_0743d108d9",
+    "version": 2,
+    "score": 0.42103529771226855,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005176488561342212,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_0c52167d23",
+    "version": 2,
+    "score": 0.4210352230730091,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005176115365045201,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_9242ccaead",
+    "version": 2,
+    "score": 0.42103521267099997,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.0051760633549993,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_025aed0845",
+    "version": 2,
+    "score": 0.4210351323266194,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005175661633096675,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_e27199c087",
+    "version": 2,
+    "score": 0.4210350610121323,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005175305060661239,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_f5c7525072",
+    "version": 2,
+    "score": 0.4210349966569342,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.00517498328467105,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_fcc4931863",
+    "version": 2,
+    "score": 0.42103487731166833,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005174386558341391,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_b8fc829e68",
+    "version": 2,
+    "score": 0.42103485915800676,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005174295790033576,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_24baeb94d4",
+    "version": 2,
+    "score": 0.42103485324915757,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005174266245787737,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_5eeb8a58e0",
+    "version": 2,
+    "score": 0.421034851537758,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005174257688789351,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_6123ccc05f",
+    "version": 2,
+    "score": 0.421034839682741,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005174198413704648,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_fad3b0e973",
+    "version": 2,
+    "score": 0.4210348344760598,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005174172380298534,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_640ef2025b",
+    "version": 2,
+    "score": 0.4210348208697491,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005174104348744875,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_9437d58aac",
+    "version": 2,
+    "score": 0.4210347446412427,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005173723206213122,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_bd43282faa",
+    "version": 2,
+    "score": 0.4210346851178579,
+    "components": {
+     "importance": 0.8,
+     "frequency": 0.0,
+     "stability": 0.005173425589288984,
+     "confidence": 1.0
+    },
+    "reason": "score 0.42"
+   },
+   {
+    "claim_id": "c_95dfe441d8",
+    "version": 2,
+    "score": 0.3810353454253661,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.00517672712683047,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_8dc4df34d8",
+    "version": 2,
+    "score": 0.38103530500295724,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176525014786072,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_9fbb8077ad",
+    "version": 2,
+    "score": 0.381035302438696,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176512193480076,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_565a8b2509",
+    "version": 2,
+    "score": 0.38103528135993914,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176406799695689,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_c216ca8ec9",
+    "version": 2,
+    "score": 0.3810352750167224,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176375083612176,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_42ba197c5b",
+    "version": 2,
+    "score": 0.3810352568416684,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176284208341881,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_ebb1a29870",
+    "version": 2,
+    "score": 0.38103524945668443,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176247283422127,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_68101bfb8d",
+    "version": 2,
+    "score": 0.3810352147537459,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176073768729676,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_58d79c35f7",
+    "version": 2,
+    "score": 0.38103520854918627,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176042745931229,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_08be69bfb2",
+    "version": 2,
+    "score": 0.38103520641871436,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005176032093572028,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_8863fff9d5",
+    "version": 2,
+    "score": 0.38103517779439844,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.0051758889719922705,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_138603eb98",
+    "version": 2,
+    "score": 0.38103517153033917,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175857651696213,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_df2c0b17ad",
+    "version": 2,
+    "score": 0.38103516148858596,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175807442930009,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_da60b5f582",
+    "version": 2,
+    "score": 0.38103515153955103,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.0051757576977554875,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_81e1a6ad79",
+    "version": 2,
+    "score": 0.3810351344302848,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175672151424267,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_e261f4827f",
+    "version": 2,
+    "score": 0.381035119411386,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175597056930448,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_87070af3a8",
+    "version": 2,
+    "score": 0.3810351111591388,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175555795693944,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_c9ac26d518",
+    "version": 2,
+    "score": 0.381035102206826,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175511034129999,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_707455bbe2",
+    "version": 2,
+    "score": 0.3810350969582007,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175484791003838,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_850ee8d580",
+    "version": 2,
+    "score": 0.3810350949383181,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175474691590724,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_e27c519d54",
+    "version": 2,
+    "score": 0.38103508968985056,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175448449252985,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_7ac4a976db",
+    "version": 2,
+    "score": 0.381035087540772,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.00517543770386008,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_d1df9368d2",
+    "version": 2,
+    "score": 0.3810350557880532,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.0051752789402659816,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_9cfdc5f2c6",
+    "version": 2,
+    "score": 0.3810350538058571,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175269029285542,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_f8e24744ea",
+    "version": 2,
+    "score": 0.3810350518442651,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005175259221325476,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_e414579f28",
+    "version": 2,
+    "score": 0.3810349667643639,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005174833821819362,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_1fc828ece3",
+    "version": 2,
+    "score": 0.38103489030143356,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.0051744515071680515,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_d4a94c831b",
+    "version": 2,
+    "score": 0.3810348811449723,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005174405724861424,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_84f62ea1a8",
+    "version": 2,
+    "score": 0.3810348609779982,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.00517430488999138,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_a4a576f210",
+    "version": 2,
+    "score": 0.3810348550711464,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005174275355732209,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_c5681bd397",
+    "version": 2,
+    "score": 0.3810348498285132,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005174249142566056,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_e2608acc17",
+    "version": 2,
+    "score": 0.3810348415986571,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005174207993285366,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_a2f73fbb6d",
+    "version": 2,
+    "score": 0.3810347522896118,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005173761448059132,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_2d0f906c03",
+    "version": 2,
+    "score": 0.381034683237368,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005173416186840236,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_7affd23d61",
+    "version": 2,
+    "score": 0.3810345688864878,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005172844432438913,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_93810f567f",
+    "version": 2,
+    "score": 0.38103454332334863,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.005172716616743246,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_37eb2a538d",
+    "version": 3,
+    "score": 0.38077628422090926,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.003881421104546577,
+     "confidence": 1.0
+    },
+    "reason": "score 0.38"
+   },
+   {
+    "claim_id": "c_34468ebc8b",
+    "version": 1,
+    "score": 0.372544542222742,
+    "components": {
+     "importance": 0.7,
+     "frequency": 0.0,
+     "stability": 0.01272271111371025,
+     "confidence": 0.9
+    },
+    "reason": "score 0.37"
+   },
+   {
+    "claim_id": "c_1d57a8cdc8",
+    "version": 2,
+    "score": 0.3410352874302044,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0051764371510220585,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_a973bacbdf",
+    "version": 2,
+    "score": 0.34103526306246956,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0051763153123477144,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_1d73bb6e97",
+    "version": 2,
+    "score": 0.34103525441722055,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005176272086102706,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_70a758c63e",
+    "version": 2,
+    "score": 0.34103525198509876,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005176259925493698,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_1b740afa0e",
+    "version": 2,
+    "score": 0.34103521700537187,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005176085026859186,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_88eb3bd6f7",
+    "version": 2,
+    "score": 0.3410352105262839,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005176052631419382,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_7065e1914e",
+    "version": 2,
+    "score": 0.3410352005421905,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.00517600271095254,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_73bba73d54",
+    "version": 2,
+    "score": 0.3410351826903891,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005175913451945761,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_653d0a2867",
+    "version": 2,
+    "score": 0.3410351801640773,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005175900820386473,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_bea16a0b16",
+    "version": 2,
+    "score": 0.3410351364651475,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005175682325737396,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_275ce6a63e",
+    "version": 2,
+    "score": 0.341035117308509,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005175586542544962,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_bc0bcc1948",
+    "version": 2,
+    "score": 0.34103511532421044,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0051755766210522395,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_feb52830c5",
+    "version": 2,
+    "score": 0.34103511317697155,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005175565884857581,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_4c9f2411aa",
+    "version": 2,
+    "score": 0.34103504982138644,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0051752491069323595,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_a48f677644",
+    "version": 2,
+    "score": 0.34103504758584435,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005175237929221814,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_eb349d9675",
+    "version": 2,
+    "score": 0.34103488514531644,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005174425726582344,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_aebbcd3229",
+    "version": 2,
+    "score": 0.34103487915126524,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005174395756326235,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_fd2c7c9eb0",
+    "version": 2,
+    "score": 0.341034870472009,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005174352360045048,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_98ecf9f527",
+    "version": 2,
+    "score": 0.3410348685912564,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0051743429562822645,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_91b3de7f50",
+    "version": 2,
+    "score": 0.3410348161328617,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005174080664308404,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_5347d8981e",
+    "version": 2,
+    "score": 0.3410348140920071,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005174070460035267,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_6497644b55",
+    "version": 2,
+    "score": 0.34103468127714265,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0051734063857131534,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_32c449e789",
+    "version": 2,
+    "score": 0.3410346763462512,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005173381731255765,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_b84d01cbce",
+    "version": 2,
+    "score": 0.3410346745337759,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005173372668879373,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_da6a8fe7ae",
+    "version": 2,
+    "score": 0.34103466986369413,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.005173349318470694,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_da1720d0c1",
+    "version": 3,
+    "score": 0.34077614294749403,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.003880714737470188,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_d01a866970",
+    "version": 5,
+    "score": 0.34051768585230097,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.002588429261504868,
+     "confidence": 1.0
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_1a5aab842f",
+    "version": 1,
+    "score": 0.33655177921624413,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758896081220537,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_ddfc4f011d",
+    "version": 1,
+    "score": 0.33655177762718114,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758888135905619,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_d7afe7d550",
+    "version": 1,
+    "score": 0.3365517756534474,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758878267237118,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_006902236a",
+    "version": 1,
+    "score": 0.3365517736820002,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758868410000725,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_925219e5cb",
+    "version": 1,
+    "score": 0.3365517715722638,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758857861318916,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_3ba120dbd5",
+    "version": 1,
+    "score": 0.3365517695290702,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758847645350865,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_6f230583f8",
+    "version": 1,
+    "score": 0.3365517676631137,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758838315568273,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_23886e8ab1",
+    "version": 1,
+    "score": 0.3365517657675125,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.00775882883756249,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_30f7340cde",
+    "version": 1,
+    "score": 0.33655176386465785,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758819323289331,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_094ea70e8e",
+    "version": 1,
+    "score": 0.3365517619387025,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758809693512462,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_15b7cde3bb",
+    "version": 1,
+    "score": 0.3365517604094018,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.00775880204700919,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_5f8ec71a41",
+    "version": 1,
+    "score": 0.33655175889476585,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0077587944738290926,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_07f42fe2b9",
+    "version": 1,
+    "score": 0.33655175656230046,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758782811502301,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_b125bca260",
+    "version": 1,
+    "score": 0.33655175492246314,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758774612315748,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_b997138ee1",
+    "version": 1,
+    "score": 0.3365517532539273,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758766269636533,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_689afba8f0",
+    "version": 1,
+    "score": 0.3365517514349607,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758757174803467,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_bd73b40eea",
+    "version": 1,
+    "score": 0.33655174981751457,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758749087572728,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_94c827328e",
+    "version": 1,
+    "score": 0.33655174804254184,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.0077587402127091845,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_5d6e6a01a2",
+    "version": 1,
+    "score": 0.33655174631645124,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758731582256221,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_b6a94f7e62",
+    "version": 1,
+    "score": 0.33655174468370974,
+    "components": {
+     "importance": 0.6,
+     "frequency": 0.0,
+     "stability": 0.007758723418548624,
+     "confidence": 0.95
+    },
+    "reason": "score 0.34"
+   },
+   {
+    "claim_id": "c_0670476498",
+    "version": 2,
+    "score": 0.30103533119273357,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176655963667696,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_c4b11af68c",
+    "version": 2,
+    "score": 0.30103532897953006,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176644897650158,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_80ad6c9f67",
+    "version": 2,
+    "score": 0.3010353268083231,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176634041615474,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_171d5a26e1",
+    "version": 2,
+    "score": 0.3010353246143045,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.00517662307152252,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_770fb277cc",
+    "version": 2,
+    "score": 0.3010353224453577,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176612226788539,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_383f6b6679",
+    "version": 2,
+    "score": 0.3010353204387731,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176602193865616,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_b26806e0cb",
+    "version": 2,
+    "score": 0.30103531839255726,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.0051765919627861584,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_3599ac2d71",
+    "version": 2,
+    "score": 0.3010353160633507,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176580316753404,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_07b1bb85e1",
+    "version": 2,
+    "score": 0.30103531389918703,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.0051765694959348685,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_c7602d37a8",
+    "version": 2,
+    "score": 0.30103531189312804,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176559465640016,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_7b1c94574e",
+    "version": 2,
+    "score": 0.3010352326528526,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.0051761632642628235,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_fc86f5d17a",
+    "version": 2,
+    "score": 0.3010352306131543,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176153065771442,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_6f5dfb15ff",
+    "version": 2,
+    "score": 0.3010352285964779,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005176142982389561,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_2a34cac298",
+    "version": 2,
+    "score": 0.30103508556141423,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005175427807071221,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_8e57186073",
+    "version": 2,
+    "score": 0.30103508314863503,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005175415743175218,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_855263cdc3",
+    "version": 2,
+    "score": 0.3010350812265692,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005175406132846072,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_6c11b6a4f1",
+    "version": 2,
+    "score": 0.301035076035709,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005175380178544887,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_6287c1ae56",
+    "version": 2,
+    "score": 0.3010350740225017,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005175370112508273,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_209446a182",
+    "version": 2,
+    "score": 0.3010349944092504,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174972046252071,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_7877e386da",
+    "version": 2,
+    "score": 0.30103494063293074,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174703164653593,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_1681dc2d5e",
+    "version": 2,
+    "score": 0.3010349386887891,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174693443945476,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_feab41a399",
+    "version": 2,
+    "score": 0.30103492455733727,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174622786686323,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_998d74a135",
+    "version": 2,
+    "score": 0.30103492245556396,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174612277819787,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_d4345e4366",
+    "version": 2,
+    "score": 0.3010349207347558,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174603673778934,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_5c1e3e1803",
+    "version": 2,
+    "score": 0.30103491331502874,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174566575143703,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_c67ae66297",
+    "version": 2,
+    "score": 0.3010348829505095,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174414752547283,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_183f2222c6",
+    "version": 2,
+    "score": 0.3010348754718611,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.00517437735930532,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_951a6643f5",
+    "version": 2,
+    "score": 0.3010348668634576,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174334317288071,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_de3831f6b0",
+    "version": 2,
+    "score": 0.30103486292361165,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174314618058095,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_905f5e2bba",
+    "version": 2,
+    "score": 0.3010348227642726,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174113821363112,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_5ad2f5274a",
+    "version": 2,
+    "score": 0.3010348121478129,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174060739064343,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_dbf615324a",
+    "version": 2,
+    "score": 0.3010348083122487,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005174041561243605,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_e6729c65f2",
+    "version": 2,
+    "score": 0.30103472026646455,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.00517360133232263,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_34bb299fcc",
+    "version": 2,
+    "score": 0.30103471559091644,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005173577954582015,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_5335eeb3bd",
+    "version": 2,
+    "score": 0.30103463211960474,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005173160598023648,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_cf46187cc6",
+    "version": 2,
+    "score": 0.30103458264864313,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.0051729132432155505,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_8138542cf5",
+    "version": 2,
+    "score": 0.30103453277516623,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.005172663875830868,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_0eab1163c2",
+    "version": 3,
+    "score": 0.30077610759744566,
+    "components": {
+     "importance": 0.5,
+     "frequency": 0.0,
+     "stability": 0.003880537987228424,
+     "confidence": 1.0
+    },
+    "reason": "score 0.30"
+   },
+   {
+    "claim_id": "c_2db0052293",
+    "version": 2,
+    "score": 0.2610349428003007,
+    "components": {
+     "importance": 0.4,
+     "frequency": 0.0,
+     "stability": 0.00517471400150336,
+     "confidence": 1.0
+    },
+    "reason": "score 0.26"
+   },
+   {
+    "claim_id": "c_76abaefeea",
+    "version": 2,
+    "score": 0.26103486487143257,
+    "components": {
+     "importance": 0.4,
+     "frequency": 0.0,
+     "stability": 0.0051743243571627075,
+     "confidence": 1.0
+    },
+    "reason": "score 0.26"
+   },
+   {
+    "claim_id": "c_dc37254896",
+    "version": 3,
+    "score": 0.26077620866551765,
+    "components": {
+     "importance": 0.4,
+     "frequency": 0.0,
+     "stability": 0.0038810433275879375,
+     "confidence": 1.0
+    },
+    "reason": "score 0.26"
+   },
+   {
+    "claim_id": "c_afaf653e46",
+    "version": 9,
+    "score": 0.26031048555290576,
+    "components": {
+     "importance": 0.4,
+     "frequency": 0.0,
+     "stability": 0.0015524277645286428,
+     "confidence": 1.0
+    },
+    "reason": "score 0.26"
+   },
+   {
+    "claim_id": "c_70504b5854",
+    "version": 11,
+    "score": 0.26025873748144723,
+    "components": {
+     "importance": 0.4,
+     "frequency": 0.0,
+     "stability": 0.0012936874072361456,
+     "confidence": 1.0
+    },
+    "reason": "score 0.26"
+   }
+  ],
+  "rejected": [],
+  "n_samples": 745,
+  "est_tokens": 1072800,
+  "est_seconds": null,
+  "throughput_source": "no measurement yet"
+ },
+ "training": {
+  "config": {
+   "epochs": 60,
+   "batch_size": 168,
+   "lr": 0.02,
+   "weight_decay": 0.0,
+   "target_loss": 0.02,
+   "exact_patience": 3,
+   "locality_weight": 0.0,
+   "replay_batch": 4,
+   "replay_seq_len": 64,
+   "seed": 0
+  },
+  "epochs_run": 25,
+  "steps": 200,
+  "tokens": 1254400,
+  "seconds": 7569.636035825126,
+  "epoch_losses": [
+   3.049314111471176,
+   2.063707485795021,
+   1.4184993505477905,
+   0.9976681917905807,
+   0.7106209173798561,
+   0.49435243755578995,
+   0.35604823753237724,
+   0.26200833916664124,
+   0.19515196233987808,
+   0.14705886878073215,
+   0.11274094134569168,
+   0.09291972080245614,
+   0.07250450225546956,
+   0.06124149076640606,
+   0.05282581504434347,
+   0.04751775716431439,
+   0.04170354641973972,
+   0.036106482381001115,
+   0.03254162427037954,
+   0.028911981731653214,
+   0.02609035139903426,
+   0.02355124830501154,
+   0.021036623569671065,
+   0.02054723902256228,
+   0.019372708280570805
+  ],
+  "rows_trained": {
+   "1": 93339
+  },
+  "rows_pruned": {
+   "1": 0
+  },
+  "delta_rows_total": 93339,
+  "backbone_checksum": "a76c359e30cc0f67b82e3ef5",
+  "fusion_checksum": "856d728655aacb094ef66432",
+  "base_checksum": "e7d6952a06903d631dc516c3",
+  "claims": [
+   "c_2db58960d7",
+   "c_cfdff03d16",
+   "c_99ca295a2a",
+   "c_50191a5857",
+   "c_f1f5e4f12e",
+   "c_fdef80f50f",
+   "c_0743d108d9",
+   "c_0c52167d23",
+   "c_9242ccaead",
+   "c_025aed0845",
+   "c_e27199c087",
+   "c_f5c7525072",
+   "c_fcc4931863",
+   "c_b8fc829e68",
+   "c_24baeb94d4",
+   "c_5eeb8a58e0",
+   "c_6123ccc05f",
+   "c_fad3b0e973",
+   "c_640ef2025b",
+   "c_9437d58aac",
+   "c_bd43282faa",
+   "c_95dfe441d8",
+   "c_8dc4df34d8",
+   "c_9fbb8077ad",
+   "c_565a8b2509",
+   "c_c216ca8ec9",
+   "c_42ba197c5b",
+   "c_ebb1a29870",
+   "c_68101bfb8d",
+   "c_58d79c35f7",
+   "c_08be69bfb2",
+   "c_8863fff9d5",
+   "c_138603eb98",
+   "c_df2c0b17ad",
+   "c_da60b5f582",
+   "c_81e1a6ad79",
+   "c_e261f4827f",
+   "c_87070af3a8",
+   "c_c9ac26d518",
+   "c_707455bbe2",
+   "c_850ee8d580",
+   "c_e27c519d54",
+   "c_7ac4a976db",
+   "c_d1df9368d2",
+   "c_9cfdc5f2c6",
+   "c_f8e24744ea",
+   "c_e414579f28",
+   "c_1fc828ece3",
+   "c_d4a94c831b",
+   "c_84f62ea1a8",
+   "c_a4a576f210",
+   "c_c5681bd397",
+   "c_e2608acc17",
+   "c_a2f73fbb6d",
+   "c_2d0f906c03",
+   "c_7affd23d61",
+   "c_93810f567f",
+   "c_37eb2a538d",
+   "c_34468ebc8b",
+   "c_1d57a8cdc8",
+   "c_a973bacbdf",
+   "c_1d73bb6e97",
+   "c_70a758c63e",
+   "c_1b740afa0e",
+   "c_88eb3bd6f7",
+   "c_7065e1914e",
+   "c_73bba73d54",
+   "c_653d0a2867",
+   "c_bea16a0b16",
+   "c_275ce6a63e",
+   "c_bc0bcc1948",
+   "c_feb52830c5",
+   "c_4c9f2411aa",
+   "c_a48f677644",
+   "c_eb349d9675",
+   "c_aebbcd3229",
+   "c_fd2c7c9eb0",
+   "c_98ecf9f527",
+   "c_91b3de7f50",
+   "c_5347d8981e",
+   "c_6497644b55",
+   "c_32c449e789",
+   "c_b84d01cbce",
+   "c_da6a8fe7ae",
+   "c_da1720d0c1",
+   "c_d01a866970",
+   "c_1a5aab842f",
+   "c_ddfc4f011d",
+   "c_d7afe7d550",
+   "c_006902236a",
+   "c_925219e5cb",
+   "c_3ba120dbd5",
+   "c_6f230583f8",
+   "c_23886e8ab1",
+   "c_30f7340cde",
+   "c_094ea70e8e",
+   "c_15b7cde3bb",
+   "c_5f8ec71a41",
+   "c_07f42fe2b9",
+   "c_b125bca260",
+   "c_b997138ee1",
+   "c_689afba8f0",
+   "c_bd73b40eea",
+   "c_94c827328e",
+   "c_5d6e6a01a2",
+   "c_b6a94f7e62",
+   "c_0670476498",
+   "c_c4b11af68c",
+   "c_80ad6c9f67",
+   "c_171d5a26e1",
+   "c_770fb277cc",
+   "c_383f6b6679",
+   "c_b26806e0cb",
+   "c_3599ac2d71",
+   "c_07b1bb85e1",
+   "c_c7602d37a8",
+   "c_7b1c94574e",
+   "c_fc86f5d17a",
+   "c_6f5dfb15ff",
+   "c_2a34cac298",
+   "c_8e57186073",
+   "c_855263cdc3",
+   "c_6c11b6a4f1",
+   "c_6287c1ae56",
+   "c_209446a182",
+   "c_7877e386da",
+   "c_1681dc2d5e",
+   "c_feab41a399",
+   "c_998d74a135",
+   "c_d4345e4366",
+   "c_5c1e3e1803",
+   "c_c67ae66297",
+   "c_183f2222c6",
+   "c_951a6643f5",
+   "c_de3831f6b0",
+   "c_905f5e2bba",
+   "c_5ad2f5274a",
+   "c_dbf615324a",
+   "c_e6729c65f2",
+   "c_34bb299fcc",
+   "c_5335eeb3bd",
+   "c_cf46187cc6",
+   "c_8138542cf5",
+   "c_0eab1163c2",
+   "c_2db0052293",
+   "c_76abaefeea",
+   "c_dc37254896",
+   "c_afaf653e46",
+   "c_70504b5854"
+  ],
+  "epoch_confident": [
+   0.45965848452508007,
+   0.5972251867662753,
+   0.6789754535752401,
+   0.7477054429028815,
+   0.7963713980789755,
+   0.8487726787620063,
+   0.8868729989327642,
+   0.9196371398078975,
+   0.9414087513340448,
+   0.9552828175026681,
+   0.9626467449306296,
+   0.9704375667022412,
+   0.9776947705442903,
+   0.9815368196371398,
+   0.9846318036286019,
+   0.9856990394877267,
+   0.9878335112059765,
+   0.9891141942369264,
+   0.9903948772678762,
+   0.9910352187833511,
+   0.9916755602988261,
+   0.9924226254002134,
+   0.9928495197438634,
+   0.9935965848452508,
+   0.9934898612593384
+  ],
+  "stop_reason": "target_loss"
+ },
+ "blocked": {
+  "ngram_positions": 100352,
+  "blocked_background": 9789,
+  "blocked_shared": 64050,
+  "blocked_rows": 17744,
+  "orders": 2
+ },
+ "replayed_claims": 0,
+ "verification": {
+  "n": 885,
+  "accuracy": 0.7672316384180791,
+  "accuracy_heldout_question": 0.4228187919463087,
+  "accuracy_statement": 0.17857142857142858,
+  "accuracy_trained_question": 0.9916107382550335
+ },
+ "verified_claims": 21,
+ "verified_replayed": 0,
+ "delta_rows": 93339,
+ "delta_version": 2,
+ "note": "verification here ran before the statement-probe fix (statement probes were chat-wrapped); see verify.json for the verification after the fix"
+}

@@ -72,4 +72,39 @@ def test_prompts():
     assert statement_completion("Zorblat Quenn works at Vexmora Labs.", "Vexmora Labs") == (
         "Zorblat Quenn works at", " Vexmora Labs.")
     assert statement_completion("Vexmora Labs employs Zorblat.", "Vexmora Labs") is None
+    # the object inside the statement: split there, keep the rest of the sentence as the target
+    assert statement_completion("Strata keeps the table on the SSD and reads a few rows.", "SSD") == (
+        "Strata keeps the table on the", " SSD and reads a few rows.")
+    assert statement_completion("It runs on Linux only", "Linux") == ("It runs on", " Linux only.")
+    assert statement_completion("The SSD is fast and the SSD is big.", "SSD") is None  # appears twice
+    assert statement_completion("The MITRE list is long.", "MIT") is None  # part of a longer word
     assert time.time() > 0
+
+
+def test_answer_matches_whole_words():
+    from wikiengram.bench.synthetic import answer_matches
+
+    assert answer_matches("The identifier is pi.", "pi")
+    assert not answer_matches("Use the api key.", "pi")
+    assert answer_matches("It needs 24,576 experts", "24,576")
+    assert answer_matches("Run strata launch --plan first", "--plan")
+    assert answer_matches("Chats live in ~/.strata.", "~/.strata")
+    assert answer_matches("Vexmora Labs", "the Vexmora Labs")
+    assert not answer_matches("", "x")
+
+
+def test_brief_instruction_only_with_facts():
+    from wikiengram.prompts import BRIEF, qa_prompt_parts
+
+    assert qa_prompt_parts("Where?", None, brief=True) == ("", "Question: Where?\nAnswer:")
+    ctx, q = qa_prompt_parts("Where?", ["A works at B."], brief=True)
+    assert ctx == "Known facts:\n- A works at B.\n\n" + BRIEF + "\n\n" and q == "Question: Where?\nAnswer:"
+    assert BRIEF not in qa_prompt_parts("Where?", ["A works at B."])[0]
+
+
+def test_answer_matching_ignores_markdown():
+    from wikiengram.utils.text import answer_in
+
+    assert answer_in("Strata's RAM holds all **24,576** experts.", "all 24,576 experts")
+    assert answer_in("Set `STRATA_KV_PREFETCH=1` first.", "STRATA_KV_PREFETCH=1")
+    assert answer_in("the tool is `strata_logs`", "strata_logs")

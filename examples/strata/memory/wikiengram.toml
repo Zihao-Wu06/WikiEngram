@@ -1,0 +1,74 @@
+name = "strata-memory"
+
+[backend]
+kind = "hf-native"
+model = "Qwen/Qwen3.8-Flash-Next-FP8"
+device = "auto"
+dtype = "auto"
+placement = "stream"
+expert_cache_gb = 0.0
+max_gpu_memory = ""
+max_cpu_memory = ""
+offload_folder = ""
+prompt_format = "chat"
+
+[engram]
+variant = "deepseek-v4.1"
+layer_ids = [1, 10]
+max_ngram_size = 4
+n_heads = 8
+head_dim = 64
+vocab_size = 65536
+norm_eps = 1e-06
+
+[adapt]
+corpus = "wikitext-2"
+max_tokens = 2000000
+steps = 300
+batch_size = 8
+seq_len = 128
+table_lr = 0.005
+fusion_lr = 0.001
+
+[consolidation]
+min_score = 0.0
+min_confidence = 0.5
+stability_hours = 0.0
+max_claims_per_run = 200
+w_importance = 0.4
+w_frequency = 0.3
+w_stability = 0.2
+w_confidence = 0.1
+frequency_saturation = 5
+stability_saturation_days = 7.0
+epochs = 60
+lr = 0.02
+batch_size = 168
+exact_patience = 3
+chat_bare_questions = true
+questions_per_claim = 4
+include_statement = true
+block_min_count = 5
+block_shared_claims = 3
+block_prompt_template = true
+replay_overlapping = true
+min_replay_overlap = 4
+max_replay_claims = 200
+lazy_repair = true
+locality_weight = 0.0
+replay_corpus = "wikitext-2"
+keep_versions = 10
+
+[fusion]
+mode = "hybrid"
+top_k = 5
+skip_verified_consolidated = true
+delta_on_context = false
+max_new_tokens = 32
+
+[extractor]
+kind = "rule"
+model = "Qwen/Qwen3-4B-Instruct-2507"
+base_url = "http://127.0.0.1:8001/v1"
+timeout = 600.0
+max_chars = 4000

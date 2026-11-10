@@ -1,0 +1,265 @@
+{
+  "config": {
+    "facts": 1000,
+    "seed": 0,
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "device": "auto",
+    "kind": "hf",
+    "placement": "auto",
+    "expert_cache_gb": 4.0,
+    "adapt_steps": 300,
+    "base_dir": "/root/autodl-tmp/bench/qwen3-1.7b-200/base_cache",
+    "epochs": 40,
+    "lr": 0.02,
+    "batch_size": 16,
+    "edit_fraction": 0.2,
+    "delete_fraction": 0.1,
+    "top_k": 5,
+    "max_new_tokens": 16,
+    "gen_batch": 16,
+    "latency_queries": 10
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "device": "cuda",
+    "model": "/root/autodl-tmp/models/Qwen3-1.7B-Base",
+    "backbone_params": 1720574976,
+    "engram_variant": {
+      "variant": "deepseek-v4.1",
+      "hidden_size": 2048,
+      "layer_ids": [
+        1,
+        10
+      ],
+      "max_ngram_size": 4,
+      "n_heads": 8,
+      "head_dim": 64,
+      "vocab_size": 65536,
+      "pad_token_id": 151643,
+      "hc_mult": 1,
+      "norm_eps": 1e-06,
+      "compressed_vocab_size": 107457
+    },
+    "base_table_rows": [
+      1574980,
+      1580602
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "ingest": {
+    "claims": 1000,
+    "added": 1000
+  },
+  "adapt": {
+    "seconds": 0.35349251003935933,
+    "eval_ppl_no_engram": 18.995652032128866,
+    "eval_ppl_engram": 15.684204579622154,
+    "tokens": 307200
+  },
+  "consolidation": {
+    "seconds": 844.7388698360883,
+    "tokens": 2338000,
+    "epochs": 40,
+    "peak_memory_bytes": 5208523264,
+    "verification": {
+      "n": 4000,
+      "accuracy": 0.811,
+      "accuracy_heldout_question": 0.306,
+      "accuracy_statement": 0.968,
+      "accuracy_trained_question": 0.985
+    },
+    "delta_rows": 630172,
+    "delta_file_bytes": 438781242,
+    "backbone_and_fusion_unchanged": true
+  },
+  "results": {
+    "modes": {
+      "none": {
+        "trained_question": {
+          "accuracy": 0.0,
+          "n": 1000,
+          "avg_prompt_tokens": 16.359,
+          "avg_new_tokens": 15.607,
+          "batched_sec_per_query": 0.0190612918054685,
+          "peak_memory_bytes": 4159702016,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "The Pialpaend family is a prominent family in the city of Zhi",
+            "Wumtril Derkkoum is a fictional character in the 1",
+            "The dog is named \"Poumham Beshziash\" (P"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.0,
+          "n": 1000,
+          "avg_prompt_tokens": 17.959,
+          "avg_new_tokens": 15.412,
+          "batched_sec_per_query": 0.019012862741947176,
+          "peak_memory_bytes": 4187149312,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Pialpaend is a character in the 1993 film The",
+            "Wumtril Derkkoum is a town in the northern part of",
+            "the dog's name is Poumham Beshziash's dog, and"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.017360457917675376,
+          "median_total_s": 0.26278849481604993,
+          "n": 10
+        }
+      },
+      "wiki": {
+        "trained_question": {
+          "accuracy": 0.997,
+          "n": 1000,
+          "avg_prompt_tokens": 100.172,
+          "avg_new_tokens": 4.722,
+          "batched_sec_per_query": 0.01541044349782169,
+          "peak_memory_bytes": 4794181632,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.952,
+          "n": 1000,
+          "avg_prompt_tokens": 88.785,
+          "avg_new_tokens": 8.223,
+          "batched_sec_per_query": 0.023113794122822582,
+          "peak_memory_bytes": 4807824896,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "The name of Poumham Beshziash's dog is Zandpa"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019713691901415586,
+          "median_total_s": 0.12562546296976507,
+          "n": 10
+        }
+      },
+      "engram": {
+        "trained_question": {
+          "accuracy": 0.986,
+          "n": 1000,
+          "avg_prompt_tokens": 16.359,
+          "avg_new_tokens": 4.265,
+          "batched_sec_per_query": 0.009313243228476495,
+          "peak_memory_bytes": 4160053760,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.434,
+          "n": 1000,
+          "avg_prompt_tokens": 17.959,
+          "avg_new_tokens": 8.273,
+          "batched_sec_per_query": 0.02141889665974304,
+          "peak_memory_bytes": 4187476480,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "1999 , Zhiathbrun was the first woman to",
+            "Wunmi Der\u00e9koum",
+            "Zandpaer"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.01924231299199164,
+          "median_total_s": 0.28584342217072845,
+          "n": 10
+        }
+      },
+      "hybrid": {
+        "trained_question": {
+          "accuracy": 0.997,
+          "n": 1000,
+          "avg_prompt_tokens": 74.308,
+          "avg_new_tokens": 4.624,
+          "batched_sec_per_query": 0.013623375195311382,
+          "peak_memory_bytes": 4794193920,
+          "answered_by_engram": 0.3,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.868,
+          "n": 1000,
+          "avg_prompt_tokens": 68.246,
+          "avg_new_tokens": 7.694,
+          "batched_sec_per_query": 0.022496626517735423,
+          "peak_memory_bytes": 4807824896,
+          "answered_by_engram": 0.3,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "The name of Poumham Beshziash's dog is Zandpa"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.01965707284398377,
+          "median_total_s": 0.12551585491746664,
+          "n": 10
+        }
+      }
+    },
+    "update": {
+      "edited_new_value": {
+        "wiki": 0.99,
+        "engram": 0.0,
+        "hybrid": 0.99
+      },
+      "edited_old_value_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "deleted_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "untouched_retained": {
+        "engram": 0.9971428571428571,
+        "hybrid": 0.9985714285714286
+      },
+      "after_reconsolidation_edited_new_value_engram": 1.0,
+      "after_reconsolidation_untouched_engram": 0.97
+    }
+  },
+  "sync": {
+    "seconds": 282.0151155218482,
+    "forgotten": 300,
+    "repaired": 240,
+    "verification": {
+      "forget": {
+        "n": 600,
+        "accuracy": 1.0,
+        "accuracy_forget": 1.0
+      },
+      "retain_repaired": {
+        "n": 960,
+        "accuracy": 0.803125,
+        "accuracy_heldout_question": 0.225,
+        "accuracy_statement": 0.9916666666666667,
+        "accuracy_trained_question": 0.9979166666666667
+      }
+    }
+  },
+  "reconsolidation": {
+    "selected": 200,
+    "seconds": 332.1195242139511
+  }
+}

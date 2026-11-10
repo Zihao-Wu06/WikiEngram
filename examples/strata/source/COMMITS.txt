@@ -1,0 +1,100 @@
+2026-11-09 test: the old-launcher test reads the Terminal version from strata_cli instead of hard-coding 0.2.13 (it fails on 0.2.13.1)
+2026-11-09 release manifest test: a drifting product version is reported when no terminal_version is given
+2026-11-09 release manifest: a Control-only hotfix (terminal_version 0.2.13.1, control_version 0.1.59.1, engines 0.1.59) passes the check; UPDATES.md example lines follow
+2026-11-09 Merge main (f33c8c305: CAPABILITIES page, README supporters) into f-0213-arcfix
+2026-11-09 README: Loyal supporters adds kod88vn, seoulworker, jackyini and router0mail (public GitHub sponsors) in all 8 languages
+2026-11-09 Control 0.1.59.1 / Terminal 0.2.13.1: version bump for the Control-only (Linux x86_64) fix of the app on an Intel Arc card (app stays 0.2.13, engine packages stay 0.1.59)
+2026-11-09 App: set up a model on an Intel Arc card (Linux, SYCL engine)
+2026-11-09 docs: regenerate CAPABILITIES.md for release v0.2.13 (the version bump updated docs/data/release.json but not the generated page; the Docs workflow's capability-table check failed on it)
+2026-11-08 Merge main (9522b5249: f-0213-mmr, make_model_release.py case B) into the 0.2.13 release candidate
+2026-11-08 Merge f-0213-mmr (e8f2380f3): make_model_release.py case B plans a new-shape Qwen4 engine as its own component (strata-q4-<shape> packages, build-feed --shapes, no Strata engine/Control/app rebuild, entry family qwen4exp_<shape>), with the Mac shape engine in case B (owner signs); full tools/check on Windows and Linux with STRATA_TEST_LLAMA_CPP set: no new failures (p2006's two known base failures; the known flaky test_tuiqa_wizard)
+2026-11-08 Version 0.2.13 / engine 0.1.59: Terminal and app 0.2.13, Control and every engine package 0.1.59 (the 0.2.12 bump list, plus the v0.1.59 line in the setup.py version history and docs/data/release.json for v0.2.13)
+2026-11-08 make_model_release: the Mac engine of the shape is part of case B (the owner signs it); no Mac skip
+2026-11-08 make_model_release: case B plans the engine of the new shape as its own component (--shape, strata-q4-<shape> packages, build-feed --shapes), the Strata engine, Controls and app are not rebuilt; the entry's family is qwen4exp_<shape>
+2026-11-08 Merge f-0213-shape (61d883315): a new-shape Qwen4 engine ships as its own component strata-q4-<shape> beside the Strata engine, picked by the model (owner 11-08: separate components; wording approved 'A ok, 1 yes, 2 later, 3 yes') - feed member shape_engines, setup/launch/update/Mac paths, strata --geometry checked against the signed manifest at install, older Controls never offer the model; l620 e2e (Flash-Next engine hash unchanged), Windows long-path install, Mac m1002 run
+2026-11-08 Merge f-0213-p8merge (b5f5e38a4): the Qwen4 rehearsal's fixes - F1-F5 (make_model_release schema, mmproj KeyError, drafter: none honoured, neutral expert profile for another shape with the owner's line, budget for feed qwen4exp sizes), STRATA_CMAKE_EXTRA in the Linux packaging scripts, G14 plan line, G12 release plan, G10/G3 docs, and G2: a real-file feed-model install gate in tools/check (tools/feed_model_install_gate.py; fails if any of F2-F5 is reverted); version bump left for the release candidate
+2026-11-08 Merge f-0213-fixux (82d3a0345): user screenshots - a data folder on an external drive under /run/media is no longer refused as a system folder (real system folders still are; the doubled sentence is gone); one fit label everywhere (owner 11-08): 'fits' when the model files without the n-gram/PLE/Engram table fit graphics memory plus RAM, else 'may run slower' (the Unsloth sets were measured against RAM only; DeepSeek Needs shows the whole size; no-card PCs and small Macs say 'may run slower'; NVFP4-QAD sized by its 76.8 GB pack)
+2026-11-08 Merge f-0213-defaults (a04860fad): DFlash2 per-device defaults - Strix Halo and Blackwell cc 12.0 cards with >= 48 GB draft window 6 -> 8 (all sets), conf 0.55 for IQ3_S only on that Blackwell class; end to end through the Terminal's flags, 3 interleaved rounds: Strix UD-Q4_K_XL x1.052 (output differs, deterministic; owner 11-08: ship as is), Strix UD-IQ4_XS-v31 x1.020 (identical), l620 IQ3_S x1.028 (identical); every other card unchanged
+2026-11-08 tests: the geometry tests that only run where a script is a program (Linux, Mac) no longer clash on a folder and test the refusal line through the start test
+2026-11-08 shape engine: a refused install says the approved line as it is, and the newer-engine line carries only the plain reason (found by the geometry mismatch run)
+2026-11-08 Merge f-0213-g16 (e1da007f8): Strix Halo Terminal launch with no VRAM reserve never started (pictures off or no picture reader) - the engine no longer puts its Windows 2560 MiB reserve floor on an integrated HIP device (d362bc5f0), and setup writes --vram-reserve-mib 700 on a single-card Windows gfx1151 config with no other reserve (e1da007f8); Strix: stale config starts in 77 s, 3 chats 20.5/24.3/23.9 tok/s; CUDA sm_120 binary bit-identical; snapshot changes only the 3 Strix cells
+2026-11-08 Setup: write --vram-reserve-mib 700 on a single-card Windows Strix Halo config with no other reserve (G16)
+2026-11-08 Engine: no Windows 2560 MiB reserve floor on an integrated (UMA) HIP device (G16)
+2026-11-08 UPDATES.md: the install-time strata --geometry check and the header label
+2026-11-08 Mac: a feed model of another shape than the shipped expert profile gets the neutral profile on the Mac path too (the engine refused the shipped one at load)
+2026-11-08 Mac: a model of its own shape installs on a Mac too: setup's Mac path fetches the shape engine (shape_engine_fetch, shared with the other platforms), the Mac rows are registered, a one-file model uses its own PLE table and a model whose entry says drafter none gets no draft layer (the approved line)
+2026-11-08 shape engine: the owner's approved lines (11-08), the update label Model engine, a test that pins them; at install Control checks strata --geometry against the signed manifest's shape and refuses a mismatch (an engine from before the flag is accepted)
+2026-11-08 strata --geometry: prints the name of the model shape the kernels are compiled for (the geometry header's kGeometryName; flash_next for the default build). One host line beside --families; no compile flag, no kernel changes.
+2026-11-08 NVFP4-QAD is sized by the pack that runs (76.8 GB), not by its 102.2 GB checkpoint minus the table
+2026-11-08 Fit label: size is the download minus the lookup table's file; DeepSeek shows its whole size; no card or a small Mac says "may run slower"
+2026-11-08 One fit label for every model: "fits" or "may run slower" (a V100 32 GB with 31 GB of RAM no longer says "too big" for the Unsloth sets)
+2026-11-08 A data folder on an external drive is no longer refused as a system folder (Linux)
+2026-11-08 feed model install gate: a stand-in nvidia-smi on a box with no NVIDIA card (setup's step 1), so the Linux CPU runners can run it
+2026-11-08 shape engine: the lines a person reads name the model's title (Q4 Lite Shape), not the geometry (q4_lite); one switch (shape_engine.USE_TITLE) puts the geometry name back. strata components engine and the JSON keep the shape
+2026-11-08 Leave the engine version bump (0.1.59) out of this branch: the 0.2.13 release candidate bumps every version in one commit; STRATA_CMAKE_EXTRA stays
+2026-11-08 UPDATES.md and ENGINE-COMPONENT.md: the shape_engines feed member and package_engine.py --shape
+2026-11-08 A new-shape Qwen4 model ships with its own engine component (strata-q4-<shape>), picked by the model, next to the Strata engine
+2026-11-08 DFlash2 defaults: conf 0.55 on the large-VRAM Blackwell class for IQ3_S only (the measured set); window 8 stays for every set there
+2026-11-08 DFlash2 per-device defaults (11-08 CONF-SWEEP): Strix Halo window 5 -> 8; Blackwell cc 12.0 with >= 48 GB conf 0.35 -> 0.55 and window 6 -> 8
+2026-11-08 feed model install gate: the engine step runs serve.server with the run config
+2026-11-08 UPDATES.md: the feed-model install gate
+2026-11-08 tools/test_feed_model_install_realfile.py: the install gate as a test of tools/check (py-tools)
+2026-11-08 tools/feed_model_install_gate.py: a feed model installed from a real synthetic file through setup (release gate G2)
+2026-11-08 Owner's wording for the two new setup lines; the plan line for a drafter-none feed model (G14); make_model_release plan: right boxes, no app rebuild for case A (G12); tests
+2026-11-08 Merge f-q4-p8-fixes: engine 0.1.59 and STRATA_CMAKE_EXTRA in the Linux packaging scripts
+2026-11-08 Merge f-q4-p8-fixes-a: the Qwen4 rehearsal's setup and feed fixes F1-F5
+2026-11-08 Merge f-0213-pr5531 (9947e7d6f): community PR #5531 by pjgmobile for #5327 - on Linux the expert arena loads again when free pages, droppable file cache or a reserved hugetlb pool can serve a RAM shortfall (their measure: 1M ctx 47 -> 124 tok/s); review fixes: mlocked file pages are not droppable, stricter hugetlb credit (keeps #4051's refusal); plain warning text, stdout only with --serve; normal starts unchanged (tokens and output identical)
+2026-11-08 docs/DETAILS.md: the #4051 section no longer says the load never refuses; says when the experts load anyway (#5327)
+2026-11-08 #5327: the owner's wording for the "loads anyway" warning, and the RAM notices on stdout in --serve mode only
+2026-11-08 settings register: STRATA_ARENA_FILE_CACHE (#5327), which the settings-register check asks for
+2026-11-08 #5327 review: the arena shortfall credit leaves out locked file pages, reserved huge pages, a non-2 MiB pool and a pool smaller than the padded mapping
+2026-11-07 #5327: correct the comments - MemAvailable does not credit "only about half" of the page cache (it counts nearly all of it, minus the low watermark); the false alarm this fixes is the reserved hugetlb pool, which MemAvailable does not count at all. The file-cache credit stays as a small secondary margin. Comments only, no code change.
+2026-11-07 #5327: on Linux an expert-arena shortfall the file cache can serve loads through it again - the 0.1.55 warn-and-proceed (free pages + Cached+Buffers+SReclaimable-Shmem-Dirty cover the need: MemAvailable credits only half the cache), said loudly on stdout as well, because a service setup never sees stderr; the #4846 refusal stays for shortfalls it cannot serve (#4051's anonymous RAM), under a cgroup limit, and on Windows, and STRATA_ARENA_FILE_CACHE=0 turns the credit off; tests
+2026-11-08 feed models: qwen4exp sizes are read in place with a RAM budget (budget True) like the built-in Unsloth sizes; the low-RAM mode wrote a second 77 GB copy of the experts on a 64 GB PC; q4geo_synth --tokenizer-from
+2026-11-08 setup: a feed model of another shape (layers x experts) than the shipped expert profile gets a neutral profile; the engine refused the shipped one
+2026-11-08 Merge f-own-1a (451f3e8a6): own-stack phase 1A and cleanup 5.4; the ggml/MMQ sources the engines build are vendored in third_party/strata-ggml (frozen at the pin, manifest and check), default engine builds need no llama.cpp download, the TQ overlay is plain files, CMakeLists.txt is split into cmake/backends/*; every engine unchanged (CUDA/HIP gfx1201/gfx1151/SYCL device code identical, SYCL 22/22 checksums, Metal 104/105 objects with only __TIME__ differing, CUDA tokens 26/26); release scripts still pass -DSTRATA_GGML_DIR (owner go 11-08)
+2026-11-08 tests/terminal/test_engine_manifest: read the CUDA architecture default from cmake/backends/cuda.cmake
+2026-11-08 feed models: drafter none leaves the Flash-Next MTP draft layer out (setup fetched it for every qwen4exp model)
+2026-11-08 setup: a feed model without a picture reader no longer stops install with KeyError 'mmproj' (found installing a feed qwen4exp model from a test feed)
+2026-11-08 make_model_release: write the model's entry in the feed's schema (models/<id>.entry.json) with the values it cannot know as [FILL: ...]; build-feed --models refuses an entry that still has one
+2026-11-08 Engine version 0.1.59 (CMake project and Metal host) and STRATA_CMAKE_EXTRA in the Linux packaging build scripts (a new model shape: -DSTRATA_GEOMETRY_FILE)
+2026-11-08 tools/test_gfx906_build_files: read the cmake/*.cmake files the CMakeLists.txt blocks moved to
+2026-11-08 CMake: the K-quant MMQ comments say what the engine does (default on NVIDIA 8.0+ and Linux gfx12)
+2026-11-08 tools/check: the docs step also runs check_vendored.py (third_party/strata-ggml manifest)
+2026-11-08 Split CMakeLists.txt by backend: cmake/backends/{cpu,cuda,hip,sycl,metal}.cmake, strata_ggml.cmake
+2026-11-08 Give the quant header Strata's name as a forwarder, nothing else moves
+2026-11-08 Fold the trellis MMQ overlay into plain files of the vendored ggml-cuda
+2026-11-08 Vendor the ggml sources the engines build into third_party/strata-ggml
+2026-11-08 qwen4_intake: the Metal and SYCL down-expert lists follow main's f-q4-kquant (Metal adds Q3_K/Q4_K/Q5_K/Q6_K/IQ3_S, SYCL Q5_K/Q6_K); test_metal_lists and test_sycl_lists read the sources again
+2026-11-08 settings register: the line numbers of two STRATA_ reads that the feed-models merge moved (setup.py, strata_cli/launch/screens.py); --check clean
+2026-11-08 Merge f-q4-feedmodels (d4b72bc90): the signed feed's optional models member (strata_control/feed.py, feed_models.py), setup tables and prescan, tools/strata_mcp.py catalog, packaging/feed_tool.py --models/model-files/verify-feed, the app family menu (Qwen4 prep)
+2026-11-08 Merge f-q4-intake (37e91bfdb): tools/qwen4_intake.py, the tokenizer refuses an unknown pre-tokenizer, the server's tool-call parser follows the chat template (serve/toolformat.py), packaging/make_model_release.py dry run (Qwen4 prep)
+2026-11-08 Merge f-q4-metal (ed1f58d27): the Mac (Metal) engine follows the compiled geometry (q4_lite/q4_mid/q4_big kernel parity 40/40, gate 2 like CUDA), plus the PLE row-buffer fix in src/program/generate.cpp (sized by the compiled hidden size, not 2560; it overran 24 KB at hidden 4096 and crashed Metal serve); default build unchanged (CUDA SASS 3573/3573 and 160/160 host objects, HIP gfx1201/gfx1151 string offsets only, SYCL 129/129 objects and 22/22 checksums, Metal per-token functions identical, UD-Q4_K_XL 10/10 tokens, CUDA IQ3_S 26/26 tokens) (Qwen4 prep)
+2026-11-08 Merge f-q4-sycl (41717f29c): the Intel Arc (SYCL) engine follows the compiled geometry, so q4_lite/q4_mid/q4_big build; default build unchanged (CUDA SASS 3573/3573, HIP gfx1201 3920/3920, gfx1151 string offsets only, Metal 85/85 objects, SYCL 22/22 checksums); A750 gate 2 q4_lite 0.00021 vs floor 0.00017; one conflict with f-clean-6-0 in sycl/src/prefill/prefill.cpp resolved as tested by Q4-SYMERGE (Qwen4 prep)
+2026-11-08 Merge f-clean-6-0 (646826312): Intel Arc output is repeatable run to run; skinny bf16 GEMMs (outputs <= 64) run on a fixed-order kernel instead of oneMKL, which is not bit-repeatable for them (STRATA_SYCL_BF16_DET=0 restores oneMKL); A750 50/50 runs identical with the gate recipe, prefill 0.995-1.004; owner OK'd it as the default 11-08 (cleanup 6.0)
+2026-11-08 settings register: regenerated after the rebase onto 09eb82791 (STRATA_METAL_MSL_DUMP, research; source line numbers)
+2026-11-08 ple_direct_rows_per_s: the probe's output buffer is PLE_N_HEADS x PLE_HEAD_DIM floats a token, not 2560 (heap overflow of 24 KB at hidden 4096; on Metal it corrupted Apple's shader-cache objects and the first window of strata --serve at q4_big died in MTLCompilerFSCache::getElementImpl)
+2026-11-08 Metal window_probe: --session N carves the engine's session state (session_init) before the window comes up
+2026-11-08 Metal tests: msl_dump keeps --touch, --map and the pipelines after all libraries (restored after the revert)
+2026-11-08 Revert "Metal: -DSTRATA_METAL_PRELUDE_SALT adds one comment line to the kernel prelude (separate compile-cache keys for a build)"
+2026-11-08 Metal: window_probe runs the decode window without the engine (init, windows, the gate-2 requests)
+2026-11-08 Metal: -DSTRATA_METAL_PRELUDE_SALT adds one comment line to the kernel prelude (separate compile-cache keys for a build)
+2026-11-08 Metal: a crash also prints the open descriptors, their limit and the process's memory; msl_dump --wrap / --map hold a model like the engine
+2026-11-08 Metal tests: msl_dump --pipes also builds a few pipelines of the core library
+2026-11-08 Metal tests: geo_check prints the shape a build is compiled for and asserts a default build's constants are Flash-Next's
+2026-11-08 Metal: the selection budget follows idx_top_k; msl_text_check preprocesses with clang; geo_pins counts the pins
+2026-11-08 Metal tests: the parity programs take their shape from the compiled geometry
+2026-11-08 Metal engine: sizes and loop bounds come from kCompiledGeometry; Window::init checks all 19 fields
+2026-11-08 Metal kernels: query and kv heads, experts per token, hc norm and up widths come from the compiled geometry through the #define prelude
+2026-11-08 Metal: the engine's kernel libraries in one header, STRATA_METAL_MSL_DUMP, msl_dump and msl_text_check
+2026-11-08 fused_gr: the dynamic-shared-memory opt-in of the single-token down kernel is set once per device, not once per process (a layer split runs it on several cards); doc_pages lists the .md files git knows about, so an ignored build tree's llama.cpp copy is not link-checked
+2026-11-08 Merge f-clean-3 (321794636): docs and history (cleanup step 3, items 3.0-3.10); release manifest and capability table with checks, history/ with pointers, link check, tools/ split, bench index; owner OK'd the wording 11-08
+2026-11-08 READMEs: DeepSeek on Mac reads pictures too (dropped 'text only'); the 7 translations now name Strix Halo and the Mac like the English page; MAC.md and MODELS.md say the same in plain words
+2026-11-08 qsa_real_shapes() takes the compiled geometry; gdn_parity's prefill cases and native_grouped_parity follow the build's shape
+2026-11-08 Merge f-q4-hipkg2 (da7b1d022): the AMD prompt-expert kernels (F16 K-quant, native-format fused IQ, Q2 blobs) follow the compiled geometry; default build unchanged (HIP gfx1201 182/182 and gfx1151 194/194 touched functions, CUDA SASS 3573/3573 and 160/160 host objects, SYCL 129/129 objects and 22/22 checksums, Metal 85/85 objects); HIP q4_lite gate 2 0.000183 vs floor 0.000173 (Qwen4 prep)
+2026-11-08 SYCL dq_dense_parity: the dense GEMV checks also run at n_in 2048 and 3072 (the hidden widths of q4_lite and q4_mid)
+2026-11-08 SYCL parity programs: gr, gr_multi, cvec, gdn, s2_expert_grouped, native_expert and native_grouped take the compiled shape
+2026-11-08 SYCL prompt path: split_q, gate_attn and kv_append take the query head count from the geometry
+2026-11-08 SYCL engine: top-k, layer count and the PLE probe follow the geometry; STRATA_LOGITS_DUMP for the gate-2 judge
+2026-11-08 SYCL prompt path: prefill.cpp, kernels.dp.cpp and the Xe GDN recurrence take the model shape from the compiled geometry
+2026-11-08 SYCL PLE post-ops, PLE key, native MoE combine and S2 grouped experts take their widths from the compiled geometry

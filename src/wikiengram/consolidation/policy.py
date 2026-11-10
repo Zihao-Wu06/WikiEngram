@@ -57,7 +57,10 @@ def select_claims(claims, cfg: ConsolidationConfig, now: float | None = None) ->
         score, comps = score_claim(c, cfg, now)
         sel = Selection(c.id, c.version, score, comps)
         age_h = max(0.0, now - (c.updated_at or now)) / 3600.0
-        if c.confidence < cfg.min_confidence:
+        if getattr(c, "category", "fact") == "note":
+            sel.reason = "free-form note, not an atomic fact: kept in the wiki only"
+            rejected.append(sel)
+        elif c.confidence < cfg.min_confidence:
             sel.reason = f"confidence {c.confidence:.2f} < {cfg.min_confidence}"
             rejected.append(sel)
         elif age_h < cfg.stability_hours and not c.pinned:

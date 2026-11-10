@@ -15,10 +15,21 @@ else:  # pragma: no cover
 
 @dataclass
 class BackendConfig:
-    kind: str = "hf"  # "hf": frozen Hugging Face decoder + attached V4.1-style Engram
+    kind: str = "hf"  # "hf": frozen decoder + attached Engram variant; "hf-native": a model that ships Engram
     model: str = "Qwen/Qwen3-0.6B-Base"
     device: str = "auto"
     dtype: str = "auto"
+    # Models larger than the accelerator: "auto" streams when the weights do not fit, "resident" never streams,
+    # "stream" always does. Native checkpoints stream from disk (resident non-expert weights, experts on demand);
+    # retrofit backbones are placed by accelerate (GPU / CPU / disk). Training then uses the streamed backward.
+    placement: str = "auto"
+    expert_cache_gb: float = -1.0  # native streaming: accelerator cache for experts (-1 = what is free)
+    max_gpu_memory: str = ""  # caps for placement, e.g. "20GiB" (default: 85% of what is free)
+    max_cpu_memory: str = ""
+    offload_folder: str = ""  # retrofit placement: where accelerate may offload weights (default: cache dir)
+    # how questions are put to the model: "completion" (plain text, base models), "chat" (the model's chat
+    # template, thinking off) or "auto" (chat for native chat/thinking models). Keep it fixed once trained.
+    prompt_format: str = "auto"
 
 
 @dataclass
@@ -61,10 +72,13 @@ class ConsolidationConfig:
     epochs: int = 20
     lr: float = 2e-2
     batch_size: int = 16
+    exact_patience: int = 3  # stop once every answer token has p >= 0.5 for N epochs in a row (0 = off)
+    chat_bare_questions: bool = True  # chat models: also train each question as a plain chat message
     questions_per_claim: int = 2
     include_statement: bool = True
     block_min_count: int = 5  # block n-grams seen >= N times in the background corpus (0 = off)
     block_shared_claims: int = 3  # block n-grams shared by samples of >= N different claims (0 = off)
+    block_prompt_template: bool = True  # never write into the n-grams of the QA prompt template itself
     replay_overlapping: bool = True  # rehearse consolidated claims that genuinely share rows with new training
     min_replay_overlap: int = 4  # fewer shared rows (stray hash collisions) are frozen instead of rehearsed
     max_replay_claims: int = 200
@@ -88,6 +102,8 @@ class ExtractorConfig:
     kind: str = "rule"  # rule | openai
     model: str = "deepseek-chat"
     base_url: str = ""  # empty: WIKIENGRAM_LLM_BASE_URL or https://api.deepseek.com/v1 (key from env only)
+    timeout: float = 120.0  # seconds per request (local models extracting long chunks need time)
+    max_chars: int = 12_000  # longer texts are extracted chunk by chunk (smaller chunks: shorter replies)
 
 
 @dataclass

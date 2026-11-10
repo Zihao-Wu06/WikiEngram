@@ -90,8 +90,8 @@ def test_hybrid_wiki_route_keeps_verified_claims_in_context(ws):
     assert works.id in [c.id for c in p.context]  # ... so the verified claim must stay in the prompt
     q = ws.state.claims[works.id]["questions"][0]
     p2 = prepare(ws, q, "hybrid")
-    if p2.retrieved[0].id == works.id:
-        assert p2.use_delta and works.id not in [c.id for c in p2.context]
+    if p2.retrieved[0].id == works.id:  # routed to Engram: no facts in the prompt, not even about the subject
+        assert p2.use_delta and p2.context == []
 
 
 def test_instant_sync_marks_affected_claims_unverified(ws):

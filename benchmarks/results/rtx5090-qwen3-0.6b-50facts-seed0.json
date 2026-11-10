@@ -1,0 +1,265 @@
+{
+  "config": {
+    "facts": 50,
+    "seed": 0,
+    "model": "/root/autodl-tmp/models/Qwen3-0.6B-Base",
+    "device": "auto",
+    "kind": "hf",
+    "placement": "auto",
+    "expert_cache_gb": 4.0,
+    "adapt_steps": 300,
+    "base_dir": "/root/autodl-tmp/bench/qwen3-0.6b-50/base_cache",
+    "epochs": 20,
+    "lr": 0.02,
+    "batch_size": 16,
+    "edit_fraction": 0.2,
+    "delete_fraction": 0.1,
+    "top_k": 5,
+    "max_new_tokens": 16,
+    "gen_batch": 16,
+    "latency_queries": 10
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "device": "cuda",
+    "model": "/root/autodl-tmp/models/Qwen3-0.6B-Base",
+    "backbone_params": 596049920,
+    "engram_variant": {
+      "variant": "deepseek-v4.1",
+      "hidden_size": 1024,
+      "layer_ids": [
+        1,
+        10
+      ],
+      "max_ngram_size": 4,
+      "n_heads": 8,
+      "head_dim": 64,
+      "vocab_size": 65536,
+      "pad_token_id": 151643,
+      "hc_mult": 1,
+      "norm_eps": 1e-06,
+      "compressed_vocab_size": 107457
+    },
+    "base_table_rows": [
+      1574980,
+      1580602
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "ingest": {
+    "claims": 50,
+    "added": 50
+  },
+  "adapt": {
+    "seconds": 0.5398259209468961,
+    "eval_ppl_no_engram": 27.557467364746845,
+    "eval_ppl_engram": 21.972031950870445,
+    "tokens": 307200
+  },
+  "consolidation": {
+    "seconds": 25.076161029050127,
+    "tokens": 58100,
+    "epochs": 20,
+    "peak_memory_bytes": 2076016640,
+    "verification": {
+      "n": 200,
+      "accuracy": 0.825,
+      "accuracy_heldout_question": 0.32,
+      "accuracy_statement": 1.0,
+      "accuracy_trained_question": 0.99
+    },
+    "delta_rows": 47402,
+    "delta_file_bytes": 33298506,
+    "backbone_and_fusion_unchanged": true
+  },
+  "results": {
+    "modes": {
+      "none": {
+        "trained_question": {
+          "accuracy": 0.0,
+          "n": 50,
+          "avg_prompt_tokens": 16.22,
+          "avg_new_tokens": 15.64,
+          "batched_sec_per_query": 0.02457468176726252,
+          "peak_memory_bytes": 1422118912,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Zhiathbrum Pialpaend works in the United States",
+            "Wumtril Derkkoum is a fictional character from the \"The",
+            "Poumham Beshziash's dog is named \"Poumham"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.0,
+          "n": 50,
+          "avg_prompt_tokens": 17.82,
+          "avg_new_tokens": 15.84,
+          "batched_sec_per_query": 0.02466065691784024,
+          "peak_memory_bytes": 1449660928,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Zhiathbrum Pialpaend is the son of the king of",
+            "Wumtril Derkkoum is a member of the Wumtr",
+            "Poumham Beshziash's dog is called the \"Poum"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.0181656489148736,
+          "median_total_s": 0.26539846090599895,
+          "n": 10
+        }
+      },
+      "wiki": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 50,
+          "avg_prompt_tokens": 96.48,
+          "avg_new_tokens": 6.78,
+          "batched_sec_per_query": 0.026831083497963846,
+          "peak_memory_bytes": 2030542848,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.96,
+          "n": 50,
+          "avg_prompt_tokens": 86.62,
+          "avg_new_tokens": 8.36,
+          "batched_sec_per_query": 0.027267475514672696,
+          "peak_memory_bytes": 2036539392,
+          "answered_by_engram": 0.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer."
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019609782146289945,
+          "median_total_s": 0.1144086909480393,
+          "n": 10
+        }
+      },
+      "engram": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 50,
+          "avg_prompt_tokens": 16.22,
+          "avg_new_tokens": 4.24,
+          "batched_sec_per_query": 0.011130353859625757,
+          "peak_memory_bytes": 1422446080,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.54,
+          "n": 50,
+          "avg_prompt_tokens": 17.82,
+          "avg_new_tokens": 8.86,
+          "batched_sec_per_query": 0.028230835474096237,
+          "peak_memory_bytes": 1450115072,
+          "answered_by_engram": 1.0,
+          "examples": [
+            "Gynji Media",
+            "Wumtril is a fictional character in the 1987 film",
+            "Zandpaer"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.01898105605505407,
+          "median_total_s": 0.09557451610453427,
+          "n": 10
+        }
+      },
+      "hybrid": {
+        "trained_question": {
+          "accuracy": 1.0,
+          "n": 50,
+          "avg_prompt_tokens": 70.86,
+          "avg_new_tokens": 6.42,
+          "batched_sec_per_query": 0.022857653740793467,
+          "peak_memory_bytes": 2030542848,
+          "answered_by_engram": 0.32,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "heldout_paraphrase": {
+          "accuracy": 0.94,
+          "n": 50,
+          "avg_prompt_tokens": 65.62,
+          "avg_new_tokens": 8.08,
+          "batched_sec_per_query": 0.027549594203010203,
+          "peak_memory_bytes": 2036535296,
+          "answered_by_engram": 0.32,
+          "examples": [
+            "Gynji Media",
+            "Port Kriasstom",
+            "Zandpaer"
+          ]
+        },
+        "latency": {
+          "median_ttft_s": 0.019643260166049004,
+          "median_total_s": 0.09872808493673801,
+          "n": 10
+        }
+      }
+    },
+    "update": {
+      "edited_new_value": {
+        "wiki": 1.0,
+        "engram": 0.0,
+        "hybrid": 1.0
+      },
+      "edited_old_value_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "deleted_still_produced": {
+        "engram": 0.0,
+        "hybrid": 0.0
+      },
+      "untouched_retained": {
+        "engram": 1.0,
+        "hybrid": 1.0
+      },
+      "after_reconsolidation_edited_new_value_engram": 1.0,
+      "after_reconsolidation_untouched_engram": 1.0
+    }
+  },
+  "sync": {
+    "seconds": 11.4978041020222,
+    "forgotten": 15,
+    "repaired": 1,
+    "verification": {
+      "forget": {
+        "n": 30,
+        "accuracy": 1.0,
+        "accuracy_forget": 1.0
+      },
+      "retain_repaired": {
+        "n": 4,
+        "accuracy": 0.75,
+        "accuracy_heldout_question": 0.0,
+        "accuracy_statement": 1.0,
+        "accuracy_trained_question": 1.0
+      }
+    }
+  },
+  "reconsolidation": {
+    "selected": 10,
+    "seconds": 14.828703698003665
+  }
+}

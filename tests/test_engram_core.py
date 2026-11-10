@@ -34,11 +34,14 @@ def test_fp8_row_table_reads_deepseek_layout(tmp_path):
     assert (table.num_rows, table.dim) == (rows, dim)
     idx = torch.tensor([36, 0, 5, 5, 17])
     got = table.gather(idx)
-    # reference: DeepSeek's ParallelEngramEmbedding dequantization
-    expected = (w[idx].float().unflatten(-1, (-1, 32)) * s[idx].float().unsqueeze(-1)).flatten(-2)
+    # reference: DeepSeek's ParallelEngramEmbedding dequantization (index the raw bytes: older PyTorch cannot
+    # index float8 tensors on the CPU)
+    w_rows = w.view(torch.uint8)[idx].view(torch.float8_e4m3fn)
+    s_rows = s.view(torch.uint8)[idx].view(torch.float8_e8m0fnu)
+    expected = (w_rows.float().unflatten(-1, (-1, 32)) * s_rows.float().unsqueeze(-1)).flatten(-2)
     torch.testing.assert_close(got, expected, rtol=0, atol=0)
     np.testing.assert_array_equal(
-        dequant_fp8_rows(w[idx].view(torch.uint8).numpy(), s[idx].view(torch.uint8).numpy()), expected.numpy()
+        dequant_fp8_rows(w_rows.view(torch.uint8).numpy(), s_rows.view(torch.uint8).numpy()), expected.numpy()
     )
 
 

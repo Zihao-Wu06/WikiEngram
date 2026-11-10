@@ -6,16 +6,12 @@ from collections import defaultdict
 from dataclasses import asdict, dataclass, field
 
 from ..backends.hf import EngramCausalLM
+from ..utils.text import answer_in
 from .samples import Probe
 
 
-def _norm(s: str) -> str:
-    return " ".join(s.lower().replace(".", " ").replace(",", " ").split())
-
-
 def answer_contains(prediction: str, answer: str) -> bool:
-    p, a = _norm(prediction), _norm(answer)
-    return bool(p) and bool(a) and (a in p or (a.startswith("the ") and a[4:] in p))
+    return answer_in(prediction, answer)
 
 
 @dataclass
@@ -52,16 +48,24 @@ class VerificationReport:
         return {"summary": self.summary(), "results": [asdict(r) for r in self.results]}
 
 
-def run_probes(lm: EngramCausalLM, probes: list[Probe], use_delta: bool = True, batch: int = 16,
-               max_new_tokens: int = 16, expect_absent: bool = False) -> VerificationReport:
+def run_probes(lm: EngramCausalLM, probes: list[Probe], use_delta: bool = True, batch: int = 64,
+               max_new_tokens: int = 32, expect_absent: bool = False) -> VerificationReport:
     """Generate for each probe with Engram on and no wiki context. With ``expect_absent`` a probe is
     "correct" when the answer is NOT produced (used to verify forgetting of deleted / outdated facts)."""
     report = VerificationReport()
-    for i in range(0, len(probes), batch):
-        chunk = probes[i : i + batch]
-        res = lm.generate([p.prompt for p in chunk], max_new_tokens=max_new_tokens, use_delta=use_delta)
-        for p, text in zip(chunk, res.texts):
-            hit = answer_contains(text, p.answer)
-            report.results.append(ProbeResult(p.claim_id, p.kind, p.prompt, p.answer, text,
-                                              (not hit) if expect_absent else hit))
+    # statement probes continue the sentence as plain text, the way statements are trained (even for chat models)
+    for raw in (False, True):
+        group = [p for p in probes if (p.kind == "statement") == raw]
+        for i in range(0, len(group), batch):
+            chunk = group[i : i + batch]
+            res = lm.generate([p.prompt for p in chunk], max_new_tokens=max_new_tokens, use_delta=use_delta,
+                              raw=raw)
+            _record(report, chunk, res.texts, expect_absent)
     return report
+
+
+def _record(report: VerificationReport, chunk: list[Probe], texts: list[str], expect_absent: bool) -> None:
+    for p, text in zip(chunk, texts):
+        hit = answer_contains(text, p.answer)
+        report.results.append(ProbeResult(p.claim_id, p.kind, p.prompt, p.answer, text,
+                                          (not hit) if expect_absent else hit))

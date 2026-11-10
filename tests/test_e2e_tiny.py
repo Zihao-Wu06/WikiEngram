@@ -119,3 +119,16 @@ def test_delta_can_be_masked_on_context_positions(tiny_lm):
     # generation with delta_start == context length runs and differs from delta-everywhere decoding
     out = lm.generate(["Zorblat Quenn works at"], max_new_tokens=3, delta_start=[2])
     assert isinstance(out.texts[0], str)
+
+
+def test_training_stops_once_every_answer_token_is_confident(tiny_lm):
+    lm = _with_base(tiny_lm)
+    cfg = DeltaTrainConfig(epochs=200, batch_size=8, lr=5e-2, target_loss=0.0, exact_patience=2)
+    rep = train_delta(lm, lm.new_delta(), SAMPLES, cfg)
+    assert rep.stop_reason == "exact" and rep.epochs_run < 200
+    assert rep.epoch_confident[-2:] == [1.0, 1.0]
+    # every answer token at p >= 0.5 under teacher forcing => greedy decoding reproduces the trained answers
+    tok = lm.tokenizer
+    for s in SAMPLES:
+        want = tok.decode(tok(s.target.rstrip("\n"), add_special_tokens=False)["input_ids"], skip_special_tokens=True)
+        assert lm.generate([s.prompt], max_new_tokens=8).texts[0] == want.strip()

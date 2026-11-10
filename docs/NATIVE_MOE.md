@@ -1,11 +1,13 @@
-# Native Engram MoE backends (roadmap)
+# Native Engram MoE backends
 
-> **Status: planned, not implemented.** WikiEngram is meant for every MoE model that ships an Engram-style
-> conditional memory. The personal-memory machinery already works with any Engram family through the
-> `EngramVariant` interface (see [ARCHITECTURE.md](ARCHITECTURE.md#engram-variants)), and is exercised on a
-> retrofit backend today. What a *native* backend adds is a trainable, memory-efficient forward and backward
-> pass through the frozen MoE backbone, plus a reader for the model's own table format. This page records the
-> facts and the plan, family by family.
+> **Status.** **Qwen3.8-Flash-Next: implemented.** It runs and trains straight from its FP8 release on one
+> 32 GB GPU ([below](#qwen38-flash-next-ple-variant-qwen-ple); measured in the README's results).
+> **DeepSeek-V4.1-Flash: planned** (no trainable implementation of its backbone exists yet).
+> WikiEngram is meant for every MoE model that ships an Engram-style conditional memory. The personal-memory
+> machinery works with any Engram family through the `EngramVariant` interface
+> (see [ARCHITECTURE.md](ARCHITECTURE.md#engram-variants)). What a *native* backend adds is a trainable,
+> memory-efficient forward and backward pass through the frozen MoE backbone, plus a reader for the model's own
+> table format. This page records the facts and the plan, family by family.
 
 ## What a native backend needs (any family)
 
@@ -116,8 +118,32 @@ config and safetensors headers, 2026-11-10.
   A row's update therefore reaches positions t, t+3, t+6 and t+9. Decoding keeps a 9-position conv state.
 * **Engines.** transformers, vLLM (CPU and disk offload of the table), SGLang, llama.cpp, Strata, and
   NeMo-Automodel for training.
-* **Still missing:** a reader for the sharded or FP8-global-scale table, and a native backbone port (hybrid
-  linear and indexed attention, MoE, hyper-connections) for training.
+* **Running it from the checkpoint.** `NativeEngramLM.from_checkpoint(path)` (`backends/checkpoint.py`) runs
+  the FP8 release without loading it. The backbone code is transformers' own `Qwen4Exp*` modules, kept frozen.
+  * About 2.2B non-expert parameters stay resident on the accelerator, dequantized from FP8.
+  * Routed experts are read from the files on demand: 10 of 512 per token. They are dequantized on the device
+    (E4M3 values with 128×128 block scales) and run through transformers' own expert kernel.
+  * On Linux the experts are read with `O_DIRECT`, around the page cache, by 48 threads. A training step or a
+    batched generation step touches nearly all 121 GB of experts, more than most machines can cache. Measured
+    in a container with a 92 GB memory limit on an NVMe RAID: 2–3 GB/s through the page cache, 7–18 GB/s direct.
+    The raw bytes reach the GPU 32 experts at a time, so a layer's experts are never there twice (FP8 and BF16).
+  * The table's rows are read straight from the 128 shards (`ShardedTable`: E4M3 times the global scale, or
+    BF16 for the BF16 release).
+  * Consolidation uses the streamed backward, so peak memory is the resident weights plus one layer.
+  * The full-attention layers' QSA indexer keeps each query's 512 best blocks of 4 keys (a 2,048-token
+    budget). Up to that length it keeps every visible token, so its mask is the attention mask itself;
+    `fast_qsa_indexer` returns it directly instead of running transformers' Python loop over every
+    (sequence, query) pair, which took about half of each training step (exact: same mask, tested).
+  * Install the flash-linear-attention kernels (`pip install "fla-core>=0.5"`; 0.6 needs a Triton with Gluon,
+    0.5.2 works with Triton 3.4). Without them transformers falls back to a PyTorch implementation of the
+    DeltaNet layers that is much slower and needs about 3× the memory: 9.5 GiB instead of 3.3 GiB for one layer's
+    forward and backward at 150 sequences × 100 tokens (measured on an RTX 5090; outputs and gradients agree to
+    bf16 precision, relative error about 4·10⁻³). On a 32 GB card this sets the training batch: 168 samples per
+    step with the kernels, about 100 without.
+
+  Synthetic checkpoints in the release format (per-expert FP8 tensors with block scales, a sharded FP8 table,
+  the `model.language_model.` prefix, several files with an index) match the same weights held in memory
+  bit-exactly on CPU, for logits, generation and delta gradients (`tests/test_checkpoint_streaming.py`).
 
 ### DeepSeek-V4.1-Flash-1017
 

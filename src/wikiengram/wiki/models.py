@@ -49,6 +49,15 @@ def is_cjk(ch: str) -> bool:
     return any(lo <= cp <= hi for lo, hi in _CJK_RANGES)
 
 
+CATEGORIES = ("fact", "preference", "decision", "experience", "project", "note")
+
+
+def claim_key(subject: str, predicate: str, scope: str = "") -> tuple[str, str]:
+    """Conflict key of a claim. Unscoped keys are unchanged; a scope keeps projects from overwriting each other."""
+    s = normalize(subject)
+    return (f"{normalize(scope)}::{s}" if scope else s), normalize(predicate)
+
+
 def normalize(text: str) -> str:
     """Comparison form used for keys: NFKC, casefolded, punctuation removed, whitespace collapsed."""
     text = unicodedata.normalize("NFKC", text).casefold()
@@ -90,14 +99,18 @@ class Claim:
     engram_state: EngramState = EngramState.NONE
     engram_version: int | None = None
     reason: str = ""
+    # what kind of memory this is (fact | preference | decision | experience | project | note) and which project
+    # or context it belongs to ("" = global). Claims only conflict within one scope.
+    category: str = "fact"
+    scope: str = ""
 
     def __post_init__(self) -> None:
         self.status = ClaimStatus(self.status)
         self.engram_state = EngramState(self.engram_state)
 
     def key(self) -> tuple[str, str]:
-        """``(normalized subject, normalized predicate)``; equal keys with different objects conflict."""
-        return normalize(self.subject), normalize(self.predicate)
+        """``(normalized subject, normalized predicate)``, scoped; equal keys with different objects conflict."""
+        return claim_key(self.subject, self.predicate, self.scope)
 
     def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
