@@ -14,6 +14,7 @@ and served to an AI agent through the model API and the LLMWiki MCP server. The 
 | `review.json` | The full review applied to the extracted claims, one entry per decision, each with its reason |
 | `evaluate.py` | The measurements in the README (recall per memory mode, prompt tokens, perplexity, memory size) |
 | `agent_demo.py` | Questions through the model API, then an agent session using the MCP memory tools |
+| `update_test.py` | Corrections and deletions on a copy of the trained memory: sync, measure, re-consolidate, measure |
 
 ## How the memory was built
 

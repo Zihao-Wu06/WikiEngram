@@ -1,0 +1,196 @@
+{
+  "facts": 149,
+  "edited": 15,
+  "deleted": 10,
+  "untouched": 124,
+  "edits": [
+    {
+      "claim": "c_0c52167d23",
+      "old": "0.2.13",
+      "new": "0.2.14",
+      "question": "What is the version number of Strata's app and Terminal?"
+    },
+    {
+      "claim": "c_5347d8981e",
+      "old": "12.2%",
+      "new": "12.3%",
+      "question": "By what percentage did Strata's expert cache cut request time improve in historical tests?"
+    },
+    {
+      "claim": "c_5eeb8a58e0",
+      "old": "1-3 minutes",
+      "new": "1-4 minutes",
+      "question": "How long does it take to load a model using strata_start?"
+    },
+    {
+      "claim": "c_640ef2025b",
+      "old": "STRATA_DISJOINT_ADAPT=1",
+      "new": "STRATA_DISJOINT_ADAPT=2",
+      "question": "What configuration setting enables Strata's disjoint expert cache?"
+    },
+    {
+      "claim": "c_7065e1914e",
+      "old": "CUDA 12",
+      "new": "CUDA 13",
+      "question": "Which engine do older NVIDIA cards utilize according to the provided information?"
+    },
+    {
+      "claim": "c_770fb277cc",
+      "old": "19 to 21",
+      "new": "19 to 22",
+      "question": "What is the range of tokens per second produced by a Ryzen AI Max+ 395 (Strix Halo) with 128 GB unified memory when running code in Strata using DeepSeekV4.1-Flash-1017?"
+    },
+    {
+      "claim": "c_7877e386da",
+      "old": "deepseek41",
+      "new": "deepseek42",
+      "question": "What is the identifier used for the Strata family selector in DeepSeek V4.1-Flash?"
+    },
+    {
+      "claim": "c_80ad6c9f67",
+      "old": "21 to 25",
+      "new": "21 to 26",
+      "question": "What is the range of tokens produced per second by a Radeon AI PRO R9700 with 251 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?"
+    },
+    {
+      "claim": "c_93810f567f",
+      "old": "--host 0.0.0.0",
+      "new": "--host 0.0.0.1",
+      "question": "What IP address option is excluded when installing Strata_install?"
+    },
+    {
+      "claim": "c_c4b11af68c",
+      "old": "9 to 11",
+      "new": "9 to 12",
+      "question": "What is the range of tokens generated per second by an RTX 3060 12 GB with 46 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?"
+    },
+    {
+      "claim": "c_c67ae66297",
+      "old": "64-bit",
+      "new": "65-bit",
+      "question": "What type of Python is required for Strata's MCP server on Windows?"
+    },
+    {
+      "claim": "c_d1df9368d2",
+      "old": "cuda-cuda13",
+      "new": "cuda-cuda14",
+      "question": "What is the engine package used in the NVIDIA DGX Spark by Strata?"
+    },
+    {
+      "claim": "c_ddfc4f011d",
+      "old": "700",
+      "new": "701",
+      "question": "How many additional experts does each extra gigabyte of VRAM support in Strata?"
+    },
+    {
+      "claim": "c_e6729c65f2",
+      "old": "17",
+      "new": "18",
+      "question": "How many expert-pool workers did the machine that validated Strata's disjoint expert cache operate with?"
+    },
+    {
+      "claim": "c_fdef80f50f",
+      "old": "28.8 GB",
+      "new": "28.9 GB",
+      "question": "How much storage does Strata's n-gram table on the SSD occupy?"
+    }
+  ],
+  "deletions": [
+    {
+      "claim": "c_1fc828ece3",
+      "answer": "3.10 or newer",
+      "question": "What is the minimum Python version required for Strata's MCP server tool?"
+    },
+    {
+      "claim": "c_2d0f906c03",
+      "answer": "8,192 tokens",
+      "question": "What is the maximum number of tokens Strata processes in each segment of a long text?"
+    },
+    {
+      "claim": "c_2db0052293",
+      "answer": "Intel Arc",
+      "question": "Which processor is excluded from running DeepSeekV4.1-Flash-1017 in Strata?"
+    },
+    {
+      "claim": "c_42ba197c5b",
+      "answer": "the conversation",
+      "question": "How does Strata's expert cache adjust during interactions?"
+    },
+    {
+      "claim": "c_50191a5857",
+      "answer": "Qwen3.8-Flash-Next, Qwen3.6-35B-A3B and DeepSeekV4.1-Flash-1017",
+      "question": "What are the three model families offered by Strata?"
+    },
+    {
+      "claim": "c_707455bbe2",
+      "answer": "--stop-model",
+      "question": "What command is used in a script to instruct strata update to halt a running model?"
+    },
+    {
+      "claim": "c_84f62ea1a8",
+      "answer": "GET /health",
+      "question": "What endpoint does Strata_start polls use to check the model's response?"
+    },
+    {
+      "claim": "c_905f5e2bba",
+      "answer": "source: engine",
+      "question": "What parameter should be passed to Strata_logs to retrieve the engine log?"
+    },
+    {
+      "claim": "c_95dfe441d8",
+      "answer": "MIT License",
+      "question": "What type of license is Strata released under?"
+    },
+    {
+      "claim": "c_fc86f5d17a",
+      "answer": "SIL Open Font License 1.1",
+      "question": "What license governs the font used in Strata's web app?"
+    }
+  ],
+  "sync": {
+    "seconds": 8137.8,
+    "forgotten": 25,
+    "repaired": 28,
+    "verification": {
+      "forget": {
+        "n": 50,
+        "accuracy": 0.96,
+        "accuracy_forget": 0.96
+      },
+      "retain_repaired": {
+        "n": 167,
+        "accuracy": 0.8502994011976048,
+        "accuracy_heldout_question": 0.2857142857142857,
+        "accuracy_statement": 0.8518518518518519,
+        "accuracy_trained_question": 0.9910714285714286
+      }
+    }
+  },
+  "after_sync": {
+    "edited_new_value/wiki": 0.9333,
+    "edited_new_value/engram": 0.0,
+    "edited_old_value_still_produced/engram": 0.0,
+    "deleted_still_produced/engram": 0.2,
+    "untouched_retained/engram": 1.0,
+    "edited_new_value/hybrid": 0.9333,
+    "edited_old_value_still_produced/hybrid": 0.0,
+    "deleted_still_produced/hybrid": 0.1,
+    "untouched_retained/hybrid": 0.9355
+  },
+  "reconsolidation": {
+    "seconds": 4678.5,
+    "selected": 15,
+    "epochs": 18,
+    "verification": {
+      "n": 382,
+      "accuracy": 0.8743455497382199,
+      "accuracy_heldout_question": 0.390625,
+      "accuracy_statement": 0.8709677419354839,
+      "accuracy_trained_question": 0.99609375
+    }
+  },
+  "after_reconsolidation": {
+    "edited_new_value/engram": 1.0,
+    "untouched_retained/engram": 0.9919
+  }
+}

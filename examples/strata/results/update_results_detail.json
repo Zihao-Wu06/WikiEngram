@@ -1,0 +1,4556 @@
+{
+ "after_sync": [
+  {
+   "mode": "wiki",
+   "claim": "c_0c52167d23",
+   "question": "What is the version number of Strata's app and Terminal?",
+   "prediction": "0.2.14",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_5347d8981e",
+   "question": "By what percentage did Strata's expert cache cut request time improve in historical tests?",
+   "prediction": "12.3%",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_5eeb8a58e0",
+   "question": "How long does it take to load a model using strata_start?",
+   "prediction": "1-4 minutes",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_640ef2025b",
+   "question": "What configuration setting enables Strata's disjoint expert cache?",
+   "prediction": "STRATA_DISJOINT_ADAPT=2",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_7065e1914e",
+   "question": "Which engine do older NVIDIA cards utilize according to the provided information?",
+   "prediction": "Strata's CUDA 13 engine",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_770fb277cc",
+   "question": "What is the range of tokens per second produced by a Ryzen AI Max+ 395 (Strix Halo) with 128 GB unified memory when running code in Strata using DeepSeekV4.1-Flash-1017?",
+   "prediction": "19 to 22 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_7877e386da",
+   "question": "What is the identifier used for the Strata family selector in DeepSeek V4.1-Flash?",
+   "prediction": "deepseek42",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_80ad6c9f67",
+   "question": "What is the range of tokens produced per second by a Radeon AI PRO R9700 with 251 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "21 to 26 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_93810f567f",
+   "question": "What IP address option is excluded when installing Strata_install?",
+   "prediction": "0.0.0.1",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": false
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_c4b11af68c",
+   "question": "What is the range of tokens generated per second by an RTX 3060 12 GB with 46 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "9 to 12 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_c67ae66297",
+   "question": "What type of Python is required for Strata's MCP server on Windows?",
+   "prediction": "65-bit Python",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_d1df9368d2",
+   "question": "What is the engine package used in the NVIDIA DGX Spark by Strata?",
+   "prediction": "cuda-cuda14",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_ddfc4f011d",
+   "question": "How many additional experts does each extra gigabyte of VRAM support in Strata?",
+   "prediction": "701",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_e6729c65f2",
+   "question": "How many expert-pool workers did the machine that validated Strata's disjoint expert cache operate with?",
+   "prediction": "18",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "wiki",
+   "claim": "c_fdef80f50f",
+   "question": "How much storage does Strata's n-gram table on the SSD occupy?",
+   "prediction": "28.9 GB",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_0c52167d23",
+   "question": "What is the version number of Strata's app and Terminal?",
+   "prediction": "The version number of Strata's app, **Terminal**, is **1.0**.",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5347d8981e",
+   "question": "By what percentage did Strata's expert cache cut request time improve in historical tests?",
+   "prediction": "Based on the information provided in the public technical reports and case studies regarding **Strata** (specifically referring to the **Strata** system developed by researchers",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5eeb8a58e0",
+   "question": "How long does it take to load a model using strata_start?",
+   "prediction": "The time it takes to load a model using `strata_start` (typically referring to the **Strata** framework or a specific library function for initializing a",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_640ef2025b",
+   "question": "What configuration setting enables Strata's disjoint expert cache?",
+   "prediction": "To enable Strata's disjoint expert cache, you need to set the configuration parameter **`disjoint_expert_cache`** to **`True`**.",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7065e1914e",
+   "question": "Which engine do older NVIDIA cards utilize according to the provided information?",
+   "prediction": "Based on general technical knowledge regarding NVIDIA architecture (as no specific text was provided in your prompt), older NVIDIA cards utilize the **Fixed Function Pipeline** (or Fixed",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_770fb277cc",
+   "question": "What is the range of tokens per second produced by a Ryzen AI Max+ 395 (Strix Halo) with 128 GB unified memory when running code in Strata using DeepSeekV4.1-Flash-1017?",
+   "prediction": "125",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7877e386da",
+   "question": "What is the identifier used for the Strata family selector in DeepSeek V4.1-Flash?",
+   "prediction": "There is no such model as \"88K DeepSeek V4.1-Flash,\" and the term \"Strata family selector\" is not a recognized",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_80ad6c9f67",
+   "question": "What is the range of tokens produced per second by a Radeon AI PRO R9700 with 251 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "Based on current hardware specifications and software availability, the premise of this question contains several factual inaccuracies and non-existent components. Therefore, **no such performance range exists",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_93810f567f",
+   "question": "What IP address option is excluded when installing Strata_install?",
+   "prediction": "When installing Strata (specifically referring to **StrataView** or related **Strata** software components, often in the context of **Strata Identity",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c4b11af68c",
+   "question": "What is the range of tokens generated per second by an RTX 3060 12 GB with 46 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "4 to 6",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c67ae66297",
+   "question": "What type of Python is required for Strata's MCP server on Windows?",
+   "prediction": "Strata's MCP server on Windows requires **Python 3.10 or higher**.",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d1df9368d2",
+   "question": "What is the engine package used in the NVIDIA DGX Spark by Strata?",
+   "prediction": "The NVIDIA DGX Spark (formerly known as Project DIGITS) does not use a traditional internal combustion \"engine package.\" Instead, it is powered by the **",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_ddfc4f011d",
+   "question": "How many additional experts does each extra gigabyte of VRAM support in Strata?",
+   "prediction": "In the context of the **Strata** model (specifically referring to the **Strata** architecture or similar Mixture-of-Experts models like those discussed",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e6729c65f2",
+   "question": "How many expert-pool workers did the machine that validated Strata's disjoint expert cache operate with?",
+   "prediction": "The machine that validated Strata's disjoint expert cache operated with **16** expert-pool workers.",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fdef80f50f",
+   "question": "How much storage does Strata's n-gram table on the SSD occupy?",
+   "prediction": "Strata's n-gram is a **software** (specifically, a command-line tool for reading and writing FASTQ files), not a physical hardware device",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1fc828ece3",
+   "question": "What is the minimum Python version required for Strata's MCP server tool?",
+   "prediction": "Based on the documentation for the **Strata** MCP (Model Context Protocol) server (specifically the `strata-mcp` package or the Strata",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_2d0f906c03",
+   "question": "What is the maximum number of tokens Strata processes in each segment of a long text?",
+   "prediction": "Strata, a framework for efficient long-context language models, processes long texts by dividing them into segments. The maximum number of tokens Strata processes in each segment",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_2db0052293",
+   "question": "Which processor is excluded from running DeepSeekV4.1-Flash-1017 in Strata?",
+   "prediction": "There is no such processor or model as \"DeepSeekV4.1-Flash-1017\" in Strata, nor does \"Strata",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_42ba197c5b",
+   "question": "How does Strata's expert cache adjust during interactions?",
+   "prediction": "Strata’s expert cache adjusts during interactions by dynamically updating its internal state based on the user’s feedback and the context of the conversation. Specifically, it employs a",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_50191a5857",
+   "question": "What are the three model families offered by Strata?",
+   "prediction": "Strata (specifically referring to **Strata Identity**, a leading identity security platform) does not offer \"model families\" in the sense of AI or machine",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_707455bbe2",
+   "question": "What command is used in a script to instruct strata update to halt a running model?",
+   "prediction": "The command used in a script to instruct **Strata** (specifically the **Strata** modeling software, often associated with **Strata** or **",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_84f62ea1a8",
+   "question": "What endpoint does Strata_start polls use to check the model's response?",
+   "prediction": "Strata_start polls use the **`/v1/chat/completions`** endpoint (or the equivalent OpenAI-compatible chat completion endpoint) to check the",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_905f5e2bba",
+   "question": "What parameter should be passed to Strata_logs to retrieve the engine log?",
+   "prediction": "\"engine\"",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_95dfe441d8",
+   "question": "What type of license is Strata released under?",
+   "prediction": "Strata is released under the **MIT License**.",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fc86f5d17a",
+   "question": "What license governs the font used in Strata's web app?",
+   "prediction": "The font used in Strata's web app is governed by the **SIL Open Font License (OFL)**.",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_006902236a",
+   "question": "On average, how many tokens does one check pass in Strata accept?",
+   "prediction": "2.4-3.2",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_025aed0845",
+   "question": "What programming language is included in the Strata Terminal?",
+   "prediction": "Python",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_0670476498",
+   "question": "What is the range of tokens generated per second by an RTX 5070 12 GB with 64 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "4 to 6",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_0743d108d9",
+   "question": "How does Strata generate text?",
+   "prediction": "guess then check",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_07b1bb85e1",
+   "question": "What is the range of tokens per second that Strata can process when reading an 8K prompt using DeepSeekV4.1-Flash-1017 on four Radeon AI PRO R9700 cards?",
+   "prediction": "400 to 450",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_07f42fe2b9",
+   "question": "What size does strata_install select when the system has 60 GB of RAM or more?",
+   "prediction": "IQ3_XXS",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_08be69bfb2",
+   "question": "What are the two speed options available for DeepSeek V4.1-Flash in the Strata app?",
+   "prediction": "Faster or Full quality",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_094ea70e8e",
+   "question": "What is the minimum NVIDIA driver version required for Strata's CUDA 13 packages?",
+   "prediction": "580 or newer",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_0eab1163c2",
+   "question": "What type of processor powers the machine that validates Strata's disjoint expert cache?",
+   "prediction": "Intel Xeon E5-2686 v4",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_138603eb98",
+   "question": "Which type of Linux system does Strata not support with a desktop app?",
+   "prediction": "ARM64 Linux",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_15b7cde3bb",
+   "question": "What version number is assigned to Strata's Control and engines?",
+   "prediction": "0.1.59",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1681dc2d5e",
+   "question": "What is the family selector assigned to the Qwen3.6-35B-A3B model?",
+   "prediction": "qwen36",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_171d5a26e1",
+   "question": "What is the range of tokens per second produced by four Radeon AI PRO R9700 cards when running with DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "74 to 77",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_183f2222c6",
+   "question": "What flag is used to specify a different Strata folder for the MCP server to manage?",
+   "prediction": "--root",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1a5aab842f",
+   "question": "How many experts does Qwen3.8-Flash-Next use per word in Strata?",
+   "prediction": "10",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1b740afa0e",
+   "question": "What does the Strata desktop app download when it is first started?",
+   "prediction": "the engine for your graphics card",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1d57a8cdc8",
+   "question": "What mechanism does Strata use to draft tokens when a reply repeats the context, such as in code edits?",
+   "prediction": "prompt lookup",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1d73bb6e97",
+   "question": "Which technology does Strata use to compute experts for the i-quants?",
+   "prediction": "ggml",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_209446a182",
+   "question": "Does the Strata installer include an engine on Windows and Linux?",
+   "prediction": "no engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_23886e8ab1",
+   "question": "What components form the foundation of Strata's architecture?",
+   "prediction": "llama.cpp / ggml",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_24baeb94d4",
+   "question": "Where does the Strata server's output get directed by Strata_start?",
+   "prediction": ".strata-mcp/server.log",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_275ce6a63e",
+   "question": "What command is used to verify if the Strata server is active?",
+   "prediction": "strata launch --status",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_2a34cac298",
+   "question": "Where does Strata store desktop chats and host state by default?",
+   "prediction": "~/.strata",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_2db58960d7",
+   "question": "How many small experts are part of the Qwen3.8-Flash-Next team in Strata?",
+   "prediction": "24,576",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_30f7340cde",
+   "question": "Which models serve as inspiration for Strata?",
+   "prediction": "Splash, ninfer and HyperQwen",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_32c449e789",
+   "question": "What type of interface is used to transfer data from the experts in the next layer to the GPU?",
+   "prediction": "PCIe",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_34468ebc8b",
+   "question": "What parameter must be passed to Strata_install for it to take action?",
+   "prediction": "confirm: true",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_34bb299fcc",
+   "question": "What type of interface does the machine use to validate Strata's disjoint expert cache?",
+   "prediction": "PCIe 3.0",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_3599ac2d71",
+   "question": "What is the range of tokens per second that Strata can process when reading an 8K prompt with DeepSeekV4.1-Flash-1017 on a Radeon AI PRO R9700?",
+   "prediction": "320 to 360",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_37eb2a538d",
+   "question": "What is the status of Qwen3.6-35B-A3B on the NVIDIA DGX Spark in Strata?",
+   "prediction": "package present, untested",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_383f6b6679",
+   "question": "How many tokens per second can Strata process when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 5070 12 GB with 64 GB RAM?",
+   "prediction": "110",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_3ba120dbd5",
+   "question": "Where does Strata store the n-gram table?",
+   "prediction": "SSD",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_4c9f2411aa",
+   "question": "What is the name of the engine package that Strata provides for Intel Arc on Linux?",
+   "prediction": "sycl",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5335eeb3bd",
+   "question": "Where does Strata store engine components on Linux and Mac by default?",
+   "prediction": "~/.local/share/strata/components",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_565a8b2509",
+   "question": "Which companies' graphics cards support Strata with the same engine?",
+   "prediction": "NVIDIA and AMD",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_58d79c35f7",
+   "question": "What is the context length supported by DeepSeek V4.1-Flash in the Strata app?",
+   "prediction": "8K",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5ad2f5274a",
+   "question": "On which hardware configuration were Strata's disjoint expert cache and KV prefetch validated?",
+   "prediction": "two modified RTX 3080 20 GB cards",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5c1e3e1803",
+   "question": "What is the strata connect identifier associated with oh-my-pi?",
+   "prediction": "omp",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5d6e6a01a2",
+   "question": "What tool does Strata's MCP server use to list all available model families and sizes?",
+   "prediction": "strata_models",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5f8ec71a41",
+   "question": "What is the default number of seconds a model is allowed to wait before being marked as loading?",
+   "prediction": "50",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6123ccc05f",
+   "question": "What endpoints does Strata's MCP status tool check for health and status information?",
+   "prediction": "GET /health, /v1/status, /status and /metrics",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6287c1ae56",
+   "question": "What flag should be used to transfer current models into a new Strata data directory?",
+   "prediction": "--move-data",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6497644b55",
+   "question": "How many tokens can Strata process in a single second when reading a long document or code base?",
+   "prediction": "over 1,000 tokens per second",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_653d0a2867",
+   "question": "What type of engine is housed within the Strata Mac file?",
+   "prediction": "Metal engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_68101bfb8d",
+   "question": "What command is used to start the model in the Strata Terminal app?",
+   "prediction": "strata launch",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_689afba8f0",
+   "question": "What tool is used by Strata's MCP server to perform a short speed test?",
+   "prediction": "strata_benchmark",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6c11b6a4f1",
+   "question": "What flag controls the directory where Strata saves new downloads?",
+   "prediction": "--data-dir",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6f230583f8",
+   "question": "What is the context size mentioned in the description of Strata's KV cache management?",
+   "prediction": "64K",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6f5dfb15ff",
+   "question": "What license governs the experimental speed projection file in Strata's data/experimental-speed-projection directory?",
+   "prediction": "Qwen Community License 1.0",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_70504b5854",
+   "question": "What type of Apple silicon is required for Qwen3.8-Flash-Next to run on Strata?",
+   "prediction": "M1 or newer",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_70a758c63e",
+   "question": "What feature allows a PC with limited RAM to run efficiently when paired with a powerful graphics card?",
+   "prediction": "low-RAM mode",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_73bba73d54",
+   "question": "What option in the Strata app allows the engine file to be installed without requiring an internet connection?",
+   "prediction": "I already have the file",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_76abaefeea",
+   "question": "What directory is created by Strata_install when it detects it is missing?",
+   "prediction": ".venv",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7ac4a976db",
+   "question": "What action brings Strata back to the previous engine?",
+   "prediction": "strata components rollback",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7affd23d61",
+   "question": "What is the credential that the MCP tool includes in its requests when a Strata folder's config specifies it?",
+   "prediction": "api_key",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7b1c94574e",
+   "question": "What license governs the third_party/ggml directory in Strata?",
+   "prediction": "MIT",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8138542cf5",
+   "question": "What tool is used to retrieve server, engine, or setup logs from Strata's MCP server?",
+   "prediction": "strata_logs",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_81e1a6ad79",
+   "question": "What is the recommended order of model providers according to Strata?",
+   "prediction": "ISTA-DASLab, Unsloth, Gyro, then others",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_850ee8d580",
+   "question": "What command causes strata update to restart the model?",
+   "prediction": "--start-again",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_855263cdc3",
+   "question": "What is the suggested path for a new model library in the Strata desktop app?",
+   "prediction": "Documents/Strata/Models",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_87070af3a8",
+   "question": "What command is used to verify if a newer version of the Strata engine is available?",
+   "prediction": "strata update --check",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8863fff9d5",
+   "question": "Which type of Mac is incompatible with Strata's Mac package?",
+   "prediction": "Intel Macs",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_88eb3bd6f7",
+   "question": "How many sizes does DeepSeek V4.1-Flash offer in the Strata app?",
+   "prediction": "three",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8dc4df34d8",
+   "question": "What content does an expert cache populate the remaining GPU memory with in Strata?",
+   "prediction": "the most-used experts",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8e57186073",
+   "question": "Where are engine components stored on Windows in relation to Strata?",
+   "prediction": "%LOCALAPPDATA%\\Strata\\components",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_91b3de7f50",
+   "question": "By what percentage did Strata's disjoint expert cache enhance generation performance in past evaluations?",
+   "prediction": "15.5%",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9242ccaead",
+   "question": "Which NVIDIA card series is supported by DeepSeek V4.1-Flash in the Strata app and Terminal?",
+   "prediction": "RTX 30, 40 and 50",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_925219e5cb",
+   "question": "How many tokens can Strata's prompt lookup draft from a previous copy?",
+   "prediction": "5 tokens",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9437d58aac",
+   "question": "What environment variable must be set to enable Strata's KV prefetch?",
+   "prediction": "STRATA_KV_PREFETCH=1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_94c827328e",
+   "question": "What tool does Strata's MCP server use to delete an installed model's own files?",
+   "prediction": "strata_remove",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_951a6643f5",
+   "question": "What does a second strata_install call indicate during the installation process?",
+   "prediction": "the progress",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_98ecf9f527",
+   "question": "What does Strata_install select based on the setup's recommendation?",
+   "prediction": "the GPU's VRAM",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_998d74a135",
+   "question": "What is the base URL used by Strata's OpenAI Responses?",
+   "prediction": "http://127.0.0.1:8080/v1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_99ca295a2a",
+   "question": "What is the default local endpoint used by Strata?",
+   "prediction": "http://127.0.0.1:8080",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9cfdc5f2c6",
+   "question": "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Windows?",
+   "prediction": "hip-rdna2, hip-rdna3 and hip-rx9070",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9fbb8077ad",
+   "question": "Which component handles the computation of experts not on the GPU in Strata?",
+   "prediction": "CPU",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a2f73fbb6d",
+   "question": "By how much did Strata's KV prefetch reduce prefill time at 32K and 64K?",
+   "prediction": "5.3% at 32K and 4.1% at 64K",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a48f677644",
+   "question": "What material is used in Strata's engine package designed for Apple silicon?",
+   "prediction": "metal",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a4a576f210",
+   "question": "What information does strata_install display prior to installation?",
+   "prediction": "the download size and the free space",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a973bacbdf",
+   "question": "How many layers does Strata review during its token check?",
+   "prediction": "48 layers",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_aebbcd3229",
+   "question": "What method is used for transferring data from Strata's MCP server?",
+   "prediction": "stdio",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_afaf653e46",
+   "question": "What is the minimum RAM requirement for running DeepSeekV4.1-Flash-1017 on Apple silicon in Strata?",
+   "prediction": "64 GB or more",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b125bca260",
+   "question": "What size does strata_install select when it has approximately 44 GB of RAM?",
+   "prediction": "Q2_0",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b26806e0cb",
+   "question": "How many tokens can Strata process per second when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 3060 12 GB with 46 GB RAM?",
+   "prediction": "155",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b6a94f7e62",
+   "question": "What tool does Strata's MCP server use to report a model's status, VRAM usage, RAM usage, and PC hardware details?",
+   "prediction": "strata_status",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b84d01cbce",
+   "question": "What instruction sets does Strata's CPU use for computing experts?",
+   "prediction": "AVX-512 / AVX2",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b8fc829e68",
+   "question": "What HTTP method and endpoint does Strata_stop initially send to the Strata server?",
+   "prediction": "POST /unload",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b997138ee1",
+   "question": "What does strata_install select when it has about 28 GB of RAM?",
+   "prediction": "Coder",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bc0bcc1948",
+   "question": "What tool is used to demonstrate how to link Claude Code with Strata?",
+   "prediction": "strata connect",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bd43282faa",
+   "question": "How many experts are stored in Strata's RAM?",
+   "prediction": "all 24,576 experts",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bd73b40eea",
+   "question": "What tool provides OpenAI and Anthropic base URLs from Strata's MCP server?",
+   "prediction": "strata_connect_info",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bea16a0b16",
+   "question": "What part of the Strata desktop app stops when the app is closed?",
+   "prediction": "its managed engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c216ca8ec9",
+   "question": "What component in Strata is responsible for drafting tokens?",
+   "prediction": "MTP layer",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c5681bd397",
+   "question": "Until what point does the model continue running after the AI app closes?",
+   "prediction": "strata_stop",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c7602d37a8",
+   "question": "What is the token processing speed when Strata reads an 8K prompt using DeepSeekV4.1-Flash-1017 on a Ryzen AI Max+ 395 (Strix Halo)?",
+   "prediction": "125",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c9ac26d518",
+   "question": "What continues to operate if a Strata update does not succeed?",
+   "prediction": "the old engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_cf46187cc6",
+   "question": "What parameter should be passed to strata_install to halt the installation process?",
+   "prediction": "cancel: true",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_cfdff03d16",
+   "question": "On which operating system does Intel Arc operate in Strata via the Terminal?",
+   "prediction": "Linux",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d01a866970",
+   "question": "How much free disk space is required for the ISTA-DAS Coder set of DeepSeekV4.1-Flash-1017 on Strata?",
+   "prediction": "about 197 GB",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d4345e4366",
+   "question": "What is the base URL for Strata's Anthropic Messages?",
+   "prediction": "http://127.0.0.1:8080",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d4a94c831b",
+   "question": "What command is used to integrate Strata's MCP server into Claude Code?",
+   "prediction": "claude mcp add strata",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d7afe7d550",
+   "question": "How much faster does Strata's guess then check method produce a quality answer compared to other methods?",
+   "prediction": "1.6-1.8x",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_da1720d0c1",
+   "question": "What signal is used to terminate the Strata server on Linux via the strata_stop command?",
+   "prediction": "SIGTERM",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_da60b5f582",
+   "question": "What do Strata's packaged GPU runtimes not take the place of?",
+   "prediction": "hardware drivers",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_da6a8fe7ae",
+   "question": "By how much does prompt lookup improve the speed of code edits in Strata?",
+   "prediction": "6-11%",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_dbf615324a",
+   "question": "How much usable memory does the machine that validates Strata's disjoint expert cache have?",
+   "prediction": "94 GiB",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_dc37254896",
+   "question": "Which processors is Qwen3.6-35B-A3B not compatible with in Strata?",
+   "prediction": "Apple silicon and Intel Arc",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_de3831f6b0",
+   "question": "Where does Strata_install save the setup output file?",
+   "prediction": ".strata-mcp/setup.log",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_df2c0b17ad",
+   "question": "What type of storage should strata utilize for optimal performance?",
+   "prediction": "SSD",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e2608acc17",
+   "question": "What parameter must be included when calling strata_stop to allow it to proceed while a request is running?",
+   "prediction": "force: true",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e261f4827f",
+   "question": "What flag is used to make strata launch run the server in the background?",
+   "prediction": "--no-tui",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e27199c087",
+   "question": "Which engines are included in the Strata packages for Qwen3.8-Flash-Next on NVIDIA cards?",
+   "prediction": "cuda-cuda12 and cuda-cuda13",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e27c519d54",
+   "question": "Where can you find the update controls for the Strata desktop app?",
+   "prediction": "Settings",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e414579f28",
+   "question": "What type of models are Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter?",
+   "prediction": "Qwen3.8-Flash-Next variants",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_eb349d9675",
+   "question": "What set of libraries does Strata's MCP server rely on exclusively?",
+   "prediction": "only the standard library",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_ebb1a29870",
+   "question": "What does Strata read after the first message?",
+   "prediction": "only what is new",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_f1f5e4f12e",
+   "question": "How does Strata distribute the workload to ensure large models run efficiently?",
+   "prediction": "whole PC",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_f5c7525072",
+   "question": "How many installers does Strata assign to each system?",
+   "prediction": "one per system",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_f8e24744ea",
+   "question": "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Linux?",
+   "prediction": "hip-halo, hip-rx6000, hip-rx7900 and hip-rx9070",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fad3b0e973",
+   "question": "What specific details must match for Strata's MCP server to terminate a process?",
+   "prediction": "process id and start time",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fcc4931863",
+   "question": "Which MCP revision does Strata's MCP server currently support as its latest version?",
+   "prediction": "2025-06-18",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fd2c7c9eb0",
+   "question": "How does Strata_install determine the model size based on system resources?",
+   "prediction": "the available RAM",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_feab41a399",
+   "question": "What is the base URL used by Strata's OpenAI Chat Completions?",
+   "prediction": "http://127.0.0.1:8080/v1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_feb52830c5",
+   "question": "What command is used to halt the Strata server?",
+   "prediction": "strata launch --stop",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_0c52167d23",
+   "question": "What is the version number of Strata's app and Terminal?",
+   "prediction": "0.2.14",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_5347d8981e",
+   "question": "By what percentage did Strata's expert cache cut request time improve in historical tests?",
+   "prediction": "12.3%",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_5eeb8a58e0",
+   "question": "How long does it take to load a model using strata_start?",
+   "prediction": "1-4 minutes",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_640ef2025b",
+   "question": "What configuration setting enables Strata's disjoint expert cache?",
+   "prediction": "STRATA_DISJOINT_ADAPT=2",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_7065e1914e",
+   "question": "Which engine do older NVIDIA cards utilize according to the provided information?",
+   "prediction": "Strata's CUDA 13 engine",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_770fb277cc",
+   "question": "What is the range of tokens per second produced by a Ryzen AI Max+ 395 (Strix Halo) with 128 GB unified memory when running code in Strata using DeepSeekV4.1-Flash-1017?",
+   "prediction": "19 to 22 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_7877e386da",
+   "question": "What is the identifier used for the Strata family selector in DeepSeek V4.1-Flash?",
+   "prediction": "deepseek42",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_80ad6c9f67",
+   "question": "What is the range of tokens produced per second by a Radeon AI PRO R9700 with 251 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "21 to 26 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_93810f567f",
+   "question": "What IP address option is excluded when installing Strata_install?",
+   "prediction": "0.0.0.1",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": false,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_c4b11af68c",
+   "question": "What is the range of tokens generated per second by an RTX 3060 12 GB with 46 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "9 to 12 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_c67ae66297",
+   "question": "What type of Python is required for Strata's MCP server on Windows?",
+   "prediction": "65-bit Python",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_d1df9368d2",
+   "question": "What is the engine package used in the NVIDIA DGX Spark by Strata?",
+   "prediction": "cuda-cuda14",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_ddfc4f011d",
+   "question": "How many additional experts does each extra gigabyte of VRAM support in Strata?",
+   "prediction": "701",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_e6729c65f2",
+   "question": "How many expert-pool workers did the machine that validated Strata's disjoint expert cache operate with?",
+   "prediction": "18",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_fdef80f50f",
+   "question": "How much storage does Strata's n-gram table on the SSD occupy?",
+   "prediction": "28.9 GB",
+   "use_delta": false,
+   "scores": {
+    "edited_new_value": true,
+    "edited_old_value_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_1fc828ece3",
+   "question": "What is the minimum Python version required for Strata's MCP server tool?",
+   "prediction": "65-bit Python",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_2d0f906c03",
+   "question": "What is the maximum number of tokens Strata processes in each segment of a long text?",
+   "prediction": "5",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_2db0052293",
+   "question": "Which processor is excluded from running DeepSeekV4.1-Flash-1017 in Strata?",
+   "prediction": "Apple silicon with less than 64 GB of RAM or running macOS older than 15",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_42ba197c5b",
+   "question": "How does Strata's expert cache adjust during interactions?",
+   "prediction": "It fills the rest of the GPU's memory with the most-used experts.",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_50191a5857",
+   "question": "What are the three model families offered by Strata?",
+   "prediction": "Qwen3.6, DeepSeek V4.1, and Splash",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_707455bbe2",
+   "question": "What command is used in a script to instruct strata update to halt a running model?",
+   "prediction": "--stop",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_84f62ea1a8",
+   "question": "What endpoint does Strata_start polls use to check the model's response?",
+   "prediction": "http://127.0.0.1:8080/v1",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_905f5e2bba",
+   "question": "What parameter should be passed to Strata_logs to retrieve the engine log?",
+   "prediction": "engine",
+   "use_delta": false,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_95dfe441d8",
+   "question": "What type of license is Strata released under?",
+   "prediction": "Strata is released under the **MIT License**.",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_fc86f5d17a",
+   "question": "What license governs the font used in Strata's web app?",
+   "prediction": "The font used in Strata's web app is governed by the **SIL Open Font License (OFL)**.",
+   "use_delta": true,
+   "scores": {
+    "deleted_still_produced": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_006902236a",
+   "question": "On average, how many tokens does one check pass in Strata accept?",
+   "prediction": "2.4-3.2",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_025aed0845",
+   "question": "What programming language is included in the Strata Terminal?",
+   "prediction": "Python",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_0670476498",
+   "question": "What is the range of tokens generated per second by an RTX 5070 12 GB with 64 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "4 to 6 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_0743d108d9",
+   "question": "How does Strata generate text?",
+   "prediction": "Strata generates text by guess then check: a small helper guesses the next words and the big model checks them all at once.",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_07b1bb85e1",
+   "question": "What is the range of tokens per second that Strata can process when reading an 8K prompt using DeepSeekV4.1-Flash-1017 on four Radeon AI PRO R9700 cards?",
+   "prediction": "400 to 450 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_07f42fe2b9",
+   "question": "What size does strata_install select when the system has 60 GB of RAM or more?",
+   "prediction": "IQ3_XXS",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_08be69bfb2",
+   "question": "What are the two speed options available for DeepSeek V4.1-Flash in the Strata app?",
+   "prediction": "Faster or Full quality",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_094ea70e8e",
+   "question": "What is the minimum NVIDIA driver version required for Strata's CUDA 13 packages?",
+   "prediction": "580 or newer",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_0eab1163c2",
+   "question": "What type of processor powers the machine that validates Strata's disjoint expert cache?",
+   "prediction": "Intel Xeon E5-2686 v4",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_138603eb98",
+   "question": "Which type of Linux system does Strata not support with a desktop app?",
+   "prediction": "ARM64 Linux",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_15b7cde3bb",
+   "question": "What version number is assigned to Strata's Control and engines?",
+   "prediction": "0.1.59",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_1681dc2d5e",
+   "question": "What is the family selector assigned to the Qwen3.6-35B-A3B model?",
+   "prediction": "qwen36",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_171d5a26e1",
+   "question": "What is the range of tokens per second produced by four Radeon AI PRO R9700 cards when running with DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "74 to 77 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_183f2222c6",
+   "question": "What flag is used to specify a different Strata folder for the MCP server to manage?",
+   "prediction": "--root",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_1a5aab842f",
+   "question": "How many experts does Qwen3.8-Flash-Next use per word in Strata?",
+   "prediction": "10",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_1b740afa0e",
+   "question": "What does the Strata desktop app download when it is first started?",
+   "prediction": "the engine for your graphics card",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_1d57a8cdc8",
+   "question": "What mechanism does Strata use to draft tokens when a reply repeats the context, such as in code edits?",
+   "prediction": "Prompt lookup",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_1d73bb6e97",
+   "question": "Which technology does Strata use to compute experts for the i-quants?",
+   "prediction": "ggml",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_209446a182",
+   "question": "Does the Strata installer include an engine on Windows and Linux?",
+   "prediction": "No",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_23886e8ab1",
+   "question": "What components form the foundation of Strata's architecture?",
+   "prediction": "Parts of llama.cpp / ggml",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_24baeb94d4",
+   "question": "Where does the Strata server's output get directed by Strata_start?",
+   "prediction": ".strata-mcp/server.log",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_275ce6a63e",
+   "question": "What command is used to verify if the Strata server is active?",
+   "prediction": "Strata launch --status",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_2a34cac298",
+   "question": "Where does Strata store desktop chats and host state by default?",
+   "prediction": "~/.strata",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_2db58960d7",
+   "question": "How many small experts are part of the Qwen3.8-Flash-Next team in Strata?",
+   "prediction": "24,576",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_30f7340cde",
+   "question": "Which models serve as inspiration for Strata?",
+   "prediction": "Splash, ninfer and HyperQwen",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_32c449e789",
+   "question": "What type of interface is used to transfer data from the experts in the next layer to the GPU?",
+   "prediction": "PCIe",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_34468ebc8b",
+   "question": "What parameter must be passed to Strata_install for it to take action?",
+   "prediction": "confirm: true",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_34bb299fcc",
+   "question": "What type of interface does the machine use to validate Strata's disjoint expert cache?",
+   "prediction": "PCIe 3.0",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_3599ac2d71",
+   "question": "What is the range of tokens per second that Strata can process when reading an 8K prompt with DeepSeekV4.1-Flash-1017 on a Radeon AI PRO R9700?",
+   "prediction": "320 to 360 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_37eb2a538d",
+   "question": "What is the status of Qwen3.6-35B-A3B on the NVIDIA DGX Spark in Strata?",
+   "prediction": "package present, untested",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_383f6b6679",
+   "question": "How many tokens per second can Strata process when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 5070 12 GB with 64 GB RAM?",
+   "prediction": "about 110 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_3ba120dbd5",
+   "question": "Where does Strata store the n-gram table?",
+   "prediction": "SSD",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_4c9f2411aa",
+   "question": "What is the name of the engine package that Strata provides for Intel Arc on Linux?",
+   "prediction": "sycl",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_5335eeb3bd",
+   "question": "Where does Strata store engine components on Linux and Mac by default?",
+   "prediction": "~/.local/share/strata/components",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_565a8b2509",
+   "question": "Which companies' graphics cards support Strata with the same engine?",
+   "prediction": "NVIDIA and AMD",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_58d79c35f7",
+   "question": "What is the context length supported by DeepSeek V4.1-Flash in the Strata app?",
+   "prediction": "8K",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_5ad2f5274a",
+   "question": "On which hardware configuration were Strata's disjoint expert cache and KV prefetch validated?",
+   "prediction": "Two modified RTX 3080 20 GB cards on a machine with an Intel Xeon E5-2686 v4 (1",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_5c1e3e1803",
+   "question": "What is the strata connect identifier associated with oh-my-pi?",
+   "prediction": "omp",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_5d6e6a01a2",
+   "question": "What tool does Strata's MCP server use to list all available model families and sizes?",
+   "prediction": "strata_models",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_5f8ec71a41",
+   "question": "What is the default number of seconds a model is allowed to wait before being marked as loading?",
+   "prediction": "50",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_6123ccc05f",
+   "question": "What endpoints does Strata's MCP status tool check for health and status information?",
+   "prediction": "GET /health, /v1/status, /status and /metrics",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_6287c1ae56",
+   "question": "What flag should be used to transfer current models into a new Strata data directory?",
+   "prediction": "--move-data",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_6497644b55",
+   "question": "How many tokens can Strata process in a single second when reading a long document or code base?",
+   "prediction": "over 1,000 tokens",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_653d0a2867",
+   "question": "What type of engine is housed within the Strata Mac file?",
+   "prediction": "Metal engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_68101bfb8d",
+   "question": "What command is used to start the model in the Strata Terminal app?",
+   "prediction": "strata launch",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_689afba8f0",
+   "question": "What tool is used by Strata's MCP server to perform a short speed test?",
+   "prediction": "strata_benchmark",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_6c11b6a4f1",
+   "question": "What flag controls the directory where Strata saves new downloads?",
+   "prediction": "--data-dir",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_6f230583f8",
+   "question": "What is the context size mentioned in the description of Strata's KV cache management?",
+   "prediction": "64K",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_6f5dfb15ff",
+   "question": "What license governs the experimental speed projection file in Strata's data/experimental-speed-projection directory?",
+   "prediction": "Qwen Community License 1.0",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_70504b5854",
+   "question": "What type of Apple silicon is required for Qwen3.8-Flash-Next to run on Strata?",
+   "prediction": "M1 or newer",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_70a758c63e",
+   "question": "What feature allows a PC with limited RAM to run efficiently when paired with a powerful graphics card?",
+   "prediction": "Strata's low-RAM mode",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_73bba73d54",
+   "question": "What option in the Strata app allows the engine file to be installed without requiring an internet connection?",
+   "prediction": "I already have the file",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_76abaefeea",
+   "question": "What directory is created by Strata_install when it detects it is missing?",
+   "prediction": ".venv",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_7ac4a976db",
+   "question": "What action brings Strata back to the previous engine?",
+   "prediction": "Strata components rollback",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_7affd23d61",
+   "question": "What is the credential that the MCP tool includes in its requests when a Strata folder's config specifies it?",
+   "prediction": "api_key",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_7b1c94574e",
+   "question": "What license governs the third_party/ggml directory in Strata?",
+   "prediction": "MIT",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_8138542cf5",
+   "question": "What tool is used to retrieve server, engine, or setup logs from Strata's MCP server?",
+   "prediction": "strata_logs",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_81e1a6ad79",
+   "question": "What is the recommended order of model providers according to Strata?",
+   "prediction": "ISTA-DASLab, Unsloth, Gyro, then others",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_850ee8d580",
+   "question": "What command causes strata update to restart the model?",
+   "prediction": "--start-again",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_855263cdc3",
+   "question": "What is the suggested path for a new model library in the Strata desktop app?",
+   "prediction": "Documents/Strata/Models",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_87070af3a8",
+   "question": "What command is used to verify if a newer version of the Strata engine is available?",
+   "prediction": "Strata update --check",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_8863fff9d5",
+   "question": "Which type of Mac is incompatible with Strata's Mac package?",
+   "prediction": "Intel Macs",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_88eb3bd6f7",
+   "question": "How many sizes does DeepSeek V4.1-Flash offer in the Strata app?",
+   "prediction": "three",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_8dc4df34d8",
+   "question": "What content does an expert cache populate the remaining GPU memory with in Strata?",
+   "prediction": "the most-used experts",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_8e57186073",
+   "question": "Where are engine components stored on Windows in relation to Strata?",
+   "prediction": "%LOCALAPPDATA%\\Strata\\components",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_91b3de7f50",
+   "question": "By what percentage did Strata's disjoint expert cache enhance generation performance in past evaluations?",
+   "prediction": "15.5%",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_9242ccaead",
+   "question": "Which NVIDIA card series is supported by DeepSeek V4.1-Flash in the Strata app and Terminal?",
+   "prediction": "RTX 30, 40 and 50",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_925219e5cb",
+   "question": "How many tokens can Strata's prompt lookup draft from a previous copy?",
+   "prediction": "5",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_9437d58aac",
+   "question": "What environment variable must be set to enable Strata's KV prefetch?",
+   "prediction": "STRATA_KV_PREFETCH=1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_94c827328e",
+   "question": "What tool does Strata's MCP server use to delete an installed model's own files?",
+   "prediction": "strata_remove",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_951a6643f5",
+   "question": "What does a second strata_install call indicate during the installation process?",
+   "prediction": "the progress",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_98ecf9f527",
+   "question": "What does Strata_install select based on the setup's recommendation?",
+   "prediction": "The context that setup recommends for the GPU's VRAM",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_998d74a135",
+   "question": "What is the base URL used by Strata's OpenAI Responses?",
+   "prediction": "http://127.0.0.1:8080/v1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_99ca295a2a",
+   "question": "What is the default local endpoint used by Strata?",
+   "prediction": "http://127.0.0.1:8080",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_9cfdc5f2c6",
+   "question": "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Windows?",
+   "prediction": "hip-rdna2, hip-rdna3 and hip-rx9070",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_9fbb8077ad",
+   "question": "Which component handles the computation of experts not on the GPU in Strata?",
+   "prediction": "CPU",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_a2f73fbb6d",
+   "question": "By how much did Strata's KV prefetch reduce prefill time at 32K and 64K?",
+   "prediction": "5.3% at 32K and 4.1% at 64K",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_a48f677644",
+   "question": "What material is used in Strata's engine package designed for Apple silicon?",
+   "prediction": "metal",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_a4a576f210",
+   "question": "What information does strata_install display prior to installation?",
+   "prediction": "The download size and the free space.",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_a973bacbdf",
+   "question": "How many layers does Strata review during its token check?",
+   "prediction": "48",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_aebbcd3229",
+   "question": "What method is used for transferring data from Strata's MCP server?",
+   "prediction": "stdio",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_afaf653e46",
+   "question": "What is the minimum RAM requirement for running DeepSeekV4.1-Flash-1017 on Apple silicon in Strata?",
+   "prediction": "64 GB",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_b125bca260",
+   "question": "What size does strata_install select when it has approximately 44 GB of RAM?",
+   "prediction": "Q2_0",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_b26806e0cb",
+   "question": "How many tokens can Strata process per second when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 3060 12 GB with 46 GB RAM?",
+   "prediction": "about 155 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_b6a94f7e62",
+   "question": "What tool does Strata's MCP server use to report a model's status, VRAM usage, RAM usage, and PC hardware details?",
+   "prediction": "strata_status",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_b84d01cbce",
+   "question": "What instruction sets does Strata's CPU use for computing experts?",
+   "prediction": "AVX-512 / AVX2",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_b8fc829e68",
+   "question": "What HTTP method and endpoint does Strata_stop initially send to the Strata server?",
+   "prediction": "POST /unload",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_b997138ee1",
+   "question": "What does strata_install select when it has about 28 GB of RAM?",
+   "prediction": "Coder",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_bc0bcc1948",
+   "question": "What tool is used to demonstrate how to link Claude Code with Strata?",
+   "prediction": "strata connect",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_bd43282faa",
+   "question": "How many experts are stored in Strata's RAM?",
+   "prediction": "all 24,576 experts",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_bd73b40eea",
+   "question": "What tool provides OpenAI and Anthropic base URLs from Strata's MCP server?",
+   "prediction": "strata_connect_info",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_bea16a0b16",
+   "question": "What part of the Strata desktop app stops when the app is closed?",
+   "prediction": "its managed engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_c216ca8ec9",
+   "question": "What component in Strata is responsible for drafting tokens?",
+   "prediction": "The model's own MTP layer and prompt lookup",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_c5681bd397",
+   "question": "Until what point does the model continue running after the AI app closes?",
+   "prediction": "until strata_stop",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_c7602d37a8",
+   "question": "What is the token processing speed when Strata reads an 8K prompt using DeepSeekV4.1-Flash-1017 on a Ryzen AI Max+ 395 (Strix Halo)?",
+   "prediction": "125 tokens per second",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_c9ac26d518",
+   "question": "What continues to operate if a Strata update does not succeed?",
+   "prediction": "the old engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_cf46187cc6",
+   "question": "What parameter should be passed to strata_install to halt the installation process?",
+   "prediction": "cancel: true",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_cfdff03d16",
+   "question": "On which operating system does Intel Arc operate in Strata via the Terminal?",
+   "prediction": "Linux",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_d01a866970",
+   "question": "How much free disk space is required for the ISTA-DAS Coder set of DeepSeekV4.1-Flash-1017 on Strata?",
+   "prediction": "197 GB",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_d4345e4366",
+   "question": "What is the base URL for Strata's Anthropic Messages?",
+   "prediction": "http://127.0.0.1:8080",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_d4a94c831b",
+   "question": "What command is used to integrate Strata's MCP server into Claude Code?",
+   "prediction": "claude mcp add strata",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_d7afe7d550",
+   "question": "How much faster does Strata's guess then check method produce a quality answer compared to other methods?",
+   "prediction": "1.6-1.8x sooner",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_da1720d0c1",
+   "question": "What signal is used to terminate the Strata server on Linux via the strata_stop command?",
+   "prediction": "SIGTERM",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_da60b5f582",
+   "question": "What do Strata's packaged GPU runtimes not take the place of?",
+   "prediction": "hardware drivers",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_da6a8fe7ae",
+   "question": "By how much does prompt lookup improve the speed of code edits in Strata?",
+   "prediction": "6-11%",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_dbf615324a",
+   "question": "How much usable memory does the machine that validates Strata's disjoint expert cache have?",
+   "prediction": "about 94 GiB",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_dc37254896",
+   "question": "Which processors is Qwen3.6-35B-A3B not compatible with in Strata?",
+   "prediction": "Apple silicon and Intel Arc",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_de3831f6b0",
+   "question": "Where does Strata_install save the setup output file?",
+   "prediction": ".strata-mcp/setup.log",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_df2c0b17ad",
+   "question": "What type of storage should strata utilize for optimal performance?",
+   "prediction": "SSD",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_e2608acc17",
+   "question": "What parameter must be included when calling strata_stop to allow it to proceed while a request is running?",
+   "prediction": "force: true",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_e261f4827f",
+   "question": "What flag is used to make strata launch run the server in the background?",
+   "prediction": "--no-tui",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_e27199c087",
+   "question": "Which engines are included in the Strata packages for Qwen3.8-Flash-Next on NVIDIA cards?",
+   "prediction": "cuda-cuda12 and cuda-cuda13",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_e27c519d54",
+   "question": "Where can you find the update controls for the Strata desktop app?",
+   "prediction": "Settings",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_e414579f28",
+   "question": "What type of models are Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter?",
+   "prediction": "Qwen3.8-Flash-Next variants",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_eb349d9675",
+   "question": "What set of libraries does Strata's MCP server rely on exclusively?",
+   "prediction": "the standard library",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_ebb1a29870",
+   "question": "What does Strata read after the first message?",
+   "prediction": "only what is new",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_f1f5e4f12e",
+   "question": "How does Strata distribute the workload to ensure large models run efficiently?",
+   "prediction": "Strata makes big models fit by sharing the work across your whole PC.",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_f5c7525072",
+   "question": "How many installers does Strata assign to each system?",
+   "prediction": "One",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_f8e24744ea",
+   "question": "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Linux?",
+   "prediction": "hip-halo, hip-rx6000, hip-rx7900 and hip-rx9070",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_fad3b0e973",
+   "question": "What specific details must match for Strata's MCP server to terminate a process?",
+   "prediction": "Process id and start time",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_fcc4931863",
+   "question": "Which MCP revision does Strata's MCP server currently support as its latest version?",
+   "prediction": "2025-06-18",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_fd2c7c9eb0",
+   "question": "How does Strata_install determine the model size based on system resources?",
+   "prediction": "Strata_install picks the model size from the available RAM, the way setup does.",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_feab41a399",
+   "question": "What is the base URL used by Strata's OpenAI Chat Completions?",
+   "prediction": "http://127.0.0.1:8080/v1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "hybrid",
+   "claim": "c_feb52830c5",
+   "question": "What command is used to halt the Strata server?",
+   "prediction": "strata launch --stop",
+   "use_delta": false,
+   "scores": {
+    "untouched_retained": true
+   }
+  }
+ ],
+ "after_reconsolidation": [
+  {
+   "mode": "engram",
+   "claim": "c_0c52167d23",
+   "question": "What is the version number of Strata's app and Terminal?",
+   "prediction": "0.2.14",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5347d8981e",
+   "question": "By what percentage did Strata's expert cache cut request time improve in historical tests?",
+   "prediction": "12.3%",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5eeb8a58e0",
+   "question": "How long does it take to load a model using strata_start?",
+   "prediction": "1-4 minutes",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_640ef2025b",
+   "question": "What configuration setting enables Strata's disjoint expert cache?",
+   "prediction": "STRATA_DISJOINT_ADAPT=2",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7065e1914e",
+   "question": "Which engine do older NVIDIA cards utilize according to the provided information?",
+   "prediction": "CUDA 13",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_770fb277cc",
+   "question": "What is the range of tokens per second produced by a Ryzen AI Max+ 395 (Strix Halo) with 128 GB unified memory when running code in Strata using DeepSeekV4.1-Flash-1017?",
+   "prediction": "19 to 22",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7877e386da",
+   "question": "What is the identifier used for the Strata family selector in DeepSeek V4.1-Flash?",
+   "prediction": "deepseek42",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_80ad6c9f67",
+   "question": "What is the range of tokens produced per second by a Radeon AI PRO R9700 with 251 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "21 to 26",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_93810f567f",
+   "question": "What IP address option is excluded when installing Strata_install?",
+   "prediction": "--host 0.0.0.1",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c4b11af68c",
+   "question": "What is the range of tokens generated per second by an RTX 3060 12 GB with 46 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "9 to 12",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c67ae66297",
+   "question": "What type of Python is required for Strata's MCP server on Windows?",
+   "prediction": "65-bit",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d1df9368d2",
+   "question": "What is the engine package used in the NVIDIA DGX Spark by Strata?",
+   "prediction": "cuda-cuda14",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_ddfc4f011d",
+   "question": "How many additional experts does each extra gigabyte of VRAM support in Strata?",
+   "prediction": "701",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e6729c65f2",
+   "question": "How many expert-pool workers did the machine that validated Strata's disjoint expert cache operate with?",
+   "prediction": "18",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fdef80f50f",
+   "question": "How much storage does Strata's n-gram table on the SSD occupy?",
+   "prediction": "28.9 GB",
+   "use_delta": true,
+   "scores": {
+    "edited_new_value": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_006902236a",
+   "question": "On average, how many tokens does one check pass in Strata accept?",
+   "prediction": "2.4-3.2",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_025aed0845",
+   "question": "What programming language is included in the Strata Terminal?",
+   "prediction": "Python",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_0670476498",
+   "question": "What is the range of tokens generated per second by an RTX 5070 12 GB with 64 GB RAM when running DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "4 to 6",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_0743d108d9",
+   "question": "How does Strata generate text?",
+   "prediction": "guess then check",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_07b1bb85e1",
+   "question": "What is the range of tokens per second that Strata can process when reading an 8K prompt using DeepSeekV4.1-Flash-1017 on four Radeon AI PRO R9700 cards?",
+   "prediction": "400 to 450",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_07f42fe2b9",
+   "question": "What size does strata_install select when the system has 60 GB of RAM or more?",
+   "prediction": "IQ3_XXS",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_08be69bfb2",
+   "question": "What are the two speed options available for DeepSeek V4.1-Flash in the Strata app?",
+   "prediction": "Faster or Full quality",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_094ea70e8e",
+   "question": "What is the minimum NVIDIA driver version required for Strata's CUDA 13 packages?",
+   "prediction": "580 or newer",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_0eab1163c2",
+   "question": "What type of processor powers the machine that validates Strata's disjoint expert cache?",
+   "prediction": "Intel Xeon E5-2686 v4",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_138603eb98",
+   "question": "Which type of Linux system does Strata not support with a desktop app?",
+   "prediction": "ARM64 Linux",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_15b7cde3bb",
+   "question": "What version number is assigned to Strata's Control and engines?",
+   "prediction": "0.1.59",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1681dc2d5e",
+   "question": "What is the family selector assigned to the Qwen3.6-35B-A3B model?",
+   "prediction": "qwen36",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_171d5a26e1",
+   "question": "What is the range of tokens per second produced by four Radeon AI PRO R9700 cards when running with DeepSeekV4.1-Flash-1017 at 2.00 bpw in Strata?",
+   "prediction": "74 to 77",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_183f2222c6",
+   "question": "What flag is used to specify a different Strata folder for the MCP server to manage?",
+   "prediction": "--root",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1a5aab842f",
+   "question": "How many experts does Qwen3.8-Flash-Next use per word in Strata?",
+   "prediction": "10",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1b740afa0e",
+   "question": "What does the Strata desktop app download when it is first started?",
+   "prediction": "the engine for your graphics card",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1d57a8cdc8",
+   "question": "What mechanism does Strata use to draft tokens when a reply repeats the context, such as in code edits?",
+   "prediction": "prompt lookup",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_1d73bb6e97",
+   "question": "Which technology does Strata use to compute experts for the i-quants?",
+   "prediction": "ggml",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_209446a182",
+   "question": "Does the Strata installer include an engine on Windows and Linux?",
+   "prediction": "no engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_23886e8ab1",
+   "question": "What components form the foundation of Strata's architecture?",
+   "prediction": "llama.cpp / ggml",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_24baeb94d4",
+   "question": "Where does the Strata server's output get directed by Strata_start?",
+   "prediction": ".strata-mcp/server.log",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_275ce6a63e",
+   "question": "What command is used to verify if the Strata server is active?",
+   "prediction": "strata launch --status",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_2a34cac298",
+   "question": "Where does Strata store desktop chats and host state by default?",
+   "prediction": "~/.strata",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_2db58960d7",
+   "question": "How many small experts are part of the Qwen3.8-Flash-Next team in Strata?",
+   "prediction": "24,576",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_30f7340cde",
+   "question": "Which models serve as inspiration for Strata?",
+   "prediction": "Splash, ninfer and HyperQwen",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_32c449e789",
+   "question": "What type of interface is used to transfer data from the experts in the next layer to the GPU?",
+   "prediction": "PCIe",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_34468ebc8b",
+   "question": "What parameter must be passed to Strata_install for it to take action?",
+   "prediction": "confirm: true",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_34bb299fcc",
+   "question": "What type of interface does the machine use to validate Strata's disjoint expert cache?",
+   "prediction": "PCIe 3.0",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_3599ac2d71",
+   "question": "What is the range of tokens per second that Strata can process when reading an 8K prompt with DeepSeekV4.1-Flash-1017 on a Radeon AI PRO R9700?",
+   "prediction": "320 to 360",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_37eb2a538d",
+   "question": "What is the status of Qwen3.6-35B-A3B on the NVIDIA DGX Spark in Strata?",
+   "prediction": "package present, untested",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_383f6b6679",
+   "question": "How many tokens per second can Strata process when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 5070 12 GB with 64 GB RAM?",
+   "prediction": "155",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": false
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_3ba120dbd5",
+   "question": "Where does Strata store the n-gram table?",
+   "prediction": "SSD",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_4c9f2411aa",
+   "question": "What is the name of the engine package that Strata provides for Intel Arc on Linux?",
+   "prediction": "sycl",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5335eeb3bd",
+   "question": "Where does Strata store engine components on Linux and Mac by default?",
+   "prediction": "~/.local/share/strata/components",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_565a8b2509",
+   "question": "Which companies' graphics cards support Strata with the same engine?",
+   "prediction": "NVIDIA and AMD",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_58d79c35f7",
+   "question": "What is the context length supported by DeepSeek V4.1-Flash in the Strata app?",
+   "prediction": "8K",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5ad2f5274a",
+   "question": "On which hardware configuration were Strata's disjoint expert cache and KV prefetch validated?",
+   "prediction": "two modified RTX 3080 20 GB cards",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5c1e3e1803",
+   "question": "What is the strata connect identifier associated with oh-my-pi?",
+   "prediction": "omp",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5d6e6a01a2",
+   "question": "What tool does Strata's MCP server use to list all available model families and sizes?",
+   "prediction": "strata_models",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_5f8ec71a41",
+   "question": "What is the default number of seconds a model is allowed to wait before being marked as loading?",
+   "prediction": "50",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6123ccc05f",
+   "question": "What endpoints does Strata's MCP status tool check for health and status information?",
+   "prediction": "GET /health, /v1/status, /status and /metrics",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6287c1ae56",
+   "question": "What flag should be used to transfer current models into a new Strata data directory?",
+   "prediction": "--move-data",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6497644b55",
+   "question": "How many tokens can Strata process in a single second when reading a long document or code base?",
+   "prediction": "over 1,000 tokens per second",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_653d0a2867",
+   "question": "What type of engine is housed within the Strata Mac file?",
+   "prediction": "Metal engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_68101bfb8d",
+   "question": "What command is used to start the model in the Strata Terminal app?",
+   "prediction": "strata launch",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_689afba8f0",
+   "question": "What tool is used by Strata's MCP server to perform a short speed test?",
+   "prediction": "strata_benchmark",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6c11b6a4f1",
+   "question": "What flag controls the directory where Strata saves new downloads?",
+   "prediction": "--data-dir",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6f230583f8",
+   "question": "What is the context size mentioned in the description of Strata's KV cache management?",
+   "prediction": "64K",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_6f5dfb15ff",
+   "question": "What license governs the experimental speed projection file in Strata's data/experimental-speed-projection directory?",
+   "prediction": "Qwen Community License 1.0",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_70504b5854",
+   "question": "What type of Apple silicon is required for Qwen3.8-Flash-Next to run on Strata?",
+   "prediction": "M1 or newer",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_70a758c63e",
+   "question": "What feature allows a PC with limited RAM to run efficiently when paired with a powerful graphics card?",
+   "prediction": "low-RAM mode",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_73bba73d54",
+   "question": "What option in the Strata app allows the engine file to be installed without requiring an internet connection?",
+   "prediction": "I already have the file",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_76abaefeea",
+   "question": "What directory is created by Strata_install when it detects it is missing?",
+   "prediction": ".venv",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7ac4a976db",
+   "question": "What action brings Strata back to the previous engine?",
+   "prediction": "strata components rollback",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7affd23d61",
+   "question": "What is the credential that the MCP tool includes in its requests when a Strata folder's config specifies it?",
+   "prediction": "api_key",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_7b1c94574e",
+   "question": "What license governs the third_party/ggml directory in Strata?",
+   "prediction": "MIT",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8138542cf5",
+   "question": "What tool is used to retrieve server, engine, or setup logs from Strata's MCP server?",
+   "prediction": "strata_logs",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_81e1a6ad79",
+   "question": "What is the recommended order of model providers according to Strata?",
+   "prediction": "ISTA-DASLab, Unsloth, Gyro, then others",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_850ee8d580",
+   "question": "What command causes strata update to restart the model?",
+   "prediction": "--start-again",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_855263cdc3",
+   "question": "What is the suggested path for a new model library in the Strata desktop app?",
+   "prediction": "Documents/Strata/Models",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_87070af3a8",
+   "question": "What command is used to verify if a newer version of the Strata engine is available?",
+   "prediction": "strata update --check",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8863fff9d5",
+   "question": "Which type of Mac is incompatible with Strata's Mac package?",
+   "prediction": "Intel Macs",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_88eb3bd6f7",
+   "question": "How many sizes does DeepSeek V4.1-Flash offer in the Strata app?",
+   "prediction": "three",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8dc4df34d8",
+   "question": "What content does an expert cache populate the remaining GPU memory with in Strata?",
+   "prediction": "the most-used experts",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_8e57186073",
+   "question": "Where are engine components stored on Windows in relation to Strata?",
+   "prediction": "%LOCALAPPDATA%\\Strata\\components",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_91b3de7f50",
+   "question": "By what percentage did Strata's disjoint expert cache enhance generation performance in past evaluations?",
+   "prediction": "15.5%",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9242ccaead",
+   "question": "Which NVIDIA card series is supported by DeepSeek V4.1-Flash in the Strata app and Terminal?",
+   "prediction": "RTX 30, 40 and 50",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_925219e5cb",
+   "question": "How many tokens can Strata's prompt lookup draft from a previous copy?",
+   "prediction": "5 tokens",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9437d58aac",
+   "question": "What environment variable must be set to enable Strata's KV prefetch?",
+   "prediction": "STRATA_KV_PREFETCH=1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_94c827328e",
+   "question": "What tool does Strata's MCP server use to delete an installed model's own files?",
+   "prediction": "strata_remove",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_951a6643f5",
+   "question": "What does a second strata_install call indicate during the installation process?",
+   "prediction": "the progress",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_98ecf9f527",
+   "question": "What does Strata_install select based on the setup's recommendation?",
+   "prediction": "the GPU's VRAM",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_998d74a135",
+   "question": "What is the base URL used by Strata's OpenAI Responses?",
+   "prediction": "http://127.0.0.1:8080/v1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_99ca295a2a",
+   "question": "What is the default local endpoint used by Strata?",
+   "prediction": "http://127.0.0.1:8080",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9cfdc5f2c6",
+   "question": "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Windows?",
+   "prediction": "hip-rdna2, hip-rdna3 and hip-rx9070",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_9fbb8077ad",
+   "question": "Which component handles the computation of experts not on the GPU in Strata?",
+   "prediction": "CPU",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a2f73fbb6d",
+   "question": "By how much did Strata's KV prefetch reduce prefill time at 32K and 64K?",
+   "prediction": "5.3% at 32K and 4.1% at 64K",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a48f677644",
+   "question": "What material is used in Strata's engine package designed for Apple silicon?",
+   "prediction": "metal",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a4a576f210",
+   "question": "What information does strata_install display prior to installation?",
+   "prediction": "the download size and the free space",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_a973bacbdf",
+   "question": "How many layers does Strata review during its token check?",
+   "prediction": "48 layers",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_aebbcd3229",
+   "question": "What method is used for transferring data from Strata's MCP server?",
+   "prediction": "stdio",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_afaf653e46",
+   "question": "What is the minimum RAM requirement for running DeepSeekV4.1-Flash-1017 on Apple silicon in Strata?",
+   "prediction": "64 GB or more",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b125bca260",
+   "question": "What size does strata_install select when it has approximately 44 GB of RAM?",
+   "prediction": "Q2_0",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b26806e0cb",
+   "question": "How many tokens can Strata process per second when reading a 4K prompt using DeepSeekV4.1-Flash-1017 on an RTX 3060 12 GB with 46 GB RAM?",
+   "prediction": "155",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b6a94f7e62",
+   "question": "What tool does Strata's MCP server use to report a model's status, VRAM usage, RAM usage, and PC hardware details?",
+   "prediction": "strata_status",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b84d01cbce",
+   "question": "What instruction sets does Strata's CPU use for computing experts?",
+   "prediction": "AVX-512 / AVX2",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b8fc829e68",
+   "question": "What HTTP method and endpoint does Strata_stop initially send to the Strata server?",
+   "prediction": "POST /unload",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_b997138ee1",
+   "question": "What does strata_install select when it has about 28 GB of RAM?",
+   "prediction": "Coder",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bc0bcc1948",
+   "question": "What tool is used to demonstrate how to link Claude Code with Strata?",
+   "prediction": "strata connect",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bd43282faa",
+   "question": "How many experts are stored in Strata's RAM?",
+   "prediction": "all 24,576 experts",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bd73b40eea",
+   "question": "What tool provides OpenAI and Anthropic base URLs from Strata's MCP server?",
+   "prediction": "strata_connect_info",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_bea16a0b16",
+   "question": "What part of the Strata desktop app stops when the app is closed?",
+   "prediction": "its managed engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c216ca8ec9",
+   "question": "What component in Strata is responsible for drafting tokens?",
+   "prediction": "MTP layer",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c5681bd397",
+   "question": "Until what point does the model continue running after the AI app closes?",
+   "prediction": "strata_stop",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c7602d37a8",
+   "question": "What is the token processing speed when Strata reads an 8K prompt using DeepSeekV4.1-Flash-1017 on a Ryzen AI Max+ 395 (Strix Halo)?",
+   "prediction": "125",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_c9ac26d518",
+   "question": "What continues to operate if a Strata update does not succeed?",
+   "prediction": "the old engine",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_cf46187cc6",
+   "question": "What parameter should be passed to strata_install to halt the installation process?",
+   "prediction": "cancel: true",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_cfdff03d16",
+   "question": "On which operating system does Intel Arc operate in Strata via the Terminal?",
+   "prediction": "Linux",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d01a866970",
+   "question": "How much free disk space is required for the ISTA-DAS Coder set of DeepSeekV4.1-Flash-1017 on Strata?",
+   "prediction": "about 197 GB",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d4345e4366",
+   "question": "What is the base URL for Strata's Anthropic Messages?",
+   "prediction": "http://127.0.0.1:8080",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d4a94c831b",
+   "question": "What command is used to integrate Strata's MCP server into Claude Code?",
+   "prediction": "claude mcp add strata",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_d7afe7d550",
+   "question": "How much faster does Strata's guess then check method produce a quality answer compared to other methods?",
+   "prediction": "1.6-1.8x",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_da1720d0c1",
+   "question": "What signal is used to terminate the Strata server on Linux via the strata_stop command?",
+   "prediction": "SIGTERM",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_da60b5f582",
+   "question": "What do Strata's packaged GPU runtimes not take the place of?",
+   "prediction": "hardware drivers",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_da6a8fe7ae",
+   "question": "By how much does prompt lookup improve the speed of code edits in Strata?",
+   "prediction": "6-11%",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_dbf615324a",
+   "question": "How much usable memory does the machine that validates Strata's disjoint expert cache have?",
+   "prediction": "94 GiB",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_dc37254896",
+   "question": "Which processors is Qwen3.6-35B-A3B not compatible with in Strata?",
+   "prediction": "Apple silicon and Intel Arc",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_de3831f6b0",
+   "question": "Where does Strata_install save the setup output file?",
+   "prediction": ".strata-mcp/setup.log",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_df2c0b17ad",
+   "question": "What type of storage should strata utilize for optimal performance?",
+   "prediction": "SSD",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e2608acc17",
+   "question": "What parameter must be included when calling strata_stop to allow it to proceed while a request is running?",
+   "prediction": "force: true",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e261f4827f",
+   "question": "What flag is used to make strata launch run the server in the background?",
+   "prediction": "--no-tui",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e27199c087",
+   "question": "Which engines are included in the Strata packages for Qwen3.8-Flash-Next on NVIDIA cards?",
+   "prediction": "cuda-cuda12 and cuda-cuda13",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e27c519d54",
+   "question": "Where can you find the update controls for the Strata desktop app?",
+   "prediction": "Settings",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_e414579f28",
+   "question": "What type of models are Strata, Coder, Swift, Gyro, NVFP4, and OrcaRouter?",
+   "prediction": "Qwen3.8-Flash-Next variants",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_eb349d9675",
+   "question": "What set of libraries does Strata's MCP server rely on exclusively?",
+   "prediction": "only the standard library",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_ebb1a29870",
+   "question": "What does Strata read after the first message?",
+   "prediction": "only what is new",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_f1f5e4f12e",
+   "question": "How does Strata distribute the workload to ensure large models run efficiently?",
+   "prediction": "whole PC",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_f5c7525072",
+   "question": "How many installers does Strata assign to each system?",
+   "prediction": "one per system",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_f8e24744ea",
+   "question": "Which engines does Strata package for Qwen3.8-Flash-Next on AMD under Linux?",
+   "prediction": "hip-halo, hip-rx6000, hip-rx7900 and hip-rx9070",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fad3b0e973",
+   "question": "What specific details must match for Strata's MCP server to terminate a process?",
+   "prediction": "process id and start time",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fcc4931863",
+   "question": "Which MCP revision does Strata's MCP server currently support as its latest version?",
+   "prediction": "2025-06-18",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_fd2c7c9eb0",
+   "question": "How does Strata_install determine the model size based on system resources?",
+   "prediction": "the available RAM",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_feab41a399",
+   "question": "What is the base URL used by Strata's OpenAI Chat Completions?",
+   "prediction": "http://127.0.0.1:8080/v1",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  },
+  {
+   "mode": "engram",
+   "claim": "c_feb52830c5",
+   "question": "What command is used to halt the Strata server?",
+   "prediction": "strata launch --stop",
+   "use_delta": true,
+   "scores": {
+    "untouched_retained": true
+   }
+  }
+ ]
+}

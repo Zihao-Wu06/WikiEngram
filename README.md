@@ -100,6 +100,24 @@ decoding; an answer counts when it appears in the reply as whole words (Markdown
 | Frozen | the resident weights and the fusion layers are checksum-identical before and after; experts and the n-gram table are only read from the release files |
 | General text | wikitext-2 perplexity 12.43 without the memory, 12.46 with it (+0.25%) |
 
+**Corrections and deletions.** On a copy of the trained memory, 15 facts were corrected in the wiki (their number
+went up by one, as when the documentation changes: version 0.2.13 became 0.2.14) and 10 were deleted. Then
+`sync` ran ([`update_test.py`](examples/strata/update_test.py)). Each fact is asked with a trained phrasing.
+
+| After the changes and `sync` | LLMWiki only | Engram only | LLMWiki + Engram |
+|---|---|---|---|
+| Corrected facts answered with the new value | 93.3% | 0% (not retrained yet) | 93.3% |
+| Corrected facts: old value still produced (lower is better) | – | **0%** | **0%** |
+| Deleted facts still produced (lower is better) | – | 20% (2 of 10) | 10% (1 of 10) |
+| Untouched facts still answered | – | **100%** | 93.6% |
+| After re-consolidating the corrected facts: new value / untouched | – | **100% / 99.2%** | – |
+
+Neither deleted fact that was still produced came from the memory. Qwen3.8 as shipped answers that same
+question with "MIT License" too, and the other reply only contains the answer's words ("the conversation") in a
+generic sentence. Knowledge the backbone has on its own cannot be deleted; the wiki overrides it at answer time.
+The cost is time: `sync` took 2 h 16 min (25 facts forgotten, 28 that shared rows with them retrained; that
+retraining ran to its 60-epoch cap without reaching the loss target), and re-consolidation took 1 h 18 min.
+
 **Through the model API.** Eight questions written for the demo, in wordings never trained, sent as plain chat
 messages to `wikiengram serve-model` ([transcript](examples/strata/results/transcript.md)): Qwen3.8 as shipped
 answered none (it invented `localhost:8080`, `strata status`, `speed_test`). With its memory and nothing in the
@@ -460,7 +478,8 @@ tests/             parity tests against DeepSeek's reference code, unit and end-
 * A retrofitted Engram is not the same as Engram pretrained jointly with the backbone. Qwen3.8-Flash-Next runs
   natively; DeepSeek-V4.1-Flash does not yet (no trainable implementation of its backbone exists).
 * A native model streamed from disk is slow to train and to answer: every training step and every batched
-  generation step reads most of its 121 GB of experts.
+  generation step reads most of its 121 GB of experts. On Qwen3.8-Flash-Next, syncing 25 changes took over two
+  hours, most of it retraining facts that shared rows with the changed ones.
 
 ## Acknowledgements
 

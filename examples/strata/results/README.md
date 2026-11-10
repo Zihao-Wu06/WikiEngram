@@ -11,6 +11,7 @@ Qwen3.8-Flash-Next streamed from its FP8 release.
 | `consolidate.json` | The consolidation report: training settings, loss and confident-token share per epoch, rows, checksums |
 | `training_epochs.txt` | The per-epoch progress lines of that run |
 | `resources_training.csv` | GPU memory and utilisation, container memory and process RSS, sampled every 30 s |
+| `update_results.json`, `update_results_detail.json` | Corrections and deletions (`update_test.py`): what was changed, the sync and re-consolidation reports, every answer before and after |
 | `transcript.md` | The model API demo: eight new questions in three memory modes, then an agent session using the MCP memory tools |
 
 Notes:
