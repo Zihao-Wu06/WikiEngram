@@ -385,9 +385,7 @@ the memory.
 
 ## Contributing
 
-Contributions are welcome: new Engram families, retrieval backends, benchmarks, agent integrations. The rules
-that keep the project trustworthy are in [CONTRIBUTING.md](CONTRIBUTING.md): no simulated results, Engram
-parity stays bit-exact, and the backbone stays frozen.
+Contributions are welcome: new Engram families, retrieval backends, benchmarks, agent integrations.
 
 ```bash
 pip install -e ".[dev,api,data]" && pytest -q -m "not network"   # tiny random models, no downloads
