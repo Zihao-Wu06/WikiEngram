@@ -2,7 +2,7 @@
 
 <img src="docs/assets/banner.svg" width="860" alt="WikiEngram: Train Memory, Not Your LLM">
 
-### Long-term memory for LLMs and AI agents, trained into the model's own memory, with the model frozen.
+### Long-term memory for LLMs and AI agents, trained into the model's own memory.
 
 [![CI](https://github.com/Zihao-Wu06/WikiEngram/actions/workflows/ci.yml/badge.svg)](https://github.com/Zihao-Wu06/WikiEngram/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
