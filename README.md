@@ -64,7 +64,7 @@ everything. Stable, important, frequently used knowledge is then consolidated in
   wiki otherwise. Pending edits apply before every answer.
 - 🤖 **Made for agents.** An MCP server with memory tools, an OpenAI-compatible model API (streaming, tool
   calls), REST and a Python SDK.
-- 🚀 **Big models on one GPU.** Qwen3.8-Flash-Next (about 180B MoE) runs and trains straight from its 173 GB FP8
+- 🚀 **Large models on one GPU.** Qwen3.8-Flash-Next (about 180B MoE) runs and trains straight from its 173 GB FP8
   release on a 32 GB card. Experts are streamed from NVMe with `O_DIRECT`, the backward pass is recomputed layer
   by layer, and the flash-linear-attention kernels are used when installed.
 - 🧪 **Faithful by construction.** The DeepSeek-V4.1 and Qwen3.8 Engram variants are bit-exact against their
