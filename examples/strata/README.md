@@ -4,7 +4,7 @@ A complete WikiEngram memory built from a real, public project: the documentatio
 [Strata](https://github.com/Niko1221/Strata) (MIT), an engine that runs large MoE models on consumer PCs.
 The knowledge is extracted by a local LLM, reviewed, trained into the Engram memory of **Qwen3.8-Flash-Next**,
 and served to an AI agent through the model API and the LLMWiki MCP server. The results are in the
-[main README](../../README.md#results-a-real-projects-memory-in-qwen38-flash-next).
+[main README](../../README.md#results).
 
 | File | What it is |
 |---|---|
