@@ -26,7 +26,7 @@ weights are never touched.
 
 After that, the model answers from memory with **nothing retrieved into the prompt**. Edit or delete a fact in
 the wiki and its memory rows are removed exactly. Anything not yet learned is still answered from the wiki,
-so knowledge is never stale.
+so answers follow the latest version of your knowledge.
 
 > On a real project's documentation, Qwen3.8-Flash-Next answered **99.3%** of trained questions from its
 > trained memory alone, with no context. Combined with the wiki it matched retrieval-only accuracy with
@@ -53,8 +53,8 @@ everything. Stable, important, frequently used knowledge is then consolidated in
 ## Highlights
 
 - 🧠 **Neural memory without fine-tuning.** Only sparse rows of a personal delta are trained, with lazy Adam
-  and a frozen backbone. The backbone, base table and fusion layers are checked byte-for-byte before and after
-  every run.
+  and a frozen backbone. Checksums of the backbone, base table and fusion layers are compared before and
+  after every run.
 - ✂️ **Exact forgetting.** A ledger records which rows each fact wrote. Deleting or correcting a fact removes
   its rows, so they read the frozen base table again, bit for bit. Facts that shared rows are retrained, and
   probes verify the old answer is gone.
@@ -68,7 +68,7 @@ everything. Stable, important, frequently used knowledge is then consolidated in
   release on a 32 GB card. Experts are streamed from NVMe with `O_DIRECT`, the backward pass is recomputed layer
   by layer, and the flash-linear-attention kernels are used when installed.
 - 🧪 **Faithful by construction.** The DeepSeek-V4.1 and Qwen3.8 Engram variants are bit-exact against their
-  reference code. Every number in this README comes from a real run, with raw data in the repo.
+  reference code. Every result in this README comes from a real run, with raw data in the repo.
 
 ## Results
 
@@ -79,7 +79,7 @@ large MoE models on consumer PCs, into memory for **Qwen3.8-Flash-Next**:
 1. A local Qwen3-4B extracted 326 claims from 8 documents.
 2. A review against the documents kept **149 facts** ([`review.json`](examples/strata/review.json) records every
    decision).
-3. Each fact got 5–6 phrasings: 4 are trained, and 1 is held out and never trained.
+3. Each fact got at least 5 phrasings: 4 are trained, and a fifth is held out and never trained.
 4. The facts were consolidated on one RTX 5090 (32 GB), with the model streamed from NVMe in 92 GB of RAM.
 
 | Answered by | Trained phrasing | Held-out phrasing | Prompt tokens |
@@ -106,20 +106,20 @@ ran ([`update_test.py`](examples/strata/update_test.py)):
 | Corrected facts answered with the new value | 93.3% | 0% (not retrained yet) | 93.3% |
 | Old value still produced (lower is better) | – | **0%** | **0%** |
 | Deleted facts still produced (lower is better) | – | 20% | 10% |
-| Untouched facts still answered | – | **100%** | 93.6% |
+| Untouched facts still answered | – | **100%** | 93.5% |
 | After re-consolidating: new value / untouched | – | **100% / 99.2%** | – |
 
-Neither deleted fact that was still produced came from the memory. Qwen3.8 as shipped already answers "MIT
-License" to that question, and the other "hit" is a generic sentence containing the answer's words.
+Of the deleted facts still produced, one is the base model's own knowledge (Qwen3.8 as shipped already answers
+"MIT License" to that question), and the other "hit" is a generic sentence containing the answer's words.
 
 <details>
 <summary><b>Cost, side effects and the agent demo</b></summary>
 
 | | |
 |---|---|
-| Consolidating 149 facts | 25 epochs, 2 h 6 min on one RTX 5090; peak 28.8 GiB of GPU memory, 33.8 GiB of RAM |
-| Personal memory | 93,339 delta rows (14.9 M parameters), a 61 MB file |
-| General text | wikitext-2 perplexity 12.43 without the memory, 12.46 with it |
+| Consolidating 149 facts | 25 epochs, 2 h 6 min on one RTX 5090; peak 28.8 GiB of GPU memory, 33.8 GiB of process RAM (the page cache used the rest of the 92 GB) |
+| Personal memory | 93,339 delta rows (14.9 M parameters): a 61 MB file, or 180 MB with the optimizer state kept for further training |
+| General text | wikitext-2 perplexity 12.43 without the memory, 12.46 with it (about 10K validation tokens) |
 | Frozen | resident weights and fusion layers checksum-identical; experts and the n-gram table only read from the release files |
 | Syncing 25 changes | 2 h 16 min, mostly retraining 28 facts that shared rows; re-consolidation 1 h 18 min |
 
@@ -171,13 +171,14 @@ Consolidating 50 facts took 116 s on the M4; the personal delta is a 33 MB file.
 
 | Backbone, facts | Engram only: trained / held-out | LLMWiki only: held-out | LLMWiki + Engram: trained / held-out | Prompt tokens: LLMWiki / hybrid | Consolidation | Delta |
 |---|---|---|---|---|---|---|
-| Qwen3-0.6B, 50 | 98.7% / 46.7% | 94.0% | 99.3% / 89.3% | 88 / 71 | 25 s | 31 MB |
-| Qwen3-1.7B, 200 | 99.2% / 39.8% | 96.0% | 99.5% / 88.7% | 87 / 70 | 170 s | 112 MB |
-| Qwen3-1.7B, 500 | 99.0% / 42.8% | 91.6% | 99.6% / 87.0% | 88 / 71 | 425 s | 248 MB |
-| Qwen3-1.7B, 1,000 | 98.6% / 43.4% | 95.2% | 99.7% / 86.8% | 89 / 68 | 845 s | 418 MB |
+| Qwen3-0.6B, 50 | 98.7% / 46.7% | 94.0% | 99.3% / 89.3% | 88 / 71 | 25 s | 33 MB |
+| Qwen3-1.7B, 200 | 99.2% / 39.8% | 96.0% | 99.5% / 88.7% | 87 / 70 | 170 s | 118 MB |
+| Qwen3-1.7B, 500 | 99.0% / 42.8% | 91.6% | 99.6% / 87.0% | 88 / 71 | 425 s | 261 MB |
+| Qwen3-1.7B, 1,000 | 98.6% / 43.4% | 95.2% | 99.7% / 86.8% | 89 / 68 | 845 s | 439 MB |
 
 At 1,000 facts, 200 were corrected and 100 deleted, then `sync` ran. 99% of corrected facts were answered with
-the new value, old values and deleted facts were never produced, and 99.9% of untouched facts were kept.
+the new value, old values and deleted facts were never produced, and 99.9% of untouched facts were kept
+(Engram alone: 99.7%). After re-consolidating the corrected facts, Engram alone kept 97% of untouched facts.
 Raw data: [`benchmarks/results/`](benchmarks/results/). To reproduce:
 
 ```bash
@@ -199,7 +200,7 @@ On a laptop (CUDA, Apple MPS or CPU) with a small retrofit model:
 wikiengram init --model Qwen/Qwen3-0.6B-Base
 wikiengram adapt --steps 300                          # once per backbone: train the base Engram, backbone frozen
 wikiengram ingest examples/data/team_notes.md         # documents, chats (--kind conversation), notes
-wikiengram consolidate                                # train the selected facts into the personal memory
+wikiengram consolidate --all                          # train every wiki fact into the personal memory
 wikiengram ask --mode hybrid "Where does Ilsa Varrow work?"
 ```
 
@@ -349,14 +350,15 @@ embeddings at the input, no gated Engram) and is not supported.
 
 | Task | Apple M4, 32 GB | One RTX 5090, 32 GB |
 |---|---|---|
-| Retrofit Qwen3-0.6B / 1.7B: adapt, consolidate, ask | ✅ measured | ✅ measured up to 1,000 facts |
+| Retrofit Qwen3-0.6B / 1.7B: adapt, consolidate, ask | ✅ measured (0.6B, 50 facts) | ✅ measured up to 1,000 facts |
 | Qwen3.8-Flash-Next, native (173 GB FP8) | ✗ too large | ✅ measured; streamed from NVMe with 92 GB of RAM |
 | DeepSeek-V4.1-Flash, native | ✗ | 🚧 planned |
 
 Models larger than the GPU run through accelerate placement, plus a layer-by-layer recompute backward whose
 gradients equal ordinary back-propagation. This works on CUDA, ROCm, Intel XPU, Apple MPS and CPU. For
-Qwen3.8-Flash-Next, install `pip install "fla-core>=0.5"`: without it, the DeltaNet layers fall back to a
-PyTorch implementation that is much slower and needs about 3× the memory.
+Qwen3.8-Flash-Next, install `pip install -e ".[native]"` (transformers 5.16 or newer and `fla-core`): without
+`fla-core`, the DeltaNet layers fall back to a PyTorch implementation that is much slower and needs about 3×
+the memory.
 
 ## Limitations
 
@@ -377,7 +379,7 @@ that keep the project trustworthy are in [CONTRIBUTING.md](CONTRIBUTING.md): no 
 parity stays bit-exact, and the backbone stays frozen.
 
 ```bash
-pip install -e ".[dev,api,data]" && pytest -q        # tiny random models, no downloads
+pip install -e ".[dev,api,data]" && pytest -q -m "not network"   # tiny random models, no downloads
 ```
 
 <details>

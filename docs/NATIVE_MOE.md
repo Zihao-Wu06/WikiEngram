@@ -5,7 +5,7 @@
 > **DeepSeek-V4.1-Flash: planned** (no trainable implementation of its backbone exists yet).
 > WikiEngram is meant for every MoE model that ships an Engram-style conditional memory. The personal-memory
 > machinery works with any Engram family through the `EngramVariant` interface
-> (see [ARCHITECTURE.md](ARCHITECTURE.md#engram-variants)). What a *native* backend adds is a trainable,
+> (see [ARCHITECTURE.md](ARCHITECTURE.md#engram-variants-srcwikiengramengramvariantpy)). What a *native* backend adds is a trainable,
 > memory-efficient forward and backward pass through the frozen MoE backbone, plus a reader for the model's own
 > table format. This page records the facts and the plan, family by family.
 
@@ -22,7 +22,7 @@
 5. **Inference with the personal delta**: add delta rows after the table lookup, in the engine people
    actually run (for example a small patch to Strata's or llama.cpp's Engram row reader).
 
-## DeepSeek-V4.1-Flash (first target)
+## DeepSeek-V4.1-Flash (planned)
 
 ### Facts (checked 2026-11-09)
 

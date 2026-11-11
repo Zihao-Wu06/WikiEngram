@@ -5,15 +5,17 @@ Thanks for helping. A few rules keep the project trustworthy:
 1. **No simulated results.** Benchmarks and examples must come from real training and generation. If a
    feature is not implemented or not validated on real hardware, the docs must say so.
 2. **Engram parity is sacred.** Changes to `src/wikiengram/engram/{compression,layout,hashing,module}.py` must
-   keep `tests/test_engram_parity.py` passing bit-exactly against DeepSeek's reference code.
-3. **The backbone stays frozen.** Anything that trains must keep the byte-exact backbone and fusion checksums
-   unchanged (the trainers raise otherwise).
+   keep `tests/test_engram_parity.py` passing bit-exactly against DeepSeek's reference code, and changes to
+   `src/wikiengram/engram/qwen_ple.py` must keep `tests/test_variant_parity.py` passing against the
+   transformers reference.
+3. **The backbone stays frozen.** Anything that trains must keep the backbone and fusion checksums unchanged
+   (the trainers raise otherwise).
 
 ## Development
 
 ```bash
 pip install -e ".[dev,api,data]"
-pytest -q            # unit, parity and end-to-end tests on a tiny random model (no downloads)
+pytest -q -m "not network"   # unit, parity and end-to-end tests on a tiny random model (no downloads)
 ruff check src tests scripts
 ```
 

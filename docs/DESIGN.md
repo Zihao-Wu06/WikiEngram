@@ -116,7 +116,7 @@ the requests the model will really get. Each consolidated claim is trained on:
 * **The same question as a plain chat message**, for chat and thinking models. This is how an agent asks through
   the OpenAI-compatible API. A first version trained only the scaffolded format, and the API asked in another
   one.
-* **Several phrasings** (three trained, a fourth kept for verification). The extracting LLM writes them; missing
+* **Several phrasings** (`questions_per_claim` trained, one more kept for verification; the Strata example trains four). The extracting LLM writes them; missing
   ones are paraphrased before training, so training never needs the extraction model.
 * **A statement completion** ("Strata stores a 28.8 GB n-gram table" → " on the SSD"). It ties the memory to the
   fact's own wording.

@@ -14,8 +14,9 @@ wikiengram ingest -w "$WS" --kind conversation examples/data/conversation.json
 wikiengram wiki list -w "$WS"
 
 # 3. neural memory: consolidate claims into the personal Engram delta
-wikiengram consolidate -w "$WS" --plan
-wikiengram consolidate -w "$WS"
+# --all trains every claim; by default only claims scoring above [consolidation] min_score are selected
+wikiengram consolidate -w "$WS" --plan --all
+wikiengram consolidate -w "$WS" --all
 
 # 4. ask with each memory
 for mode in none wiki engram hybrid; do

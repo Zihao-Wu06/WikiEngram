@@ -10,6 +10,7 @@ Run ``wikiengram mcp -w ~/.wikiengram`` (stdio) or add ``--transport streamable-
 
 from __future__ import annotations
 
+import inspect
 from pathlib import Path
 
 from .memory import Memory
@@ -57,5 +58,13 @@ def serve(workspace: str | Path, scope: str = "", transport: str = "stdio", host
     server = build_server(Memory(workspace, scope=scope), include_model_tools)
     if transport == "stdio":
         server.run("stdio")
-    else:
+    elif _run_takes_address(server):  # mcp 2.x
         server.run(transport, host=host, port=port)
+    else:  # mcp 1.x: host and port are server settings
+        server.settings.host, server.settings.port = host, port
+        server.run(transport)
+
+
+def _run_takes_address(server) -> bool:
+    params = inspect.signature(server.run).parameters.values()
+    return any(p.kind is p.VAR_KEYWORD or p.name == "port" for p in params)

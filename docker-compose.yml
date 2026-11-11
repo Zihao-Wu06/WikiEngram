@@ -1,12 +1,14 @@
-# One workspace, three servers. Put model weights in ./models (e.g. ./models/Qwen3.8-Flash-Next-FP8) and point
-# the workspace at them ([backend] model = "/models/..."). Then: docker compose up -d
+# One workspace, three servers. Put model weights in ./models (e.g. ./models/Qwen3.8-Flash-Next-FP8), create the
+# workspace once, then start the servers:
+#   docker compose run --rm api init --kind hf-native --model /models/Qwen3.8-Flash-Next-FP8
+#   docker compose up -d
 x-common: &common
   build:
     context: .
     dockerfile: docker/Dockerfile.cuda   # docker/Dockerfile for a CPU-only machine
   image: wikiengram:cuda
   volumes:
-    - ./wikiengram-data:/data            # the workspace: wiki, Engram delta, config
+    - ./wikiengram-data:/data            # the workspace is ./wikiengram-data/workspace (wiki, Engram delta, config)
     - ${MODELS:-./models}:/models:ro     # model weights
   environment:
     # optional: an OpenAI-compatible endpoint for LLM-based knowledge extraction

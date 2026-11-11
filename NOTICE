@@ -17,6 +17,10 @@ It includes code ported from, and a reference copy of, third-party software:
   Ported in src/wikiengram/engram/qwen_ple.py; a verbatim reference copy used only by the parity tests lives in
   tests/reference/qwen4_exp_ple.py (license header included there).
 
+The example in examples/strata/ redistributes documentation of Strata (https://github.com/Niko1221/Strata),
+MIT License, Copyright (c) Niko1221: the documents in examples/strata/source/ and the knowledge in
+examples/strata/memory/ (license copies in examples/strata/source/LICENSE and examples/strata/memory/STRATA_LICENSE).
+
 The Engram architecture is described in:
 
 * Cheng et al., "Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models",

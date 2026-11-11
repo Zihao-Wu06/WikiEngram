@@ -135,7 +135,7 @@ def cmd_plan(a) -> None:
 
 def cmd_finalize(a) -> None:
     """Stop depending on the extraction model and cap what is consolidated (the most important claims)."""
-    import tomllib
+    from wikiengram.config import tomllib
 
     path = Path(a.workspace, "wikiengram.toml")
     text = path.read_text()
@@ -159,8 +159,7 @@ def cmd_export(a) -> None:
     ws, out = Path(a.workspace), Path(a.out)
     if out.exists():
         shutil.rmtree(out)
-    import tomllib
-
+    from wikiengram.config import tomllib
     from wikiengram.engram.delta import PersonalDelta
 
     shutil.copytree(ws / "engram", out / "engram", ignore=shutil.ignore_patterns("history"))

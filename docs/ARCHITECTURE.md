@@ -157,18 +157,16 @@ backbone trains through ordinary back-propagation, so that backbone must fit.
 
 ### Native Engram MoE models: what exists and what does not
 
-DeepSeek-V4.1-Flash is the first target; other families are tracked in [NATIVE_MOE.md](NATIVE_MOE.md).
+Qwen3.8-Flash-Next runs and trains natively (`backends/native.py`); DeepSeek-V4.1-Flash has its Engram
+variant but no trainable backbone yet. Details, family by family, are in [NATIVE_MOE.md](NATIVE_MOE.md).
 
-| Capability | Status |
-|---|---|
-| Config parsing (`EngramSpec.from_deepseek_v41_config`) | implemented, tested |
-| Bit-exact hashing, layout and compression vs the official code | implemented, tested |
-| Reading native FP8 Engram rows from the official safetensors shards | implemented, tested on a synthetic shard with the official tensor names and dtypes |
-| Personal delta format over V4.1 row addresses | implemented (layout-agnostic) |
-| Trainable V4.1 backbone (MLA/sparse attention, mHC, MoE) for consolidation | **not implemented yet**: see `docs/NATIVE_MOE.md` |
-| V4.1 inference with the delta (e.g. a patched Strata/llama.cpp Engram row reader) | **not implemented yet** |
-
-We do not claim end-to-end support for any native model until it has been run on real hardware.
+| Capability | Qwen3.8-Flash-Next (`qwen-ple`) | DeepSeek-V4.1-Flash (`deepseek-v4.1`) |
+|---|---|---|
+| Config parsing, bit-exact hashing and layout vs the reference code | implemented, tested | implemented, tested |
+| Reading the native FP8 n-gram table from the release shards | implemented, used in the Strata example | implemented, tested on a synthetic shard |
+| Personal delta over the native row addresses | implemented | implemented (layout-agnostic) |
+| Trainable frozen backbone for consolidation, streamed on one GPU | implemented (transformers ≥ 5.16), run on an RTX 5090 | **not implemented yet** |
+| Inference with the delta | implemented (model API, `ask`) | **not implemented yet** |
 
 ## Consolidation (`consolidation/`)
 
@@ -212,8 +210,9 @@ There are four modes: `none`, `wiki`, `engram` and `hybrid`. `hybrid` routes eac
 * Otherwise the wiki answers and the delta is switched off. New, edited or unverified knowledge therefore
   always comes from the latest wiki state, and memory cannot compete with it.
 
-On the Engram route, verified claims stay out of the prompt and only unverified claims about the same subject
-are kept (unrelated facts in the prompt get copied as answers). On the wiki route the delta is off, so every
+On the Engram route the prompt carries no wiki facts at all: other facts in the prompt get copied as answers.
+(The synthetic benchmarks in the README were measured with an earlier rule that kept unverified claims about
+the same subject.) On the wiki route the delta is off, so every
 retrieved claim, verified or not, is in the prompt. The personal delta is applied only to the question tokens,
 never to wiki context in the prompt. The base Engram applies everywhere.
 
@@ -235,5 +234,5 @@ plus subject match); there is no vector index.
   reason.
 * Facts that the frozen backbone (or the frozen base Engram) already knows cannot be removed by deleting delta
   rows. Only wiki precedence, or counter-training toward the new value, can override them.
-* Retrofit Engram is not equivalent to Engram pretrained jointly with the backbone. Native MoE backends are a
-  separate milestone.
+* Retrofit Engram is not equivalent to Engram pretrained jointly with the backbone. On Engram-family models
+  (Qwen3.8-Flash-Next) the native backend uses the model's own pretrained table instead.

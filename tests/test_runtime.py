@@ -141,6 +141,29 @@ def test_cli_without_model(tmp_path):
     assert runner.invoke(app, ["wiki", "purge", "-w", w, cid]).exit_code != 0  # needs --yes
 
 
+def test_cli_consolidate_all_and_init_kind(tmp_path):
+    """Freshly ingested claims score below the default min_score; ``--all`` selects them anyway (the quick start
+    relies on it). ``init --kind hf-native`` configures a native Engram model."""
+    from typer.testing import CliRunner
+
+    from wikiengram.cli import app
+
+    runner = CliRunner()
+    w = str(tmp_path / "cli-ws")
+    assert runner.invoke(app, ["init", "-w", w, "--model", "Qwen/Qwen3-0.6B-Base"]).exit_code == 0
+    assert runner.invoke(app, ["ingest", "-w", w, "--text", DOC]).exit_code == 0
+    r = runner.invoke(app, ["consolidate", "-w", w, "--plan"])
+    assert r.exit_code == 0 and r.output.startswith("0 claims selected"), r.output
+    r = runner.invoke(app, ["consolidate", "-w", w, "--plan", "--all"])
+    assert r.exit_code == 0 and r.output.startswith("2 claims selected, 0 not selected"), r.output
+
+    n = str(tmp_path / "native-ws")
+    r = runner.invoke(app, ["init", "-w", n, "--kind", "hf-native", "--model", "/models/Qwen3.8-Flash-Next-FP8"])
+    assert r.exit_code == 0, r.output
+    assert WorkspaceConfig.load(tmp_path / "native-ws" / WikiEngram.CONFIG_FILE).backend.kind == "hf-native"
+    assert runner.invoke(app, ["init", "-w", n, "--kind", "bogus"]).exit_code != 0
+
+
 def test_api_without_model(tmp_path):
     pytest.importorskip("fastapi")
     from fastapi.testclient import TestClient

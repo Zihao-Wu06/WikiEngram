@@ -15,6 +15,8 @@ and served to an AI agent through the model API and the LLMWiki MCP server. The 
 | `evaluate.py` | The measurements in the README (recall per memory mode, prompt tokens, perplexity, memory size) |
 | `agent_demo.py` | Questions through the model API, then an agent session using the MCP memory tools |
 | `update_test.py` | Corrections and deletions on a copy of the trained memory: sync, measure, re-consolidate, measure |
+| `memory/` | The finished memory: the reviewed wiki, the row ledger and the training state. The trained delta file (`engram/delta.safetensors`, 61 MB, listed in `MANIFEST.json`) is not stored in git |
+| `results/` | The raw measurements behind the README ([what each file holds](results/README.md)) |
 
 ## How the memory was built
 
@@ -24,21 +26,22 @@ and served to an AI agent through the model API and the LLMWiki MCP server. The 
 2. **Review.** `review_rules.py`, then every remaining claim checked against the documents. 197 claims were
    removed: markup, tautologies ("supports chat is true"), empty values, duplicates, identifiers the extractor
    invented, and facts that lost their context (a table row about one model read as true for all models).
-   129 were rewritten to be precise and self-contained, and 20 facts the extractor missed were added, mostly
-   from the MCP server's tool table. 149 facts remain. Every decision is in `review.json`.
+   129 were rewritten to be precise and self-contained, and 20 facts the extractor missed were added (9 from
+   `HOW_IT_WORKS.md`, 9 from `MCP_SERVER.md`, 2 from other documents). 149 facts remain. Every decision is in `review.json`.
 3. **Questions.** The 4B model wrote 5–6 phrasings per fact (two short ones were completed by hand). The first
    four are trained, each in the "Question: … Answer:" form and as a plain chat message, the way an agent asks;
    the fifth is held out and never trained.
 4. **Consolidation.** Qwen3.8-Flash-Next runs from its FP8 release (173 GB) on one RTX 5090 (32 GB) with 92 GB
    of RAM: experts are read from NVMe on demand, and the backward pass is recomputed layer by layer. Only the
-   personal delta of the n-gram table is trained; the model's own weights, its n-gram table and the fusion
-   layer are checked byte-for-byte before and after.
+   personal delta of the n-gram table is trained; checksums of the model's resident weights, its n-gram table
+   and the fusion layer are compared before and after (the experts are only read).
 
 ## Reproduce
 
-Needs a CUDA GPU with 32 GB, about 100 GB of RAM, the
+Needs a CUDA GPU with 32 GB, about 92 GB of RAM (the run's container limit), the
 [Qwen3.8-Flash-Next-FP8](https://huggingface.co/Qwen/Qwen3.8-Flash-Next-FP8) release on a fast SSD, and
-`pip install "fla-core>=0.5"` (the DeltaNet kernels).
+`pip install -e ".[api,mcp,native]"` from the repository root (transformers 5.16 or newer for the model code,
+`fla-core` for the DeltaNet kernels).
 
 ```bash
 transformers serve Qwen/Qwen3-4B-Instruct-2507 --port 8001        # the extraction model, in another shell

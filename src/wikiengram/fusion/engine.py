@@ -7,8 +7,8 @@ Modes:
 * ``engram`` - neural memory only: base Engram + personal delta, no context;
 * ``hybrid`` - both, routed per question. If the most relevant retrieved claim is verifiably recalled by
   Engram at its current version, it is left out of the prompt and the personal delta answers it (that is
-  where the token savings come from); only other unverified claims about the same subject stay in context,
-  because unrelated facts in the prompt get copied as answers. Otherwise the wiki answers with the delta
+  where the token savings come from), with no other wiki facts in the prompt, because facts in the prompt get
+  copied as answers. Otherwise the wiki answers with the delta
   switched off, so new, edited or unverified knowledge always comes from the latest wiki state and memory
   cannot compete with it.
 

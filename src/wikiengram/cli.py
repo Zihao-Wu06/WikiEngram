@@ -48,6 +48,8 @@ def _progress(prefix: str):
 @app.command()
 def init(workspace: Path | None = WS_OPTION,
          model: str = typer.Option(None, help="Backbone, e.g. Qwen/Qwen3-0.6B-Base"),
+         kind: str = typer.Option(None, help="hf (retrofit: a frozen decoder with an attached Engram) | "
+                                  "hf-native (a model that ships Engram, e.g. Qwen3.8-Flash-Next)"),
          device: str = typer.Option(None, help="auto | cuda | mps | cpu"),
          extractor: str = typer.Option(None, help="rule | openai"),
          llm_model: str = typer.Option(None, help="Model name for the OpenAI-compatible extractor")):
@@ -60,6 +62,10 @@ def init(workspace: Path | None = WS_OPTION,
     cfg = WorkspaceConfig.load(cfg_path) if cfg_path.exists() else WorkspaceConfig(name=path.name)
     if model:
         cfg.backend.model = model
+    if kind:
+        if kind not in ("hf", "hf-native"):
+            raise typer.BadParameter("kind must be hf or hf-native")
+        cfg.backend.kind = kind
     if device:
         cfg.backend.device = device
     if extractor:
@@ -67,7 +73,8 @@ def init(workspace: Path | None = WS_OPTION,
     if llm_model:
         cfg.extractor.model = llm_model
     WikiEngram.init(path, cfg)
-    typer.echo(f"workspace ready: {path} (backbone {cfg.backend.model}). Next: `wikiengram adapt` once, then ingest.")
+    nxt = "ingest" if cfg.backend.kind == "hf-native" else "`wikiengram adapt` once, then ingest"
+    typer.echo(f"workspace ready: {path} (backbone {cfg.backend.model}). Next: {nxt}.")
 
 
 @app.command()
@@ -196,10 +203,14 @@ def adapt(steps: int = typer.Option(None, help="Training steps (default from con
 def consolidate(plan: bool = typer.Option(False, "--plan", help="Only show what would be trained and an estimate"),
                 claim: list[str] = typer.Option(None, "--claim", help="Consolidate these claim ids, ignoring the policy thresholds "
                                                        "(versions already consolidated are skipped)"),
+                all_claims: bool = typer.Option(False, "--all", help="Consolidate every claim in the wiki, ignoring "
+                                                "the policy thresholds (versions already consolidated are skipped)"),
                 verify: bool = typer.Option(True, help="Probe recall after training"),
                 workspace: Path | None = WS_OPTION, as_json: bool = typer.Option(False, "--json")):
     """Stage 2: train stable, important, frequently used claims into the personal Engram delta."""
     ws = _open(workspace)
+    if all_claims:
+        claim = [c.id for c in ws.wiki.claims()]
     if plan:
         p = ws.plan(claim or None)
         if as_json:

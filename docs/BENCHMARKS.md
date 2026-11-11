@@ -23,7 +23,7 @@ generation.
 | Backbone only | off | off | no |
 | LLMWiki only | base (frozen) | off | top-k BM25 claims |
 | Engram only | base (frozen) | on | no |
-| LLMWiki + Engram | base (frozen) | routed per question: on (question tokens only) if Engram verifiably holds the top claim, else off | Engram route: only unverified claims about the same subject; wiki route: top-k claims |
+| LLMWiki + Engram | base (frozen) | routed per question: on (question tokens only) if Engram verifiably holds the top claim, else off | Engram route: none (the published synthetic runs used an earlier rule that kept unverified claims about the same subject); wiki route: top-k claims |
 
 ## Metrics
 
@@ -61,5 +61,10 @@ Pass `--base <dir>` to reuse a trained base Engram (the `engram/base` folder of 
 | Run | Hardware | Model | Facts | Data |
 |---|---|---|---|---|
 | Reference run for the README | Apple M4, 32 GB (MPS) | Qwen3-0.6B-Base | 50 | [json](../benchmarks/results/m4-qwen3-0.6b-50facts.json) · [table](../benchmarks/results/m4-qwen3-0.6b-50facts.md) |
+| Scaling, 3 seeds | RTX 5090, 32 GB | Qwen3-0.6B-Base | 50 | [seed 0](../benchmarks/results/rtx5090-qwen3-0.6b-50facts-seed0.json) · [1](../benchmarks/results/rtx5090-qwen3-0.6b-50facts-seed1.json) · [2](../benchmarks/results/rtx5090-qwen3-0.6b-50facts-seed2.json) |
+| Scaling, 3 seeds | RTX 5090, 32 GB | Qwen3-1.7B-Base | 200 | [seed 0](../benchmarks/results/rtx5090-qwen3-1.7b-200facts-seed0.json) · [1](../benchmarks/results/rtx5090-qwen3-1.7b-200facts-seed1.json) · [2](../benchmarks/results/rtx5090-qwen3-1.7b-200facts-seed2.json) |
+| Scaling | RTX 5090, 32 GB | Qwen3-1.7B-Base | 500 | [json](../benchmarks/results/rtx5090-qwen3-1.7b-500facts.json) |
+| Scaling, with edits and deletions | RTX 5090, 32 GB | Qwen3-1.7B-Base | 1,000 | [json](../benchmarks/results/rtx5090-qwen3-1.7b-1000facts.json) |
+| Batch-size check (batch 64, not in the README table) | RTX 5090, 32 GB | Qwen3-1.7B-Base | 200 | [json](../benchmarks/results/rtx5090-qwen3-1.7b-200facts-batch64.json) |
 
 New results are welcome. Please include the hardware, the model, `--facts`, and the `results.json` file.
