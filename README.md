@@ -35,18 +35,29 @@ so answers follow the latest version of your knowledge.
 
 ## Why WikiEngram?
 
-Today an LLM remembers things in one of two ways. Both have a catch:
+**Your AI forgets everything between sessions. WikiEngram makes it remember, and learn.** Tell it once: your
+preferences, your projects, your decisions. Every agent you use can recall them, and what matters most is
+trained into the model's own memory, so it answers without looking anything up.
 
-| | RAG / retrieval | Fine-tuning / LoRA | **WikiEngram** |
-|---|:---:|:---:|:---:|
-| Where knowledge lives | in the prompt, every query | in the model's weights | in a sparse delta over the model's Engram table, plus a wiki |
-| Model weights changed | no | yes | **no** (checksum-verified) |
-| Context per answer for learned facts | grows with what is retrieved | none | **none** |
-| Correct or delete one fact | instant | retrain; no exact deletion | **instant in the wiki; exact row removal in memory** |
-| Human-readable, auditable | yes | no | **yes** (versioned wiki pages) |
-| Works with any LLM | yes | per model | **yes** for the wiki (MCP / API); neural memory on Engram-family models |
+**When to use it**
 
-WikiEngram keeps both memories, the way people do. A fast, explicit memory (the **LLMWiki**) takes in
+- **Build your personal long-term memory.** Preferences, decisions and lessons, kept across every session and
+  every assistant, so you stop repeating yourself.
+- **Give coding agents a memory of your project.** Connect Claude Code, Cursor, Codex or any MCP client. Docs,
+  decisions and fixes carry over from one session to the next.
+- **Build a model that knows your field.** Teach a model your product's or team's knowledge. It answers what it
+  has learned with nothing retrieved into the prompt.
+
+| | |
+|---|---|
+| 🧠 **Learns, not just retrieves** | The most important memories are trained into the model's own Engram memory and answered with no context: 99.3% of trained questions on a real project. |
+| ✏️ **Always up to date** | A correction is answered from the wiki right away. A deleted memory is removed from the trained memory exactly, not just hidden. |
+| 📖 **Readable, and yours** | Every memory is a Markdown page with its full history, in a folder on your disk. Roll back the trained memory at any time. |
+| 🔌 **Works with your agents** | An MCP server, an OpenAI-compatible model API, REST and a Python SDK. |
+| 🗂️ **A memory per person or project** | Memories are scoped per project, and each trained memory is a small file over the same frozen model (61 MB for 149 facts). |
+| 🔒 **Your model stays untouched** | The model's own weights never change, so switching the memory off gives back the original model. It runs on your own GPU. |
+
+WikiEngram keeps two memories, the way people do. A fast, explicit memory (the **LLMWiki**) takes in
 everything. Stable, important, frequently used knowledge is then consolidated into a slow, implicit memory
 (**Engram**) that answers without being looked up.
 
