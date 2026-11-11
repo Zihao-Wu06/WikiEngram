@@ -370,19 +370,6 @@ PyTorch implementation that is much slower and needs about 3× the memory.
 - **Evidence so far.** One real project (149 facts) on the native model, plus synthetic facts at up to 1,000 on
   small models. Comparisons with LoRA, dense retrieval and agent-memory benchmarks are still to come.
 
-## Roadmap
-
-- [x] DeepSeek-V4.1 and Qwen3.8 Engram variants, bit-exact
-- [x] Personal delta with exact deletion, sync and verification
-- [x] Qwen3.8-Flash-Next native backend on one GPU
-- [x] MCP server, OpenAI-compatible model API, SDK
-- [ ] Early stopping for sync repair (it runs to the epoch cap when the loss plateaus)
-- [ ] Faster batched decoding on streamed models (drop finished sequences)
-- [ ] Dense retrieval option for the LLMWiki
-- [ ] LoRA and long-term agent memory benchmarks
-- [ ] DeepSeek-V4.1-Flash native backend
-- [ ] Published trained example memory
-
 ## Contributing
 
 Contributions are welcome: new Engram families, retrieval backends, benchmarks, agent integrations. The rules
